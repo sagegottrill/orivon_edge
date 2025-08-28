@@ -1,11 +1,7 @@
 import React from 'react';
-import { Github, Twitter, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -43,14 +39,6 @@ const Footer: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-blue-600/5 via-transparent to-blue-950/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(0,112,243,0.1)_0%,rgba(0,0,0,0)_100%)]"></div>
       </div>
-
-      {/* Back to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 p-4 rounded-full shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:scale-110"
-      >
-        <ArrowUp className="w-6 h-6" />
-      </button>
 
       <div className="max-w-[1600px] mx-auto px-8 lg:px-12 pt-24 pb-12 relative z-10">
         {/* Main Footer Content */}

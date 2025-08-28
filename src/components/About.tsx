@@ -1,25 +1,25 @@
 import React from 'react';
-import { Target, Eye, Heart, Globe2, Zap, Users } from 'lucide-react';
+import { Target, Eye, Heart, Globe, Lightning, Users } from '@phosphor-icons/react';
 
 const About: React.FC = () => {
   const values = [
     {
-      icon: <Target className="w-8 h-8" />,
+      icon: <Target size={32} weight="duotone" />,
       title: "Adaptive Solutions",
       description: "We build technology that adapts to your unique context and challenges."
     },
     {
-      icon: <Zap className="w-8 h-8" />,
+      icon: <Lightning size={32} weight="duotone" />,
       title: "Scalable Architecture",
       description: "Our solutions grow with your business, from startup to enterprise."
     },
     {
-      icon: <Globe2 className="w-8 h-8" />,
+      icon: <Globe size={32} weight="duotone" />,
       title: "Global Perspective",
       description: "African-born, globally focused. We understand diverse markets."
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users size={32} weight="duotone" />,
       title: "Human-Centered",
       description: "Technology that serves people, not the other way around."
     }
@@ -50,7 +50,7 @@ const About: React.FC = () => {
           <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25">
-                <Eye className="w-8 h-8 text-white" />
+                <Eye size={32} weight="duotone" className="text-white" />
               </div>
               <h3 className="text-2xl font-medium text-white tracking-tight">Our Vision</h3>
             </div>
@@ -64,7 +64,7 @@ const About: React.FC = () => {
           <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25">
-                <Heart className="w-8 h-8 text-white" />
+                <Heart size={32} weight="duotone" className="text-white" />
               </div>
               <h3 className="text-2xl font-medium text-white tracking-tight">Our Mission</h3>
             </div>
