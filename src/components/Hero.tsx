@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@phosphor-icons/react';
 
 const Hero: React.FC = () => {
   return (
@@ -32,14 +32,20 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-8 sm:mt-10 w-full px-4 sm:px-0">
-            <button className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 flex items-center gap-3 w-full sm:w-auto sm:min-w-[200px] justify-center shadow-lg shadow-blue-500/25">
-              Get Started
-              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1.5 transition-transform duration-300" />
-            </button>
+            <a 
+              href="/start-project" 
+              className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 flex items-center gap-3 w-full sm:w-auto sm:min-w-[200px] justify-center shadow-lg shadow-blue-500/25"
+            >
+              Start Your Project
+              <ArrowRight size={24} weight="bold" className="group-hover:translate-x-1.5 transition-transform duration-300" />
+            </a>
             
-            <button className="text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 hover:bg-white/10 w-full sm:w-auto sm:min-w-[200px] backdrop-blur-xl bg-white/5 border border-white/10">
-              Learn More
-            </button>
+            <a 
+              href="/book-consultation" 
+              className="text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 hover:bg-white/10 w-full sm:w-auto sm:min-w-[200px] backdrop-blur-xl bg-white/5 border border-white/10 hover:border-blue-400/30 hover:text-blue-400"
+            >
+              Book Consultation
+            </a>
           </div>
         </div>
       </div>
