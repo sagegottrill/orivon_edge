@@ -34,11 +34,11 @@ const About: React.FC = () => {
       </div>
 
       <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight mb-8">
+        <div className="text-center mb-12 sm:mb-16 px-4 sm:px-0">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6 sm:mb-8">
             About <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">ORIVON EDGE</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
             We're a private tech solutions agency that believes in building technology 
             that matters. Our approach is simple: understand the problem, design the solution, 
             and deliver excellence.
@@ -46,7 +46,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-8 mb-12 sm:mb-16 px-4 sm:px-0">
           <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 space-y-6">
             <div className="flex items-center gap-4">
               <div className="p-3 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25">
@@ -78,8 +78,8 @@ const About: React.FC = () => {
 
         {/* Values */}
         <div>
-          <h3 className="text-4xl font-medium text-center text-white tracking-tight mb-12">Our Values</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h3 className="text-3xl sm:text-4xl font-medium text-center text-white tracking-tight mb-8 sm:mb-12 px-4 sm:px-0">Our Values</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4 sm:px-0">
             {values.map((value, index) => (
               <div key={index} className="text-center group">
                 <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 group-hover:bg-white/10 transition-all duration-300 h-full">

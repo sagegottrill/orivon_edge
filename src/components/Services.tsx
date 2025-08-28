@@ -58,55 +58,55 @@ const Services: React.FC = () => {
       </div>
 
       <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight mb-8">
+        <div className="text-center mb-12 sm:mb-16 px-4 sm:px-0">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6 sm:mb-8">
             Our <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Services</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
             We offer comprehensive technology solutions tailored to your business needs. 
             From concept to deployment, we've got you covered.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-0">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 overflow-hidden"
+              className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 overflow-hidden"
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >              
               <div className="relative">
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${service.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25`}>
-                  {React.cloneElement(service.icon as React.ReactElement, { className: "w-8 h-8" })}
+                <div className={`inline-flex p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.color} text-white mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25`}>
+                  {React.cloneElement(service.icon as React.ReactElement, { className: "w-6 h-6 sm:w-8 sm:h-8" })}
                 </div>
                 
-                <h3 className="text-xl font-medium text-white mb-3 tracking-tight">
+                <h3 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 tracking-tight">
                   {service.title}
                 </h3>
                 
-                <p className="text-base text-gray-300 mb-6 leading-relaxed font-light">
+                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed font-light">
                   {service.description}
                 </p>
 
                 {/* Features list - shows on hover */}
-                <div className={`space-y-3 transition-all duration-500 ${
+                <div className={`space-y-2 sm:space-y-3 transition-all duration-500 ${
                   hoveredCard === index ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'
                 } overflow-hidden`}>
-                  <h4 className="text-xl font-medium text-white mb-4">Key Features</h4>
+                  <h4 className="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4">Key Features</h4>
                   {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-3">
-                      <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color}`}></div>
-                      <span className="text-base text-gray-300 font-light">{feature}</span>
+                    <div key={featureIndex} className="flex items-center gap-2 sm:gap-3">
+                      <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r ${service.color}`}></div>
+                      <span className="text-sm sm:text-base text-gray-300 font-light">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* CTA Button */}
-                <div className={`mt-8 transition-all duration-500 ${
+                <div className={`mt-6 sm:mt-8 transition-all duration-500 ${
                   hoveredCard === index ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                 }`}>
-                  <button className={`w-full py-4 px-8 rounded-2xl bg-gradient-to-r ${service.color} text-white text-lg font-medium tracking-wide hover:shadow-lg shadow-blue-500/25 transition-all duration-300`}>
+                  <button className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-xl sm:rounded-2xl bg-gradient-to-r ${service.color} text-white text-base sm:text-lg font-medium tracking-wide hover:shadow-lg shadow-blue-500/25 transition-all duration-300`}>
                     Learn More
                   </button>
                 </div>
