@@ -9,11 +9,18 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border border-border/40 bg-background shadow-sm",
+      "relative overflow-hidden rounded-2xl",
+      "backdrop-blur-xl bg-white/6 border border-white/8",
+      "shadow-[0_10px_30px_rgba(0,0,0,0.6)]",
       className
     )}
     {...props}
-  />
+  >
+    {/* subtle neon rim */}
+    <div className="pointer-events-none absolute -inset-1 rounded-2xl opacity-60 mix-blend-screen">
+      <div className="absolute inset-0 rounded-2xl border border-transparent" />
+    </div>
+  </div>
 ))
 Card.displayName = "Card"
 
@@ -23,7 +30,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    className={cn("flex flex-col space-y-1.5 p-6 md:p-8", className)}
     {...props}
   />
 ))
@@ -36,7 +43,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight text-foreground",
+      "text-2xl sm:text-3xl font-semibold leading-none tracking-tight text-white",
       className
     )}
     {...props}
@@ -50,7 +57,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-sm text-gray-300/90", className)}
     {...props}
   />
 ))
@@ -60,7 +67,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("p-6 pt-0 md:p-8", className)} {...props} />
 ))
 CardContent.displayName = "CardContent"
 
@@ -70,7 +77,7 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
+    className={cn("flex items-center p-6 pt-0 md:p-8 border-t border-white/6", className)}
     {...props}
   />
 ))
