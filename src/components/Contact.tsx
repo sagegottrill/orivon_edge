@@ -26,24 +26,24 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-40 bg-black relative overflow-hidden">
+    <section id="contact" className="min-h-screen bg-black relative overflow-hidden flex items-center">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10">
-        <div className="text-center mb-24">
-          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-medium text-white tracking-tight mb-10">
+      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight mb-6">
             Get In <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Touch</span>
           </h2>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed tracking-wide">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
             Ready to transform your business with cutting-edge technology? Let's start the conversation.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Information */}
           <div className="space-y-12">
             <div>

@@ -50,42 +50,42 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-40 bg-black relative overflow-hidden">
+    <section id="services" className="min-h-screen bg-black relative overflow-hidden flex items-center">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10">
-        <div className="text-center mb-24">
-          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-medium text-white tracking-tight mb-10">
+      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight mb-8">
             Our <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Services</span>
           </h2>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed tracking-wide">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
             We offer comprehensive technology solutions tailored to your business needs. 
             From concept to deployment, we've got you covered.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-all duration-300 overflow-hidden"
+              className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 overflow-hidden"
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >              
               <div className="relative">
-                <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-br ${service.color} text-white mb-10 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25`}>
-                  {React.cloneElement(service.icon as React.ReactElement, { className: "w-14 h-14" })}
+                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${service.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25`}>
+                  {React.cloneElement(service.icon as React.ReactElement, { className: "w-8 h-8" })}
                 </div>
                 
-                <h3 className="text-3xl font-medium text-white mb-5 tracking-tight">
+                <h3 className="text-xl font-medium text-white mb-3 tracking-tight">
                   {service.title}
                 </h3>
                 
-                <p className="text-lg text-gray-300 mb-8 leading-relaxed font-light">
+                <p className="text-base text-gray-300 mb-6 leading-relaxed font-light">
                   {service.description}
                 </p>
 
