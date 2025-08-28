@@ -4,14 +4,22 @@ import { ArrowRight } from '@phosphor-icons/react';
 const Hero: React.FC = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-      {/* Hero image with overlay */}
+      {/* Hero video background with overlay */}
       <div className="absolute inset-0">
-        <img
-          src="/1.png"
-          alt="Hero Background"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/50"></div>
+          poster="/1.png"
+        >
+          <source
+            src="https://res.cloudinary.com/youraccount/video/upload/v1/hero-background.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="absolute inset-0 bg-black/60"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       </div>
 

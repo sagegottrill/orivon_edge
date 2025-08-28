@@ -102,7 +102,7 @@ const Contact: React.FC = () => {
                   <h4 className="text-lg font-medium text-white mb-2">Location</h4>
                   <p className="text-lg text-gray-300 font-light leading-relaxed">
                     Global Remote Team<br />
-                    Headquarters: Lagos, Nigeria
+                    Headquarters: Borno, Nigeria
                   </p>
                 </div>
               </div>
