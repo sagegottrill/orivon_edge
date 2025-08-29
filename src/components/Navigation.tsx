@@ -22,8 +22,8 @@ const Navigation: React.FC = () => {
     { name: 'About', href: isHomePage ? '#about' : '/#about' },
     { name: 'Services', href: isHomePage ? '#services' : '/#services' },
     { name: 'Industries', href: isHomePage ? '#industries' : '/#industries' },
-    { name: 'Portfolio', href: isHomePage ? '#portfolio' : '/#portfolio' },
-    { name: 'Blog', href: isHomePage ? '#blog' : '/#blog' },
+  { name: 'Portfolio', href: isHomePage ? '#portfolio' : '/#portfolio' },
+  { name: 'Case Studies', href: isHomePage ? '#case-studies' : '/#case-studies' },
     { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' }
   ];
 

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Card } from '@/components/ui/card';
+import { NeonCard } from '@/components/ui/neon-card';
 import { Clock, Calendar as CalendarIcon, Check, Home } from 'lucide-react';
 import { addDays, format } from 'date-fns';
 
@@ -80,7 +80,7 @@ const Schedule: React.FC = () => {
         </div>
 
         {submitted ? (
-          <Card className="max-w-2xl mx-auto p-8 text-center bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg">
+          <NeonCard className="max-w-2xl mx-auto p-8 text-center text-gray-900 dark:text-white">
             <div className="rounded-full bg-green-100 dark:bg-green-900 w-16 h-16 flex items-center justify-center mx-auto mb-6">
               <Check className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
@@ -102,9 +102,9 @@ const Schedule: React.FC = () => {
             >
               Return to Homepage
             </Button>
-          </Card>
+            </NeonCard>
         ) : (
-          <Card className="max-w-4xl mx-auto p-6 sm:p-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg">
+          <NeonCard className="max-w-4xl mx-auto p-6 sm:p-8 text-gray-900 dark:text-white">
             <div className="flex justify-center mb-8">
               <div className="flex items-center space-x-4">
                 <div className={`flex items-center justify-center w-8 h-8 rounded-full ${
@@ -305,7 +305,7 @@ const Schedule: React.FC = () => {
                 </div>
               </form>
             )}
-          </Card>
+          </NeonCard>
         )}
       </div>
     </div>

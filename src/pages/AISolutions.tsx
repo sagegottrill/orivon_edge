@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bot, Sparkles, Target, Zap } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { NeonCard } from '@/components/ui/neon-card';
 import { Button } from '@/components/ui/button';
 
 const AISolutions: React.FC = () => {
@@ -45,26 +45,25 @@ const AISolutions: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {solutions.map((solution, index) => (
-            <Card key={index} className="p-8 bg-white/10 backdrop-blur-lg border-none text-white hover:bg-white/15 transition-all duration-300">
+            <NeonCard key={index} className="p-8 text-white">
               <div className="flex flex-col items-center text-center">
-                <div className="p-4 bg-white/10 rounded-full mb-6">
-                  {solution.icon}
-                </div>
+                <div className="p-4 bg-white/6 rounded-full mb-6">{solution.icon}</div>
+                <div className="text-sm text-gray-200 uppercase tracking-wider mb-2">solution</div>
                 <h3 className="text-2xl font-semibold mb-4">{solution.title}</h3>
                 <p className="text-gray-300 mb-6">{solution.description}</p>
                 <ul className="space-y-2 mb-6">
                   {solution.features.map((feature, idx) => (
                     <li key={idx} className="text-gray-300 flex items-center justify-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                      <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-2"></span>
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <Button className="bg-blue-600 hover:bg-blue-700">
+                <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
                   Learn More
                 </Button>
               </div>
-            </Card>
+            </NeonCard>
           ))}
         </div>
       </div>

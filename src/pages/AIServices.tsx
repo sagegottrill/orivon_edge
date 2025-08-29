@@ -1,6 +1,6 @@
 import React from 'react';
 import { Brain, Cpu, Database, Network } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { NeonCard } from '@/components/ui/neon-card';
 
 const AIServices: React.FC = () => {
   const services = [
@@ -35,17 +35,18 @@ const AIServices: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
-            <Card key={index} className="p-6 bg-white/10 backdrop-blur-lg border-none text-white hover:bg-white/15 transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 bg-white/10 rounded-lg">
-                  {service.icon}
+            <NeonCard key={index} className="p-6 text-white">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-xl bg-white/6 flex items-center justify-center">{service.icon}</div>
                 </div>
-                <div>
+                <div className="flex-1">
+                  <div className="text-sm text-gray-200 uppercase tracking-wider mb-1">service</div>
                   <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                   <p className="text-gray-300">{service.description}</p>
                 </div>
               </div>
-            </Card>
+            </NeonCard>
           ))}
         </div>
       </div>

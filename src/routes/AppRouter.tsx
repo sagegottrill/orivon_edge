@@ -6,7 +6,7 @@ import About from '../components/About';
 import Services from '../components/Services';
 import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
-import Blog from '../components/Blog';
+import CaseStudies from '../components/Blog';
 import AIServices from '../pages/AIServices';
 import AISolutions from '../pages/AISolutions';
 import { default as Schedule } from '../pages/Schedule';
@@ -27,8 +27,8 @@ const AppRouter: React.FC = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/ai-services" element={<AIServices />} />
         <Route path="/ai-solutions" element={<AISolutions />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/blog" element={<Blog />} />
+  <Route path="/portfolio" element={<Portfolio />} />
+  <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/start-project" element={<StartProject />} />

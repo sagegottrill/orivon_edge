@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from '@phosphor-icons/react';
+import { NeonCard } from '@/components/ui/neon-card';
 
 const Hero: React.FC = () => {
   return (
@@ -48,12 +49,11 @@ const Hero: React.FC = () => {
               <ArrowRight size={24} weight="bold" className="group-hover:translate-x-1.5 transition-transform duration-300" />
             </a>
             
-            <a 
-              href="/book-consultation" 
-              className="text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 hover:bg-white/10 w-full sm:w-auto sm:min-w-[200px] backdrop-blur-xl bg-white/5 border border-white/10 hover:border-blue-400/30 hover:text-blue-400"
-            >
-              Book Consultation
-            </a>
+            <NeonCard className="rounded-full p-0 inline-block">
+              <a href="/book-consultation" className="text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 w-full sm:w-auto sm:min-w-[200px] block text-center">
+                Book Consultation
+              </a>
+            </NeonCard>
           </div>
         </div>
       </div>

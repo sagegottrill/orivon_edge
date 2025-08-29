@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Monitor, Smartphone, Brain, Database, Cloud, Cog } from 'lucide-react';
+import { NeonCard } from '@/components/ui/neon-card';
 
 const Services: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -70,29 +71,17 @@ const Services: React.FC = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-0">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300 overflow-hidden"
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
-            >              
-              <div className="relative">
-                <div className={`inline-flex p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.color} text-white mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25`}>
+            <div key={index} onMouseEnter={() => setHoveredCard(index)} onMouseLeave={() => setHoveredCard(null)}>
+              <NeonCard variant="compact" className="p-6 sm:p-8">
+                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${service.color} text-white mb-4 sm:mb-6 transition-transform duration-300 shadow-lg group-hover:scale-110`}>
                   {React.cloneElement(service.icon as React.ReactElement, { className: "w-6 h-6 sm:w-8 sm:h-8" })}
                 </div>
-                
-                <h3 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 tracking-tight">
-                  {service.title}
-                </h3>
-                
-                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed font-light">
-                  {service.description}
-                </p>
 
-                {/* Features list - shows on hover */}
-                <div className={`space-y-2 sm:space-y-3 transition-all duration-500 ${
-                  hoveredCard === index ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'
-                } overflow-hidden`}>
+                <h3 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 tracking-tight">{service.title}</h3>
+
+                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed font-light">{service.description}</p>
+
+                <div className={`space-y-2 sm:space-y-3 transition-all duration-500 ${hoveredCard === index ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
                   <h4 className="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4">Key Features</h4>
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center gap-2 sm:gap-3">
@@ -102,15 +91,10 @@ const Services: React.FC = () => {
                   ))}
                 </div>
 
-                {/* CTA Button */}
-                <div className={`mt-6 sm:mt-8 transition-all duration-500 ${
-                  hoveredCard === index ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                }`}>
-                  <button className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-xl sm:rounded-2xl bg-gradient-to-r ${service.color} text-white text-base sm:text-lg font-medium tracking-wide hover:shadow-lg shadow-blue-500/25 transition-all duration-300`}>
-                    Learn More
-                  </button>
+                <div className={`mt-6 sm:mt-8 transition-all duration-500 ${hoveredCard === index ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                  <button className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-xl sm:rounded-2xl bg-gradient-to-r ${service.color} text-white text-base sm:text-lg font-medium tracking-wide hover:shadow-lg transition-all duration-300`}>Learn More</button>
                 </div>
-              </div>
+              </NeonCard>
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card } from "@/components/ui/card"
+import { NeonCard } from "@/components/ui/neon-card"
 import { 
   Globe, 
   Database, 
@@ -125,7 +125,7 @@ const StartProject: React.FC = () => {
           </div>
 
           <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10">
-            <Card className="max-w-4xl mx-auto backdrop-blur-xl bg-white/5 border-white/10 text-white p-12 text-center">
+            <NeonCard className="max-w-4xl mx-auto text-white p-12 text-center">
               <div className="mb-8">
                 <div className="w-20 h-20 rounded-full bg-green-500/20 mx-auto mb-6 flex items-center justify-center">
                   <CheckCircle size={48} weight="duotone" className="text-green-400" />
@@ -139,7 +139,7 @@ const StartProject: React.FC = () => {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6 mb-12">
-                <Card className="backdrop-blur-xl bg-white/5 border-white/10 p-6 text-left">
+                <NeonCard className="p-6 text-left">
                   <h3 className="text-xl font-medium mb-4 flex items-center gap-3">
                     <CalendarCheck size={24} className="text-blue-400" />
                     Next Steps
@@ -150,9 +150,9 @@ const StartProject: React.FC = () => {
                     <li>• Initial consultation call</li>
                     <li>• Custom proposal preparation</li>
                   </ul>
-                </Card>
+                </NeonCard>
 
-                <Card className="backdrop-blur-xl bg-white/5 border-white/10 p-6 text-left">
+                <NeonCard className="p-6 text-left">
                   <h3 className="text-xl font-medium mb-4 flex items-center gap-3">
                     <Clock size={24} className="text-blue-400" />
                     Timeline
@@ -163,27 +163,22 @@ const StartProject: React.FC = () => {
                     <li>• Proposal delivery: Within 72 hours</li>
                     <li>• Project kickoff: ASAP after approval</li>
                   </ul>
-                </Card>
+                </NeonCard>
               </div>
 
-              <div className="space-y-6">
+                <div className="space-y-6">
                 <h3 className="text-xl font-medium">While You Wait</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <a 
-                    href="/portfolio" 
-                    className="backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 p-4 rounded-xl transition-all duration-300"
-                  >
-                    View Our Portfolio
-                  </a>
-                  <a 
-                    href="/case-studies" 
-                    className="backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 p-4 rounded-xl transition-all duration-300"
-                  >
-                    Read Case Studies
-                  </a>
+                  <NeonCard className="p-0">
+                    <a href="/portfolio" className="block p-4 rounded-xl">View Our Portfolio</a>
+                  </NeonCard>
+
+                  <NeonCard className="p-0">
+                    <a href="/case-studies" className="block p-4 rounded-xl">Read Case Studies</a>
+                  </NeonCard>
                 </div>
               </div>
-            </Card>
+            </NeonCard>
           </div>
         </section>
       </InnerPageLayout>
@@ -232,7 +227,7 @@ const StartProject: React.FC = () => {
             </div>
           </div>
 
-          <Card className="max-w-4xl mx-auto backdrop-blur-xl bg-white/5 border-white/10 text-white p-8">
+          <NeonCard className="max-w-4xl mx-auto text-white p-8">
             {step === 1 && (
               <div className="space-y-8">
                 <h2 className="text-2xl font-medium tracking-tight flex items-center gap-3">
@@ -390,40 +385,46 @@ const StartProject: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-gray-300">Full Name</label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="backdrop-blur-xl bg-white/5 border border-white/10"
-                      required
-                    />
+                      <NeonCard className="p-0 rounded-xl">
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className="w-full bg-transparent"
+                          required
+                        />
+                      </NeonCard>
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-gray-300">Email Address</label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="backdrop-blur-xl bg-white/5 border border-white/10"
-                      required
-                    />
+                    <NeonCard className="p-0 rounded-xl">
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full bg-transparent"
+                        required
+                      />
+                    </NeonCard>
                   </div>
 
                   <div className="space-y-2 md:col-span-2">
                     <label htmlFor="phone" className="text-sm font-medium text-gray-300">Phone Number</label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="backdrop-blur-xl bg-white/5 border border-white/10"
-                      required
-                    />
+                    <NeonCard className="p-0 rounded-xl">
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full bg-transparent"
+                        required
+                      />
+                    </NeonCard>
                   </div>
                 </div>
 
@@ -446,7 +447,7 @@ const StartProject: React.FC = () => {
                 </div>
               </form>
             )}
-          </Card>
+          </NeonCard>
         </div>
       </section>
     </InnerPageLayout>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Building, GraduationCap, DollarSign, Zap, Globe, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { NeonCard } from '@/components/ui/neon-card';
 
 const Industries: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -98,21 +99,16 @@ const Industries: React.FC = () => {
                 <div key={slideIndex} className="w-full flex-shrink-0">
                   <div className="grid md:grid-cols-3 gap-8">
                     {industries.slice(slideIndex * 3, (slideIndex + 1) * 3).map((industry, index) => (
-                      <div
-                        key={index}
-                        className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-all duration-300 group"
-                      >
-                        <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-br ${industry.color} text-white mb-10 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                          {industry.icon}
+                      <div key={index}>
+                        <div className="mb-6">
+                          <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-br ${industry.color} text-white mb-6 transition-transform duration-300 shadow-lg`}>{industry.icon}</div>
+                          <div className="">
+                            <NeonCard variant="compact" className="p-8 rounded-2xl hover:shadow-[0_30px_90px_rgba(124,58,237,0.06)] transition-transform duration-300">
+                              <h3 className="text-3xl font-medium text-white mb-5 tracking-tight">{industry.title}</h3>
+                              <p className="text-lg text-gray-300 leading-relaxed font-light">{industry.description}</p>
+                            </NeonCard>
+                          </div>
                         </div>
-                        
-                        <h3 className="text-3xl font-medium text-white mb-5 tracking-tight">
-                          {industry.title}
-                        </h3>
-                        
-                        <p className="text-lg text-gray-300 leading-relaxed font-light">
-                          {industry.description}
-                        </p>
                       </div>
                     ))}
                   </div>
@@ -122,19 +118,17 @@ const Industries: React.FC = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 backdrop-blur-xl bg-white/10 border border-white/10 shadow-lg rounded-full p-4 hover:bg-white/20 transition-all duration-300 group"
-          >
-            <ChevronLeft className="w-6 h-6 text-white group-hover:text-blue-400" />
-          </button>
+          <NeonCard className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 rounded-full p-0">
+            <button onClick={prevSlide} className="p-4 block rounded-full">
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+          </NeonCard>
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 backdrop-blur-xl bg-white/10 border border-white/10 shadow-lg rounded-full p-4 hover:bg-white/20 transition-all duration-300 group"
-          >
-            <ChevronRight className="w-6 h-6 text-white group-hover:text-blue-400" />
-          </button>
+          <NeonCard className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 rounded-full p-0">
+            <button onClick={nextSlide} className="p-4 block rounded-full">
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+          </NeonCard>
         </div>
 
         {/* Slide Indicators */}
@@ -154,12 +148,14 @@ const Industries: React.FC = () => {
 
         {/* Global Reach Section */}
         <div className="mt-32 text-center">
-          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-16">
-            <Globe className="w-20 h-20 text-blue-400 mx-auto mb-8" />
-            <h3 className="text-4xl font-medium text-white mb-6 tracking-tight">Global Reach</h3>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
-              From Africa to the Americas, Europe to Asia - we understand diverse markets and deliver solutions that work everywhere.
-            </p>
+          <div className="max-w-3xl mx-auto">
+            <NeonCard variant="showcase" className="p-12 rounded-3xl">
+              <Globe className="w-20 h-20 text-blue-400 mx-auto mb-8" />
+              <h3 className="text-4xl font-medium text-white mb-6 tracking-tight">Global Reach</h3>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
+                From Africa to the Americas, Europe to Asia - we understand diverse markets and deliver solutions that work everywhere.
+              </p>
+            </NeonCard>
           </div>
         </div>
       </div>

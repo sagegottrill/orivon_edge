@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Eye } from 'lucide-react';
+import { NeonCard } from '@/components/ui/neon-card';
+import PricingCard from '@/components/PricingCard';
 
 const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('All');
@@ -83,7 +85,7 @@ const Portfolio: React.FC = () => {
               className={`px-8 py-4 rounded-full text-lg font-medium tracking-wide transition-all duration-300 ${
                 filter === category
                   ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25'
-                  : 'backdrop-blur-xl bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
+                  : 'text-gray-300 hover:bg-white/10'
               }`}
             >
               {category}
@@ -96,7 +98,7 @@ const Portfolio: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={index}
-              className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white/10"
+              className="group relative rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full"
               onMouseEnter={() => setHoveredProject(index)}
               onMouseLeave={() => setHoveredProject(null)}
             >
@@ -113,65 +115,60 @@ const Portfolio: React.FC = () => {
                 <div className={`absolute inset-0 backdrop-blur-sm bg-black/40 flex items-center justify-center gap-6 transition-all duration-300 ${
                   hoveredProject === index ? 'opacity-100' : 'opacity-0'
                 }`}>
-                  <button className="bg-white/10 backdrop-blur-xl text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300">
-                    <Eye className="w-6 h-6" />
-                  </button>
-                  <button className="bg-white/10 backdrop-blur-xl text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300">
-                    <ExternalLink className="w-6 h-6" />
-                  </button>
-                  <button className="bg-white/10 backdrop-blur-xl text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300">
-                    <Github className="w-6 h-6" />
-                  </button>
+                  <NeonCard className="inline-block rounded-full p-0">
+                    <button className="p-4 text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300">
+                      <Eye className="w-6 h-6" />
+                    </button>
+                  </NeonCard>
+                  <NeonCard className="inline-block rounded-full p-0">
+                    <button className="p-4 text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300">
+                      <ExternalLink className="w-6 h-6" />
+                    </button>
+                  </NeonCard>
+                  <NeonCard className="inline-block rounded-full p-0">
+                    <button className="p-4 text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300">
+                      <Github className="w-6 h-6" />
+                    </button>
+                  </NeonCard>
                 </div>
               </div>
 
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-medium text-white tracking-tight">
-                    {project.title}
-                  </h3>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium tracking-wide bg-gradient-to-r ${project.color} text-white shadow-lg shadow-blue-500/25`}>
-                    {project.category}
-                  </span>
-                </div>
-
-                <p className="text-base text-gray-300 mb-6 leading-relaxed font-light">
-                  {project.description}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1.5 backdrop-blur-xl bg-white/5 border border-white/10 text-gray-300 text-sm font-medium tracking-wide rounded-full"
-                    >
-                      {tech}
+                <NeonCard className="rounded-b-2xl p-8 flex-1 flex flex-col">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-medium text-white tracking-tight">{project.title}</h3>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium tracking-wide bg-gradient-to-r ${project.color} text-white shadow-lg`}>
+                      {project.category}
                     </span>
-                  ))}
-                </div>
+                  </div>
 
-                {/* CTA Button */}
-                <button className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${project.color} text-white text-base font-medium tracking-wide hover:shadow-lg shadow-blue-500/25 transition-all duration-300`}>
-                  View Project
-                </button>
-              </div>
+                  <p className="text-base text-gray-300 mb-6 leading-relaxed font-light flex-1">{project.description}</p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech, techIndex) => (
+                      <NeonCard key={techIndex} className="inline-block p-1.5 rounded-full text-sm font-medium tracking-wide text-gray-300">
+                        <span className="px-3 py-1.5 block">{tech}</span>
+                      </NeonCard>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto">
+                    <button className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${project.color} text-white text-base font-medium tracking-wide hover:shadow-lg transition-all duration-300`}>View Project</button>
+                  </div>
+                </NeonCard>
             </div>
           ))}
         </div>
 
         {/* Call to Action */}
         <div className="text-center mt-32">
-          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-16">
-            <h3 className="text-4xl font-medium text-white mb-6 tracking-tight">
-              Ready to Start Your Project?
-            </h3>
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-              Let's discuss how we can bring your vision to life with cutting-edge technology solutions.
-            </p>
-            <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-10 py-5 rounded-full text-xl font-medium tracking-wide transition-all duration-300 shadow-lg shadow-blue-500/25">
-              Start Your Project
-            </button>
+          <div className="max-w-3xl mx-auto">
+            <div className="flex justify-center">
+              <NeonCard className="max-w-2xl w-full p-8 text-center">
+                <h3 className="text-2xl sm:text-3xl font-medium text-white mb-4">Ready to start your project?</h3>
+                <p className="text-lg text-gray-300 mb-6">Let's turn your idea into a product — we handle design, engineering and launch.</p>
+                <a href="/start-project" className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-full font-medium shadow-lg hover:scale-[1.02] transition-transform duration-200">Start Your Project</a>
+              </NeonCard>
+            </div>
           </div>
         </div>
       </div>

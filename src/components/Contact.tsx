@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
+import { NeonCard } from '@/components/ui/neon-card';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +45,7 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Contact Information */}
+          {/* Left: Contact Information & Quick Response */}
           <div className="space-y-12">
             <div>
               <h3 className="text-4xl font-medium text-white mb-8 tracking-tight">
@@ -58,8 +59,8 @@ const Contact: React.FC = () => {
 
             {/* Contact Methods */}
             <div className="space-y-8">
-              <div className="flex items-center gap-6 group">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25">
+              <div className="flex items-center gap-6">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
                   <Mail className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -70,8 +71,8 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 group">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25">
+              <div className="flex items-center gap-6">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
                   <Phone className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -82,8 +83,8 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 group">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25">
+              <div className="flex items-center gap-6">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
                   <MessageCircle className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -94,8 +95,8 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-6 group">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/25">
+              <div className="flex items-center gap-6">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
                   <MapPin className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -109,49 +110,53 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Quick Response Promise */}
-            <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10">
+            <NeonCard className="p-10">
               <h4 className="text-2xl font-medium text-white mb-4 tracking-tight">Quick Response Guarantee</h4>
               <p className="text-lg text-gray-300 font-light leading-relaxed">
                 We respond to all inquiries within 24 hours. For urgent matters, 
                 reach out via WhatsApp for immediate assistance.
               </p>
-            </div>
+            </NeonCard>
           </div>
 
-          {/* Contact Form */}
-          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-12">
+          {/* Right: Contact Form */}
+          <NeonCard className="p-12">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label htmlFor="name" className="text-base font-medium text-white">
                     Full Name *
                   </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 text-lg font-light"
-                    placeholder="John Doe"
-                  />
+                  <NeonCard className="p-0 rounded-2xl">
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 text-lg font-light"
+                      placeholder="John Doe"
+                    />
+                  </NeonCard>
                 </div>
 
                 <div className="space-y-3">
                   <label htmlFor="email" className="text-base font-medium text-white">
                     Email Address *
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 text-lg font-light"
-                    placeholder="john@company.com"
-                  />
+                  <NeonCard className="p-0 rounded-2xl">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 text-lg font-light"
+                      placeholder="john@company.com"
+                    />
+                  </NeonCard>
                 </div>
               </div>
 
@@ -159,31 +164,35 @@ const Contact: React.FC = () => {
                 <label htmlFor="company" className="text-base font-medium text-white">
                   Company/Organization
                 </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 text-lg font-light"
-                  placeholder="Your Company"
-                />
+                <NeonCard className="p-0 rounded-2xl">
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 text-lg font-light"
+                    placeholder="Your Company"
+                  />
+                </NeonCard>
               </div>
 
               <div className="space-y-3">
                 <label htmlFor="message" className="text-base font-medium text-white">
                   Project Details *
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={6}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 resize-none text-lg font-light"
-                  placeholder="Tell us about your project, timeline, and requirements..."
-                />
+                <NeonCard className="p-0 rounded-2xl">
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 resize-none text-lg font-light"
+                    placeholder="Tell us about your project, timeline, and requirements..."
+                  />
+                </NeonCard>
               </div>
 
               <button
@@ -204,7 +213,7 @@ const Contact: React.FC = () => {
                 )}
               </button>
             </form>
-          </div>
+          </NeonCard>
         </div>
       </div>
     </section>

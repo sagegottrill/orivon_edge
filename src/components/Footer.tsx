@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { NeonCard } from '@/components/ui/neon-card';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -18,8 +19,8 @@ const Footer: React.FC = () => {
       { name: 'Consulting', href: '#services' }
     ],
     resources: [
-      { name: 'Blog', href: '#blog' },
-      { name: 'Case Studies', href: '#portfolio' },
+      { name: 'Case Studies', href: '#case-studies' },
+      { name: 'Portfolio', href: '#portfolio' },
       { name: 'Documentation', href: '#docs' },
       { name: 'Support', href: '#support' }
     ]
@@ -54,14 +55,11 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex gap-6">
               {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="backdrop-blur-xl bg-white/5 border border-white/10 hover:bg-white/10 p-4 rounded-2xl transition-all duration-300"
-                  aria-label={social.name}
-                >
-                  {React.cloneElement(social.icon as React.ReactElement, { className: "w-6 h-6" })}
-                </a>
+                <NeonCard key={index} className="p-0 w-auto inline-block">
+                  <a href={social.href} aria-label={social.name} className="p-4 block rounded-2xl">
+                    {React.cloneElement(social.icon as React.ReactElement, { className: "w-6 h-6" })}
+                  </a>
+                </NeonCard>
               ))}
             </div>
           </div>
@@ -119,22 +117,20 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-12 mb-20">
-          <div className="text-center">
-            <h4 className="text-3xl font-medium text-white mb-6 tracking-tight">Stay Updated</h4>
-            <p className="text-xl text-gray-300 mb-8 font-light max-w-2xl mx-auto">
-              Get the latest insights on technology trends and digital transformation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 max-w-xl mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 text-lg font-light"
-              />
-              <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 px-10 py-4 rounded-2xl text-lg font-medium tracking-wide transition-all duration-300 shadow-lg shadow-blue-500/25">
-                Subscribe
-              </button>
-            </div>
+        <div className="mb-20">
+          <div className="max-w-3xl mx-auto">
+            <NeonCard className="p-12">
+              <div className="text-center">
+                <h4 className="text-3xl font-medium text-white mb-6 tracking-tight">Stay Updated</h4>
+                <p className="text-xl text-gray-300 mb-8 font-light max-w-2xl mx-auto">Get the latest insights on technology trends and digital transformation.</p>
+                <div className="flex flex-col sm:flex-row gap-6 max-w-xl mx-auto">
+                  <NeonCard className="flex-1 rounded-2xl p-0 backdrop-blur-xl bg-white/5 border border-white/10 focus-within:border-indigo-400 focus-within:ring-2 focus-within:ring-indigo-400 focus-within:ring-opacity-30 transition-all duration-300">
+                    <input type="email" placeholder="Enter your email" className="w-full px-6 py-4 text-white placeholder-gray-400 bg-transparent text-lg font-light" />
+                  </NeonCard>
+                  <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 px-10 py-4 rounded-2xl text-lg font-medium tracking-wide transition-all duration-300 shadow-lg">Subscribe</button>
+                </div>
+              </div>
+            </NeonCard>
           </div>
         </div>
 

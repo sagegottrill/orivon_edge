@@ -5,7 +5,7 @@ import About from './About';
 import Services from './Services';
 import Industries from './Industries';
 import Portfolio from './Portfolio';
-import Blog from './Blog';
+import CaseStudies from './Blog';
 import Contact from './Contact';
 import Footer from './Footer';
 import '../styles/animations.css';
@@ -18,8 +18,8 @@ const AppLayout: React.FC = () => {
       <About />
       <Services />
       <Industries />
-      <Portfolio />
-      <Blog />
+  <Portfolio />
+  <CaseStudies />
       <Contact />
       <Footer />
     </div>

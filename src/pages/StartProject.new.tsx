@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Card } from "@/components/ui/card"
+import { NeonCard } from "@/components/ui/neon-card"
 import { CheckCircle, Code, Brain, Cloud, Database, DeviceMobile, CaretRight } from '@phosphor-icons/react';
 import InnerPageLayout from '@/components/InnerPageLayout';
 
@@ -124,7 +124,7 @@ const StartProject: React.FC = () => {
             </div>
           </div>
 
-          <Card className="max-w-4xl mx-auto backdrop-blur-xl bg-white/5 border-white/10 text-white p-8">
+          <NeonCard className="max-w-4xl mx-auto text-white p-8">
             {step === 1 && (
               <div className="space-y-8">
                 <h2 className="text-2xl font-medium tracking-tight">Choose Your Project Type</h2>
@@ -164,7 +164,7 @@ const StartProject: React.FC = () => {
                       name="projectScale"
                       value={formData.projectScale}
                       onChange={handleInputChange}
-                      className="w-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-white"
+                      className="w-full"
                       required
                     >
                       <option value="">Select company size</option>
@@ -181,7 +181,7 @@ const StartProject: React.FC = () => {
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
-                      className="w-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-white"
+                      className="w-full"
                       required
                     >
                       <option value="">Select timeline</option>
@@ -198,7 +198,7 @@ const StartProject: React.FC = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-white"
+                      className="w-full"
                       required
                     >
                       <option value="">Select budget range</option>
@@ -216,7 +216,7 @@ const StartProject: React.FC = () => {
                       value={formData.requirements}
                       onChange={handleInputChange}
                       placeholder="Brief description of your project requirements..."
-                      className="w-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-white h-32 resize-none"
+                      className="w-full h-32 resize-none"
                       required
                     />
                   </div>
@@ -252,7 +252,7 @@ const StartProject: React.FC = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="backdrop-blur-xl bg-white/5 border border-white/10"
+                      className="w-full"
                       required
                     />
                   </div>
@@ -265,7 +265,7 @@ const StartProject: React.FC = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="backdrop-blur-xl bg-white/5 border border-white/10"
+                      className="w-full"
                       required
                     />
                   </div>
@@ -277,7 +277,7 @@ const StartProject: React.FC = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="backdrop-blur-xl bg-white/5 border border-white/10"
+                      className="w-full"
                       required
                     />
                   </div>
@@ -290,7 +290,7 @@ const StartProject: React.FC = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="backdrop-blur-xl bg-white/5 border border-white/10"
+                      className="w-full"
                     />
                   </div>
                 </div>
@@ -314,7 +314,7 @@ const StartProject: React.FC = () => {
                 </div>
               </form>
             )}
-          </Card>
+          </NeonCard>
         </div>
       </section>
     </InnerPageLayout>
