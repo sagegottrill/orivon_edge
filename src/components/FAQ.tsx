@@ -43,6 +43,7 @@ const FAQ: React.FC = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="animate-fade-in-up">
         <div className="text-center mb-20">
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 text-balance leading-[0.9]">
             Frequently Asked <span className="gradient-text">Questions</span>
@@ -84,6 +85,7 @@ const FAQ: React.FC = () => {
           <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300">
             Schedule a Free Consultation
           </button>
+        </div>
         </div>
       </div>
     </section>

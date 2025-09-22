@@ -42,70 +42,92 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       {/* Professional background effects */}
       <div className="absolute inset-0">
+        {/* Background video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/1.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        {/* Mild dim overlay for readability */}
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" aria-hidden="true"></div>
+        {/* Soft vignette to slightly darken edges */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.0) 70%)'
+          }}
+          aria-hidden="true"
+        />
         <div className="absolute inset-0 dot-pattern opacity-30"></div>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Professional header */}
-        <div className="text-center mb-20">
+        <div className="animate-fade-in-up">
+          {/* Professional header */}
+          <div className="text-center mb-20">
 
-          
-          <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
-            Enterprise-Grade <span className="gradient-text">Solutions</span>
-          </h2>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
-            Six core services that power digital transformation for businesses of all sizes.
-          </p>
-        </div>
+            
+            <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
+              Enterprise-Grade <span className="gradient-text">Solutions</span>
+            </h2>
+            
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
+              Six core services that power digital transformation for businesses of all sizes.
+            </p>
+          </div>
 
-        {/* Professional services carousel */}
-        <ProfessionalCarousel 
-          itemsPerView={3}
-          autoPlay={true}
-          autoPlayInterval={6000}
-          showDots={true}
-          showArrows={true}
-        >
-          {services.map((service, index) => (
-            <ProfessionalCard
-              key={index}
-              variant="glass"
-              className="group p-8 h-full"
-            >
-              <div className="flex flex-col h-full">
-                {/* Service content */}
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-gray-300 leading-relaxed mb-6 text-balance">
-                    {service.description}
-                  </p>
+          {/* Professional services carousel */}
+          <ProfessionalCarousel 
+            itemsPerView={3}
+            autoPlay={true}
+            autoPlayInterval={6000}
+            showDots={true}
+            showArrows={true}
+          >
+            {services.map((service, index) => (
+              <ProfessionalCard
+                key={index}
+                variant="glass"
+                className="group p-8 h-full"
+              >
+                <div className="flex flex-col h-full">
+                  {/* Service content */}
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="text-gray-300 leading-relaxed mb-6 text-balance">
+                      {service.description}
+                    </p>
 
-                  {/* Features list */}
-                  <div className="space-y-3">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-3">
-                        <CheckCircle size={16} className="text-transparent bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text flex-shrink-0" />
-                        <span className="text-sm text-gray-300">{feature}</span>
-                      </div>
-                    ))}
+                    {/* Features list */}
+                    <div className="space-y-3">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center gap-3">
+                          <CheckCircle size={16} className="text-transparent bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text flex-shrink-0" />
+                          <span className="text-sm text-gray-300">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ProfessionalCard>
-          ))}
-        </ProfessionalCarousel>
+              </ProfessionalCard>
+            ))}
+          </ProfessionalCarousel>
 
-        {/* Conversion-focused CTA */}
-        <div className="mt-20 text-center">
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 glow-effect">
-            Let's discuss the right solution for you
-          </button>
+          {/* Conversion-focused CTA */}
+          <div className="mt-20 text-center">
+            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 glow-effect">
+              Let's discuss the right solution for you
+            </button>
+          </div>
         </div>
       </div>
     </section>

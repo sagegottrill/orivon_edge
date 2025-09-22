@@ -35,6 +35,7 @@ const About: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="animate-fade-in-up">
         {/* Professional header */}
         <div className="text-center mb-24">
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 text-balance leading-[0.9]">
@@ -123,6 +124,7 @@ const About: React.FC = () => {
               </div>
             </div>
           </ProfessionalCard>
+        </div>
         </div>
       </div>
     </section>

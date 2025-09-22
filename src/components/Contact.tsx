@@ -55,7 +55,8 @@ const Contact: React.FC = () => {
         <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="animate-fade-in-up">
         {/* Professional header */}
         <div className="text-center mb-12">
 
@@ -249,6 +250,7 @@ const Contact: React.FC = () => {
               </button>
             </form>
           </ProfessionalCard>
+        </div>
         </div>
       </div>
     </section>

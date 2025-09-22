@@ -38,6 +38,7 @@ const Testimonials: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="animate-fade-in-up">
         <div className="text-center mb-20">
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 text-balance leading-[0.9]">
             Client <span className="gradient-text">Success Stories</span>
@@ -86,6 +87,7 @@ const Testimonials: React.FC = () => {
             </ProfessionalCard>
           ))}
         </ProfessionalCarousel>
+        </div>
       </div>
     </section>
   );

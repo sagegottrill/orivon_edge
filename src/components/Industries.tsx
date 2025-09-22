@@ -43,6 +43,7 @@ const Industries: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="animate-fade-in-up">
         {/* Professional header */}
         <div className="text-center mb-20">
 
@@ -88,6 +89,7 @@ const Industries: React.FC = () => {
         </ProfessionalCarousel>
 
 
+        </div>
       </div>
     </section>
   );
