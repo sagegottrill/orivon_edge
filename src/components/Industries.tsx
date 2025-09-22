@@ -48,8 +48,7 @@ const Industries: React.FC = () => {
 
           
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
-            Industries We
-            <span className="block gradient-text">Transform</span>
+            Industries We <span className="gradient-text">Transform</span>
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">

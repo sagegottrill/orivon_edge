@@ -39,8 +39,7 @@ const Process: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 text-balance leading-[0.9]">
-            How We
-            <span className="block gradient-text">Work</span>
+            How We <span className="gradient-text">Work</span>
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">

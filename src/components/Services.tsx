@@ -53,8 +53,7 @@ const Services: React.FC = () => {
 
           
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
-            Enterprise-Grade
-            <span className="block gradient-text">Solutions</span>
+            Enterprise-Grade <span className="gradient-text">Solutions</span>
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">

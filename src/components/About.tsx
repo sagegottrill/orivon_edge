@@ -38,8 +38,7 @@ const About: React.FC = () => {
         {/* Professional header */}
         <div className="text-center mb-24">
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 text-balance leading-[0.9]">
-            Why
-            <span className="block gradient-text">Orivon Edge?</span>
+            Why <span className="gradient-text">Orivon Edge?</span>
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">

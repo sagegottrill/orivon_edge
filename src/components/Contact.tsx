@@ -27,9 +27,29 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="contact" className="py-16 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       {/* Professional background effects */}
       <div className="absolute inset-0">
+        {/* Background video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/4.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        {/* Mild dim overlay for readability */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" aria-hidden="true"></div>
+        {/* Soft vignette to slightly darken edges */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.0) 70%)'
+          }}
+          aria-hidden="true"
+        />
         <div className="absolute inset-0 grid-pattern opacity-20"></div>
         <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
         <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
@@ -37,12 +57,11 @@ const Contact: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Professional header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
 
           
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
-            Get In
-            <span className="block gradient-text">Touch</span>
+            Get In <span className="gradient-text">Touch</span>
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
@@ -51,10 +70,10 @@ const Contact: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: Contact Information & Quick Response */}
-          <div className="space-y-8">
-            <ProfessionalCard variant="gradient" className="p-10">
+          <div className="space-y-6">
+            <ProfessionalCard variant="gradient" className="p-8">
               <h3 className="text-3xl font-bold text-white mb-6">
                 Let's Build Something Amazing Together
               </h3>
@@ -67,8 +86,8 @@ const Contact: React.FC = () => {
             </ProfessionalCard>
 
             {/* Contact Methods */}
-            <div className="grid gap-6">
-              <ProfessionalCard variant="glass" className="p-6 group hover:scale-105 transition-all duration-300">
+            <div className="grid gap-4">
+              <ProfessionalCard variant="glass" className="p-4 group hover:scale-105 transition-all duration-300">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-blue-500/20 group-hover:bg-blue-500/30 transition-colors duration-300">
                     <Mail className="w-6 h-6 text-blue-400" />
@@ -83,7 +102,7 @@ const Contact: React.FC = () => {
                 </div>
               </ProfessionalCard>
 
-              <ProfessionalCard variant="glass" className="p-6 group hover:scale-105 transition-all duration-300">
+              <ProfessionalCard variant="glass" className="p-4 group hover:scale-105 transition-all duration-300">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-green-500/20 group-hover:bg-green-500/30 transition-colors duration-300">
                     <Phone className="w-6 h-6 text-green-400" />
@@ -98,7 +117,7 @@ const Contact: React.FC = () => {
                 </div>
               </ProfessionalCard>
 
-              <ProfessionalCard variant="glass" className="p-6 group hover:scale-105 transition-all duration-300">
+              <ProfessionalCard variant="glass" className="p-4 group hover:scale-105 transition-all duration-300">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-purple-500/20 group-hover:bg-purple-500/30 transition-colors duration-300">
                     <MessageCircle className="w-6 h-6 text-purple-400" />
@@ -113,7 +132,7 @@ const Contact: React.FC = () => {
                 </div>
               </ProfessionalCard>
 
-              <ProfessionalCard variant="glass" className="p-6 group">
+              <ProfessionalCard variant="glass" className="p-4 group">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-orange-500/20">
                     <Globe className="w-6 h-6 text-orange-400" />
@@ -131,14 +150,14 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Right: Contact Form */}
-          <ProfessionalCard variant="glass" className="p-10">
+          <ProfessionalCard variant="glass" className="p-8">
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-white mb-2">Start Your Project</h3>
               <p className="text-gray-300">Tell us about your vision and let's make it reality.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-semibold text-white">
                     Full Name *
@@ -202,7 +221,7 @@ const Contact: React.FC = () => {
                     id="message"
                     name="message"
                     required
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 resize-none focus:outline-none"
