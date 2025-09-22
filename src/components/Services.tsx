@@ -1,5 +1,5 @@
 import React from 'react';
-import { Monitor, Smartphone, Brain, Database, Cloud, Cog, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import ProfessionalCarousel from '@/components/ui/professional-carousel';
 
@@ -7,52 +7,34 @@ const Services: React.FC = () => {
 
   const services = [
     {
-      icon: <Cloud className="w-8 h-8" />,
       title: "SaaS Platforms",
   description: "Custom software-as-a-service solutions built for scale and performance.",
-      features: ["Multi-tenant architecture", "API-first design", "Real-time analytics", "Enterprise security"],
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-500/10",
+      features: ["Multi-tenant architecture", "API-first design", "Real-time analytics", "Enterprise security"]
     },
     {
-      icon: <Monitor className="w-8 h-8" />,
       title: "Enterprise Dashboards",
       description: "Data-driven dashboards that transform complex information into actionable business insights.",
-      features: ["Real-time visualization", "Custom reporting", "Role-based access", "Mobile responsive"],
-      color: "from-blue-600 to-blue-700",
-      bgColor: "bg-blue-600/10"
+      features: ["Real-time visualization", "Custom reporting", "Role-based access", "Mobile responsive"]
     },
     {
-      icon: <Smartphone className="w-8 h-8" />,
       title: "Mobile & Web Apps",
       description: "Cross-platform applications that deliver exceptional user experiences across all devices.",
-      features: ["React Native & Flutter", "Progressive Web Apps", "Offline functionality", "Push notifications"],
-      color: "from-blue-400 to-blue-500",
-      bgColor: "bg-blue-400/10"
+      features: ["React Native & Flutter", "Progressive Web Apps", "Offline functionality", "Push notifications"]
     },
     {
-      icon: <Brain className="w-8 h-8" />,
       title: "AI & Machine Learning",
       description: "Intelligent automation and machine learning solutions that drive business transformation.",
-      features: ["Natural language processing", "Predictive analytics", "Computer vision", "Automated workflows"],
-      color: "from-blue-700 to-blue-800",
-      bgColor: "bg-blue-700/10"
+      features: ["Natural language processing", "Predictive analytics", "Computer vision", "Automated workflows"]
     },
     {
-      icon: <Database className="w-8 h-8" />,
       title: "Data Engineering",
       description: "Comprehensive data management and analytics platforms for enterprise-scale operations.",
-      features: ["Data warehousing", "ETL pipelines", "Business intelligence", "Data governance"],
-      color: "from-blue-500 to-blue-700",
-      bgColor: "bg-blue-500/10"
+      features: ["Data warehousing", "ETL pipelines", "Business intelligence", "Data governance"]
     },
     {
-      icon: <Cog className="w-8 h-8" />,
       title: "Digital Transformation",
       description: "End-to-end digital transformation consulting and implementation for modern enterprises.",
-      features: ["Process automation", "Legacy modernization", "Cloud migration", "Change management"],
-      color: "from-blue-600 to-blue-800",
-      bgColor: "bg-blue-600/10"
+      features: ["Process automation", "Legacy modernization", "Cloud migration", "Change management"]
     }
   ];
 
@@ -95,15 +77,6 @@ const Services: React.FC = () => {
               className="group p-8 h-full"
             >
               <div className="flex flex-col h-full">
-                {/* Service header */}
-                <div className="mb-6">
-                  <div className={`p-4 rounded-2xl ${service.bgColor} transition-all duration-300 group-hover:scale-110 inline-flex`}>
-                    <div className={`text-transparent bg-gradient-to-r ${service.color} bg-clip-text`}>
-                      {service.icon}
-                    </div>
-                  </div>
-                </div>
-
                 {/* Service content */}
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
@@ -118,7 +91,7 @@ const Services: React.FC = () => {
                   <div className="space-y-3">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-3">
-                        <CheckCircle size={16} className={`text-transparent bg-gradient-to-r ${service.color} bg-clip-text flex-shrink-0`} />
+                        <CheckCircle size={16} className="text-transparent bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text flex-shrink-0" />
                         <span className="text-sm text-gray-300">{feature}</span>
                       </div>
                     ))}

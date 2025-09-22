@@ -7,9 +7,7 @@ const Footer: React.FC = () => {
 
   const footerLinks = {
     company: [
-      { name: 'About Us', href: '#about' },
-      { name: 'Careers', href: '#careers' },
-      { name: 'Contact', href: '#contact' }
+      { name: 'About Us', href: '#about' }
     ],
     services: [
       { name: 'SaaS Development', href: '#services' },
@@ -18,10 +16,7 @@ const Footer: React.FC = () => {
       { name: 'Consulting', href: '#services' }
     ],
     resources: [
-      { name: 'Portfolio', href: '#portfolio' },
-      { name: 'Documentation', href: '#docs' },
-      { name: 'Support', href: '#support' },
-      { name: 'Blog', href: '#blog' }
+      { name: 'Portfolio', href: '#portfolio' }
     ]
   };
 
@@ -42,38 +37,6 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-8 relative z-10">
-        {/* Newsletter section */}
-        <div className="mb-20">
-          <ProfessionalCard variant="gradient" className="p-12 text-center">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <Sparkle size={20} className="text-blue-400" weight="fill" />
-              <span className="text-sm font-medium text-blue-400">Stay Updated</span>
-            </div>
-            
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Get the Latest Insights
-            </h3>
-            
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto text-balance">
-              Get the latest insights on technology trends and digital transformation delivered to your inbox.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <div className="flex-1 glass-effect rounded-xl border border-white/10 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-400/20 transition-all duration-300">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
-                />
-              </div>
-              <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 glow-effect flex items-center gap-2">
-                <span>Subscribe</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
-          </ProfessionalCard>
-        </div>
-
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Company Info */}

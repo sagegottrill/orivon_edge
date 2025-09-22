@@ -10,9 +10,13 @@ import Process from './Process';
 import FAQ from './FAQ';
 import Contact from './Contact';
 import Footer from './Footer';
+import NewsletterPopup from './ui/newsletter-popup';
+import { useNewsletterPopup } from '../hooks/useNewsletterPopup';
 import '../styles/animations.css';
 
 const AppLayout: React.FC = () => {
+  const { isOpen, closePopup } = useNewsletterPopup();
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navigation />
@@ -26,6 +30,7 @@ const AppLayout: React.FC = () => {
       <FAQ />
       <Contact />
       <Footer />
+      <NewsletterPopup isOpen={isOpen} onClose={closePopup} />
     </div>
   );
 };

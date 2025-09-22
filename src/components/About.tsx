@@ -1,39 +1,25 @@
 import React from 'react';
-import { Target, Eye, Heart, Globe, Lightning, Users, Rocket, Shield } from '@phosphor-icons/react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import ProfessionalImage from '@/components/ui/professional-image';
-import AnimatedCounter from '@/components/ui/animated-counter';
 import TiltCard from '@/components/ui/tilt-card';
 
 const About: React.FC = () => {
   const values = [
     {
-      icon: <Target size={24} weight="duotone" />,
       title: "Precision Engineering",
-      description: "Tailored, context-driven builds that solve your specific challenges.",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-500/10"
+      description: "Tailored, context-driven builds that solve your specific challenges."
     },
     {
-      icon: <Lightning size={24} weight="duotone" />,
       title: "Scalable Architecture",
-      description: "From MVP to enterprise scale - solutions that grow with you.",
-      color: "from-blue-600 to-blue-700",
-      bgColor: "bg-blue-600/10"
+      description: "From MVP to enterprise scale - solutions that grow with you."
     },
     {
-      icon: <Globe size={24} weight="duotone" />,
       title: "Global Perspective",
-      description: "African-born, globally-focused expertise across diverse markets.",
-      color: "from-blue-400 to-blue-500",
-      bgColor: "bg-blue-400/10"
+      description: "African-born, globally-focused expertise across diverse markets."
     },
     {
-      icon: <Users size={24} weight="duotone" />,
       title: "Human-Centered Design",
-      description: "Technology that works for people, not the other way around.",
-      color: "from-blue-700 to-blue-800",
-      bgColor: "bg-blue-700/10"
+      description: "Technology that works for people, not the other way around."
     }
   ];
 
@@ -97,11 +83,6 @@ const About: React.FC = () => {
             {values.map((value, index) => (
               <TiltCard key={index} tiltMaxAngle={8} scale={1.03}>
                 <ProfessionalCard variant="glass" className="p-8 text-center group h-full">
-                  <div className={`inline-flex p-4 rounded-2xl ${value.bgColor} mb-6 group-hover:scale-110 transition-all duration-300`}>
-                    <div className={`text-transparent bg-gradient-to-r ${value.color} bg-clip-text`}>
-                      {value.icon}
-                    </div>
-                  </div>
                   <h4 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
                     {value.title}
                   </h4>

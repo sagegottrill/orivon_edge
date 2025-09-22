@@ -1,5 +1,4 @@
 import React from 'react';
-import { Building, GraduationCap, DollarSign, Heart, Briefcase, TrendingUp } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import ProfessionalCarousel from '@/components/ui/professional-carousel';
 
@@ -7,46 +6,28 @@ const Industries: React.FC = () => {
 
   const industries = [
     {
-      icon: <Building className="w-8 h-8" />,
       title: "Government & Public Sector",
-      description: "Digital transformation for public sector efficiency, citizen services, and transparent governance solutions.",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-500/10",
+      description: "Digital transformation for public sector efficiency, citizen services, and transparent governance solutions."
     },
     {
-      icon: <Heart className="w-8 h-8" />,
       title: "NGOs & Non-Profits",
-      description: "Technology solutions that amplify social impact, streamline operations, and expand community reach.",
-      color: "from-blue-600 to-blue-700",
-      bgColor: "bg-blue-600/10"
+      description: "Technology solutions that amplify social impact, streamline operations, and expand community reach."
     },
     {
-      icon: <Briefcase className="w-8 h-8" />,
       title: "SMEs & Startups",
-      description: "Scalable solutions that grow with small and medium enterprises, from MVP to enterprise scale.",
-      color: "from-blue-400 to-blue-500",
-      bgColor: "bg-blue-400/10"
+      description: "Scalable solutions that grow with small and medium enterprises, from MVP to enterprise scale."
     },
     {
-      icon: <GraduationCap className="w-8 h-8" />,
       title: "Education & EdTech",
-      description: "Learning management systems, educational platforms, and technology that transforms learning experiences.",
-      color: "from-blue-700 to-blue-800",
-      bgColor: "bg-blue-700/10"
+      description: "Learning management systems, educational platforms, and technology that transforms learning experiences."
     },
     {
-      icon: <DollarSign className="w-8 h-8" />,
       title: "Fintech & Banking",
-      description: "Secure financial technology solutions, payment platforms, and digital banking innovations.",
-      color: "from-blue-500 to-blue-700",
-      bgColor: "bg-blue-500/10"
+      description: "Secure financial technology solutions, payment platforms, and digital banking innovations."
     },
     {
-      icon: <TrendingUp className="w-8 h-8" />,
       title: "Healthcare & MedTech",
-      description: "Healthcare management systems, telemedicine platforms, and medical technology solutions.",
-      color: "from-blue-600 to-blue-800",
-      bgColor: "bg-blue-600/10"
+      description: "Healthcare management systems, telemedicine platforms, and medical technology solutions."
     }
   ];
 
@@ -92,15 +73,6 @@ const Industries: React.FC = () => {
               className="group p-8 h-full"
             >
               <div className="flex flex-col h-full">
-                {/* Industry header */}
-                <div className="mb-6">
-                  <div className={`p-4 rounded-2xl ${industry.bgColor} group-hover:scale-110 transition-all duration-300 inline-flex`}>
-                    <div className={`text-transparent bg-gradient-to-r ${industry.color} bg-clip-text`}>
-                      {industry.icon}
-                    </div>
-                  </div>
-                </div>
-
                 {/* Industry content */}
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
