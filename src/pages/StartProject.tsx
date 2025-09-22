@@ -134,7 +134,7 @@ const StartProject: React.FC = () => {
                   Thank You for Choosing Us!
                 </h2>
                 <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto">
-                  We've received your project details and our team will contact you within 24 hours to discuss next steps.
+                  We've received your project details and we'll contact you within 24 hours to discuss next steps.
                 </p>
               </div>
 
@@ -168,13 +168,9 @@ const StartProject: React.FC = () => {
 
                 <div className="space-y-6">
                 <h3 className="text-xl font-medium">While You Wait</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-1 gap-4">
                   <NeonCard className="p-0">
                     <a href="/portfolio" className="block p-4 rounded-xl">View Our Portfolio</a>
-                  </NeonCard>
-
-                  <NeonCard className="p-0">
-                    <a href="/case-studies" className="block p-4 rounded-xl">Read Case Studies</a>
                   </NeonCard>
                 </div>
               </div>

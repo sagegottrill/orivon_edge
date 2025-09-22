@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { List, X } from '@phosphor-icons/react';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +21,8 @@ const Navigation: React.FC = () => {
     { name: 'About', href: isHomePage ? '#about' : '/#about' },
     { name: 'Services', href: isHomePage ? '#services' : '/#services' },
     { name: 'Industries', href: isHomePage ? '#industries' : '/#industries' },
-  { name: 'Portfolio', href: isHomePage ? '#portfolio' : '/#portfolio' },
-  { name: 'Case Studies', href: isHomePage ? '#case-studies' : '/#case-studies' },
-    { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' }
+    { name: 'Portfolio', href: isHomePage ? '#portfolio' : '/#portfolio' },
+    // Removed 'Team' and 'Case Studies' nav entries per request
   ];
 
   return (
@@ -34,13 +32,20 @@ const Navigation: React.FC = () => {
       <div className="max-w-[1600px] mx-auto px-8 lg:px-12">
         <div className="flex justify-between items-center h-24">
           <div className="flex-shrink-0">
-            <Link to="/" className="text-[28px] font-medium text-white tracking-tight">
-              ORIVON <span className="text-blue-400">EDGE</span>
+            <Link to="/" className="flex items-center gap-3">
+              <img 
+                src="/logo.png" 
+                alt="Orivon Edge Logo" 
+                className="h-10 w-auto"
+              />
+              <span className="text-base sm:text-xl md:text-2xl font-montserrat font-bold text-white tracking-tight uppercase">
+                ORIVON <span className="gradient-text font-extrabold">EDGE</span>
+              </span>
             </Link>
           </div>
           
-          <div className="hidden md:block">
-            <div className="ml-12 flex items-baseline space-x-10">
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-20">
+            <div className="flex items-baseline space-x-10">
               {navItems.map((item) => (
                 item.href.startsWith('#') ? (
                   <a
@@ -64,21 +69,7 @@ const Navigation: React.FC = () => {
           </div>
 
           <div className="flex items-center space-x-8">
-            {isHomePage ? (
-              <a 
-                href="#contact" 
-                className="hidden md:block text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 px-6 py-2.5 rounded-full text-[15px] font-medium tracking-wide transition-all duration-300 shadow-lg shadow-blue-500/25"
-              >
-                Contact Us
-              </a>
-            ) : (
-              <Link 
-                to="/#contact" 
-                className="hidden md:block text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 px-6 py-2.5 rounded-full text-[15px] font-medium tracking-wide transition-all duration-300 shadow-lg shadow-blue-500/25"
-              >
-                Contact Us
-              </Link>
-            )}
+            {/* Contact Us button removed from nav per request */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -111,23 +102,28 @@ const Navigation: React.FC = () => {
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'
         }`}>
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="block px-4 py-4 text-gray-300 hover:text-white text-2xl font-medium tracking-tight transition-colors duration-200"
-            >
-              {item.name}
-            </a>
+            item.href.startsWith('#') ? (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="block px-4 py-4 text-gray-300 hover:text-white text-2xl font-medium tracking-tight transition-colors duration-200"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                to={item.href}
+                onClick={() => setIsOpen(false)}
+                className="block px-4 py-4 text-gray-300 hover:text-white text-2xl font-medium tracking-tight transition-colors duration-200"
+              >
+                {item.name}
+              </Link>
+            )
           ))}
           <div className="pt-8">
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="block w-full py-4 text-center text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-2xl text-xl font-medium tracking-tight transition-all duration-300 shadow-lg shadow-blue-500/25"
-            >
-              Contact Us
-            </a>
+            {/* Mobile Contact CTA removed per request */}
           </div>
         </div>
       </div>

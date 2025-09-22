@@ -24,7 +24,7 @@ const CaseStudies: React.FC = () => {
     },
     {
       title: "Enterprise Dashboard — Real-time Operations",
-      summary: "A scalable analytics dashboard aggregated multi-source telemetry to reduce operational MTTR for enterprise teams.",
+      summary: "A scalable analytics dashboard aggregated multi-source telemetry to reduce operational MTTR for enterprise organizations.",
       client: "Atlas Logistics",
       date: "2024-05-21",
       impact: "-35% incident resolution time · +12% throughput",
@@ -34,7 +34,7 @@ const CaseStudies: React.FC = () => {
   ];
 
   return (
-  <section id="case-studies" className="py-40 bg-black relative overflow-hidden">
+  <section id="projects" className="py-40 bg-black relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
@@ -44,7 +44,7 @@ const CaseStudies: React.FC = () => {
       <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10">
         <div className="text-center mb-24">
           <h2 className="text-6xl sm:text-7xl lg:text-8xl font-medium text-white tracking-tight mb-10">
-            Case <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Studies</span>
+            Project <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Stories</span>
           </h2>
           <p className="text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed tracking-wide">
             Real project stories showing how we delivered measurable outcomes using design and engineering.
@@ -95,7 +95,7 @@ const CaseStudies: React.FC = () => {
 
                 <div className="pt-2">
                   <button className="group flex items-center gap-3 text-blue-400 hover:text-blue-300 font-medium tracking-wide transition-colors duration-300">
-                    Read Case Study
+                    Read Project Story
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" />
                   </button>
                 </div>
@@ -107,7 +107,7 @@ const CaseStudies: React.FC = () => {
         {/* Call to Action */}
         <div className="text-center">
           <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-10 py-5 rounded-full text-xl font-medium tracking-wide transition-all duration-300 shadow-lg shadow-blue-500/25">
-            View All Case Studies
+            View All Projects
           </button>
         </div>
       </div>

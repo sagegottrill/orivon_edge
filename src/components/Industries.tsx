@@ -1,163 +1,122 @@
-import React, { useState, useEffect } from 'react';
-import { Building, GraduationCap, DollarSign, Zap, Globe, Users, ChevronLeft, ChevronRight } from 'lucide-react';
-import { NeonCard } from '@/components/ui/neon-card';
+import React from 'react';
+import { Building, GraduationCap, DollarSign, Heart, Briefcase, TrendingUp } from 'lucide-react';
+import ProfessionalCard from '@/components/ui/professional-card';
+import ProfessionalCarousel from '@/components/ui/professional-carousel';
 
 const Industries: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const industries = [
     {
-      icon: <Building className="w-16 h-16" />,
-      title: "Government",
-      description: "Digital transformation for public sector efficiency and citizen services.",
+      icon: <Building className="w-8 h-8" />,
+      title: "Government & Public Sector",
+      description: "Digital transformation for public sector efficiency, citizen services, and transparent governance solutions.",
       color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20"
+      bgColor: "bg-blue-500/10",
     },
     {
-      icon: <Users className="w-16 h-16" />,
-      title: "NGOs",
-      description: "Technology solutions that amplify social impact and community reach.",
-      color: "from-green-500 to-green-600",
-      bgColor: "bg-green-50 dark:bg-green-900/20"
+      icon: <Heart className="w-8 h-8" />,
+      title: "NGOs & Non-Profits",
+      description: "Technology solutions that amplify social impact, streamline operations, and expand community reach.",
+      color: "from-blue-600 to-blue-700",
+      bgColor: "bg-blue-600/10"
     },
     {
-      icon: <Building className="w-16 h-16" />,
-      title: "SMEs",
-      description: "Scalable solutions that grow with small and medium enterprises.",
-      color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-50 dark:bg-purple-900/20"
+      icon: <Briefcase className="w-8 h-8" />,
+      title: "SMEs & Startups",
+      description: "Scalable solutions that grow with small and medium enterprises, from MVP to enterprise scale.",
+      color: "from-blue-400 to-blue-500",
+      bgColor: "bg-blue-400/10"
     },
     {
-      icon: <GraduationCap className="w-16 h-16" />,
-      title: "Education",
-      description: "Learning management systems and educational technology platforms.",
-      color: "from-indigo-500 to-indigo-600",
-      bgColor: "bg-indigo-50 dark:bg-indigo-900/20"
+      icon: <GraduationCap className="w-8 h-8" />,
+      title: "Education & EdTech",
+      description: "Learning management systems, educational platforms, and technology that transforms learning experiences.",
+      color: "from-blue-700 to-blue-800",
+      bgColor: "bg-blue-700/10"
     },
     {
-      icon: <DollarSign className="w-16 h-16" />,
-      title: "Fintech",
-      description: "Secure financial technology solutions and payment platforms.",
-      color: "from-teal-500 to-teal-600",
-      bgColor: "bg-teal-50 dark:bg-teal-900/20"
+      icon: <DollarSign className="w-8 h-8" />,
+      title: "Fintech & Banking",
+      description: "Secure financial technology solutions, payment platforms, and digital banking innovations.",
+      color: "from-blue-500 to-blue-700",
+      bgColor: "bg-blue-500/10"
     },
     {
-      icon: <Zap className="w-16 h-16" />,
-      title: "Energy",
-      description: "Smart grid solutions and renewable energy management systems.",
-      color: "from-yellow-500 to-yellow-600",
-      bgColor: "bg-yellow-50 dark:bg-yellow-900/20"
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "Healthcare & MedTech",
+      description: "Healthcare management systems, telemedicine platforms, and medical technology solutions.",
+      color: "from-blue-600 to-blue-800",
+      bgColor: "bg-blue-600/10"
     }
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(industries.length / 3));
-  };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.ceil(industries.length / 3)) % Math.ceil(industries.length / 3));
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getVisibleIndustries = () => {
-    const itemsPerSlide = 3;
-    const start = currentSlide * itemsPerSlide;
-    return industries.slice(start, start + itemsPerSlide);
-  };
 
   return (
-    <section id="industries" className="py-40 bg-black relative overflow-hidden">
-      {/* Background Effects */}
+    <section id="industries" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+      {/* Professional background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(0,112,243,0.1)_0%,rgba(0,0,0,0)_60%)]"></div>
+        <div className="absolute inset-0 grid-pattern opacity-20"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10">
-        <div className="text-center mb-24">
-          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-medium text-white tracking-tight mb-10">
-            Industries We <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Transform</span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Professional header */}
+        <div className="text-center mb-20">
+
+          
+          <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
+            Industries We
+            <span className="block gradient-text">Transform</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light tracking-wide">
-            Our adaptive approach and cutting-edge technology deliver exceptional results across diverse industries and markets.
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
+            Our adaptive approach and cutting-edge technology deliver exceptional results 
+            across diverse industries and markets worldwide.
           </p>
         </div>
 
-        {/* Slider Container */}
-        <div className="relative">
-          <div className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        {/* Professional industries carousel */}
+        <ProfessionalCarousel 
+          itemsPerView={3}
+          autoPlay={true}
+          autoPlayInterval={7000}
+          showDots={true}
+          showArrows={true}
+        >
+          {industries.map((industry, index) => (
+            <ProfessionalCard
+              key={index}
+              variant="glass"
+              className="group p-8 h-full"
             >
-              {Array.from({ length: Math.ceil(industries.length / 3) }).map((_, slideIndex) => (
-                <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid md:grid-cols-3 gap-8">
-                    {industries.slice(slideIndex * 3, (slideIndex + 1) * 3).map((industry, index) => (
-                      <div key={index}>
-                        <div className="mb-6">
-                          <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-br ${industry.color} text-white mb-6 transition-transform duration-300 shadow-lg`}>{industry.icon}</div>
-                          <div className="">
-                            <NeonCard variant="compact" className="p-8 rounded-2xl hover:shadow-[0_30px_90px_rgba(124,58,237,0.06)] transition-transform duration-300">
-                              <h3 className="text-3xl font-medium text-white mb-5 tracking-tight">{industry.title}</h3>
-                              <p className="text-lg text-gray-300 leading-relaxed font-light">{industry.description}</p>
-                            </NeonCard>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+              <div className="flex flex-col h-full">
+                {/* Industry header */}
+                <div className="mb-6">
+                  <div className={`p-4 rounded-2xl ${industry.bgColor} group-hover:scale-110 transition-all duration-300 inline-flex`}>
+                    <div className={`text-transparent bg-gradient-to-r ${industry.color} bg-clip-text`}>
+                      {industry.icon}
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Navigation Buttons */}
-          <NeonCard className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 rounded-full p-0">
-            <button onClick={prevSlide} className="p-4 block rounded-full">
-              <ChevronLeft className="w-6 h-6 text-white" />
-            </button>
-          </NeonCard>
-
-          <NeonCard className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 rounded-full p-0">
-            <button onClick={nextSlide} className="p-4 block rounded-full">
-              <ChevronRight className="w-6 h-6 text-white" />
-            </button>
-          </NeonCard>
-        </div>
-
-        {/* Slide Indicators */}
-        <div className="flex justify-center mt-12 space-x-3">
-          {Array.from({ length: Math.ceil(industries.length / 3) }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                currentSlide === index 
-                  ? 'bg-blue-500 scale-125' 
-                  : 'bg-white/20 hover:bg-white/40'
-              }`}
-            />
+                {/* Industry content */}
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                    {industry.title}
+                  </h3>
+                  
+                  <p className="text-gray-300 leading-relaxed text-balance">
+                    {industry.description}
+                  </p>
+                </div>
+              </div>
+            </ProfessionalCard>
           ))}
-        </div>
+        </ProfessionalCarousel>
 
-        {/* Global Reach Section */}
-        <div className="mt-32 text-center">
-          <div className="max-w-3xl mx-auto">
-            <NeonCard variant="showcase" className="p-12 rounded-3xl">
-              <Globe className="w-20 h-20 text-blue-400 mx-auto mb-8" />
-              <h3 className="text-4xl font-medium text-white mb-6 tracking-tight">Global Reach</h3>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
-                From Africa to the Americas, Europe to Asia - we understand diverse markets and deliver solutions that work everywhere.
-              </p>
-            </NeonCard>
-          </div>
-        </div>
+
       </div>
     </section>
   );

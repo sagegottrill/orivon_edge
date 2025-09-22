@@ -1,67 +1,119 @@
 import React from 'react';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRight, Play, Sparkle } from '@phosphor-icons/react';
 import { NeonCard } from '@/components/ui/neon-card';
+import ProfessionalImage from '@/components/ui/professional-image';
+import AnimatedTextReveal from '@/components/ui/animated-text-reveal';
+import TypewriterEffect from '@/components/ui/typewriter-effect';
+import MagneticButton from '@/components/ui/magnetic-button';
+// Particle background removed per request
 
 const Hero: React.FC = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-      {/* Hero video background with overlay */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover object-center"
-          poster="/1.png"
-        >
-          <source
-            src="https://res.cloudinary.com/youraccount/video/upload/v1/hero-background.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div className="absolute inset-0 bg-black/60"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        {/* background video only - decorative overlays removed per request */}
       </div>
+        {/* Professional background with hero video, particles and overlays */}
+        <div className="absolute inset-0">
+          {/* Background video from public folder */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/2.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          />
+          {/* Mild dim overlay for readability */}
+          <div className="absolute inset-0 bg-black/20 pointer-events-none" aria-hidden="true"></div>
+          {/* Soft vignette to slightly darken edges */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.0) 70%)'
+            }}
+            aria-hidden="true"
+          />
+        </div>
 
       <div className="relative z-10 text-center px-4 sm:px-8 lg:px-16 max-w-[1600px] mx-auto flex flex-col justify-center min-h-screen">
-        <div className="animate-fade-in mt-16 sm:mt-20">
-          <div className="space-y-6 sm:space-y-8 md:space-y-10">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight leading-none">
-              <span className="block mb-3 sm:mb-4">Transform Your</span>
-              <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-blue-400 bg-clip-text text-transparent font-medium pb-2">
-                Digital Vision
+        <div className="animate-fade-in-up mt-16 sm:mt-20">
+
+
+          <div className="space-y-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.05] text-balance">
+              <AnimatedTextReveal 
+                text="Transform Your Business with" 
+                className="block mb-4"
+                delay={0.2}
+              />
+              <span className="block gradient-text font-bold">
+                <TypewriterEffect
+                  words={[
+                    'Reliable Digital Products',
+                    'Scalable, Secure Platforms',
+                    'Human-centered Experiences',
+                    'AI-driven Business Insights',
+                    'Cloud-native Architecture',
+                    'End-to-end Product Design',
+                    'Rapid Prototyping & Validation',
+                    'Enterprise Integrations',
+                    'Data-driven UX',
+                    'ML-powered Automation',
+                    'Custom SaaS Solutions',
+                    'Infrastructure & DevOps',
+                    'Product Strategy & Roadmapping',
+                    'Security & Compliance',
+                    'Real-time Analytics',
+                    'Mobile-first Experiences',
+                    'API-first Platforms',
+                    'Performance at Scale',
+                    'Accessibility-first Design',
+                    'Continuous Delivery & Ops'
+                  ]}
+                  className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary"
+                  typeSpeed={70}
+                  deleteSpeed={40}
+                  delayBetweenWords={1800}
+                  loop={true}
+                />
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
-              We create powerful digital experiences that drive innovation and growth. 
-              Building the future of technology, one solution at a time.
-            </p>
+            <AnimatedTextReveal 
+              text="From startups to enterprises, we design scalable, human-centered technology solutions that deliver real business impact."
+              className="text-base sm:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed text-balance"
+              delay={1.0}
+              stagger={0.02}
+            />
+
+            {/* Trust line removed per request */}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-8 sm:mt-10 w-full px-4 sm:px-0">
-            <a 
-              href="/start-project" 
-              className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 flex items-center gap-3 w-full sm:w-auto sm:min-w-[200px] justify-center shadow-lg shadow-blue-500/25"
+          {/* Enhanced CTA buttons with magnetic effect */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-16 sm:mt-20">
+            <MagneticButton 
+              strength={0.2}
+              className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center glow-effect hover:scale-105 min-w-[220px]"
             >
-              Start Your Project
-              <ArrowRight size={24} weight="bold" className="group-hover:translate-x-1.5 transition-transform duration-300" />
-            </a>
+              <span>Start Your Project</span>
+              <ArrowRight size={18} weight="bold" className="group-hover:translate-x-2 transition-transform duration-300" />
+            </MagneticButton>
             
-            <NeonCard className="rounded-full p-0 inline-block">
-              <a href="/book-consultation" className="text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-base sm:text-lg tracking-wide transition-all duration-300 w-full sm:w-auto sm:min-w-[200px] block text-center">
-                Book Consultation
-              </a>
-            </NeonCard>
+            <MagneticButton 
+              strength={0.15}
+              className="group glass-effect text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 border border-white/20 min-w-[220px]"
+            >
+              <span>Book Free Consultation</span>
+            </MagneticButton>
           </div>
+
+
         </div>
       </div>
 
-      {/* Subtle scroll indicator */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="h-8 sm:h-12 w-0.5 bg-gradient-to-b from-white/40 to-transparent"></div>
-      </div>
+
     </section>
   );
 };

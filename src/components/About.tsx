@@ -1,102 +1,149 @@
 import React from 'react';
-import { Target, Eye, Heart, Globe, Lightning, Users } from '@phosphor-icons/react';
-import { NeonCard } from '@/components/ui/neon-card';
+import { Target, Eye, Heart, Globe, Lightning, Users, Rocket, Shield } from '@phosphor-icons/react';
+import ProfessionalCard from '@/components/ui/professional-card';
+import ProfessionalImage from '@/components/ui/professional-image';
+import AnimatedCounter from '@/components/ui/animated-counter';
+import TiltCard from '@/components/ui/tilt-card';
 
 const About: React.FC = () => {
   const values = [
     {
-      icon: <Target size={32} weight="duotone" />,
-      title: "Adaptive Solutions",
-      description: "We build technology that adapts to your unique context and challenges."
+      icon: <Target size={24} weight="duotone" />,
+      title: "Precision Engineering",
+      description: "Tailored, context-driven builds that solve your specific challenges.",
+      color: "from-blue-500 to-blue-600",
+      bgColor: "bg-blue-500/10"
     },
     {
-      icon: <Lightning size={32} weight="duotone" />,
+      icon: <Lightning size={24} weight="duotone" />,
       title: "Scalable Architecture",
-      description: "Our solutions grow with your business, from startup to enterprise."
+      description: "From MVP to enterprise scale - solutions that grow with you.",
+      color: "from-blue-600 to-blue-700",
+      bgColor: "bg-blue-600/10"
     },
     {
-      icon: <Globe size={32} weight="duotone" />,
+      icon: <Globe size={24} weight="duotone" />,
       title: "Global Perspective",
-      description: "African-born, globally focused. We understand diverse markets."
+      description: "African-born, globally-focused expertise across diverse markets.",
+      color: "from-blue-400 to-blue-500",
+      bgColor: "bg-blue-400/10"
     },
     {
-      icon: <Users size={32} weight="duotone" />,
-      title: "Human-Centered",
-      description: "Technology that serves people, not the other way around."
+      icon: <Users size={24} weight="duotone" />,
+      title: "Human-Centered Design",
+      description: "Technology that works for people, not the other way around.",
+      color: "from-blue-700 to-blue-800",
+      bgColor: "bg-blue-700/10"
     }
   ];
 
+
+
   return (
-    <section id="about" className="min-h-screen bg-black relative overflow-hidden flex items-center">
-      {/* Background Effects */}
+    <section id="about" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+      {/* Professional background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
+        <div className="absolute inset-0 dot-pattern opacity-20"></div>
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
-        <div className="text-center mb-12 sm:mb-16 px-4 sm:px-0">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6 sm:mb-8">
-            About <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">ORIVON EDGE</span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Professional header */}
+        <div className="text-center mb-24">
+          <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 text-balance leading-[0.9]">
+            Why
+            <span className="block gradient-text">Orivon Edge?</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
-            We're a private tech solutions agency that believes in building technology 
-            that matters. Our approach is simple: understand the problem, design the solution, 
-            and deliver excellence.
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
+            Four key differentiators that make us the right choice for your digital transformation.
           </p>
         </div>
 
-        
+
 
         {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-8 mb-12 sm:mb-16 px-4 sm:px-0">
-          <NeonCard className="p-8 space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-500/25">
-                <Eye size={32} weight="duotone" className="text-white" />
-              </div>
-              <h3 className="text-2xl font-medium text-white tracking-tight">Our Vision</h3>
-            </div>
-            <p className="text-lg text-gray-300 leading-relaxed font-light">
-              To be the leading force in contextual digital transformation,
-              creating technology solutions that bridge the gap between innovation
-              and real-world impact.
+        <div className="grid lg:grid-cols-2 gap-8 mb-20">
+          <ProfessionalCard variant="gradient" className="p-10 group">
+            <h3 className="text-3xl font-bold text-white mb-6">Our Vision</h3>
+            <p className="text-lg text-gray-300 leading-relaxed text-balance">
+              Building the future of digital innovation through technology that creates real impact. 
+              We envision a world where every business can harness the power of cutting-edge solutions 
+              to transform their operations and drive meaningful growth.
             </p>
-          </NeonCard>
+          </ProfessionalCard>
 
-          <NeonCard className="p-8 space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-400 shadow-lg shadow-orange-400/25">
-                <Heart size={32} weight="duotone" className="text-white" />
-              </div>
-              <h3 className="text-2xl font-medium text-white tracking-tight">Our Mission</h3>
-            </div>
-            <p className="text-lg text-gray-300 leading-relaxed font-light">
-              To deliver scalable, adaptive technology solutions that solve real problems
-              for businesses and organizations worldwide, with a deep understanding of
-              diverse markets and contexts.
+          <ProfessionalCard variant="gradient" className="p-10 group">
+            <h3 className="text-3xl font-bold text-white mb-6">Our Mission</h3>
+            <p className="text-lg text-gray-300 leading-relaxed text-balance">
+              Delivering scalable, innovative technology solutions that solve real business challenges. 
+              We partner with organizations to build adaptive systems that grow with their needs and 
+              drive sustainable success in today's digital landscape.
             </p>
-          </NeonCard>
+          </ProfessionalCard>
         </div>
 
-        {/* Values */}
-        <div>
-          <h3 className="text-3xl sm:text-4xl font-medium text-center text-white tracking-tight mb-8 sm:mb-12 px-4 sm:px-0">Our Values</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4 sm:px-0">
+        {/* Professional values */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-white mb-4">Our Core Values</h3>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto text-balance">
+              The principles that guide every decision we make and every solution we build.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="text-center">
-                <NeonCard className="p-8 h-full text-center">
-                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mb-6 shadow-lg shadow-blue-500/25 group-hover:scale-110 transition-transform duration-300">
-                    {React.cloneElement(value.icon as React.ReactElement, { className: "w-8 h-8" })}
+              <TiltCard key={index} tiltMaxAngle={8} scale={1.03}>
+                <ProfessionalCard variant="glass" className="p-8 text-center group h-full">
+                  <div className={`inline-flex p-4 rounded-2xl ${value.bgColor} mb-6 group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`text-transparent bg-gradient-to-r ${value.color} bg-clip-text`}>
+                      {value.icon}
+                    </div>
                   </div>
-                  <h4 className="text-xl font-medium text-white mb-3 tracking-tight">{value.title}</h4>
-                  <p className="text-base text-gray-300 font-light leading-relaxed">{value.description}</p>
-                </NeonCard>
-              </div>
+                  <h4 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                    {value.title}
+                  </h4>
+                  <p className="text-gray-300 leading-relaxed text-balance">
+                    {value.description}
+                  </p>
+                </ProfessionalCard>
+              </TiltCard>
             ))}
           </div>
         </div>
 
+        {/* Professional team section */}
+        <div className="text-center">
+          <ProfessionalCard variant="gradient" className="p-12 max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div className="text-left">
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  Ready to Work Together?
+                </h3>
+                <p className="text-xl text-gray-300 mb-6 text-balance">
+                  Let's discuss how our expertise and values can help transform your business 
+                  through innovative technology solutions.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 glow-effect">
+                    Start Conversation
+                  </button>
+
+                </div>
+              </div>
+              
+              <div className="relative">
+                <ProfessionalImage
+                  alt="Our team collaboration"
+                  aspectRatio="square"
+                  className="rounded-2xl"
+                />
+              </div>
+            </div>
+          </ProfessionalCard>
+        </div>
       </div>
     </section>
   );

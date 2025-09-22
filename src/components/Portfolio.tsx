@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Eye } from 'lucide-react';
-import { NeonCard } from '@/components/ui/neon-card';
-import PricingCard from '@/components/PricingCard';
+import { ExternalLink, Github, Eye, ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
+import ProfessionalCard from '@/components/ui/professional-card';
+import ProfessionalImage from '@/components/ui/professional-image';
 
 const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('All');
@@ -13,44 +13,56 @@ const Portfolio: React.FC = () => {
     {
       title: "HealthTech Platform",
       category: "SaaS",
-      description: "Comprehensive healthcare management system with patient portals and analytics.",
+      description: "Comprehensive healthcare management system with patient portals, telemedicine, and advanced analytics for 500+ healthcare providers.",
       tech: ["React", "Node.js", "PostgreSQL", "AWS"],
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      bgColor: "bg-blue-500/10",
+      image: "/pexels-diva-33562120.jpg"
     },
     {
       title: "FinanceFlow Mobile",
       category: "Mobile",
-      description: "Cross-platform mobile app for personal finance management and budgeting.",
+      description: "Cross-platform mobile app for personal finance management with AI-powered insights and automated budgeting features.",
       tech: ["React Native", "Firebase", "Stripe", "Chart.js"],
-      color: "from-green-500 to-green-600"
+      color: "from-blue-600 to-blue-700",
+      bgColor: "bg-blue-600/10",
+      image: "/pexels-jeremy-bishop-1260133-15539377.jpg"
     },
     {
       title: "AI Content Generator",
       category: "AI/ML",
-      description: "Machine learning platform for automated content creation and optimization.",
+      description: "Machine learning platform for automated content creation, optimization, and multi-language translation for enterprise clients.",
       tech: ["Python", "TensorFlow", "FastAPI", "React"],
-      color: "from-purple-500 to-purple-600"
+      color: "from-blue-400 to-blue-500",
+      bgColor: "bg-blue-400/10",
+      image: "/2.jpg"
     },
     {
       title: "Enterprise Dashboard",
       category: "Enterprise",
-      description: "Real-time analytics dashboard for large-scale business operations.",
+      description: "Real-time analytics dashboard processing millions of data points for Fortune 500 companies with predictive insights.",
       tech: ["Vue.js", "D3.js", "Express", "MongoDB"],
-      color: "from-indigo-500 to-indigo-600"
+      color: "from-blue-700 to-blue-800",
+      bgColor: "bg-blue-700/10",
+      image: "/1.png"
     },
     {
       title: "Payment Gateway",
       category: "Fintech",
-      description: "Secure payment processing system with multi-currency support.",
+      description: "Secure payment processing system with multi-currency support, fraud detection, and compliance for global transactions.",
       tech: ["Node.js", "Redis", "Docker", "Kubernetes"],
-      color: "from-teal-500 to-teal-600"
+      color: "from-blue-500 to-blue-700",
+      bgColor: "bg-blue-500/10",
+      image: "/pexels-diva-33562120.jpg"
     },
     {
       title: "EduPlatform SaaS",
       category: "SaaS",
-      description: "Learning management system with video streaming and progress tracking.",
+      description: "Learning management system with video streaming, progress tracking, and AI-powered personalized learning paths.",
       tech: ["Next.js", "Prisma", "WebRTC", "Tailwind"],
-      color: "from-orange-500 to-orange-600"
+      color: "from-blue-600 to-blue-800",
+      bgColor: "bg-blue-600/10",
+      image: "/pexels-jeremy-bishop-1260133-15539377.jpg"
     }
   ];
 
@@ -59,33 +71,40 @@ const Portfolio: React.FC = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="portfolio" className="min-h-screen bg-black relative overflow-hidden flex items-center">
-      {/* Background Effects */}
+    <section id="portfolio" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+      {/* Professional background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center_right,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
+        <div className="absolute inset-0 grid-pattern opacity-20"></div>
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight mb-6">
-            Our <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Portfolio</span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Professional header */}
+        <div className="text-center mb-20">
+
+          
+          <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
+            Recent
+            <span className="block gradient-text">Projects</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
-            Explore our recent projects and see how we've helped businesses transform their digital presence.
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
+            Explore the innovative solutions we've built for our clients across different 
+            industries and technologies.
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Professional filter buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-8 py-4 rounded-full text-lg font-medium tracking-wide transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 filter === category
-                  ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25'
-                  : 'text-gray-300 hover:bg-white/10'
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white glow-effect'
+                  : 'glass-effect text-gray-300 hover:text-white border border-white/10'
               }`}
             >
               {category}
@@ -93,83 +112,107 @@ const Portfolio: React.FC = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Professional projects grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <div
+            <ProfessionalCard
               key={index}
-              className="group relative rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full"
+              variant="glass"
+              className="group overflow-hidden"
               onMouseEnter={() => setHoveredProject(index)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              {/* Project Image Placeholder */}
-              <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-white/20 text-[100px] font-medium tracking-tighter">
-                    {project.title.charAt(0)}
+              {/* Professional project image */}
+              <div className="relative">
+                <ProfessionalImage
+                  src={project.image}
+                  alt={project.title}
+                  aspectRatio="video"
+                  overlay
+                  className="transition-all duration-500 group-hover:scale-105"
+                >
+                  {/* Hover overlay with actions */}
+                  <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center gap-4 transition-all duration-300 ${
+                    hoveredProject === index ? 'opacity-100' : 'opacity-0'
+                  }`}>
+                    <button className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20">
+                      <Eye size={20} />
+                    </button>
+                    <button className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20">
+                      <ExternalLink size={20} />
+                    </button>
+                    <button className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20">
+                      <Github size={20} />
+                    </button>
                   </div>
-                </div>
-                
-                {/* Hover Overlay */}
-                <div className={`absolute inset-0 backdrop-blur-sm bg-black/40 flex items-center justify-center gap-6 transition-all duration-300 ${
-                  hoveredProject === index ? 'opacity-100' : 'opacity-0'
-                }`}>
-                  <NeonCard className="inline-block rounded-full p-0">
-                    <button className="p-4 text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300">
-                      <Eye className="w-6 h-6" />
-                    </button>
-                  </NeonCard>
-                  <NeonCard className="inline-block rounded-full p-0">
-                    <button className="p-4 text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300">
-                      <ExternalLink className="w-6 h-6" />
-                    </button>
-                  </NeonCard>
-                  <NeonCard className="inline-block rounded-full p-0">
-                    <button className="p-4 text-white rounded-full bg-transparent hover:bg-white/10 transition-all duration-300">
-                      <Github className="w-6 h-6" />
-                    </button>
-                  </NeonCard>
+                </ProfessionalImage>
+
+                {/* Category badge */}
+                <div className="absolute top-4 left-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${project.color} text-white`}>
+                    {project.category}
+                  </span>
                 </div>
               </div>
 
-                <NeonCard className="rounded-b-2xl p-8 flex-1 flex flex-col">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-medium text-white tracking-tight">{project.title}</h3>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium tracking-wide bg-gradient-to-r ${project.color} text-white shadow-lg`}>
-                      {project.category}
+              {/* Project content */}
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                    {project.title}
+                  </h3>
+                </div>
+
+                <p className="text-gray-300 leading-relaxed mb-6 text-balance">
+                  {project.description}
+                </p>
+
+
+
+                {/* Tech stack */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((tech, techIndex) => (
+                    <span key={techIndex} className="px-3 py-1 glass-effect text-xs font-medium text-gray-300 rounded-full border border-white/10">
+                      {tech}
                     </span>
-                  </div>
+                  ))}
+                </div>
 
-                  <p className="text-base text-gray-300 mb-6 leading-relaxed font-light flex-1">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <NeonCard key={techIndex} className="inline-block p-1.5 rounded-full text-sm font-medium tracking-wide text-gray-300">
-                        <span className="px-3 py-1.5 block">{tech}</span>
-                      </NeonCard>
-                    ))}
-                  </div>
-
-                  <div className="mt-auto">
-                    <button className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${project.color} text-white text-base font-medium tracking-wide hover:shadow-lg transition-all duration-300`}>View Project</button>
-                  </div>
-                </NeonCard>
-            </div>
+                {/* CTA button */}
+                <button className={`group/btn w-full py-3 px-6 rounded-xl bg-gradient-to-r ${project.color} text-white font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2`}>
+                  <span>View Project</span>
+                  <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                </button>
+              </div>
+            </ProfessionalCard>
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-32">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex justify-center">
-              <NeonCard className="max-w-2xl w-full p-8 text-center">
-                <h3 className="text-2xl sm:text-3xl font-medium text-white mb-4">Ready to start your project?</h3>
-                <p className="text-lg text-gray-300 mb-6">Let's turn your idea into a product — we handle design, engineering and launch.</p>
-                <a href="/start-project" className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-full font-medium shadow-lg hover:scale-[1.02] transition-transform duration-200">Start Your Project</a>
-              </NeonCard>
+        {/* Professional CTA section */}
+        <div className="mt-24 text-center">
+          <ProfessionalCard variant="gradient" className="p-12 max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
             </div>
-          </div>
+            
+            <h3 className="text-4xl font-bold text-white mb-4 text-balance">
+              Ready to Start Your Project?
+            </h3>
+            
+            <p className="text-xl text-gray-300 mb-8 text-balance max-w-2xl mx-auto">
+              Let's work together to build something amazing that drives your business forward.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 glow-effect flex items-center gap-2">
+                <span>Start Your Project</span>
+                <ArrowRight size={20} />
+              </button>
+
+            </div>
+          </ProfessionalCard>
         </div>
       </div>
     </section>

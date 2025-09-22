@@ -1,102 +1,139 @@
-import React, { useState } from 'react';
-import { Monitor, Smartphone, Brain, Database, Cloud, Cog } from 'lucide-react';
-import { NeonCard } from '@/components/ui/neon-card';
+import React from 'react';
+import { Monitor, Smartphone, Brain, Database, Cloud, Cog, CheckCircle } from 'lucide-react';
+import ProfessionalCard from '@/components/ui/professional-card';
+import ProfessionalCarousel from '@/components/ui/professional-carousel';
 
 const Services: React.FC = () => {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const services = [
     {
-      icon: <Cloud className="w-12 h-12" />,
+      icon: <Cloud className="w-8 h-8" />,
       title: "SaaS Platforms",
-      description: "Custom software-as-a-service solutions built for scale and performance.",
+  description: "Custom software-as-a-service solutions built for scale and performance.",
       features: ["Multi-tenant architecture", "API-first design", "Real-time analytics", "Enterprise security"],
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      bgColor: "bg-blue-500/10",
     },
     {
-      icon: <Monitor className="w-12 h-12" />,
+      icon: <Monitor className="w-8 h-8" />,
       title: "Enterprise Dashboards",
-      description: "Data-driven dashboards that turn complex information into actionable insights.",
-      features: ["Real-time data visualization", "Custom reporting", "Role-based access", "Mobile responsive"],
-      color: "from-teal-500 to-teal-600"
+      description: "Data-driven dashboards that transform complex information into actionable business insights.",
+      features: ["Real-time visualization", "Custom reporting", "Role-based access", "Mobile responsive"],
+      color: "from-blue-600 to-blue-700",
+      bgColor: "bg-blue-600/10"
     },
     {
-      icon: <Smartphone className="w-12 h-12" />,
+      icon: <Smartphone className="w-8 h-8" />,
       title: "Mobile & Web Apps",
-      description: "Cross-platform applications that deliver exceptional user experiences.",
+      description: "Cross-platform applications that deliver exceptional user experiences across all devices.",
       features: ["React Native & Flutter", "Progressive Web Apps", "Offline functionality", "Push notifications"],
-      color: "from-purple-500 to-purple-600"
+      color: "from-blue-400 to-blue-500",
+      bgColor: "bg-blue-400/10"
     },
     {
-      icon: <Brain className="w-12 h-12" />,
-      title: "AI Tools",
-      description: "Intelligent automation and machine learning solutions for modern businesses.",
+      icon: <Brain className="w-8 h-8" />,
+      title: "AI & Machine Learning",
+      description: "Intelligent automation and machine learning solutions that drive business transformation.",
       features: ["Natural language processing", "Predictive analytics", "Computer vision", "Automated workflows"],
-      color: "from-indigo-500 to-indigo-600"
+      color: "from-blue-700 to-blue-800",
+      bgColor: "bg-blue-700/10"
     },
     {
-      icon: <Database className="w-12 h-12" />,
-      title: "Data Solutions",
-      description: "Comprehensive data management and analytics platforms.",
+      icon: <Database className="w-8 h-8" />,
+      title: "Data Engineering",
+      description: "Comprehensive data management and analytics platforms for enterprise-scale operations.",
       features: ["Data warehousing", "ETL pipelines", "Business intelligence", "Data governance"],
-      color: "from-green-500 to-green-600"
+      color: "from-blue-500 to-blue-700",
+      bgColor: "bg-blue-500/10"
     },
     {
-      icon: <Cog className="w-12 h-12" />,
+      icon: <Cog className="w-8 h-8" />,
       title: "Digital Transformation",
-      description: "End-to-end digital transformation consulting and implementation.",
-      features: ["Process automation", "Legacy system migration", "Cloud adoption", "Change management"],
-      color: "from-orange-500 to-orange-600"
+      description: "End-to-end digital transformation consulting and implementation for modern enterprises.",
+      features: ["Process automation", "Legacy modernization", "Cloud migration", "Change management"],
+      color: "from-blue-600 to-blue-800",
+      bgColor: "bg-blue-600/10"
     }
   ];
 
   return (
-    <section id="services" className="min-h-screen bg-black relative overflow-hidden flex items-center">
-      {/* Background Effects */}
+    <section id="services" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+      {/* Professional background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
+        <div className="absolute inset-0 dot-pattern opacity-30"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
-        <div className="text-center mb-12 sm:mb-16 px-4 sm:px-0">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6 sm:mb-8">
-            Our <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Services</span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Professional header */}
+        <div className="text-center mb-20">
+
+          
+          <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
+            Enterprise-Grade
+            <span className="block gradient-text">Solutions</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
-            We offer comprehensive technology solutions tailored to your business needs. 
-            From concept to deployment, we've got you covered.
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
+            Six core services that power digital transformation for businesses of all sizes.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-0">
+        {/* Professional services carousel */}
+        <ProfessionalCarousel 
+          itemsPerView={3}
+          autoPlay={true}
+          autoPlayInterval={6000}
+          showDots={true}
+          showArrows={true}
+        >
           {services.map((service, index) => (
-            <div key={index} onMouseEnter={() => setHoveredCard(index)} onMouseLeave={() => setHoveredCard(null)}>
-              <NeonCard variant="compact" className="p-6 sm:p-8">
-                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${service.color} text-white mb-4 sm:mb-6 transition-transform duration-300 shadow-lg group-hover:scale-110`}>
-                  {React.cloneElement(service.icon as React.ReactElement, { className: "w-6 h-6 sm:w-8 sm:h-8" })}
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 tracking-tight">{service.title}</h3>
-
-                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed font-light">{service.description}</p>
-
-                <div className={`space-y-2 sm:space-y-3 transition-all duration-500 ${hoveredCard === index ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                  <h4 className="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4">Key Features</h4>
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-2 sm:gap-3">
-                      <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r ${service.color}`}></div>
-                      <span className="text-sm sm:text-base text-gray-300 font-light">{feature}</span>
+            <ProfessionalCard
+              key={index}
+              variant="glass"
+              className="group p-8 h-full"
+            >
+              <div className="flex flex-col h-full">
+                {/* Service header */}
+                <div className="mb-6">
+                  <div className={`p-4 rounded-2xl ${service.bgColor} transition-all duration-300 group-hover:scale-110 inline-flex`}>
+                    <div className={`text-transparent bg-gradient-to-r ${service.color} bg-clip-text`}>
+                      {service.icon}
                     </div>
-                  ))}
+                  </div>
                 </div>
 
-                <div className={`mt-6 sm:mt-8 transition-all duration-500 ${hoveredCard === index ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-                  <button className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-xl sm:rounded-2xl bg-gradient-to-r ${service.color} text-white text-base sm:text-lg font-medium tracking-wide hover:shadow-lg transition-all duration-300`}>Learn More</button>
+                {/* Service content */}
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-gray-300 leading-relaxed mb-6 text-balance">
+                    {service.description}
+                  </p>
+
+                  {/* Features list */}
+                  <div className="space-y-3">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-3">
+                        <CheckCircle size={16} className={`text-transparent bg-gradient-to-r ${service.color} bg-clip-text flex-shrink-0`} />
+                        <span className="text-sm text-gray-300">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </NeonCard>
-            </div>
+              </div>
+            </ProfessionalCard>
           ))}
+        </ProfessionalCarousel>
+
+        {/* Conversion-focused CTA */}
+        <div className="mt-20 text-center">
+          <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 glow-effect">
+            Let's discuss the right solution for you
+          </button>
         </div>
       </div>
     </section>

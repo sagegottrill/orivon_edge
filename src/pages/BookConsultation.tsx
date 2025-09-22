@@ -33,8 +33,7 @@ const BookConsultation: React.FC = () => {
         <div className="max-w-2xl mx-auto w-full">
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center text-white">
             <h2 className="text-3xl font-medium mb-4">Thank you for booking your consultation!</h2>
-            <p className="mb-6">Check your email for next steps, including case studies and a 1-pager PDF on our services.</p>
-            <a href="/case-studies" className="underline text-blue-400">View Case Studies</a>
+            <p className="mb-6">Check your email for next steps and a 1-pager PDF on our services.</p>
             <br />
             <a href="/services.pdf" className="underline text-blue-400">Download Our Services PDF</a>
           </div>

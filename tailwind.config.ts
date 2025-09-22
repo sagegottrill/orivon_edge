@@ -67,7 +67,15 @@ export default {
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'monospace'],
-        sans: ['Inter', 'sans-serif'],
+        // Default sans (used by body and headings): Roboto
+        sans: ['Roboto', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial'],
+        // Named families for targeted use
+        inter: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial'],
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial'],
+        roboto: ['Roboto', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial'],
+        poppins: ['Poppins', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial'],
+        lato: ['Lato', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial'],
+        manrope: ['Manrope', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial'],
       },
       borderRadius: {
         lg: 'calc(var(--radius) + 2px)',

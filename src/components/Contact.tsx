@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
-import { NeonCard } from '@/components/ui/neon-card';
+import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle, Clock, Globe, ArrowRight } from 'lucide-react';
+import ProfessionalCard from '@/components/ui/professional-card';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -27,107 +27,123 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen bg-black relative overflow-hidden flex items-center">
-      {/* Background Effects */}
+    <section id="contact" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+      {/* Professional background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
+        <div className="absolute inset-0 grid-pattern opacity-20"></div>
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white tracking-tight mb-6">
-            Get In <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Touch</span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Professional header */}
+        <div className="text-center mb-20">
+
+          
+          <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
+            Get In
+            <span className="block gradient-text">Touch</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
-            Ready to transform your business with cutting-edge technology? Let's start the conversation.
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
+            Ready to transform your business with cutting-edge technology? Let's start the conversation 
+            and build something extraordinary together.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Left: Contact Information & Quick Response */}
-          <div className="space-y-12">
-            <div>
-              <h3 className="text-4xl font-medium text-white mb-8 tracking-tight">
+          <div className="space-y-8">
+            <ProfessionalCard variant="gradient" className="p-10">
+              <h3 className="text-3xl font-bold text-white mb-6">
                 Let's Build Something Amazing Together
               </h3>
-              <p className="text-xl text-gray-300 leading-relaxed font-light">
+              <p className="text-lg text-gray-300 leading-relaxed text-balance mb-8">
                 Whether you're a startup looking to build your first product or an enterprise 
                 seeking digital transformation, we're here to help you succeed.
               </p>
-            </div>
+              
+              {/* Quick response note removed per request */}
+            </ProfessionalCard>
 
             {/* Contact Methods */}
-            <div className="space-y-8">
-              <div className="flex items-center gap-6">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
-                  <Mail className="w-8 h-8 text-white" />
+            <div className="grid gap-6">
+              <ProfessionalCard variant="glass" className="p-6 group hover:scale-105 transition-all duration-300">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-blue-500/20 group-hover:bg-blue-500/30 transition-colors duration-300">
+                    <Mail className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-white mb-1">Email</h4>
+                    <a href="mailto:support@orivonedge.com" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                      support@orivonedge.com
+                    </a>
+                  </div>
+                  <ArrowRight size={20} className="text-gray-400 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-2">Email</h4>
-                  <a href="mailto:support@orivonedge.com" className="text-lg text-blue-400 hover:text-blue-300 font-light transition-colors duration-300">
-                    support@orivonedge.com
-                  </a>
-                </div>
-              </div>
+              </ProfessionalCard>
 
-              <div className="flex items-center gap-6">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
-                  <Phone className="w-8 h-8 text-white" />
+              <ProfessionalCard variant="glass" className="p-6 group hover:scale-105 transition-all duration-300">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-green-500/20 group-hover:bg-green-500/30 transition-colors duration-300">
+                    <Phone className="w-6 h-6 text-green-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-white mb-1">Phone</h4>
+                    <a href="tel:+2348143084473" className="text-green-400 hover:text-green-300 transition-colors duration-300">
+                      +234 8143084473 / +234 7079696353
+                    </a>
+                  </div>
+                  <ArrowRight size={20} className="text-gray-400 group-hover:text-green-400 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-2">Phone</h4>
-                  <a href="tel:+2348143084473" className="text-lg text-blue-400 hover:text-blue-300 font-light transition-colors duration-300">
-                    +234 8143084473 / +234 7079696353
-                  </a>
-                </div>
-              </div>
+              </ProfessionalCard>
 
-              <div className="flex items-center gap-6">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
-                  <MessageCircle className="w-8 h-8 text-white" />
+              <ProfessionalCard variant="glass" className="p-6 group hover:scale-105 transition-all duration-300">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-purple-500/20 group-hover:bg-purple-500/30 transition-colors duration-300">
+                    <MessageCircle className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-white mb-1">WhatsApp</h4>
+                    <a href="https://wa.me/2348143084473" className="text-purple-400 hover:text-purple-300 transition-colors duration-300">
+                      Chat with us
+                    </a>
+                  </div>
+                  <ArrowRight size={20} className="text-gray-400 group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-2">WhatsApp</h4>
-                  <a href="https://wa.me/2348143084473" className="text-lg text-blue-400 hover:text-blue-300 font-light transition-colors duration-300">
-                    Chat with us
-                  </a>
-                </div>
-              </div>
+              </ProfessionalCard>
 
-              <div className="flex items-center gap-6">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-2xl transition-transform duration-300 shadow-lg shadow-blue-500/25">
-                  <MapPin className="w-8 h-8 text-white" />
+              <ProfessionalCard variant="glass" className="p-6 group">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-orange-500/20">
+                    <Globe className="w-6 h-6 text-orange-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-white mb-1">Location</h4>
+                    <p className="text-gray-300">
+                      Global remote collaborators<br />
+                      <span className="text-orange-400">Headquarters: Borno, Nigeria</span>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-lg font-medium text-white mb-2">Location</h4>
-                  <p className="text-lg text-gray-300 font-light leading-relaxed">
-                    Global Remote Team<br />
-                    Headquarters: Borno, Nigeria
-                  </p>
-                </div>
-              </div>
+              </ProfessionalCard>
             </div>
-
-            {/* Quick Response Promise */}
-            <NeonCard className="p-10">
-              <h4 className="text-2xl font-medium text-white mb-4 tracking-tight">Quick Response Guarantee</h4>
-              <p className="text-lg text-gray-300 font-light leading-relaxed">
-                We respond to all inquiries within 24 hours. For urgent matters, 
-                reach out via WhatsApp for immediate assistance.
-              </p>
-            </NeonCard>
           </div>
 
           {/* Right: Contact Form */}
-          <NeonCard className="p-12">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label htmlFor="name" className="text-base font-medium text-white">
+          <ProfessionalCard variant="glass" className="p-10">
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold text-white mb-2">Start Your Project</h3>
+              <p className="text-gray-300">Tell us about your vision and let's make it reality.</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-semibold text-white">
                     Full Name *
                   </label>
-                  <NeonCard className="p-0 rounded-2xl">
+                  <div className="glass-effect rounded-xl border border-white/10 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-400/20 transition-all duration-300">
                     <input
                       type="text"
                       id="name"
@@ -135,17 +151,17 @@ const Contact: React.FC = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 text-lg font-light"
+                      className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
                       placeholder="John Doe"
                     />
-                  </NeonCard>
+                  </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label htmlFor="email" className="text-base font-medium text-white">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-semibold text-white">
                     Email Address *
                   </label>
-                  <NeonCard className="p-0 rounded-2xl">
+                  <div className="glass-effect rounded-xl border border-white/10 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-400/20 transition-all duration-300">
                     <input
                       type="email"
                       id="email"
@@ -153,67 +169,67 @@ const Contact: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 text-lg font-light"
+                      className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
                       placeholder="john@company.com"
                     />
-                  </NeonCard>
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <label htmlFor="company" className="text-base font-medium text-white">
+              <div className="space-y-2">
+                <label htmlFor="company" className="text-sm font-semibold text-white">
                   Company/Organization
                 </label>
-                <NeonCard className="p-0 rounded-2xl">
+                <div className="glass-effect rounded-xl border border-white/10 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-400/20 transition-all duration-300">
                   <input
                     type="text"
                     id="company"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 text-lg font-light"
+                    className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
                     placeholder="Your Company"
                   />
-                </NeonCard>
+                </div>
               </div>
 
-              <div className="space-y-3">
-                <label htmlFor="message" className="text-base font-medium text-white">
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-semibold text-white">
                   Project Details *
                 </label>
-                <NeonCard className="p-0 rounded-2xl">
+                <div className="glass-effect rounded-xl border border-white/10 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-400/20 transition-all duration-300">
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows={6}
+                    rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 bg-transparent text-white placeholder-gray-400 resize-none text-lg font-light"
+                    className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 resize-none focus:outline-none"
                     placeholder="Tell us about your project, timeline, and requirements..."
                   />
-                </NeonCard>
+                </div>
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitted}
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:from-green-500 disabled:to-green-600 text-white px-10 py-5 rounded-2xl text-xl font-medium tracking-wide transition-all duration-300 shadow-lg shadow-blue-500/25 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:from-green-500 disabled:to-green-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 glow-effect hover:scale-105 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
                 {isSubmitted ? (
                   <>
-                    <CheckCircle className="w-6 h-6" />
+                    <CheckCircle className="w-5 h-5" />
                     Message Sent!
                   </>
                 ) : (
                   <>
-                    <Send className="w-6 h-6" />
+                    <Send className="w-5 h-5" />
                     Send Message
                   </>
                 )}
               </button>
             </form>
-          </NeonCard>
+          </ProfessionalCard>
         </div>
       </div>
     </section>
