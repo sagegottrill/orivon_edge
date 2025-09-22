@@ -39,7 +39,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="services" className="pt-12 pb-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       {/* Professional background effects */}
       <div className="absolute inset-0">
         {/* Background video */}
@@ -130,6 +130,10 @@ const Services: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Seamless transition gradient to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black pointer-events-none" aria-hidden="true"></div>
+
     </section>
   );
 };

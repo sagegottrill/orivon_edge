@@ -1,8 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import Hero from './Hero';
-import Services from './Services';
-import Industries from './Industries';
+import ServicesIndustries from './ServicesIndustries';
 import Portfolio from './Portfolio';
 import Testimonials from './Testimonials';
 import Process from './Process';
@@ -20,8 +19,7 @@ const AppLayout: React.FC = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navigation />
       <Hero />
-      <Services />
-      <Industries />
+      <ServicesIndustries />
       <Portfolio />
       <Testimonials />
       <Process />

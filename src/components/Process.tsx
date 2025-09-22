@@ -31,7 +31,7 @@ const Process: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="process" className="pt-12 pb-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute inset-0 grid-pattern opacity-20"></div>
       </div>
@@ -92,6 +92,9 @@ const Process: React.FC = () => {
         </div>
         </div>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black"></div>
     </section>
   );
 };

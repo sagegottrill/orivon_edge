@@ -113,6 +113,8 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* Seamless transition gradient to Services section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black pointer-events-none" aria-hidden="true"></div>
 
     </section>
   );

@@ -19,8 +19,8 @@ const Navigation: React.FC = () => {
   const navItems = [
     { name: 'Home', href: isHomePage ? '#home' : '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: isHomePage ? '#services' : '/#services' },
-    { name: 'Industries', href: isHomePage ? '#industries' : '/#industries' },
+    { name: 'Services', href: isHomePage ? '#services-industries' : '/#services-industries' },
+    { name: 'Industries', href: isHomePage ? '#services-industries' : '/#services-industries' },
     { name: 'Portfolio', href: isHomePage ? '#portfolio' : '/#portfolio' },
     { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' },
     // Removed 'Team' and 'Case Studies' nav entries per request

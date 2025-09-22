@@ -32,9 +32,28 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="testimonials" className="pt-12 pb-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 grid-pattern opacity-20"></div>
+        {/* Background video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/6.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        {/* Mild dim overlay for readability */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" aria-hidden="true"></div>
+        {/* Soft vignette to slightly darken edges */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.0) 70%)'
+          }}
+          aria-hidden="true"
+        ></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -89,6 +108,9 @@ const Testimonials: React.FC = () => {
         </ProfessionalCarousel>
         </div>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black"></div>
     </section>
   );
 };

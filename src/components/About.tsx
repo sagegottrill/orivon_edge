@@ -29,7 +29,6 @@ const About: React.FC = () => {
     <section id="about" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       {/* Professional background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 dot-pattern opacity-20"></div>
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
       </div>
@@ -117,6 +116,7 @@ const About: React.FC = () => {
               
               <div className="relative">
                 <ProfessionalImage
+                  src="/pexels-diva-33562120.jpg"
                   alt="Our team collaboration"
                   aspectRatio="square"
                   className="rounded-2xl"

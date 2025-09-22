@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="contact" className="pt-12 pb-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       {/* Professional background effects */}
       <div className="absolute inset-0">
         {/* Background video */}
@@ -49,8 +49,7 @@ const Contact: React.FC = () => {
             background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.0) 70%)'
           }}
           aria-hidden="true"
-        />
-        <div className="absolute inset-0 grid-pattern opacity-20"></div>
+        ></div>
         <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
         <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>

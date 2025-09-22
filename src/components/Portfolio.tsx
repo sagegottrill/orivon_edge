@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Eye, ArrowRight } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import ProfessionalImage from '@/components/ui/professional-image';
 
@@ -71,7 +71,7 @@ const Portfolio: React.FC = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="portfolio" className="section-spacing bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="portfolio" className="pt-12 pb-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       {/* Professional background effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 grid-pattern opacity-20"></div>
@@ -177,20 +177,16 @@ const Portfolio: React.FC = () => {
                     </span>
                   ))}
                 </div>
-
-                {/* CTA button */}
-                <button className={`group/btn w-full py-3 px-6 rounded-xl bg-gradient-to-r ${project.color} text-white font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2`}>
-                  <span>View Project</span>
-                  <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </button>
               </div>
             </ProfessionalCard>
           ))}
         </div>
 
-
         </div>
       </div>
+
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black"></div>
     </section>
   );
 };
