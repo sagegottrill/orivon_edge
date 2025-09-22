@@ -1,8 +1,8 @@
-  import React from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppLayout from '../components/AppLayout';
 import Index from '../pages/Index';
-import About from '../components/About';
+import AboutPage from '../pages/AboutPage';
 import Services from '../components/Services';
 import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
@@ -22,7 +22,6 @@ const AppRouter: React.FC = () => {
     <Routes>
       <Route element={<AppLayout />}>
         <Route path="/" element={<Index />} />
-        <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/ai-services" element={<AIServices />} />
         <Route path="/ai-solutions" element={<AISolutions />} />
@@ -32,6 +31,7 @@ const AppRouter: React.FC = () => {
         <Route path="/start-project" element={<StartProject />} />
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/about" element={<AboutPage />} />
     </Routes>
   );
 };

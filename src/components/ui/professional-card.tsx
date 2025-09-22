@@ -7,6 +7,8 @@ interface ProfessionalCardProps {
   variant?: 'default' | 'glass' | 'gradient' | 'elevated';
   hover?: boolean;
   glow?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const ProfessionalCard: React.FC<ProfessionalCardProps> = ({
@@ -14,7 +16,9 @@ const ProfessionalCard: React.FC<ProfessionalCardProps> = ({
   className,
   variant = 'default',
   hover = true,
-  glow = false
+  glow = false,
+  onMouseEnter,
+  onMouseLeave
 }) => {
   const baseClasses = 'rounded-2xl transition-all duration-500';
   
@@ -29,13 +33,17 @@ const ProfessionalCard: React.FC<ProfessionalCardProps> = ({
   const glowClasses = glow ? 'glow-effect' : '';
 
   return (
-    <div className={cn(
-      baseClasses,
-      variantClasses[variant],
-      hoverClasses,
-      glowClasses,
-      className
-    )}>
+    <div 
+      className={cn(
+        baseClasses,
+        variantClasses[variant],
+        hoverClasses,
+        glowClasses,
+        className
+      )}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {children}
     </div>
   );

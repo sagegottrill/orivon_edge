@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Eye, ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
+import { ExternalLink, Eye, ArrowRight } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import ProfessionalImage from '@/components/ui/professional-image';
 
@@ -71,7 +71,7 @@ const Portfolio: React.FC = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="portfolio" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="portfolio" className="section-spacing bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
       {/* Professional background effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 grid-pattern opacity-20"></div>
@@ -85,7 +85,6 @@ const Portfolio: React.FC = () => {
 
           
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 text-balance">
-            Recent
             <span className="block gradient-text">Projects</span>
           </h2>
           
@@ -142,7 +141,7 @@ const Portfolio: React.FC = () => {
                       <ExternalLink size={20} />
                     </button>
                     <button className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20">
-                      <Github size={20} />
+                      <ExternalLink size={20} />
                     </button>
                   </div>
                 </ProfessionalImage>
@@ -188,32 +187,7 @@ const Portfolio: React.FC = () => {
           ))}
         </div>
 
-        {/* Professional CTA section */}
-        <div className="mt-24 text-center">
-          <ProfessionalCard variant="gradient" className="p-12 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-            </div>
-            
-            <h3 className="text-4xl font-bold text-white mb-4 text-balance">
-              Ready to Start Your Project?
-            </h3>
-            
-            <p className="text-xl text-gray-300 mb-8 text-balance max-w-2xl mx-auto">
-              Let's work together to build something amazing that drives your business forward.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 glow-effect flex items-center gap-2">
-                <span>Start Your Project</span>
-                <ArrowRight size={20} />
-              </button>
 
-            </div>
-          </ProfessionalCard>
-        </div>
       </div>
     </section>
   );
