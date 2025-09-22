@@ -22,6 +22,7 @@ const Navigation: React.FC = () => {
     { name: 'Services', href: isHomePage ? '#services' : '/#services' },
     { name: 'Industries', href: isHomePage ? '#industries' : '/#industries' },
     { name: 'Portfolio', href: isHomePage ? '#portfolio' : '/#portfolio' },
+    { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' },
     // Removed 'Team' and 'Case Studies' nav entries per request
   ];
 
