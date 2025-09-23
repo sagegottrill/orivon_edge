@@ -5,9 +5,11 @@ import ProfessionalImage from '@/components/ui/professional-image';
 import AnimatedTextReveal from '@/components/ui/animated-text-reveal';
 import TypewriterEffect from '@/components/ui/typewriter-effect';
 import MagneticButton from '@/components/ui/magnetic-button';
+import { useNavigate } from 'react-router-dom';
 // Particle background removed per request
 
 const Hero: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
       <div className="absolute inset-0">
@@ -95,17 +97,19 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-16 sm:mt-20">
             <MagneticButton 
               strength={0.2}
-              className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center glow-effect hover:scale-105 min-w-[220px]"
+              onClick={() => navigate('/book-consultation')}
+              className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center glow-effect hover:scale-105 min-w-[220px] cursor-pointer"
             >
-              <span>Start Your Project</span>
+              <span>Book Free Consultation</span>
               <ArrowRight size={18} weight="bold" className="group-hover:translate-x-2 transition-transform duration-300" />
             </MagneticButton>
             
             <MagneticButton 
               strength={0.15}
-              className="group glass-effect text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 border border-white/20 min-w-[220px]"
+              onClick={() => navigate('/start-project')}
+              className="group glass-effect text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 border border-white/20 min-w-[220px] cursor-pointer"
             >
-              <span>Book Free Consultation</span>
+              <span>Start Your Project</span>
             </MagneticButton>
           </div>
 

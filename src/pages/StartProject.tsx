@@ -58,33 +58,33 @@ const timelines = [
 const projectTypes = [
   {
     icon: <Globe size={32} weight="duotone" />,
-    title: 'Web App',
-    description: 'Modern web applications and SaaS platforms'
+    title: 'Web Applications',
+    description: 'Modern web platforms and SaaS solutions'
   },
   {
     icon: <Database size={32} weight="duotone" />,
-    title: 'MIS',
-    description: 'Management Information Systems'
+    title: 'Enterprise Software',
+    description: 'Business management and data systems'
   },
   {
     icon: <DeviceMobile size={32} weight="duotone" />,
-    title: 'Mobile App',
-    description: 'Native iOS and Android applications'
-  },
-  {
-    icon: <Palette size={32} weight="duotone" />,
-    title: 'Branding',
-    description: 'Brand identity and design systems'
-  },
-  {
-    icon: <Lightning size={32} weight="duotone" />,
-    title: 'EV Tech',
-    description: 'Electric Vehicle Technology Solutions'
+    title: 'Mobile Applications',
+    description: 'Native iOS and Android development'
   },
   {
     icon: <Code size={32} weight="duotone" />,
-    title: 'Other',
-    description: 'Custom technology solutions'
+    title: 'AI & Automation',
+    description: 'Intelligent systems and workflow automation'
+  },
+  {
+    icon: <Lightning size={32} weight="duotone" />,
+    title: 'Cloud Solutions',
+    description: 'Scalable cloud infrastructure and migration'
+  },
+  {
+    icon: <Palette size={32} weight="duotone" />,
+    title: 'Custom Development',
+    description: 'Tailored technology solutions'
   }
 ];
 
@@ -99,6 +99,7 @@ const StartProject: React.FC = () => {
     name: '',
     email: '',
     phone: '',
+    company: '',
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -193,10 +194,10 @@ const StartProject: React.FC = () => {
         <div className="max-w-[1600px] mx-auto px-8 lg:px-12 relative z-10">
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6">
-              Start Your <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Project</span>
+              Let's Build Your <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Digital Solution Today</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
-              Let's bring your vision to life with cutting-edge technology
+              Tell us about your project, and we'll bring it to life with cutting-edge technology.
             </p>
           </div>
 
@@ -288,6 +289,29 @@ const StartProject: React.FC = () => {
                           <span>Minimum budget</span>
                           <span>Maximum budget</span>
                         </div>
+                      </div>
+
+                      {/* Custom Budget Input */}
+                      <div className="space-y-2">
+                        <label htmlFor="customBudget" className="text-sm font-medium text-gray-300">Or enter your budget amount</label>
+                        <NeonCard className="p-0 rounded-xl">
+                          <div className="relative">
+                            <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">₦</span>
+                            <Input
+                              id="customBudget"
+                              type="number"
+                              min="0"
+                              placeholder="Enter amount (e.g., 2500000)"
+                              value={formData.budget > 0 ? formData.budget : ''}
+                              onChange={(e) => {
+                                const value = parseInt(e.target.value) || 0;
+                                setFormData(prev => ({ ...prev, budget: value }));
+                              }}
+                              className="w-full bg-transparent pl-8"
+                            />
+                          </div>
+                        </NeonCard>
+                        <p className="text-xs text-gray-400">Enter your budget in Naira (₦)</p>
                       </div>
 
                       {/* Budget Range Suggestions */}
@@ -408,6 +432,19 @@ const StartProject: React.FC = () => {
                     </NeonCard>
                   </div>
 
+                  <div className="space-y-2">
+                    <label htmlFor="company" className="text-sm font-medium text-gray-300">Company/Organization <span className="text-gray-500">(optional)</span></label>
+                    <NeonCard className="p-0 rounded-xl">
+                      <Input
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        className="w-full bg-transparent"
+                      />
+                    </NeonCard>
+                  </div>
+
                   <div className="space-y-2 md:col-span-2">
                     <label htmlFor="phone" className="text-sm font-medium text-gray-300">Phone Number</label>
                     <NeonCard className="p-0 rounded-xl">
@@ -437,7 +474,7 @@ const StartProject: React.FC = () => {
                     type="submit"
                     className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white inline-flex items-center gap-2"
                   >
-                    Submit Project Details
+                    Start My Project
                     <CaretRight size={20} weight="bold" />
                   </Button>
                 </div>
@@ -448,5 +485,6 @@ const StartProject: React.FC = () => {
       </section>
     </InnerPageLayout>
   );
-  }
+}
+
 export default StartProject;

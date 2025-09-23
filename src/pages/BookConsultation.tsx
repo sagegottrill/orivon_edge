@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, ArrowRight, Check } from '@phosphor-icons/react';
-
-const availableTimeSlots = [
-  '09:00 AM', '10:00 AM', '11:00 AM',
-  '01:00 PM', '02:00 PM', '03:00 PM',
-  '04:00 PM', '05:00 PM'
-];
+import { Calendar, Clock, Check, Users } from '@phosphor-icons/react';
+import InnerPageLayout from '@/components/InnerPageLayout';
+import { NeonCard } from "@/components/ui/neon-card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
 
 const BookConsultation: React.FC = () => {
   const [form, setForm] = useState({
@@ -29,51 +29,225 @@ const BookConsultation: React.FC = () => {
 
   if (submitted) {
     return (
-      <section className="min-h-screen bg-black py-20 flex items-center">
-        <div className="max-w-2xl mx-auto w-full">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center text-white">
-            <h2 className="text-3xl font-medium mb-4">Thank you for booking your consultation!</h2>
-            <p className="mb-6">Check your email for next steps and a 1-pager PDF on our services.</p>
-            <br />
-            <a href="/services.pdf" className="underline text-blue-400">Download Our Services PDF</a>
+      <InnerPageLayout>
+        <section className="min-h-screen bg-black relative overflow-hidden py-20">
+          {/* Background Effects */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
           </div>
-        </div>
-      </section>
+
+          <div className="max-w-4xl mx-auto px-8 lg:px-12 relative z-10">
+            <NeonCard className="text-white p-12 text-center">
+              <div className="mb-8">
+                <div className="w-20 h-20 rounded-full bg-green-500/20 mx-auto mb-6 flex items-center justify-center">
+                  <Check size={48} weight="duotone" className="text-green-400" />
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">
+                  Thank You for Booking Your Consultation!
+                </h2>
+                <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto">
+                  Check your email for next steps and a detailed overview of our services.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6 mb-12">
+                <NeonCard className="p-6 text-left">
+                  <h3 className="text-xl font-medium mb-4 flex items-center gap-3">
+                    <Calendar size={24} className="text-blue-400" />
+                    What Happens Next
+                  </h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li>• Confirmation email within 5 minutes</li>
+                    <li>• Calendly link to schedule your call</li>
+                    <li>• Pre-call questionnaire</li>
+                    <li>• 30-minute consultation call</li>
+                  </ul>
+                </NeonCard>
+
+                <NeonCard className="p-6 text-left">
+                  <h3 className="text-xl font-medium mb-4 flex items-center gap-3">
+                    <Clock size={24} className="text-blue-400" />
+                    During Your Call
+                  </h3>
+                  <ul className="space-y-3 text-gray-300">
+                    <li>• Understand your challenges</li>
+                    <li>• Explore possible solutions</li>
+                    <li>• Discuss budget & timeline</li>
+                    <li>• Next steps recommendation</li>
+                  </ul>
+                </NeonCard>
+              </div>
+
+              <div className="space-y-6">
+                <h3 className="text-xl font-medium">While You Wait</h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <NeonCard className="p-0">
+                    <a href="/portfolio" className="block p-4 rounded-xl hover:bg-white/5 transition-colors">View Our Portfolio</a>
+                  </NeonCard>
+                  <NeonCard className="p-0">
+                    <a href="/services" className="block p-4 rounded-xl hover:bg-white/5 transition-colors">Explore Services</a>
+                  </NeonCard>
+                </div>
+              </div>
+            </NeonCard>
+          </div>
+        </section>
+      </InnerPageLayout>
     );
   }
 
   return (
-    <section className="min-h-screen bg-black py-20 flex items-center">
-      <div className="max-w-2xl mx-auto w-full">
-        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-white">
-          <h1 className="text-4xl font-medium mb-4">Not sure what you need? Let’s talk.</h1>
-          <p className="mb-6 text-lg">Book a free 15–30 min consultation. We’ll help you clarify your biggest challenge and next steps.</p>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block mb-2">Name</label>
-              <input id="name" name="name" value={form.name} onChange={handleChange} required className="w-full px-4 py-3 rounded bg-black/20 border border-white/10 text-white" />
+    <InnerPageLayout>
+      <section className="min-h-screen bg-black relative overflow-hidden py-20">
+        {/* Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 via-transparent to-blue-950/20"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,112,243,0.15)_0%,rgba(0,0,0,0)_100%)]"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-8 lg:px-12 relative z-10">
+          {/* Headline */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight mb-6">
+              Get Expert Advice Before You <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Invest in Tech</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+              Free 30-minute consultation to discuss your challenges and explore possible solutions.
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            {/* Main Form Section */}
+            <div className="mb-12">
+              <NeonCard className="text-white p-12">
+                <div className="text-center mb-10">
+                  <h2 className="text-3xl font-medium tracking-tight mb-4">Book Your Free Consultation</h2>
+                  <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                    Get expert advice on your tech challenges. No pressure, just valuable insights.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div className="space-y-3">
+                      <Label htmlFor="name" className="text-base font-medium">Full Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        className="w-full bg-transparent h-12 text-base"
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-3">
+                      <Label htmlFor="email" className="text-base font-medium">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        className="w-full bg-transparent h-12 text-base"
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-3">
+                      <Label htmlFor="phone" className="text-base font-medium">WhatsApp/Phone Number</Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={form.phone}
+                        onChange={handleChange}
+                        className="w-full bg-transparent h-12 text-base"
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-3 md:col-span-2">
+                      <Label htmlFor="challenge" className="text-base font-medium">Brief Challenge Description</Label>
+                      <Textarea
+                        id="challenge"
+                        name="challenge"
+                        value={form.challenge}
+                        onChange={handleChange}
+                        placeholder="What's your biggest challenge right now?"
+                        className="w-full h-40 resize-none bg-transparent text-base"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <Button
+                      type="submit"
+                      className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-4 px-12 text-lg font-medium rounded-xl"
+                    >
+                      Book My Free Consultation
+                    </Button>
+                  </div>
+                </form>
+              </NeonCard>
             </div>
-            <div>
-              <label htmlFor="email" className="block mb-2">Email</label>
-              <input id="email" name="email" type="email" value={form.email} onChange={handleChange} required className="w-full px-4 py-3 rounded bg-black/20 border border-white/10 text-white" />
+
+            {/* Benefits Section */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* What You'll Get */}
+              <NeonCard className="p-8 text-white">
+                <h3 className="text-2xl font-medium mb-6 flex items-center gap-3">
+                  <Users size={28} className="text-blue-400" />
+                  What You'll Get
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4">
+                    <Check size={20} className="text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-gray-300">Clear advice on your specific challenge</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <Check size={20} className="text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-gray-300">Roadmap ideas tailored to your goals</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <Check size={20} className="text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-gray-300">Honest feedback on feasibility & fit</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <Check size={20} className="text-green-400 mt-1 flex-shrink-0" />
+                    <span className="text-gray-300">No sales pressure, just valuable insights</span>
+                  </li>
+                </ul>
+              </NeonCard>
+
+              {/* Why Choose Us */}
+              <NeonCard className="p-8 text-white">
+                <h3 className="text-2xl font-medium mb-6 flex items-center gap-3">
+                  <Check size={24} className="text-blue-400" />
+                  Why Choose Our Consultation
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-300">Expert team with 10+ years experience</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-300">Proven track record of successful projects</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="w-3 h-3 rounded-full bg-blue-400 mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-300">Free, no-obligation professional advice</span>
+                  </li>
+                </ul>
+              </NeonCard>
             </div>
-            <div>
-              <label htmlFor="phone" className="block mb-2">Phone</label>
-              <input id="phone" name="phone" value={form.phone} onChange={handleChange} required className="w-full px-4 py-3 rounded bg-black/20 border border-white/10 text-white" />
-            </div>
-            <div>
-              <label htmlFor="challenge" className="block mb-2">What’s your biggest challenge right now?</label>
-              <textarea id="challenge" name="challenge" value={form.challenge} onChange={handleChange} required className="w-full p-2 rounded bg-black/20 border border-white/10 text-white" />
-            </div>
-            <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded font-medium">Book Consultation</button>
-          </form>
-          <div className="mt-10">
-            <h2 className="text-xl font-medium mb-2">Pick a time:</h2>
-            <iframe src="https://calendly.com/your-calendly-link" width="100%" height="500" frameBorder="0" title="Calendly Booking" className="rounded-xl border-none" />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </InnerPageLayout>
   );
 };
 

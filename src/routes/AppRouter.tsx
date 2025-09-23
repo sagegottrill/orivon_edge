@@ -10,6 +10,7 @@ import AIServices from '../pages/AIServices';
 import AISolutions from '../pages/AISolutions';
 import { default as Schedule } from '../pages/Schedule';
 import StartProject from '../pages/StartProject';
+import BookConsultation from '../pages/BookConsultation';
 import NotFound from '../pages/NotFound';
 
 // Debug logs
@@ -29,6 +30,7 @@ const AppRouter: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/start-project" element={<StartProject />} />
+        <Route path="/book-consultation" element={<BookConsultation />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/about" element={<AboutPage />} />
