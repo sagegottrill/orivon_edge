@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Eye } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import ProfessionalImage from '@/components/ui/professional-image';
 
@@ -11,13 +11,13 @@ const Portfolio: React.FC = () => {
 
   const projects = [
     {
-      title: "HealthTech Platform",
-      category: "SaaS",
-      description: "Comprehensive healthcare management system with patient portals, telemedicine, and advanced analytics for 500+ healthcare providers.",
-      tech: ["React", "Node.js", "PostgreSQL", "AWS"],
+      title: "AI/ML Democra-See Platform",
+      category: "AI/ML",
+      description: "Democra-See is an AI-enabled humanitarian crisis reporting platform that enables individuals and field teams to safely report incidents via web, WhatsApp, SMS/USSD, and an installable Progressive Web App. It supports offline operation, five languages, anonymous submissions, geolocation, and delivers real‑time analytics and prioritized alerts so responders can act quickly and transparently.",
+      tech: ["React", "TypeScript", "Node.js", "Firebase", "Supabase", "Africa's Talking", "Google APIs", "Tailwind CSS", "PWA", "AI/ML"],
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500/10",
-      image: "/pexels-diva-33562120.jpg"
+      image: "/demo.png"
     },
     {
       title: "FinanceFlow Mobile",
@@ -135,14 +135,27 @@ const Portfolio: React.FC = () => {
                   <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center gap-4 transition-all duration-300 ${
                     hoveredProject === index ? 'opacity-100' : 'opacity-0'
                   }`}>
-                    <button className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20">
-                      <Eye size={20} />
-                    </button>
-                    <button className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20">
+                    <button 
+                      className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20" 
+                      title="Live Demo"
+                      onClick={() => {
+                        if (index === 0) { // Democra-See Platform
+                          window.open('https://democrasee.vercel.app/', '_blank');
+                        }
+                      }}
+                    >
                       <ExternalLink size={20} />
                     </button>
-                    <button className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20">
-                      <ExternalLink size={20} />
+                    <button 
+                      className="p-3 glass-effect text-white rounded-full hover:scale-110 transition-all duration-300 border border-white/20" 
+                      title="View on GitHub"
+                      onClick={() => {
+                        if (index === 0) { // Democra-See Platform
+                          window.open('https://github.com/sagegottrill/Democrasee', '_blank');
+                        }
+                      }}
+                    >
+                      <Github size={20} />
                     </button>
                   </div>
                 </ProfessionalImage>
