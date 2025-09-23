@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import ProfessionalImage from '@/components/ui/professional-image';
+import demoImage from './demo.png';
+import farmImage from './farm.png';
 
 const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('All');
@@ -11,22 +13,22 @@ const Portfolio: React.FC = () => {
 
   const projects = [
     {
-      title: "AI/ML Democra-See Platform",
+      title: "Democra-See Platform",
       category: "AI/ML",
       description: "Democra-See is an AI-enabled humanitarian crisis reporting platform that enables individuals and field teams to safely report incidents via web, WhatsApp, SMS/USSD, and an installable Progressive Web App. It supports offline operation, five languages, anonymous submissions, geolocation, and delivers real‑time analytics and prioritized alerts so responders can act quickly and transparently.",
       tech: ["React", "TypeScript", "Node.js", "Firebase", "Supabase", "Africa's Talking", "Google APIs", "Tailwind CSS", "PWA", "AI/ML"],
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500/10",
-      image: "/demo.png"
+      image: demoImage
     },
     {
-      title: "FinanceFlow Mobile",
-      category: "Mobile",
-      description: "Cross-platform mobile app for personal finance management with AI-powered insights and automated budgeting features.",
-      tech: ["React Native", "Firebase", "Stripe", "Chart.js"],
+      title: "FarmAfricaa — Smart Farm Intelligence",
+      category: "AI/ML",
+      description: "FarmAfricaa is an AI-enabled agritech platform that lets smallholder farmers and extension teams report field observations and receive actionable alerts via web, PWA, WhatsApp, SMS/USSD, and an installable Progressive Web App. It supports offline capture, multi-language UX, image uploads, geolocation, on-device disease detection with server fallback, and delivers near‑real‑time analytics and prioritized advisories for timely interventions.",
+      tech: ["React", "TypeScript", "Node.js", "Firebase", "Supabase", "Africa's Talking", "Google APIs", "Tailwind CSS", "PWA", "AI/ML"],
       color: "from-blue-600 to-blue-700",
       bgColor: "bg-blue-600/10",
-      image: "/pexels-jeremy-bishop-1260133-15539377.jpg"
+      image: farmImage
     },
     {
       title: "AI Content Generator",
