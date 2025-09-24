@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
     { icon: <Github className="w-5 h-5" />, href: 'https://github.com/orgs/ORIVON-EDGE/repositories', name: 'GitHub' },
     { icon: <Twitter className="w-5 h-5" />, href: '#', name: 'Twitter' },
     { icon: <Linkedin className="w-5 h-5" />, href: '#', name: 'LinkedIn' },
-    { icon: <Mail className="w-5 h-5" />, href: 'mailto:support@orivonedge.com', name: 'Email' }
+    { icon: <Mail className="w-5 h-5" />, href: 'mailto:info@orivonedge.dev', name: 'Email' }
   ];
 
   return (

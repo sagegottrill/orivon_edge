@@ -94,8 +94,8 @@ const Contact: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className="text-lg font-semibold text-white mb-1">Email</h4>
-                    <a href="mailto:support@orivonedge.com" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
-                      support@orivonedge.com
+                    <a href="mailto:info@orivonedge.dev" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                      info@orivonedge.dev
                     </a>
                   </div>
                   <ArrowRight size={20} className="text-gray-400 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300" />
