@@ -143,6 +143,8 @@ const Portfolio: React.FC = () => {
                       onClick={() => {
                         if (index === 0) { // Democra-See Platform
                           window.open('https://democrasee.vercel.app/', '_blank');
+                        } else if (index === 1) { // FarmAfricaa Platform
+                          window.open('https://farm-africaa.vercel.app/', '_blank');
                         }
                       }}
                     >
@@ -154,6 +156,8 @@ const Portfolio: React.FC = () => {
                       onClick={() => {
                         if (index === 0) { // Democra-See Platform
                           window.open('https://github.com/sagegottrill/Democrasee', '_blank');
+                        } else if (index === 1) { // FarmAfricaa Platform
+                          window.open('https://github.com/sagegottrill/farm_africaa', '_blank');
                         }
                       }}
                     >
