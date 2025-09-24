@@ -15,8 +15,8 @@ const Portfolio: React.FC = () => {
     {
       title: "Democra-See Platform",
       category: "AI/ML",
-      description: "Democra-See is an AI-enabled humanitarian crisis reporting platform that enables individuals and field teams to safely report incidents via web, WhatsApp, SMS/USSD, and an installable Progressive Web App. It supports offline operation, five languages, anonymous submissions, geolocation, and delivers real‑time analytics and prioritized alerts so responders can act quickly and transparently.",
-      tech: ["React", "TypeScript", "Node.js", "Firebase", "Supabase", "Africa's Talking", "Google APIs", "Tailwind CSS", "PWA", "AI/ML"],
+      description: "Democra-See is an AI-enabled humanitarian crisis reporting platform that enables individuals and field teams to safely report incidents via web, WhatsApp, SMS/USSD, and an installable Progressive Web App. It supports offline operation, five languages, anonymous submissions, geolocation tracking, and delivers real‑time analytics with prioritized alerts so responders can act quickly and transparently to help save lives.",
+      tech: ["React", "TypeScript", "Node.js", "AI/ML"],
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500/10",
       image: demoImage
@@ -25,25 +25,25 @@ const Portfolio: React.FC = () => {
       title: "FarmAfricaa — Smart Farm Intelligence",
       category: "AI/ML",
       description: "FarmAfricaa is an AI-enabled agritech platform that lets smallholder farmers and extension teams report field observations and receive actionable alerts via web, PWA, WhatsApp, SMS/USSD, and an installable Progressive Web App. It supports offline capture, multi-language UX, image uploads, geolocation, on-device disease detection with server fallback, and delivers near‑real‑time analytics and prioritized advisories for timely interventions.",
-      tech: ["React", "TypeScript", "Node.js", "Firebase", "Supabase", "Africa's Talking", "Google APIs", "Tailwind CSS", "PWA", "AI/ML"],
+      tech: ["React", "TypeScript", "Node.js", "AI/ML"],
       color: "from-blue-600 to-blue-700",
       bgColor: "bg-blue-600/10",
       image: farmImage
     },
     {
-      title: "AI Content Generator",
-      category: "AI/ML",
-      description: "Machine learning platform for automated content creation, optimization, and multi-language translation for enterprise clients.",
-      tech: ["Python", "TensorFlow", "FastAPI", "React"],
+      title: "BICTDA Academy",
+      category: "SaaS",
+      description: "BICTDA Academy is a digital education platform for Borno State schools and communities. It enables teachers and students to access curriculum resources, assignments, and assessments through web, mobile, and offline-first experiences. The system supports multi-language content, secure user management, interactive multimedia lessons with offline access for remote areas, automated grading, real-time analytics, and seamless teacher-student communication.",
+      tech: ["React", "TypeScript", "Node.js", "Firebase"],
       color: "from-blue-400 to-blue-500",
       bgColor: "bg-blue-400/10",
-      image: "/2.jpg"
+      image: "/lms.png"
     },
     {
       title: "Enterprise Dashboard",
       category: "Enterprise",
-      description: "Real-time analytics dashboard processing millions of data points for Fortune 500 companies with predictive insights.",
-      tech: ["Vue.js", "D3.js", "Express", "MongoDB"],
+      description: "Real-time analytics dashboard processing millions of data points for Fortune 500 companies with predictive insights. This enterprise-grade solution provides comprehensive business intelligence through interactive visualizations, automated report generation, and AI-powered trend analysis. It features multi-tenant architecture, role-based access control, real-time data streaming, and seamless integration with existing ERP systems for actionable decision-making.",
+      tech: ["React", "TypeScript", "Node.js", "Firebase"],
       color: "from-blue-700 to-blue-800",
       bgColor: "bg-blue-700/10",
       image: "/1.png"
@@ -51,8 +51,8 @@ const Portfolio: React.FC = () => {
     {
       title: "Payment Gateway",
       category: "Fintech",
-      description: "Secure payment processing system with multi-currency support, fraud detection, and compliance for global transactions.",
-      tech: ["Node.js", "Redis", "Docker", "Kubernetes"],
+      description: "Secure payment processing system with multi-currency support, fraud detection, and compliance for global transactions. This fintech solution handles millions of transactions daily with PCI DSS compliance, advanced encryption, and real-time fraud monitoring. It supports multiple payment methods including cards, digital wallets, and bank transfers with instant settlement, multi-currency conversion, and comprehensive transaction analytics for business optimization.",
+      tech: ["React", "TypeScript", "Node.js", "Firebase"],
       color: "from-blue-500 to-blue-700",
       bgColor: "bg-blue-500/10",
       image: "/pexels-diva-33562120.jpg"
@@ -60,8 +60,8 @@ const Portfolio: React.FC = () => {
     {
       title: "EduPlatform SaaS",
       category: "SaaS",
-      description: "Learning management system with video streaming, progress tracking, and AI-powered personalized learning paths.",
-      tech: ["Next.js", "Prisma", "WebRTC", "Tailwind"],
+      description: "Learning management system with video streaming, progress tracking, and AI-powered personalized learning paths. This SaaS platform enables educational institutions to deliver engaging online courses with interactive multimedia content, automated assessments, and real-time collaboration tools. It features adaptive learning algorithms, comprehensive analytics, mobile-responsive design, and seamless integration with existing educational systems for enhanced learning outcomes.",
+      tech: ["React", "TypeScript", "Node.js", "Firebase"],
       color: "from-blue-600 to-blue-800",
       bgColor: "bg-blue-600/10",
       image: "/pexels-jeremy-bishop-1260133-15539377.jpg"
@@ -145,6 +145,8 @@ const Portfolio: React.FC = () => {
                           window.open('https://democrasee.vercel.app/', '_blank');
                         } else if (index === 1) { // FarmAfricaa Platform
                           window.open('https://farm-africaa.vercel.app/', '_blank');
+                        } else if (index === 2) { // BORNO LMS
+                          window.open('https://dlvakids.com.ng/', '_blank');
                         }
                       }}
                     >
@@ -158,6 +160,8 @@ const Portfolio: React.FC = () => {
                           window.open('https://github.com/sagegottrill/Democrasee', '_blank');
                         } else if (index === 1) { // FarmAfricaa Platform
                           window.open('https://github.com/sagegottrill/farm_africaa', '_blank');
+                        } else if (index === 2) { // BORNO LMS
+                          window.open('https://github.com/sagegottrill/bicdta_academy', '_blank');
                         }
                       }}
                     >
