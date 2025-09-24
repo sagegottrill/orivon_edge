@@ -9,7 +9,7 @@ const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('All');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
-  const categories = ['All', 'SaaS', 'Mobile', 'AI/ML', 'Enterprise', 'Fintech'];
+  const categories = ['All', 'AI/ML', 'SaaS'];
 
   const projects = [
     {
@@ -38,33 +38,6 @@ const Portfolio: React.FC = () => {
       color: "from-blue-400 to-blue-500",
       bgColor: "bg-blue-400/10",
       image: "/lms.png"
-    },
-    {
-      title: "Enterprise Dashboard",
-      category: "Enterprise",
-      description: "Real-time analytics dashboard processing millions of data points for Fortune 500 companies with predictive insights. This enterprise-grade solution provides comprehensive business intelligence through interactive visualizations, automated report generation, and AI-powered trend analysis. It features multi-tenant architecture, role-based access control, real-time data streaming, and seamless integration with existing ERP systems for actionable decision-making.",
-      tech: ["React", "TypeScript", "Node.js", "Firebase"],
-      color: "from-blue-700 to-blue-800",
-      bgColor: "bg-blue-700/10",
-      image: "/1.png"
-    },
-    {
-      title: "Payment Gateway",
-      category: "Fintech",
-      description: "Secure payment processing system with multi-currency support, fraud detection, and compliance for global transactions. This fintech solution handles millions of transactions daily with PCI DSS compliance, advanced encryption, and real-time fraud monitoring. It supports multiple payment methods including cards, digital wallets, and bank transfers with instant settlement, multi-currency conversion, and comprehensive transaction analytics for business optimization.",
-      tech: ["React", "TypeScript", "Node.js", "Firebase"],
-      color: "from-blue-500 to-blue-700",
-      bgColor: "bg-blue-500/10",
-      image: "/pexels-diva-33562120.jpg"
-    },
-    {
-      title: "EduPlatform SaaS",
-      category: "SaaS",
-      description: "Learning management system with video streaming, progress tracking, and AI-powered personalized learning paths. This SaaS platform enables educational institutions to deliver engaging online courses with interactive multimedia content, automated assessments, and real-time collaboration tools. It features adaptive learning algorithms, comprehensive analytics, mobile-responsive design, and seamless integration with existing educational systems for enhanced learning outcomes.",
-      tech: ["React", "TypeScript", "Node.js", "Firebase"],
-      color: "from-blue-600 to-blue-800",
-      bgColor: "bg-blue-600/10",
-      image: "/pexels-jeremy-bishop-1260133-15539377.jpg"
     }
   ];
 
