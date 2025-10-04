@@ -109,10 +109,24 @@ const StartProject: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    // Here you would typically send the data to your backend
-    // For now, we'll simulate a successful submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: `Project Type: ${formData.projectType}\nBudget: ₦${formData.budget}\nTimeline: ${formData.timeline}\nPhone: ${formData.phone}`,
+          inquiry_type: 'client'
+        }]);
+
+      if (error) throw error;
+      
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('There was an error submitting your project request. Please try again.');
+    }
   };
 
   if (isSubmitted) {
