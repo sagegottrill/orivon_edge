@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, Download, CheckCircle, Shield, Zap, Cog, TrendingUp, Mail } from 'lucide-react';
+import { X, Download, CheckCircle, Shield, Zap, Cog, TrendingUp, Mail, AlertCircle } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
 import { cn } from '@/lib/utils';
+import { subscribeToNewsletter } from '@/lib/supabase';
 
 interface NewsletterPopupProps {
   isOpen: boolean;
@@ -12,25 +13,48 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ isOpen, onClose }) =>
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setIsLoading(true);
+    setError(null);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitted(true);
-      setIsLoading(false);
+    try {
+      // Subscribe via Supabase
+      const supabaseResult = await subscribeToNewsletter(email, 'popup');
       
-      // Auto close after 3 seconds
+      if (!supabaseResult.success) {
+        throw new Error('Failed to subscribe');
+      }
+
+      // Send welcome email via API
+      const emailResponse = await fetch('/api/subscribe-newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'popup' }),
+      });
+
+      if (!emailResponse.ok) {
+        console.warn('Welcome email failed, but subscription was saved');
+      }
+
+      setIsSubmitted(true);
+      
+      // Auto close after 5 seconds
       setTimeout(() => {
         onClose();
         setIsSubmitted(false);
         setEmail('');
-      }, 3000);
-    }, 1000);
+      }, 5000);
+    } catch (err) {
+      console.error('Error subscribing:', err);
+      setError('Failed to subscribe. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -99,9 +123,17 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ isOpen, onClose }) =>
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
                   required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  disabled={isLoading}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 disabled:opacity-50"
                 />
               </div>
+
+              {error && (
+                <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                  <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0" />
+                  <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+                </div>
+              )}
               
               <button
                 type="submit"

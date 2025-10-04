@@ -6,20 +6,20 @@ import TiltCard from '@/components/ui/tilt-card';
 const About: React.FC = () => {
   const values = [
     {
-      title: "Precision Engineering",
-      description: "Tailored, context-driven builds that solve your specific challenges."
+      title: "Innovation-First Mindset",
+      description: "We don't just follow trends—we create them. Every solution is built with future-proof technology."
     },
     {
-      title: "Scalable Architecture",
-      description: "From MVP to enterprise scale - solutions that grow with you."
+      title: "Dual Excellence",
+      description: "We excel at both client service delivery and venture building, bringing startup agility to every project."
     },
     {
-      title: "Global Perspective",
-      description: "African-born, globally-focused expertise across diverse markets."
+      title: "Research-Driven Development",
+      description: "Deep research and validation guide every product we build, ensuring real-world impact."
     },
     {
-      title: "Human-Centered Design",
-      description: "Technology that works for people, not the other way around."
+      title: "Global Reach, Local Impact",
+      description: "African-born, globally-focused. We build solutions that scale worldwide while solving local problems."
     }
   ];
 
@@ -38,33 +38,52 @@ const About: React.FC = () => {
         {/* Professional header */}
         <div className="text-center mb-24">
           <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-8 text-balance leading-[0.9]">
-            Why <span className="gradient-text">Orivon Edge?</span>
+            Building Startups & <span className="gradient-text">Scaling Innovation</span>
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
-            Four key differentiators that make us the right choice for your digital transformation.
+            A global venture studio and digital agency that builds AI-driven startups while delivering powerful solutions for clients worldwide.
           </p>
         </div>
 
 
 
-        {/* Vision & Mission */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-20">
+        {/* Who We Are */}
+        <div className="mb-20">
           <ProfessionalCard variant="gradient" className="p-10 group">
-            <h3 className="text-3xl font-bold text-white mb-6">Our Vision</h3>
+            <h3 className="text-3xl font-bold text-white mb-6">Who We Are</h3>
+            <p className="text-lg text-gray-300 leading-relaxed text-balance mb-6">
+              Orivon Edge is a global venture studio and technology agency that builds, scales, and launches AI-driven startups while delivering powerful digital solutions for clients. We combine product design, automation, and deep research to create impact-driven software for businesses, governments, and consumers.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed text-balance font-semibold">
+              Unlike traditional agencies, we don't just deliver projects—we build future-proof systems and spin out startups that solve niche problems worldwide.
+            </p>
+          </ProfessionalCard>
+        </div>
+
+        {/* Dual Model Explanation */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-20">
+          <ProfessionalCard variant="glass" className="p-10 group border-2 border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                <span className="text-2xl">🚀</span>
+              </div>
+              <h3 className="text-3xl font-bold text-white">For Clients</h3>
+            </div>
             <p className="text-lg text-gray-300 leading-relaxed text-balance">
-              Building the future of digital innovation through technology that creates real impact. 
-              We envision a world where every business can harness the power of cutting-edge solutions 
-              to transform their operations and drive meaningful growth.
+              We give businesses credibility, automation, and growth through cutting-edge technology solutions. From custom websites to enterprise SaaS platforms, we deliver digital products that drive real results.
             </p>
           </ProfessionalCard>
 
-          <ProfessionalCard variant="gradient" className="p-10 group">
-            <h3 className="text-3xl font-bold text-white mb-6">Our Mission</h3>
+          <ProfessionalCard variant="glass" className="p-10 group border-2 border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                <span className="text-2xl">💡</span>
+              </div>
+              <h3 className="text-3xl font-bold text-white">For Ventures</h3>
+            </div>
             <p className="text-lg text-gray-300 leading-relaxed text-balance">
-              Delivering scalable, innovative technology solutions that solve real business challenges. 
-              We partner with organizations to build adaptive systems that grow with their needs and 
-              drive sustainable success in today's digital landscape.
+              We build and scale startups that can be sold or spun off into global ventures, creating lasting impact. Our in-house ventures solve real-world problems with AI-driven innovation.
             </p>
           </ProfessionalCard>
         </div>

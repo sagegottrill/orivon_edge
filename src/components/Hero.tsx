@@ -46,33 +46,28 @@ const Hero: React.FC = () => {
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.05] text-balance">
               <AnimatedTextReveal 
-                text="Transform Your Business with" 
+                text="Building Startups & Scaling Innovation with" 
                 className="block mb-4"
                 delay={0.2}
               />
               <span className="block gradient-text font-bold">
                 <TypewriterEffect
                   words={[
-                    'Reliable Digital Products',
-                    'Scalable, Secure Platforms',
-                    'Human-centered Experiences',
-                    'AI-driven Business Insights',
-                    'Cloud-native Architecture',
-                    'End-to-end Product Design',
-                    'Rapid Prototyping & Validation',
-                    'Enterprise Integrations',
-                    'Data-driven UX',
-                    'ML-powered Automation',
-                    'Custom SaaS Solutions',
-                    'Infrastructure & DevOps',
-                    'Product Strategy & Roadmapping',
-                    'Security & Compliance',
-                    'Real-time Analytics',
-                    'Mobile-first Experiences',
-                    'API-first Platforms',
-                    'Performance at Scale',
-                    'Accessibility-first Design',
-                    'Continuous Delivery & Ops'
+                    'AI-Driven Venture Studio',
+                    'We Build & Scale Startups',
+                    'Digital Agency + Startup Factory',
+                    'From Prototype to Global Venture',
+                    'Innovation-First Solutions',
+                    'Venture Building & Client Solutions',
+                    'AI Products That Scale Globally',
+                    'Research-Backed Startups',
+                    'Custom Solutions + In-House Ventures',
+                    'Building Tomorrow\'s Companies Today',
+                    'Scalable SaaS & AI Tools',
+                    'Civic Tech & Enterprise Solutions',
+                    'Startup Incubation & Client Services',
+                    'Future-Proof Digital Systems',
+                    'Global Ventures, Local Impact'
                   ]}
                   className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary"
                   typeSpeed={70}
@@ -84,7 +79,7 @@ const Hero: React.FC = () => {
             </h1>
             
             <AnimatedTextReveal 
-              text="From startups to enterprises, we design scalable, human-centered technology solutions that deliver real business impact."
+              text="A global venture studio and digital agency. We build AI-driven startups and deliver powerful solutions for businesses worldwide."
               className="text-base sm:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed text-balance"
               delay={1.0}
               stagger={0.02}
@@ -93,23 +88,24 @@ const Hero: React.FC = () => {
             {/* Trust line removed per request */}
           </div>
 
-          {/* Enhanced CTA buttons with magnetic effect */}
+          {/* Enhanced CTA buttons with magnetic effect - Dual model CTAs */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-16 sm:mt-20">
             <MagneticButton 
               strength={0.2}
-              onClick={() => navigate('/book-consultation')}
+              onClick={() => navigate('/start-project')}
               className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center glow-effect hover:scale-105 min-w-[220px] cursor-pointer"
             >
-              <span>Book Free Consultation</span>
+              <span>Start Your Project</span>
               <ArrowRight size={18} weight="bold" className="group-hover:translate-x-2 transition-transform duration-300" />
             </MagneticButton>
             
             <MagneticButton 
               strength={0.15}
-              onClick={() => navigate('/start-project')}
-              className="group glass-effect text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 border border-white/20 min-w-[220px] cursor-pointer"
+              onClick={() => navigate('/portfolio')}
+              className="group glass-effect text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 border border-white/20 hover:border-purple-500/50 min-w-[220px] cursor-pointer"
             >
-              <span>Start Your Project</span>
+              <span>Explore Our Ventures</span>
+              <Sparkle size={18} weight="bold" className="group-hover:rotate-12 transition-transform duration-300" />
             </MagneticButton>
           </div>
 

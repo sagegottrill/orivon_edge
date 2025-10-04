@@ -1,22 +1,67 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle, Clock, Globe, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle, Clock, Globe, ArrowRight, AlertCircle } from 'lucide-react';
 import ProfessionalCard from '@/components/ui/professional-card';
+import { submitContactForm } from '@/lib/supabase';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    message: ''
+    message: '',
+    inquiryType: 'general' as 'client' | 'venture' | 'investment' | 'general'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setFormData({ name: '', email: '', company: '', message: '' });
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // Submit to Supabase
+      const supabaseResult = await submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        inquiry_type: formData.inquiryType,
+      });
+
+      if (!supabaseResult.success) {
+        throw new Error('Failed to save submission');
+      }
+
+      // Send email notification via API
+      const emailResponse = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          inquiryType: formData.inquiryType,
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        console.warn('Email notification failed, but form was saved');
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: '', email: '', company: '', message: '', inquiryType: 'general' });
+      }, 5000);
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setError('Failed to submit form. Please try again or contact us directly via email.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -170,7 +215,8 @@ const Contact: React.FC = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none disabled:opacity-50"
                       placeholder="John Doe"
                     />
                   </div>
@@ -188,7 +234,8 @@ const Contact: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none disabled:opacity-50"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -206,9 +253,31 @@ const Contact: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 focus:outline-none disabled:opacity-50"
                     placeholder="Your Company"
                   />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="inquiryType" className="text-sm font-semibold text-white">
+                  Inquiry Type *
+                </label>
+                <div className="glass-effect rounded-xl border border-white/10 focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-400/20 transition-all duration-300">
+                  <select
+                    id="inquiryType"
+                    name="inquiryType"
+                    value={formData.inquiryType}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-transparent text-white focus:outline-none disabled:opacity-50"
+                  >
+                    <option value="general" className="bg-slate-900">General Inquiry</option>
+                    <option value="client" className="bg-slate-900">Client Project</option>
+                    <option value="venture" className="bg-slate-900">Venture Collaboration</option>
+                    <option value="investment" className="bg-slate-900">Investment Opportunity</option>
+                  </select>
                 </div>
               </div>
 
@@ -224,18 +293,31 @@ const Contact: React.FC = () => {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 resize-none focus:outline-none"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-transparent text-white placeholder-gray-400 resize-none focus:outline-none disabled:opacity-50"
                     placeholder="Tell us about your project, timeline, and requirements..."
                   />
                 </div>
               </div>
 
+              {error && (
+                <div className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
+                  <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+                  <p className="text-sm text-red-300">{error}</p>
+                </div>
+              )}
+
               <button
                 type="submit"
-                disabled={isSubmitted}
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:from-green-500 disabled:to-green-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 glow-effect hover:scale-105 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                disabled={isSubmitted || isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:from-green-500 disabled:to-green-600 disabled:opacity-70 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 glow-effect hover:scale-105 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
-                {isSubmitted ? (
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : isSubmitted ? (
                   <>
                     <CheckCircle className="w-5 h-5" />
                     Message Sent!
