@@ -1,0 +1,7 @@
+{
+  "project": "orivon-edge",
+  "endpoint": "https://api.supermemory.ai/mcp",
+  "client": "vscode",
+  "oauth": true,
+  "version": "1.0.0"
+}
