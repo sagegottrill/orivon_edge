@@ -16,7 +16,7 @@ This is a simple test to verify your Supabase MCP server is working.
 
 3. **Check Project Info:**
    ```
-   What is my Supabase project ID?
+   What is my Supabase project ID? io
    ```
 
 4. **List Tables:**

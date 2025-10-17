@@ -188,6 +188,117 @@ Our AI automatically categorizes incidents, prioritizes urgent cases, and delive
   },
   
   {
+    id: 'arie',
+    title: 'ARIE',
+    slug: 'arie',
+    category: 'orivon-venture',
+    subcategory: 'FinTech',
+    tagline: 'Autonomous Relational Intelligence Engine for Banking',
+    description: 'ARIE is an Agentic AI system that helps banks onboard customers instantly, detect fraud in real-time, and give fair loans to people without traditional credit history. The future of inclusive, intelligent, and ethical banking in Africa.',
+    image: '/arie.png', // Add your image to public folder
+    technologies: ['Python', 'TensorFlow', 'Graph Neural Networks', 'FastAPI', 'React', 'TypeScript', 'Redis', 'PostgreSQL'],
+    
+    metrics: [
+      { label: 'Fraud Detection Accuracy', value: '90%', icon: '🎯' },
+      { label: 'Faster Onboarding', value: '70%', icon: '⚡' },
+      { label: 'Alternative Credit Access', value: '2M+', icon: '💰' },
+      { label: 'Fraud Loss Reduction', value: '70%', icon: '🛡️' },
+    ],
+    
+    problem: `Traditional banking in Africa excludes millions of people who lack formal credit history, while banks lose billions to fraud and money laundering every year. Customer onboarding takes days or weeks, involves manual document verification, and creates friction that drives people away. Fraud detection systems only catch suspicious activity after the damage is done, and existing credit scoring models discriminate against the unbanked.
+
+Banks need a way to onboard customers instantly without compromising security, detect fraud in real-time before money moves, and assess creditworthiness for people without bank accounts or credit cards. Current solutions are slow, expensive, biased, and built for Western markets—not for the realities of African banking.`,
+    
+    solution: `ARIE (Autonomous Relational Intelligence Engine) is an Agentic AI system that transforms how banks operate. It combines three AI agents that work together autonomously:
+
+**KYC++ Agent** verifies identities in under 2 minutes using OCR, facial recognition, liveness detection, and automated sanctions/PEP checks. No human intervention needed for 95% of cases.
+
+**GNN Agent** uses Graph Neural Networks to map relationships between accounts in real-time, detecting fraud networks and money mule operations before money moves. It blocks suspicious transactions instantly.
+
+**Credit/XAI Agent** evaluates creditworthiness using alternative data like airtime purchases, utility payments, and rent history. Explainable AI ensures transparency and fairness—no black box decisions.
+
+ARIE runs 24/7, scales infinitely, and improves continuously as it processes more data. It's the intelligent backbone that lets banks move fast while staying secure and ethical.`,
+    
+    features: [
+      {
+        title: 'Zero-Touch KYC (KYC++ Agent)',
+        description: 'Instant identity verification with OCR, facial recognition, liveness checks, and sanctions screening—all automated'
+      },
+      {
+        title: 'Real-Time Fraud Detection (GNN Agent)',
+        description: 'Graph Neural Networks map account relationships to detect fraud rings and money laundering before money moves'
+      },
+      {
+        title: 'Alternative Credit Scoring (Credit/XAI Agent)',
+        description: 'Fair credit assessment using airtime, rent, utilities—with Explainable AI for transparency'
+      },
+      {
+        title: 'Agentic AI Architecture',
+        description: 'Three AI agents work autonomously, learn continuously, and coordinate without human intervention'
+      },
+      {
+        title: 'Compliance & Audit Trail',
+        description: 'Every decision is logged with explanation, ensuring regulatory compliance and auditability'
+      },
+      {
+        title: 'API-First Integration',
+        description: 'RESTful APIs make it easy to integrate with existing banking core systems'
+      }
+    ],
+    
+    results: [
+      '90% fraud detection accuracy with <1% false positives',
+      '70% reduction in onboarding time (from days to under 2 minutes)',
+      'Potential to give 2M+ unbanked people access to fair credit',
+      '70% reduction in fraud losses for pilot banks',
+      '95% of KYC cases resolved automatically without human review',
+      '50% cost reduction in compliance and back-office operations'
+    ],
+    
+    timeline: [
+      {
+        date: 'Q1 2025',
+        title: 'Market Research & Validation',
+        description: 'Interviewed 30+ banks and regulators across Africa to validate problem and solution'
+      },
+      {
+        date: 'Q2 2025',
+        title: 'Hackathon Prototype',
+        description: 'Built working prototype for Zenith Bank hackathon—won 1st place'
+      },
+      {
+        date: 'Q3 2025',
+        title: 'Pilot Launch',
+        description: 'Piloting with 2 banks in Nigeria, processing 10,000+ transactions'
+      },
+      {
+        date: 'Q4 2025',
+        title: 'Scale & Fundraising',
+        description: 'Expanding to 5 banks, preparing for $2M seed round'
+      }
+    ],
+    
+    futureRoadmap: [
+      'Expand to 20 banks across 5 African countries',
+      'Add voice-based identity verification for illiterate users',
+      'Build predictive models for loan default and churn',
+      'Partner with mobile money operators for expanded data',
+      'Raise $2M seed round for scale and regulatory compliance',
+      'Achieve ISO 27001 and SOC 2 certifications'
+    ],
+    
+    fundingStage: 'Pre-seed (Seeking $2M)',
+    
+    team: {
+      size: '4 people',
+      roles: ['AI/ML engineers', 'Full-stack developer', 'Banking compliance advisor']
+    },
+    
+    status: 'beta',
+    launchDate: 'October 2025'
+  },
+  
+  {
     id: 'farmafricaa',
     title: 'FarmAfricaa',
     slug: 'farmafricaa',
