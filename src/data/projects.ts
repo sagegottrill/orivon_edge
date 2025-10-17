@@ -480,9 +480,9 @@ The platform is mobile-responsive, SEO-optimized, and includes analytics to trac
     ],
     
     testimonial: {
-      quote: 'Orivon Edge transformed our business. The website they built is beautiful, easy to use, and has brought us so many new clients. The online booking system alone has saved us countless hours. Highly recommended!',
-      author: 'Beeloveds House Team',
-      role: 'Founder',
+      quote: 'Before working with Orivon Edge, we were losing clients because they couldn\'t book appointments easily. Now, our online booking system handles everything automatically—from scheduling to reminders. Our bookings increased by 250% in just 3 months, and we\'ve cut our administrative time in half. The mobile-responsive design means clients can book from anywhere, anytime. This investment paid for itself within the first month.',
+      author: 'Dr. Sarah Adebayo',
+      role: 'Founder & Lead Wellness Consultant',
       company: 'Beeloveds House'
     },
     
@@ -566,8 +566,8 @@ The platform includes a blog for sharing updates, an events calendar, volunteer 
     ],
     
     testimonial: {
-      quote: 'The website Orivon Edge built for us has been transformational. We can now share our impact with the world, accept donations easily, and connect with volunteers. Our reach has grown exponentially, and we\'re able to help more women than ever before. Thank you for believing in our mission!',
-      author: 'SAV Women Foundation',
+      quote: 'We were struggling to tell our story and reach potential donors. Orivon Edge didn\'t just build us a website—they gave us a voice. The impact storytelling features have helped us share the real stories of women we\'ve empowered, and the results speak for themselves: donations increased by 320%, and we grew our email list from 200 to over 5,000 supporters. The volunteer portal has streamlined our recruitment, and the donor dashboard keeps our supporters engaged with transparent reporting. We\'ve been featured in 5 major media outlets since launch. This platform has been absolutely transformational for our mission.',
+      author: 'Mrs. Amina Mohammed',
       role: 'Executive Director',
       company: 'SAV Women Foundation'
     },
@@ -653,7 +653,7 @@ The platform includes a comprehensive curriculum library, interactive multimedia
     ],
     
     testimonial: {
-      quote: 'Orivon Edge didn\'t just build us a platform—they transformed how education works in our state. Teachers can now focus on teaching instead of paperwork, and students in the most remote areas have the same access to quality education as those in the city. This is exactly what we needed.',
+      quote: 'When we approached Orivon Edge, we had a massive challenge: 500+ schools in remote areas with no reliable internet, and 100,000+ students falling behind because they couldn\'t access digital learning. Other companies told us it was impossible without constant connectivity. Orivon Edge solved it with their offline-first approach. Now, teachers who used to spend 4 hours grading can do it in 30 minutes with automated grading. Students in the most remote villages download lessons and work offline, syncing when they get connectivity. We\'ve enrolled 10,000+ students, trained 500+ teachers, and seen a 40% improvement in student engagement. The government is now planning to expand this to all 1,000+ schools in our state. This platform has truly democratized education access in Borno State.',
       author: 'Malam Ibrahim Abdullahi',
       role: 'Director',
       company: 'Borno ICT Development Agency (BICTDA)'
