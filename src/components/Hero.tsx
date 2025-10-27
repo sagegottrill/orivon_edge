@@ -88,11 +88,14 @@ const Hero: React.FC = () => {
             {/* Trust line removed per request */}
           </div>
 
-          {/* Enhanced CTA buttons with magnetic effect - Triple model CTAs */}
+          {/* Enhanced CTA buttons with magnetic effect */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-16 sm:mt-20">
             <MagneticButton 
               strength={0.2}
-              onClick={() => navigate('/start-project')}
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                contactSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center glow-effect hover:scale-105 min-w-[220px] cursor-pointer"
             >
               <span>Start Your Project</span>
@@ -101,25 +104,14 @@ const Hero: React.FC = () => {
             
             <MagneticButton 
               strength={0.15}
-              onClick={() => navigate('/book-consultation')}
-              className="group glass-card backdrop-blur-sm bg-white/5 border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 min-w-[220px] cursor-pointer"
-            >
-              <span>Book a Consultation</span>
-              <Play size={18} weight="bold" className="group-hover:translate-x-2 transition-transform duration-300" />
-            </MagneticButton>
-            
-            <MagneticButton 
-              strength={0.15}
               onClick={() => {
                 const portfolioSection = document.getElementById('portfolio');
-                if (portfolioSection) {
-                  portfolioSection.scrollIntoView({ behavior: 'smooth' });
-                }
+                portfolioSection?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group glass-effect text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 border border-white/20 hover:border-blue-500/50 min-w-[220px] cursor-pointer"
+              className="group glass-card backdrop-blur-sm bg-white/5 border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl font-semibold text-base tracking-wide transition-all duration-500 flex items-center gap-3 justify-center hover:scale-105 min-w-[220px] cursor-pointer"
             >
               <span>Explore Our Ventures</span>
-              <Sparkle size={18} weight="bold" className="group-hover:rotate-12 transition-transform duration-300" />
+              <Sparkle size={18} weight="bold" className="group-hover:translate-x-2 transition-transform duration-300" />
             </MagneticButton>
           </div>
 
