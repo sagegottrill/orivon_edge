@@ -12,6 +12,9 @@ import StartProject from "./pages/StartProject";
 import BookConsultation from "./pages/BookConsultation";
 import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
+import CoreSkillsTrack from "./pages/CoreSkillsTrack";
+import CorporateTrack from "./pages/CorporateTrack";
+import JoinHub from "./pages/JoinHub";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +32,9 @@ const App = () => (
             <Route path="/project/:slug" element={<ProjectDetail />} />
             <Route path="/start-project" element={<StartProject />} />
             <Route path="/book-consultation" element={<BookConsultation />} />
+            <Route path="/core-skills-track" element={<CoreSkillsTrack />} />
+            <Route path="/corporate-track" element={<CorporateTrack />} />
+            <Route path="/join-hub" element={<JoinHub />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

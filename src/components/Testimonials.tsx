@@ -6,26 +6,26 @@ import ProfessionalCarousel from '@/components/ui/professional-carousel';
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc",
-      company: "TechStart Inc",
-  content: "Orivon Edge transformed our entire digital infrastructure and delivered beyond expectations; our productivity increased by 300%.",
+      name: "Malam Ibrahim Abdullahi",
+      role: "Director, BICTDA",
+      company: "Borno ICT Development Agency",
+      content: "Orivon Edge solved what other companies said was impossible. Their offline-first approach brought digital education to 10,000+ students in remote areas. Teachers who spent 4 hours grading now do it in 30 minutes. We've seen a 40% improvement in student engagement, and the government is expanding this to all 1,000+ schools in our state. This platform has truly democratized education access in Borno State.",
       rating: 5,
       image: "/testimonial-1.jpg"
     },
     {
-      name: "Michael Chen",
-      role: "CTO, DataFlow Solutions",
-      company: "DataFlow Solutions", 
-      content: "The AI solutions they built for us revolutionized our data processing. ROI was evident within the first month of deployment.",
+      name: "Dr. Sarah Adebayo",
+      role: "Founder & Lead Wellness Consultant",
+      company: "Beeloveds House", 
+      content: "Before working with Orivon Edge, we were losing clients because they couldn't book appointments easily. Now, our online booking system handles everything automatically. Our bookings increased by 250% in just 3 months, and we've cut our administrative time in half. The mobile-responsive design means clients can book from anywhere, anytime. This investment paid for itself within the first month.",
       rating: 5,
       image: "/testimonial-2.jpg"
     },
     {
-      name: "Emily Rodriguez",
-      role: "Founder, EduTech Pro",
-      company: "EduTech Pro",
-      content: "Professional, reliable, and innovative. They turned our vision into a scalable platform that serves thousands of students daily.",
+      name: "Mrs. Amina Mohammed",
+      role: "Executive Director",
+      company: "SAV Women Foundation",
+      content: "Orivon Edge didn't just build us a website—they gave us a voice. The impact storytelling features helped us share real stories of women we've empowered. Donations increased by 320%, and we grew our email list from 200 to over 5,000 supporters. The volunteer portal streamlined recruitment, and the donor dashboard keeps supporters engaged. We've been featured in 5 major media outlets since launch. Absolutely transformational for our mission.",
       rating: 5,
       image: "/testimonial-3.jpg"
     }

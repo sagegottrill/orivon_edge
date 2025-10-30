@@ -118,16 +118,6 @@ const Portfolio: React.FC = () => {
                   {project.tagline}
                 </p>
 
-                {/* Quick metrics */}
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {project.metrics.slice(0, 2).map((metric, idx) => (
-                    <div key={idx} className="text-center p-2 bg-white/5 rounded-lg">
-                      <div className="text-lg font-bold text-white">{metric.value}</div>
-                      <div className="text-xs text-gray-400">{metric.label}</div>
-                    </div>
-                  ))}
-                </div>
-
                 {/* Tech stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.slice(0, 4).map((tech, techIndex) => (
