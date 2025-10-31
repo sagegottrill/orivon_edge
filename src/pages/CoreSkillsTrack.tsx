@@ -1,8 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Brain, Cloud, Shield, CheckCircle, Users, Calendar, Award } from 'lucide-react';
+import { submitCoreSkillsApplication } from '@/lib/supabase';
 
 const CoreSkillsTrack: React.FC = () => {
+  const [formData, setFormData] = useState({
+    full_name: '',
+    email: '',
+    phone: '',
+    track: 'Artificial Intelligence' as 'Artificial Intelligence' | 'Cloud Computing' | 'Data Science' | 'Cybersecurity',
+    motivation: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+    
+    try {
+      const result = await submitCoreSkillsApplication(formData);
+      
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setError('Failed to submit application. Please try again.');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="max-w-2xl mx-auto px-6 lg:px-8 text-center py-20">
+          <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
+            <CheckCircle className="w-12 h-12 text-green-600" />
+          </div>
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            APPLICATION SUBMITTED!
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            Thank you for applying to our Core Skills Track program. We've received your application 
+            and our admissions team will review it within 2-3 business days.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/"
+              className="inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -31,9 +96,6 @@ const CoreSkillsTrack: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-6">
-                🎓 Core Skills Track
-              </div>
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 BUILD THE SKILLS<br />
                 COMPANIES<br />
@@ -272,21 +334,35 @@ const CoreSkillsTrack: React.FC = () => {
           
           <div className="bg-white rounded-2xl p-8 text-left">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Application Form</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                  {error}
+                </div>
+              )}
+              
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name *</label>
                   <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                    type="text"
+                    name="full_name"
+                    value={formData.full_name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Email</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Email *</label>
                   <input 
-                    type="email" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -294,38 +370,59 @@ const CoreSkillsTrack: React.FC = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number *</label>
                   <input 
-                    type="tel" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
                     placeholder="+234 800 000 0000"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Select Track</label>
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                    <option>Artificial Intelligence</option>
-                    <option>Cloud Computing</option>
-                    <option>Data Science</option>
-                    <option>Cybersecurity</option>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Select Track *</label>
+                  <select
+                    name="track"
+                    value={formData.track}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900">
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Cloud Computing">Cloud Computing</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Why do you want to join this program?</label>
-                <textarea 
+                <label className="block text-sm font-semibold text-gray-900 mb-2">Why do you want to join this program? *</label>
+                <textarea
+                  name="motivation"
+                  value={formData.motivation}
+                  onChange={handleChange}
+                  required
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
                   placeholder="Tell us about your goals and motivation..."
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
-                className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                disabled={isSubmitting}
+                className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
-                Submit Application
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    Submitting...
+                  </>
+                ) : (
+                  'Submit Application'
+                )}
               </button>
             </form>
           </div>

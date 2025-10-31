@@ -83,7 +83,6 @@ const Home: React.FC = () => {
             <div className="hidden md:flex items-center space-x-12">
               <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
               <a href="#services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
-              <a href="#ventures" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Ventures</a>
               <Link to="/venture-studio" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Venture Studio</Link>
               <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
               <Link to="/join-hub" className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
@@ -456,17 +455,17 @@ const Home: React.FC = () => {
                     ))}
                   </div>
                   <blockquote className="text-2xl text-gray-900 font-light italic mb-6">
-                    "Definitely worth the investment. I couldn't have asked for more than this."
+                    "Orivon Edge solved what other companies said was impossible. Their offline-first approach brought digital education to 10,000+ students in remote areas."
                   </blockquote>
                   <div className="flex items-center gap-4">
                     <img 
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                      alt="Nasir Jaafar"
+                      src="/imges/10.jpg" 
+                      alt="Malam Ibrahim Abdullahi"
                       className="w-16 h-16 rounded-full object-cover"
                     />
                     <div>
-                      <p className="font-bold text-gray-900 text-lg">Nasir Jaafar</p>
-                      <p className="text-gray-500">Business Owner</p>
+                      <p className="font-bold text-gray-900 text-lg">Malam Ibrahim Abdullahi</p>
+                      <p className="text-gray-500">Director, BICTDA</p>
                     </div>
                   </div>
                 </div>
@@ -481,17 +480,17 @@ const Home: React.FC = () => {
                   ))}
                 </div>
                 <p className="text-lg text-gray-600 italic mb-6">
-                  "The STEM-Shuttle program delivers exceptional results with measurable improvements."
+                  "Our bookings increased by 250% in just 3 months. The mobile-responsive design means clients can book from anywhere, anytime."
                 </p>
                 <div className="flex items-center gap-3">
                   <img 
                     src="/imges/10.jpg" 
-                    alt="Abbas A Baba"
+                    alt="Dr. Sarah Adebayo"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold text-gray-900">Abbas A Baba</p>
-                    <p className="text-sm text-gray-500">Parent & CEO</p>
+                    <p className="font-semibold text-gray-900">Dr. Sarah Adebayo</p>
+                    <p className="text-sm text-gray-500">Founder, Beeloveds House</p>
                   </div>
                 </div>
               </div>
@@ -503,17 +502,17 @@ const Home: React.FC = () => {
                   ))}
                 </div>
                 <p className="text-lg text-gray-600 italic mb-6">
-                  "Comprehensive training and business development that exceeds expectations."
+                  "Donations increased by 320%, and we grew our email list from 200 to over 5,000 supporters. Absolutely transformational for our mission."
                 </p>
                 <div className="flex items-center gap-3">
                   <img 
                     src="/imges/11.jpg" 
-                    alt="Shamsudeen Omacy"
+                    alt="Mrs. Amina Mohammed"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold text-gray-900">Shamsudeen Omacy</p>
-                    <p className="text-sm text-gray-500">Entrepreneur</p>
+                    <p className="font-semibold text-gray-900">Mrs. Amina Mohammed</p>
+                    <p className="text-sm text-gray-500">Executive Director, SAV Women Foundation</p>
                   </div>
                 </div>
               </div>

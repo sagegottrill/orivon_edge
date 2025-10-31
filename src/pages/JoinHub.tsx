@@ -129,9 +129,6 @@ const JoinHub: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-6">
-                🚀 Join Our Innovation Hub
-              </div>
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 BECOME PART OF<br />
                 THE <span className="text-blue-600">FUTURE.</span>
@@ -140,21 +137,6 @@ const JoinHub: React.FC = () => {
                 Join Africa's fastest-growing innovation hub. Access world-class training, 
                 mentorship, and opportunities to build the next generation of technology solutions.
               </p>
-              
-              <div className="grid grid-cols-3 gap-6 mb-12">
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-1">1000+</div>
-                  <p className="text-sm text-gray-600">Hub Members</p>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-1">50+</div>
-                  <p className="text-sm text-gray-600">Startups Launched</p>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-1">24/7</div>
-                  <p className="text-sm text-gray-600">Support</p>
-                </div>
-              </div>
 
               <div className="space-y-6 mb-8">
                 <div className="flex items-center gap-4">
