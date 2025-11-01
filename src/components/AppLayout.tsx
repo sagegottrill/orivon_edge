@@ -1,9 +1,11 @@
 import React from 'react';
 import Navigation from './Navigation';
 import Hero from './Hero';
+import VenturePerformance from './VenturePerformance';
 import ServicesIndustries from './ServicesIndustries';
 import Portfolio from './Portfolio';
 import Testimonials from './Testimonials';
+import VentureInvestmentCTA from './VentureInvestmentCTA';
 import Process from './Process';
 import FAQ from './FAQ';
 import Contact from './Contact';
@@ -19,9 +21,11 @@ const AppLayout: React.FC = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navigation />
       <Hero />
+      <VenturePerformance />
       <ServicesIndustries />
       <Portfolio />
       <Testimonials />
+      <VentureInvestmentCTA />
       <Process />
       <FAQ />
       <Contact />

@@ -136,17 +136,15 @@ const Home: React.FC = () => {
         <div className="relative z-10 flex flex-col justify-center min-h-screen">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-6xl mx-auto text-center">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.15] mb-8 tracking-tight">
-                Nurturing Creativity, Technology,<br className="hidden lg:block" />
-                and Entrepreneurship<br className="hidden lg:block" />
-                Across Africa
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8 tracking-tight">
+                Nurturing Creativity, Technology, and Entrepreneurship Across Africa
               </h1>
 
               <p className="text-xl sm:text-2xl lg:text-3xl text-white/95 mb-16 font-light leading-relaxed max-w-4xl mx-auto">
                 A youth-led innovation hub building the future
               </p>
 
-              <div className="flex justify-center flex-wrap gap-4 sm:gap-6 text-white/80 text-sm sm:text-base font-medium">
+              <div className="flex justify-center flex-wrap gap-4 sm:gap-6 text-white/80 text-sm sm:text-base font-medium mb-8">
                 <span>AI Development</span>
                 <span className="text-white/40">•</span>
                 <span>Startup Incubation</span>
@@ -155,6 +153,42 @@ const Home: React.FC = () => {
                 <span className="text-white/40">•</span>
                 <span>Digital Solutions</span>
               </div>
+
+              {/* Government Alignment Badges */}
+              <div className="flex justify-center items-center flex-wrap gap-4">
+                <div className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span className="text-white font-medium text-sm sm:text-base">NAIS Aligned</span>
+                </div>
+                <div className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                  <CheckCircle className="w-5 h-5 text-blue-400" />
+                  <span className="text-white font-medium text-sm sm:text-base">SRAP 2.0 Contributor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Metrics Section */}
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div className="animate-fade-in-up">
+              <div className="text-5xl font-bold text-blue-600 mb-2">16,000+</div>
+              <p className="text-gray-600 font-medium">Users Across Platforms</p>
+            </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <div className="text-5xl font-bold text-purple-600 mb-2">179+</div>
+              <p className="text-gray-600 font-medium">Jobs Created</p>
+            </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <div className="text-5xl font-bold text-green-600 mb-2">5,000+</div>
+              <p className="text-gray-600 font-medium">Farmers Supported</p>
+            </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              <div className="text-5xl font-bold text-orange-600 mb-2">10,000+</div>
+              <p className="text-gray-600 font-medium">Students Trained</p>
             </div>
           </div>
         </div>
@@ -184,6 +218,35 @@ const Home: React.FC = () => {
                 alt="Team collaboration"
                 className="w-full h-96 object-cover rounded-2xl"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted By Section */}
+      <section className="py-20 bg-white border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">
+              Trusted By Leading Organizations
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
+            <div className="text-center">
+              <p className="font-bold text-gray-700 text-xl">BICTDA</p>
+              <p className="text-xs text-gray-500 mt-1">Government Partner</p>
+            </div>
+            <div className="text-center">
+              <p className="font-bold text-gray-700 text-xl">NITDA</p>
+              <p className="text-xs text-gray-500 mt-1">Policy Aligned</p>
+            </div>
+            <div className="text-center">
+              <p className="font-bold text-gray-700 text-xl">Beeloveds House</p>
+              <p className="text-xs text-gray-500 mt-1">Client</p>
+            </div>
+            <div className="text-center">
+              <p className="font-bold text-gray-700 text-xl">SAV Foundation</p>
+              <p className="text-xs text-gray-500 mt-1">Client</p>
             </div>
           </div>
         </div>
@@ -382,55 +445,124 @@ const Home: React.FC = () => {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Democrasee */}
             <div className="group">
-              <div className="bg-gradient-to-br from-blue-500 to-purple-600 h-80 rounded-2xl flex items-center justify-center mb-6 overflow-hidden">
-                <div className="text-center text-white">
-                  <Target className="w-16 h-16 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold">Democrasee</h3>
-                  <p className="text-blue-100">Civic Tech</p>
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
+                    10K Users
+                  </span>
                 </div>
-              </div>
-              <div>
-                <h4 className="text-2xl font-bold text-gray-900 mb-3">AI-Powered Crisis Reporting</h4>
-                <p className="text-gray-600">
-                  Crisis reporting platform for transparent humanitarian response. 
-                  Report incidents via web, WhatsApp, SMS, or PWA—works offline.
+                
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Democrasee</h3>
+                <p className="text-sm text-gray-500 font-medium mb-4">Civic Tech Platform</p>
+                
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  AI-powered crisis reporting platform for transparent humanitarian response. 
+                  Offline-first, multi-channel (web, WhatsApp, SMS, PWA).
                 </p>
+                
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-2xl font-bold text-gray-900">85%</p>
+                    <p className="text-xs text-gray-600">Offline Capability</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-2xl font-bold text-gray-900">4 Ch</p>
+                    <p className="text-xs text-gray-600">Report Channels</p>
+                  </div>
+                </div>
+                
+                <Link 
+                  to="/venture-studio#democrasee" 
+                  className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
+                >
+                  <span>View Case Study</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
 
             {/* FarmAfricaa */}
             <div className="group">
-              <div className="bg-gradient-to-br from-green-500 to-blue-500 h-80 rounded-2xl flex items-center justify-center mb-6 overflow-hidden">
-                <div className="text-center text-white">
-                  <Code className="w-16 h-16 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold">FarmAfricaa</h3>
-                  <p className="text-green-100">AgriTech</p>
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
+                    <Code className="w-8 h-8 text-white" />
+                  </div>
+                  <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                    5K Farmers
+                  </span>
                 </div>
-              </div>
-              <div>
-                <h4 className="text-2xl font-bold text-gray-900 mb-3">Smart Farm Intelligence</h4>
-                <p className="text-gray-600">
+                
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">FarmAfricaa</h3>
+                <p className="text-sm text-gray-500 font-medium mb-4">AgriTech Platform</p>
+                
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   AI disease detection for smallholder farmers. Snap a photo, get instant diagnosis 
                   and treatment advice—works offline.
                 </p>
+                
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-2xl font-bold text-gray-900">95%</p>
+                    <p className="text-xs text-gray-600">Accuracy Rate</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-2xl font-bold text-gray-900">20+</p>
+                    <p className="text-xs text-gray-600">Crop Diseases</p>
+                  </div>
+                </div>
+                
+                <Link 
+                  to="/venture-studio#farmafricaa" 
+                  className="inline-flex items-center gap-2 text-green-600 font-semibold hover:gap-3 transition-all"
+                >
+                  <span>View Case Study</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
 
             {/* ARIE */}
             <div className="group">
-              <div className="bg-gradient-to-br from-purple-500 to-indigo-600 h-80 rounded-2xl flex items-center justify-center mb-6 overflow-hidden">
-                <div className="text-center text-white">
-                  <Rocket className="w-16 h-16 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold">ARIE</h3>
-                  <p className="text-purple-100">FinTech</p>
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <Rocket className="w-8 h-8 text-white" />
+                  </div>
+                  <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                    Pre-Launch
+                  </span>
                 </div>
-              </div>
-              <div>
-                <h4 className="text-2xl font-bold text-gray-900 mb-3">Autonomous Banking Intelligence</h4>
-                <p className="text-gray-600">
+                
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">ARIE</h3>
+                <p className="text-sm text-gray-500 font-medium mb-4">FinTech Platform</p>
+                
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   Agentic AI for instant KYC, real-time fraud detection, and fair credit scoring 
                   for the unbanked using alternative data.
                 </p>
+                
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-2xl font-bold text-gray-900">&lt;2s</p>
+                    <p className="text-xs text-gray-600">KYC Processing</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-2xl font-bold text-gray-900">99%</p>
+                    <p className="text-xs text-gray-600">Fraud Detection</p>
+                  </div>
+                </div>
+                
+                <Link 
+                  to="/venture-studio#arie" 
+                  className="inline-flex items-center gap-2 text-purple-600 font-semibold hover:gap-3 transition-all"
+                >
+                  <span>View Case Study</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
