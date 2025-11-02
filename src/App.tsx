@@ -15,6 +15,11 @@ import NotFound from "./pages/NotFound";
 import CoreSkillsTrack from "./pages/CoreSkillsTrack";
 import CorporateTrack from "./pages/CorporateTrack";
 import JoinHub from "./pages/JoinHub";
+import PathfindingDashboard from "./pages/PathfindingDashboard";
+import PathfindingOnboarding from "./pages/PathfindingOnboarding";
+import CoursesBrowser from "./pages/CoursesBrowser";
+import LearningPathView from "./pages/LearningPathView";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +40,11 @@ const App = () => (
             <Route path="/core-skills-track" element={<CoreSkillsTrack />} />
             <Route path="/corporate-track" element={<CorporateTrack />} />
             <Route path="/join-hub" element={<JoinHub />} />
+            <Route path="/pathfinding/dashboard" element={<PathfindingDashboard />} />
+            <Route path="/pathfinding/onboarding" element={<PathfindingOnboarding />} />
+            <Route path="/pathfinding/courses" element={<CoursesBrowser />} />
+            <Route path="/pathfinding/path" element={<LearningPathView />} />
+            <Route path="/pathfinding/admin" element={<AdminDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

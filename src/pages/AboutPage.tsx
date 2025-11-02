@@ -167,45 +167,39 @@ const AboutPage: React.FC = () => {
           </h2>
           
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-10">
-            <div className="text-center bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">🎓</span>
-              </div>
+            <div className="bg-white rounded-2xl p-8 shadow-sm">
+              <div className="text-sm font-semibold text-gray-400 mb-3">01</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Talent Training</h3>
-              <p className="text-gray-700 leading-relaxed">Manufacturing Africa's digital workforce at scale (3MTT, NAIS aligned)</p>
+              <p className="text-gray-600 leading-relaxed">Manufacturing Africa's digital workforce at scale (3MTT, NAIS aligned)</p>
             </div>
             
-            <div className="text-center bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">🏛️</span>
-              </div>
+            <div className="bg-white rounded-2xl p-8 shadow-sm">
+              <div className="text-sm font-semibold text-gray-400 mb-3">02</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Client Services</h3>
-              <p className="text-gray-700 leading-relaxed">Stable GovTech & enterprise solutions providing operational revenue</p>
+              <p className="text-gray-600 leading-relaxed">Stable GovTech & enterprise solutions providing operational revenue</p>
             </div>
             
-            <div className="text-center bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">🚀</span>
-              </div>
+            <div className="bg-white rounded-2xl p-8 shadow-sm">
+              <div className="text-sm font-semibold text-gray-400 mb-3">03</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Venture Equity</h3>
-              <p className="text-gray-700 leading-relaxed">NSA-compliant startups ready for government procurement</p>
+              <p className="text-gray-600 leading-relaxed">NSA-compliant startups ready for government procurement</p>
             </div>
           </div>
 
-          <div className="text-center bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
-            <p className="text-gray-900 font-bold text-xl mb-6">Our Target:</p>
+          <div className="bg-white rounded-2xl p-8 shadow-sm">
+            <p className="text-gray-900 font-bold text-lg mb-6 text-center">Our Target:</p>
             <div className="flex flex-wrap justify-center gap-6">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-                <span className="text-gray-900 font-medium">179+ jobs created</span>
+                <span className="text-gray-900">•</span>
+                <span className="text-gray-700 font-medium">179+ jobs created</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-900 font-medium">50% YoY capital increase</span>
+                <span className="text-gray-900">•</span>
+                <span className="text-gray-700 font-medium">50% YoY capital increase</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-purple-600" />
-                <span className="text-gray-900 font-medium">40% women participation</span>
+                <span className="text-gray-900">•</span>
+                <span className="text-gray-700 font-medium">40% women participation</span>
               </div>
             </div>
           </div>
@@ -224,7 +218,7 @@ const AboutPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/#contact"
-              className="px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+              className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
             >
               Get In Touch
             </a>
