@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
@@ -81,11 +81,12 @@ const Home: React.FC = () => {
               </a>
             </div>
             <div className="hidden md:flex items-center space-x-12">
-              <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
-              <a href="#services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a>
-              <Link to="/venture-studio" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Venture Studio</Link>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
-              <Link to="/join-hub" className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              <Link to="/about" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">About</Link>
+              <a href="#ai-pathfinding" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">AI Pathfinding</a>
+              <a href="#services" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Services</a>
+              <Link to="/venture-studio" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Venture Studio</Link>
+              <a href="#contact" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Contact</a>
+              <Link to="/join-hub" className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
                 Join Hub
               </Link>
             </div>
@@ -187,28 +188,28 @@ const Home: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-6xl font-bold text-gray-900 mb-8 leading-tight">
-                WHO WE ARE.
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Who We Are
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Orivon Edge is a member of Nigeria's growing tech innovation ecosystem, 
-                training and mentoring developers and entrepreneurs in the technology and 
-                startup industry.
+              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                Orivon Edge is a youth-led venture studio and digital agency serving as Nigeria's strategic implementation partner for federal and state government digital policies.
               </p>
-              <p className="text-lg text-gray-500 leading-relaxed">
-                Through partnerships and collaborative initiatives with tech companies, 
-                startups, and educational institutions, we create lasting impact across Nigeria.
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                We systematically build, de-risk, and scale AI-driven startups while delivering high-fidelity GovTech and enterprise solutions for governments, NGOs, and private sector clients.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Unlike traditional incubators, we function as a vital implementation partner ensuring Nigerian Startup Act (NSA) compliance, delivering measurable policy outcomes, and bridging the gap between innovation and institutional deployment.
               </p>
             </div>
             <div className="relative">
               <img 
-                src="/imges/4.jpg" 
-                alt="Team collaboration"
-                className="w-full h-96 object-cover rounded-2xl"
+                src="/pexels-diva-33562120.jpg" 
+                alt="Strategic partnership collaboration" 
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               />
             </div>
           </div>
@@ -252,6 +253,134 @@ const Home: React.FC = () => {
               "Our work drives innovation only if it creates meaningful impact for African communities."
             </blockquote>
             <p className="text-xl text-gray-600">— Orivon Edge Team</p>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Pathfinding System - Redesigned */}
+      <section id="ai-pathfinding" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-6 py-3 bg-blue-100 rounded-full mb-6">
+              <span className="text-blue-600 font-bold">Our Smart Learning Platform</span>
+            </div>
+            
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Personalized Learning Paths Powered by AI
+            </h2>
+            
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Think of it as a GPS for your career—our AI guides each learner on the fastest, most effective path to landing their dream tech job.
+            </p>
+          </div>
+
+          {/* Success Metrics */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="bg-white rounded-2xl p-8 text-center shadow-sm border border-gray-200">
+              <div className="text-5xl font-bold text-blue-600 mb-3">87%</div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Job Ready</h4>
+              <p className="text-gray-600">Of our graduates are ready for immediate employment</p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 text-center shadow-sm border border-gray-200">
+              <div className="text-5xl font-bold text-green-600 mb-3">3x</div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Faster Learning</h4>
+              <p className="text-gray-600">Students learn 3 times faster than traditional methods</p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 text-center shadow-sm border border-gray-200">
+              <div className="text-5xl font-bold text-purple-600 mb-3">78%</div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Completion Rate</h4>
+              <p className="text-gray-600">Students finish their personalized learning paths</p>
+            </div>
+          </div>
+
+          {/* How It Works with Image */}
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-10">How It Works</h3>
+              
+              <div className="space-y-8">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Brain className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">Understands You</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      Our AI watches how you learn, what excites you, and where you struggle. It's like having a personal tutor who knows exactly what you need.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">Stays Current</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      The job market changes fast. Our system automatically updates to teach only the skills companies are hiring for right now.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">Quality Guaranteed</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      We turn scattered online courses into a clear, step-by-step roadmap. Every lesson is tested to make sure you actually learn.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <BarChart3 className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">Tracks Progress</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      See your growth in real-time with clear metrics. You'll always know exactly where you are and how close you are to your goal.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <img 
+                src="/pexels-diva-33562120.jpg" 
+                alt="AI Learning Platform" 
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Real Impact */}
+          <div className="bg-white rounded-3xl p-12 shadow-sm border border-gray-200">
+            <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">Real Results, Real People</h3>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto text-center leading-relaxed">
+              Over 10,000 Nigerians have used our platform to gain job-ready skills. Our AI-powered approach means they learn faster, stay motivated, and land jobs quicker than ever before.
+            </p>
+            <div className="flex flex-wrap justify-center gap-8">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-blue-600" />
+                <span className="text-gray-700 font-medium">Personalized for each student</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-green-600" />
+                <span className="text-gray-700 font-medium">Always up-to-date with industry needs</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-6 h-6 text-purple-600" />
+                <span className="text-gray-700 font-medium">Designed for Nigerian learners</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -18,12 +18,11 @@ const Navigation: React.FC = () => {
   
   const navItems = [
     { name: 'Home', href: isHomePage ? '#home' : '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: isHomePage ? '#services-industries' : '/#services-industries' },
-    { name: 'Industries', href: isHomePage ? '#services-industries' : '/#services-industries' },
-    { name: 'Portfolio', href: isHomePage ? '#portfolio' : '/#portfolio' },
+    { name: 'About', href: '/about', isExternal: true },
+    { name: 'AI Pathfinding', href: isHomePage ? '#ai-pathfinding' : '/#ai-pathfinding' },
+    { name: 'Services', href: isHomePage ? '#services' : '/#services' },
+    { name: 'Venture Studio', href: '/venture-studio', isExternal: true },
     { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' },
-    // Removed 'Team' and 'Case Studies' nav entries per request
   ];
 
   return (
@@ -52,7 +51,7 @@ const Navigation: React.FC = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-300 hover:text-white px-3 py-2 text-[15px] font-medium tracking-wide transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                    className="text-gray-300 hover:text-white px-3 py-2 text-[15px] font-medium tracking-wide transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                   >
                     {item.name}
                   </a>
@@ -60,7 +59,7 @@ const Navigation: React.FC = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className="text-gray-300 hover:text-white px-3 py-2 text-[15px] font-medium tracking-wide transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-blue-500 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                    className="text-gray-300 hover:text-white px-3 py-2 text-[15px] font-medium tracking-wide transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
                   >
                     {item.name}
                   </Link>
