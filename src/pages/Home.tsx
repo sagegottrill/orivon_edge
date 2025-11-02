@@ -171,23 +171,15 @@ const Home: React.FC = () => {
       </section>
 
       {/* Trust Metrics Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
+          <div className="grid md:grid-cols-2 gap-8 text-center max-w-3xl mx-auto">
             <div className="animate-fade-in-up">
-              <div className="text-5xl font-bold text-blue-600 mb-2">16,000+</div>
+              <div className="text-5xl font-bold text-gray-900 mb-2">16,000+</div>
               <p className="text-gray-600 font-medium">Users Across Platforms</p>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <div className="text-5xl font-bold text-purple-600 mb-2">179+</div>
-              <p className="text-gray-600 font-medium">Jobs Created</p>
-            </div>
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="text-5xl font-bold text-green-600 mb-2">5,000+</div>
-              <p className="text-gray-600 font-medium">Farmers Supported</p>
-            </div>
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <div className="text-5xl font-bold text-orange-600 mb-2">10,000+</div>
+              <div className="text-5xl font-bold text-gray-900 mb-2">10,000+</div>
               <p className="text-gray-600 font-medium">Students Trained</p>
             </div>
           </div>
@@ -203,9 +195,9 @@ const Home: React.FC = () => {
                 WHO WE ARE.
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Orivon Edge is a member of Nigeria's growing tech innovation ecosystem. 
-                Founded in 2019, we have trained and mentored over 200+ developers and 
-                entrepreneurs in the technology and startup industry.
+                Orivon Edge is a member of Nigeria's growing tech innovation ecosystem, 
+                training and mentoring developers and entrepreneurs in the technology and 
+                startup industry.
               </p>
               <p className="text-lg text-gray-500 leading-relaxed">
                 Through partnerships and collaborative initiatives with tech companies, 
@@ -332,7 +324,7 @@ const Home: React.FC = () => {
 
             <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center mb-6">
                   <Code className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Core Skills Track</h3>
@@ -346,7 +338,7 @@ const Home: React.FC = () => {
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center mb-6">
                   <Globe className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Corporate Track</h3>
@@ -354,7 +346,7 @@ const Home: React.FC = () => {
                   Professional development for corporate roles and international 
                   remote work opportunities.
                 </p>
-                <Link to="/corporate-track" className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                <Link to="/corporate-track" className="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
                   Join Track
                 </Link>
               </div>
@@ -388,21 +380,21 @@ const Home: React.FC = () => {
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="text-base font-semibold text-gray-900">Research-Backed Ventures</h3>
                     <p className="text-sm text-gray-600">Deep market research and validation before launch</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="text-base font-semibold text-gray-900">AI-First Products</h3>
                     <p className="text-sm text-gray-600">Leveraging cutting-edge AI and machine learning</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
                   <div>
                     <h3 className="text-base font-semibold text-gray-900">Global Scale, Local Impact</h3>
                     <p className="text-sm text-gray-600">Built in Africa, designed for the world</p>
@@ -447,10 +439,10 @@ const Home: React.FC = () => {
             <div className="group">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gray-900 rounded-xl flex items-center justify-center">
                     <Target className="w-8 h-8 text-white" />
                   </div>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
+                  <span className="px-3 py-1 bg-gray-100 text-gray-900 text-xs font-semibold rounded-full">
                     10K Users
                   </span>
                 </div>
@@ -476,7 +468,7 @@ const Home: React.FC = () => {
                 
                 <Link 
                   to="/venture-studio#democrasee" 
-                  className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
                 >
                   <span>View Case Study</span>
                   <ArrowRight className="w-4 h-4" />
@@ -488,10 +480,10 @@ const Home: React.FC = () => {
             <div className="group">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gray-900 rounded-xl flex items-center justify-center">
                     <Code className="w-8 h-8 text-white" />
                   </div>
-                  <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                  <span className="px-3 py-1 bg-gray-100 text-gray-900 text-xs font-semibold rounded-full">
                     5K Farmers
                   </span>
                 </div>
@@ -517,7 +509,7 @@ const Home: React.FC = () => {
                 
                 <Link 
                   to="/venture-studio#farmafricaa" 
-                  className="inline-flex items-center gap-2 text-green-600 font-semibold hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
                 >
                   <span>View Case Study</span>
                   <ArrowRight className="w-4 h-4" />
@@ -529,10 +521,10 @@ const Home: React.FC = () => {
             <div className="group">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gray-900 rounded-xl flex items-center justify-center">
                     <Rocket className="w-8 h-8 text-white" />
                   </div>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                  <span className="px-3 py-1 bg-gray-100 text-gray-900 text-xs font-semibold rounded-full">
                     Pre-Launch
                   </span>
                 </div>
@@ -558,7 +550,7 @@ const Home: React.FC = () => {
                 
                 <Link 
                   to="/venture-studio#arie" 
-                  className="inline-flex items-center gap-2 text-purple-600 font-semibold hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
                 >
                   <span>View Case Study</span>
                   <ArrowRight className="w-4 h-4" />
@@ -740,23 +732,23 @@ const Home: React.FC = () => {
 
             <div className="grid gap-8">
               <div className="text-center p-8 bg-white/5 rounded-2xl">
-                <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-10 h-10 text-white" />
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-10 h-10 text-gray-900" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Join Training</h3>
                 <p className="text-gray-300 mb-6">Professional development programs</p>
-                <Link to="/core-skills-track" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                <Link to="/core-skills-track" className="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                   Enroll Now
                 </Link>
               </div>
 
               <div className="text-center p-8 bg-white/5 rounded-2xl">
-                <div className="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Rocket className="w-10 h-10 text-white" />
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Rocket className="w-10 h-10 text-gray-900" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Startup Incubation</h3>
                 <p className="text-gray-300 mb-6">Mentorship and incubation programs</p>
-                <Link to="/join-hub" className="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                <Link to="/join-hub" className="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                   Apply Now
                 </Link>
               </div>
