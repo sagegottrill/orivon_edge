@@ -224,22 +224,34 @@ const Home: React.FC = () => {
               Trusted By Leading Organizations
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
-            <div className="text-center">
-              <p className="font-bold text-gray-700 text-xl">BICTDA</p>
-              <p className="text-xs text-gray-500 mt-1">Government Partner</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+            <div className="flex flex-col items-center">
+              <img 
+                src="/bictda.png" 
+                alt="BICTDA - Government Partner"
+                className="h-40 md:h-56 lg:h-64 w-auto object-contain mb-3 hover:scale-105 transition-transform"
+              />
+              <p className="text-sm text-gray-600 mt-1 font-semibold">Government Partner</p>
             </div>
-            <div className="text-center">
-              <p className="font-bold text-gray-700 text-xl">NITDA</p>
-              <p className="text-xs text-gray-500 mt-1">Policy Aligned</p>
+            <div className="flex flex-col items-center">
+              <img 
+                src="/nitdaapng.png" 
+                alt="NITDA - Policy Aligned"
+                className="h-40 md:h-56 lg:h-64 w-auto object-contain mb-3 hover:scale-105 transition-transform"
+              />
+              <p className="text-sm text-gray-600 mt-1 font-semibold">Policy Aligned</p>
             </div>
-            <div className="text-center">
+            <div className="text-center opacity-60">
               <p className="font-bold text-gray-700 text-xl">Beeloveds House</p>
               <p className="text-xs text-gray-500 mt-1">Client</p>
             </div>
-            <div className="text-center">
-              <p className="font-bold text-gray-700 text-xl">SAV Foundation</p>
-              <p className="text-xs text-gray-500 mt-1">Client</p>
+            <div className="flex flex-col items-center">
+              <img 
+                src="/SAV WOMEN.pdf.png" 
+                alt="SAV Women Foundation - Client"
+                className="h-40 md:h-56 lg:h-64 w-auto object-contain mb-3 hover:scale-105 transition-transform"
+              />
+              <p className="text-sm text-gray-600 mt-1 font-semibold">Client</p>
             </div>
           </div>
         </div>
