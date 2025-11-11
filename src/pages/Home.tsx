@@ -207,7 +207,7 @@ const Home: React.FC = () => {
             </div>
             <div className="relative">
               <img 
-                src="/pexels-diva-33562120.jpg" 
+                src="/ORI/1.jpg" 
                 alt="Strategic partnership collaboration" 
                 className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               />
@@ -321,7 +321,7 @@ const Home: React.FC = () => {
 
             <div className="relative">
               <img 
-                src="/pexels-diva-33562120.jpg" 
+                src="/ORI/2.jpg" 
                 alt="AI Learning Platform" 
                 className="rounded-2xl shadow-sm w-full h-auto object-cover"
               />
@@ -522,7 +522,7 @@ const Home: React.FC = () => {
             
             <div className="relative">
               <img 
-                src="/imges/5.jpg" 
+                src="/ORI/3.jpg" 
                 alt="Venture Studio Innovation"
                 className="w-full h-full max-h-[500px] object-cover rounded-2xl shadow-lg"
               />
@@ -752,8 +752,8 @@ const Home: React.FC = () => {
             <div className="group">
               <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
                 <img 
-                  src="/imges/6.jpg" 
-                  alt="Kids coding sessions"
+                  src="/ORI/4.jpg" 
+                    alt="Kids coding sessions"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -766,8 +766,8 @@ const Home: React.FC = () => {
             <div className="group">
               <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
                 <img 
-                  src="/imges/7.jpg" 
-                  alt="Professional training"
+                  src="/ORI/5.jpg" 
+                    alt="Professional training"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -780,8 +780,8 @@ const Home: React.FC = () => {
             <div className="group">
               <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
                 <img 
-                  src="/imges/8.jpg" 
-                  alt="Startup team"
+                  src="/ORI/6.jpg" 
+                    alt="Startup team"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
