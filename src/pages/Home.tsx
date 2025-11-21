@@ -218,40 +218,162 @@ const Home: React.FC = () => {
 
       {/* Trusted By Section */}
       <section className="py-20 bg-white border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="w-full">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">
               Trusted By Leading Organizations
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            <div className="flex flex-col items-center">
-              <img 
-                src="/bictda.png" 
-                alt="BICTDA - Government Partner"
-                className="h-40 md:h-56 lg:h-64 w-auto object-contain mb-3 hover:scale-105 transition-transform"
-              />
-              <p className="text-sm text-gray-600 mt-1 font-semibold">Government Partner</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <img 
-                src="/nitdaapng.png" 
-                alt="NITDA - Policy Aligned"
-                className="h-40 md:h-56 lg:h-64 w-auto object-contain mb-3 hover:scale-105 transition-transform"
-              />
-              <p className="text-sm text-gray-600 mt-1 font-semibold">Policy Aligned</p>
-            </div>
-            <div className="text-center opacity-60">
-              <p className="font-bold text-gray-700 text-xl">Beeloveds House</p>
-              <p className="text-xs text-gray-500 mt-1">Client</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <img 
-                src="/SAV WOMEN.pdf.png" 
-                alt="SAV Women Foundation - Client"
-                className="h-40 md:h-56 lg:h-64 w-auto object-contain mb-3 hover:scale-105 transition-transform"
-              />
-              <p className="text-sm text-gray-600 mt-1 font-semibold">Client</p>
+          
+          {/* Partners Carousel */}
+          <div className="relative overflow-hidden w-full">
+            <div className="partners-carousel flex gap-12 items-center animate-scroll">
+              {/* First set of partners */}
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/bictda.png" 
+                  alt="BICTDA"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/logo2.png" 
+                  alt="Partner Logo"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/aaaa.png" 
+                  alt="Beeloveds House"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/SAV WOMEN.pdf.png" 
+                  alt="SAV Women Foundation"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/lvvv.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/lssogo.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              {/* Duplicate set for seamless loop */}
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/bictda.png" 
+                  alt="BICTDA"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/logo2.png" 
+                  alt="Partner Logo"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/aaaa.png" 
+                  alt="Beeloveds House"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/SAV WOMEN.pdf.png" 
+                  alt="SAV Women Foundation"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/lvvv.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/lssogo.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              {/* Third set for extra smooth loop */}
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/bictda.png" 
+                  alt="BICTDA"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/logo2.png" 
+                  alt="Partner Logo"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/aaaa.png" 
+                  alt="Beeloveds House"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/SAV WOMEN.pdf.png" 
+                  alt="SAV Women Foundation"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/lvvv.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/lssogo.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
             </div>
           </div>
         </div>
