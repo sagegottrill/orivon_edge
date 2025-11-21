@@ -138,7 +138,7 @@ const Home: React.FC = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-6xl mx-auto text-center">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8 tracking-tight">
-                Nurturing Creativity, Technology, and Entrepreneurship Across Africa
+                Building the Future of Technology and Innovation
               </h1>
 
               <p className="text-xl sm:text-2xl lg:text-3xl text-white/95 mb-16 font-light leading-relaxed max-w-4xl mx-auto">
@@ -153,18 +153,6 @@ const Home: React.FC = () => {
                 <span>Tech Training</span>
                 <span className="text-white/40">•</span>
                 <span>Digital Solutions</span>
-              </div>
-
-              {/* Government Alignment Badges */}
-              <div className="flex justify-center items-center flex-wrap gap-4">
-                <div className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="text-white font-medium text-sm sm:text-base">NAIS Aligned</span>
-                </div>
-                <div className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                  <CheckCircle className="w-5 h-5 text-blue-400" />
-                  <span className="text-white font-medium text-sm sm:text-base">SRAP 2.0 Contributor</span>
-                </div>
               </div>
             </div>
           </div>
@@ -196,10 +184,10 @@ const Home: React.FC = () => {
                 Who We Are
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed mb-6">
-                Orivon Edge is a youth-led venture studio and digital agency serving as Nigeria's strategic implementation partner for federal and state government digital policies.
+                Orivon Edge is a global venture studio and digital agency that builds AI-driven startups and delivers powerful technology solutions for businesses worldwide.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                We systematically build, de-risk, and scale AI-driven startups while delivering high-fidelity GovTech and enterprise solutions for governments, NGOs, and private sector clients.
+                We systematically build, de-risk, and scale innovative startups while delivering high-fidelity enterprise solutions for organizations, NGOs, and businesses across all sectors.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
                 Unlike traditional incubators, we function as a vital implementation partner ensuring Nigerian Startup Act (NSA) compliance, delivering measurable policy outcomes, and bridging the gap between innovation and institutional deployment.
@@ -277,6 +265,14 @@ const Home: React.FC = () => {
                 />
               </div>
               
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/808.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
               {/* Duplicate set for seamless loop */}
               <div className="flex flex-col items-center min-w-[250px]">
                 <img 
@@ -321,6 +317,14 @@ const Home: React.FC = () => {
               <div className="flex flex-col items-center min-w-[250px]">
                 <img 
                   src="/lssogo.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/808.png" 
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
@@ -374,6 +378,14 @@ const Home: React.FC = () => {
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
+              
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img 
+                  src="/808.png" 
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -384,7 +396,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <blockquote className="text-4xl lg:text-5xl font-light text-gray-900 leading-relaxed italic mb-12">
-              "Our work drives innovation only if it creates meaningful impact for African communities."
+              "Innovation drives real change when it creates meaningful impact for communities worldwide."
             </blockquote>
             <p className="text-xl text-gray-600">— Orivon Edge Team</p>
           </div>
@@ -452,9 +464,9 @@ const Home: React.FC = () => {
 
           {/* Key Features - Clean Card */}
           <div className="bg-gray-50 rounded-2xl p-10 lg:p-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4 text-center">Built for African Learners</h3>
+            <h3 className="text-3xl font-bold text-gray-900 mb-4 text-center">Built for Global Learners</h3>
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto text-center leading-relaxed">
-              Our AI-powered platform is designed specifically for Nigerian learners, offering personalized pathways that adapt to individual learning styles and career goals.
+              Our AI-powered platform offers personalized learning pathways that adapt to individual learning styles and career goals, accessible from anywhere in the world.
             </p>
             <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-10">
               <div className="flex items-center gap-2">
@@ -606,7 +618,7 @@ const Home: React.FC = () => {
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 Beyond client services, Orivon Edge operates as a venture studio—building, 
                 launching, and scaling our own AI-driven startups that solve real-world problems 
-                across Africa and globally.
+                for businesses and communities worldwide.
               </p>
               
               <div className="space-y-4 mb-8">
@@ -627,8 +639,8 @@ const Home: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="text-base font-semibold text-gray-900">Global Scale, Local Impact</h3>
-                    <p className="text-sm text-gray-600">Built in Africa, designed for the world</p>
+                    <h3 className="text-base font-semibold text-gray-900">Global Scale, Real Impact</h3>
+                    <p className="text-sm text-gray-600">Built for innovation, designed for the world</p>
                   </div>
                 </div>
               </div>
@@ -980,8 +992,8 @@ const Home: React.FC = () => {
             <div className="md:col-span-2">
               <h3 className="text-3xl font-bold mb-6">ORIVON <span className="text-blue-600">EDGE</span></h3>
               <p className="text-xl text-gray-400 leading-relaxed max-w-md">
-                A youth-led innovation hub dedicated to nurturing creativity, 
-                technology, and entrepreneurship across Africa.
+                A global innovation hub dedicated to nurturing creativity, 
+                technology, and entrepreneurship worldwide.
               </p>
             </div>
             
