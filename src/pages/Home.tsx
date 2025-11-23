@@ -35,7 +35,7 @@ const Home: React.FC = () => {
     return () => {
       clearInterval(interval);
       dots.forEach(dot => {
-        dot.removeEventListener('click', () => {});
+        dot.removeEventListener('click', () => { });
       });
     };
   }, []);
@@ -100,40 +100,40 @@ const Home: React.FC = () => {
         <div className="absolute inset-0">
           <div className="hero-carousel">
             <div className="hero-slide active">
-              <img 
-                src="/imges/1.jpg" 
+              <img
+                src="/imges/1.jpg"
                 alt="Innovation and technology in action"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40"></div>
             </div>
-            
+
             <div className="hero-slide">
-              <img 
-                src="/imges/2.jpg" 
+              <img
+                src="/imges/2.jpg"
                 alt="Team collaboration and development"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40"></div>
             </div>
-            
+
             <div className="hero-slide">
-              <img 
-                src="/imges/3.jpg" 
+              <img
+                src="/imges/3.jpg"
                 alt="Tech innovation and progress"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40"></div>
             </div>
           </div>
-          
+
           <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 z-20">
             <button className="carousel-dot active w-4 h-4 rounded-full bg-white/60 hover:bg-white transition-all"></button>
             <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
             <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
           </div>
         </div>
-        
+
         <div className="relative z-10 flex flex-col justify-center min-h-screen">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-6xl mx-auto text-center">
@@ -194,9 +194,9 @@ const Home: React.FC = () => {
               </p>
             </div>
             <div className="relative">
-              <img 
-                src="/ORI/1.jpg" 
-                alt="Strategic partnership collaboration" 
+              <img
+                src="/ORI/1.jpg"
+                alt="Strategic partnership collaboration"
                 className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               />
             </div>
@@ -212,176 +212,200 @@ const Home: React.FC = () => {
               Trusted By Leading Organizations
             </p>
           </div>
-          
+
           {/* Partners Carousel */}
           <div className="relative overflow-hidden w-full">
-            <div className="partners-carousel flex gap-12 items-center animate-scroll">
+            <div className="partners-carousel flex gap-12 items-center animate-scroll w-max">
               {/* First set of partners */}
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/bictda.png" 
+                <img
+                  src="/bictda.png"
                   alt="BICTDA"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/logo2.png" 
+                <img
+                  src="/logo2.png"
                   alt="Partner Logo"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/aaaa.png" 
+                <img
+                  src="/aaaa.png"
                   alt="Beeloveds House"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/SAV WOMEN.pdf.png" 
+                <img
+                  src="/SAV WOMEN.pdf.png"
                   alt="SAV Women Foundation"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/lvvv.png" 
+                <img
+                  src="/lvvv.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/lssogo.png" 
+                <img
+                  src="/lssogo.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/808.png" 
+                <img
+                  src="/808.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img
+                  src="/logoaq.png"
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+
               {/* Duplicate set for seamless loop */}
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/bictda.png" 
+                <img
+                  src="/bictda.png"
                   alt="BICTDA"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/logo2.png" 
+                <img
+                  src="/logo2.png"
                   alt="Partner Logo"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/aaaa.png" 
+                <img
+                  src="/aaaa.png"
                   alt="Beeloveds House"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/SAV WOMEN.pdf.png" 
+                <img
+                  src="/SAV WOMEN.pdf.png"
                   alt="SAV Women Foundation"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/lvvv.png" 
+                <img
+                  src="/lvvv.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/lssogo.png" 
+                <img
+                  src="/lssogo.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/808.png" 
+                <img
+                  src="/808.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img
+                  src="/logoaq.png"
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+
               {/* Third set for extra smooth loop */}
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/bictda.png" 
+                <img
+                  src="/bictda.png"
                   alt="BICTDA"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/logo2.png" 
+                <img
+                  src="/logo2.png"
                   alt="Partner Logo"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/aaaa.png" 
+                <img
+                  src="/aaaa.png"
                   alt="Beeloveds House"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/SAV WOMEN.pdf.png" 
+                <img
+                  src="/SAV WOMEN.pdf.png"
                   alt="SAV Women Foundation"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/lvvv.png" 
+                <img
+                  src="/lvvv.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/lssogo.png" 
+                <img
+                  src="/lssogo.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
               </div>
-              
+
               <div className="flex flex-col items-center min-w-[250px]">
-                <img 
-                  src="/808.png" 
+                <img
+                  src="/808.png"
+                  alt="Partner"
+                  className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                />
+              </div>
+
+              <div className="flex flex-col items-center min-w-[250px]">
+                <img
+                  src="/logoaq.png"
                   alt="Partner"
                   className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                 />
@@ -411,7 +435,7 @@ const Home: React.FC = () => {
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Personalized Learning Paths Powered by AI
             </h2>
-            
+
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Think of it as a GPS for your career—our AI guides each learner on the fastest, most effective path to landing their dream tech job.
             </p>
@@ -421,7 +445,7 @@ const Home: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
             <div>
               <h3 className="text-3xl font-bold text-gray-900 mb-8">How It Works</h3>
-              
+
               <div className="space-y-6">
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">Understands You</h4>
@@ -454,9 +478,9 @@ const Home: React.FC = () => {
             </div>
 
             <div className="relative">
-              <img 
-                src="/ORI/2.jpg" 
-                alt="AI Learning Platform" 
+              <img
+                src="/ORI/2.jpg"
+                alt="AI Learning Platform"
                 className="rounded-2xl shadow-sm w-full h-auto object-cover"
               />
             </div>
@@ -485,7 +509,7 @@ const Home: React.FC = () => {
 
             {/* CTA Button */}
             <div className="text-center">
-              <Link 
+              <Link
                 to="/pathfinding/onboarding"
                 className="inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 hover:shadow-lg transition-all transform hover:scale-105"
               >
@@ -516,16 +540,16 @@ const Home: React.FC = () => {
               <div className="text-sm font-semibold text-gray-400 mb-3">01</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Development</h3>
               <p className="text-gray-600 leading-relaxed">
-                High-impact programs in youth empowerment, digital skills training, 
+                High-impact programs in youth empowerment, digital skills training,
                 and tech entrepreneurship across Nigeria.
               </p>
             </div>
-            
+
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <div className="text-sm font-semibold text-gray-400 mb-3">02</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Innovation</h3>
               <p className="text-gray-600 leading-relaxed">
-                Collaborative space for startups to develop AI, web development, 
+                Collaborative space for startups to develop AI, web development,
                 and digital transformation solutions.
               </p>
             </div>
@@ -534,16 +558,16 @@ const Home: React.FC = () => {
               <div className="text-sm font-semibold text-gray-400 mb-3">03</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Creative Enterprise</h3>
               <p className="text-gray-600 leading-relaxed">
-                Supporting the creative economy through digital media training 
+                Supporting the creative economy through digital media training
                 and creative technology solutions.
               </p>
             </div>
-            
+
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <div className="text-sm font-semibold text-gray-400 mb-3">04</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Consulting</h3>
               <p className="text-gray-600 leading-relaxed">
-                Strategic advisory in digital transformation, business development, 
+                Strategic advisory in digital transformation, business development,
                 and technology strategy.
               </p>
             </div>
@@ -572,7 +596,7 @@ const Home: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Core Skills Track</h3>
                 <p className="text-gray-600 mb-6">
-                  Hands-on training with real project experience in AI, Cloud Computing, 
+                  Hands-on training with real project experience in AI, Cloud Computing,
                   Data Science, and Cybersecurity.
                 </p>
                 <Link to="/core-skills-track" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
@@ -586,7 +610,7 @@ const Home: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Corporate Track</h3>
                 <p className="text-gray-600 mb-6">
-                  Professional development for corporate roles and international 
+                  Professional development for corporate roles and international
                   remote work opportunities.
                 </p>
                 <Link to="/corporate-track" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
@@ -616,11 +640,11 @@ const Home: React.FC = () => {
                 <span className="text-blue-600">WE BUILD COMPANIES.</span>
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                Beyond client services, Orivon Edge operates as a venture studio—building, 
-                launching, and scaling our own AI-driven startups that solve real-world problems 
+                Beyond client services, Orivon Edge operates as a venture studio—building,
+                launching, and scaling our own AI-driven startups that solve real-world problems
                 for businesses and communities worldwide.
               </p>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
@@ -644,8 +668,8 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
-              <Link 
+
+              <Link
                 to="/venture-studio"
                 className="inline-flex items-center gap-3 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
@@ -653,10 +677,10 @@ const Home: React.FC = () => {
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
-            
+
             <div className="relative">
-              <img 
-                src="/ORI/3.jpg" 
+              <img
+                src="/ORI/3.jpg"
                 alt="Venture Studio Innovation"
                 className="w-full h-full max-h-[500px] object-cover rounded-2xl shadow-lg"
               />
@@ -685,15 +709,15 @@ const Home: React.FC = () => {
                   Pre-Launch
                 </span>
               </div>
-              
+
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Democrasee</h3>
               <p className="text-sm text-gray-600 font-medium mb-4">Civic Tech Platform</p>
-              
+
               <p className="text-gray-600 mb-6 leading-relaxed">
-                AI-powered crisis reporting platform for transparent humanitarian response. 
+                AI-powered crisis reporting platform for transparent humanitarian response.
                 Offline-first, multi-channel (web, WhatsApp, SMS, PWA).
               </p>
-              
+
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="bg-white rounded-lg p-3 border border-gray-200">
                   <p className="text-2xl font-bold text-gray-900">85%</p>
@@ -704,9 +728,9 @@ const Home: React.FC = () => {
                   <p className="text-xs text-gray-600">Report Channels</p>
                 </div>
               </div>
-              
-              <Link 
-                to="/venture-studio#democrasee" 
+
+              <Link
+                to="/venture-studio#democrasee"
                 className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
               >
                 <span>View Case Study</span>
@@ -721,15 +745,15 @@ const Home: React.FC = () => {
                   Pre-Launch
                 </span>
               </div>
-              
+
               <h3 className="text-2xl font-bold text-gray-900 mb-2">FarmAfricaa</h3>
               <p className="text-sm text-gray-600 font-medium mb-4">AgriTech Platform</p>
-              
+
               <p className="text-gray-600 mb-6 leading-relaxed">
-                AI disease detection for smallholder farmers. Snap a photo, get instant diagnosis 
+                AI disease detection for smallholder farmers. Snap a photo, get instant diagnosis
                 and treatment advice—works offline.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="bg-white rounded-lg p-3 border border-gray-200">
                   <p className="text-2xl font-bold text-gray-900">95%</p>
@@ -740,9 +764,9 @@ const Home: React.FC = () => {
                   <p className="text-xs text-gray-600">Crop Diseases</p>
                 </div>
               </div>
-              
-              <Link 
-                to="/venture-studio#farmafricaa" 
+
+              <Link
+                to="/venture-studio#farmafricaa"
                 className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
               >
                 <span>View Case Study</span>
@@ -757,15 +781,15 @@ const Home: React.FC = () => {
                   Pre-Launch
                 </span>
               </div>
-              
+
               <h3 className="text-2xl font-bold text-gray-900 mb-2">ARIE</h3>
               <p className="text-sm text-gray-600 font-medium mb-4">FinTech Platform</p>
-              
+
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Agentic AI for instant KYC, real-time fraud detection, and fair credit scoring 
+                Agentic AI for instant KYC, real-time fraud detection, and fair credit scoring
                 for the unbanked using alternative data.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="bg-white rounded-lg p-3 border border-gray-200">
                   <p className="text-2xl font-bold text-gray-900">&lt;2s</p>
@@ -776,9 +800,9 @@ const Home: React.FC = () => {
                   <p className="text-xs text-gray-600">Fraud Detection</p>
                 </div>
               </div>
-              
-              <Link 
-                to="/venture-studio#arie" 
+
+              <Link
+                to="/venture-studio#arie"
                 className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
               >
                 <span>View Case Study</span>
@@ -798,7 +822,7 @@ const Home: React.FC = () => {
                 WHAT THEY<br />
                 SAY ABOUT US.
               </h2>
-              
+
               <div className="space-y-12">
                 <div>
                   <div className="flex text-yellow-400 mb-4">
@@ -810,8 +834,8 @@ const Home: React.FC = () => {
                     "Orivon Edge solved what other companies said was impossible. Their offline-first approach brought digital education to 10,000+ students in remote areas."
                   </blockquote>
                   <div className="flex items-center gap-4">
-                    <img 
-                      src="/imges/10.jpg" 
+                    <img
+                      src="/imges/10.jpg"
                       alt="Malam Ibrahim Abdullahi"
                       className="w-16 h-16 rounded-full object-cover"
                     />
@@ -835,8 +859,8 @@ const Home: React.FC = () => {
                   "Our bookings increased by 250% in just 3 months. The mobile-responsive design means clients can book from anywhere, anytime."
                 </p>
                 <div className="flex items-center gap-3">
-                  <img 
-                    src="/imges/10.jpg" 
+                  <img
+                    src="/imges/10.jpg"
                     alt="Dr. Sarah Adebayo"
                     className="w-12 h-12 rounded-full object-cover"
                   />
@@ -857,8 +881,8 @@ const Home: React.FC = () => {
                   "Donations increased by 320%, and we grew our email list from 200 to over 5,000 supporters. Absolutely transformational for our mission."
                 </p>
                 <div className="flex items-center gap-3">
-                  <img 
-                    src="/imges/11.jpg" 
+                  <img
+                    src="/imges/11.jpg"
                     alt="Mrs. Amina Mohammed"
                     className="w-12 h-12 rounded-full object-cover"
                   />
@@ -885,9 +909,9 @@ const Home: React.FC = () => {
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="group">
               <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
-                <img 
-                  src="/ORI/4.jpg" 
-                    alt="Kids coding sessions"
+                <img
+                  src="/ORI/4.jpg"
+                  alt="Kids coding sessions"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -899,9 +923,9 @@ const Home: React.FC = () => {
 
             <div className="group">
               <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
-                <img 
-                  src="/ORI/5.jpg" 
-                    alt="Professional training"
+                <img
+                  src="/ORI/5.jpg"
+                  alt="Professional training"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -913,9 +937,9 @@ const Home: React.FC = () => {
 
             <div className="group">
               <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
-                <img 
-                  src="/ORI/6.jpg" 
-                    alt="Startup team"
+                <img
+                  src="/ORI/6.jpg"
+                  alt="Startup team"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -938,10 +962,10 @@ const Home: React.FC = () => {
                 TODAY.
               </h2>
               <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-                Ready to join our innovation hub? Whether you're looking for training, 
+                Ready to join our innovation hub? Whether you're looking for training,
                 incubation, or partnership opportunities.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <Mail className="w-6 h-6 text-blue-400" />
@@ -992,11 +1016,11 @@ const Home: React.FC = () => {
             <div className="md:col-span-2">
               <h3 className="text-3xl font-bold mb-6">ORIVON <span className="text-blue-600">EDGE</span></h3>
               <p className="text-xl text-gray-400 leading-relaxed max-w-md">
-                A global innovation hub dedicated to nurturing creativity, 
+                A global innovation hub dedicated to nurturing creativity,
                 technology, and entrepreneurship worldwide.
               </p>
             </div>
-            
+
             <div>
               <h4 className="text-lg font-bold mb-6">Quick Links</h4>
               <ul className="space-y-3 text-gray-400">
@@ -1006,7 +1030,7 @@ const Home: React.FC = () => {
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-lg font-bold mb-6">Services</h4>
               <ul className="space-y-3 text-gray-400">
@@ -1017,7 +1041,7 @@ const Home: React.FC = () => {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-800 mt-16 pt-8">
             <p className="text-gray-400 text-center">
               © 2025 Orivon Edge Innovation Hub. All Rights Reserved
