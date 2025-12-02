@@ -186,29 +186,54 @@ const Home: React.FC = () => {
             </section>
 
             {/* Who We Are */}
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                                Who We Are
+            <section className="py-24 bg-white relative overflow-hidden">
+                {/* Background Decoration */}
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50/50 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide uppercase">
+                                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                                About Us
+                            </div>
+
+                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                                We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Global Innovators</span>
                             </h2>
-                            <p className="text-xl text-gray-600 leading-relaxed mb-6">
-                                Orivon Edge is a global venture studio and digital agency that builds AI-driven startups and delivers powerful technology solutions for businesses worldwide.
-                            </p>
-                            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                                We systematically build, de-risk, and scale innovative startups while delivering high-fidelity enterprise solutions for organizations, NGOs, and businesses across all sectors.
-                            </p>
-                            <p className="text-lg text-gray-700 leading-relaxed">
-                                Unlike traditional incubators, we function as a vital implementation partner ensuring Nigerian Startup Act (NSA) compliance, delivering measurable policy outcomes, and bridging the gap between innovation and institutional deployment.
-                            </p>
+
+                            <div className="space-y-6 text-lg text-gray-600">
+                                <p className="leading-relaxed">
+                                    Orivon Edge is a global venture studio and digital agency that builds AI-driven startups and delivers powerful technology solutions for businesses worldwide.
+                                </p>
+                                <p className="leading-relaxed">
+                                    We systematically build, de-risk, and scale innovative startups while delivering high-fidelity enterprise solutions for organizations, NGOs, and businesses across all sectors.
+                                </p>
+                                <p className="leading-relaxed">
+                                    Unlike traditional incubators, we function as a vital implementation partner ensuring compliance, delivering measurable policy outcomes, and bridging the gap between innovation and institutional deployment.
+                                </p>
+                            </div>
+
+
                         </div>
+
                         <div className="relative">
-                            <img
-                                src="/ORI/1.jpg"
-                                alt="Strategic partnership collaboration"
-                                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
-                            />
+                            <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] opacity-20 blur-xl animate-pulse" />
+                            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100">
+                                <img
+                                    src="/ORI/1.jpg"
+                                    alt="Strategic partnership collaboration"
+                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                                <div className="absolute bottom-0 left-0 p-8 text-white">
+                                    <div className="text-3xl font-bold mb-2">Innovation First</div>
+                                    <p className="text-white/80">Building the future of technology</p>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -217,7 +242,7 @@ const Home: React.FC = () => {
             {/* Trust Metrics */}
             <section className="py-20 bg-gray-900 text-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-12 text-center">
                         <div>
                             <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">
                                 <CountUp end={150} suffix="+" />
@@ -226,19 +251,25 @@ const Home: React.FC = () => {
                         </div>
                         <div>
                             <div className="text-4xl lg:text-5xl font-bold text-purple-400 mb-2">
-                                <CountUp end={50} suffix="+" />
+                                <CountUp end={5} suffix="+" />
                             </div>
                             <p className="text-gray-400">Startups Incubated</p>
                         </div>
                         <div>
                             <div className="text-4xl lg:text-5xl font-bold text-green-400 mb-2">
-                                <CountUp end={16000} suffix="+" />
+                                <CountUp end={5000} suffix="+" />
+                            </div>
+                            <p className="text-gray-400">Youth Empowered Across Ventures</p>
+                        </div>
+                        <div>
+                            <div className="text-4xl lg:text-5xl font-bold text-indigo-400 mb-2">
+                                <CountUp end={20000} suffix="+" />
                             </div>
                             <p className="text-gray-400">Users Across Platforms</p>
                         </div>
                         <div>
                             <div className="text-4xl lg:text-5xl font-bold text-orange-400 mb-2">
-                                <CountUp end={25} suffix="+" />
+                                <CountUp end={10} suffix="+" />
                             </div>
                             <p className="text-gray-400">Global Partners</p>
                         </div>
