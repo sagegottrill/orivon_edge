@@ -115,7 +115,7 @@ const Home: React.FC = () => {
                         {/* Auth Buttons */}
                         <div className="flex items-center space-x-3 sm:space-x-4">
                             <Link to="/auth" className="text-gray-700 hover:text-gray-900 font-medium transition-colors text-sm sm:text-base">Login</Link>
-                            <Link to="/auth?mode=signup" className="bg-orivon-blue text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-orivon-blue/90 transition-colors text-sm sm:text-base">
+                            <Link to="/auth?mode=signup" className="bg-black text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm sm:text-base">
                                 Sign Up
                             </Link>
                         </div>
@@ -362,6 +362,14 @@ const Home: React.FC = () => {
                                 />
                             </div>
 
+                            <div className="flex flex-col items-center min-w-[250px]">
+                                <img
+                                    src="/Nash.png"
+                                    alt="Nash"
+                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                                />
+                            </div>
+
                             {/* Duplicate set for seamless loop */}
                             <div className="flex flex-col items-center min-w-[250px]">
                                 <img
@@ -431,6 +439,14 @@ const Home: React.FC = () => {
                                 <img
                                     src="/bswa.png"
                                     alt="BSWA"
+                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                                />
+                            </div>
+
+                            <div className="flex flex-col items-center min-w-[250px]">
+                                <img
+                                    src="/Nash.png"
+                                    alt="Nash"
                                     className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                                 />
                             </div>
@@ -512,36 +528,19 @@ const Home: React.FC = () => {
 
                     {/* Key Features */}
                     <div className="bg-gray-50 rounded-2xl p-10 lg:p-12">
-                        <h3 className="text-3xl font-bold text-gray-900 mb-4 text-center">Built for Global Learners</h3>
-                        <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto text-center leading-relaxed">
-                            Our AI-powered platform offers personalized learning pathways that adapt to individual learning styles and career goals, accessible from anywhere in the world.
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-10">
-                            <div className="flex items-center gap-2">
-                                <span className="text-gray-900">•</span>
-                                <span className="text-gray-700 font-medium">Personalized for each student</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-gray-900">•</span>
-                                <span className="text-gray-700 font-medium">Always up-to-date with industry needs</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-gray-900">•</span>
-                                <span className="text-gray-700 font-medium">Designed for Nigerian learners</span>
-                            </div>
-                        </div>
+
 
                         {/* CTA Button */}
                         <div className="text-center">
                             <Link
                                 to="/pathfinding/onboarding"
-                                className="inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 hover:shadow-lg transition-all transform hover:scale-105"
+                                className="inline-flex items-center gap-3 bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105"
                             >
                                 <Brain className="w-6 h-6" />
                                 <span>Start Your AI Learning Journey</span>
                                 <ArrowRight className="w-5 h-5" />
                             </Link>
-                            <p className="text-sm text-gray-500 mt-4">Get your personalized learning path in minutes • Free assessment</p>
+
                         </div>
                     </div>
                 </div>
@@ -552,7 +551,7 @@ const Home: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-20">
                         <h2 className="text-5xl font-bold text-gray-900 mb-6">
-                            Innovation <span className="text-blue-600">Supercharged</span>
+                            Innovation <span className="text-orivon-blue">Supercharged</span>
                         </h2>
                         <p className="text-xl text-gray-600">
                             We're building a robust system of AI tools to accelerate your startup journey.

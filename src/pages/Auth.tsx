@@ -211,13 +211,13 @@ const Auth = () => {
 
                                 {isLogin && (
                                     <div className="flex justify-end">
-                                        <a href="#" className="text-sm text-orivon-blue hover:text-orivon-blue/80 transition-colors">Forgot password?</a>
+                                        <a href="#" className="text-sm text-white hover:text-gray-300 transition-colors">Forgot password?</a>
                                     </div>
                                 )}
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-orivon-blue hover:bg-orivon-blue/90 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orivon-blue/20 hover:shadow-orivon-blue/40 transition-all duration-200 flex items-center justify-center gap-2 group"
+                                    className="w-full bg-black hover:bg-gray-800 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-black/20 hover:shadow-black/40 transition-all duration-200 flex items-center justify-center gap-2 group"
                                 >
                                     <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -226,11 +226,11 @@ const Auth = () => {
                         </AnimatePresence>
 
                         <div className="mt-8 text-center">
-                            <p className="text-gray-400">
+                            <p className="text-white">
                                 {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
                                 <button
                                     onClick={toggleMode}
-                                    className="text-orivon-blue hover:text-orivon-blue/80 font-semibold transition-colors"
+                                    className="text-white hover:text-gray-300 font-semibold transition-colors"
                                 >
                                     {isLogin ? "Sign up" : "Sign in"}
                                 </button>

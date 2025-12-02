@@ -39,7 +39,7 @@ const Navigation: React.FC = () => {
             </Link>
             <Link
               to="/auth?mode=signup"
-              className="bg-orivon-blue text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-orivon-blue/90 transition-colors text-sm sm:text-base"
+              className="bg-black text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm sm:text-base"
             >
               Sign Up
             </Link>
