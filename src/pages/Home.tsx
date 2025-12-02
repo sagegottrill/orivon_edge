@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3, Menu, X } from 'lucide-react';
+import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3, Menu, X, Compass, Palette, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
@@ -164,8 +164,8 @@ const Home: React.FC = () => {
                             <p className="text-xl sm:text-2xl lg:text-3xl text-white/95 mb-16 font-light leading-relaxed max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                                 A youth-led innovation hub building the future
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                                <Link to="/join-hub" className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up mt-12" style={{ animationDelay: '0.4s' }}>
+                                <Link to="/join-hub" className="bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
                                     <span>Join the Hub</span>
                                     <ArrowRight className="w-5 h-5" />
                                 </Link>
@@ -186,7 +186,7 @@ const Home: React.FC = () => {
             </section>
 
             {/* Who We Are */}
-            <section className="py-24 bg-white relative overflow-hidden">
+            <section className="py-16 bg-white relative overflow-hidden">
                 {/* Background Decoration */}
                 <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50/50 rounded-full blur-3xl pointer-events-none" />
@@ -213,6 +213,27 @@ const Home: React.FC = () => {
                                 <p className="leading-relaxed">
                                     Unlike traditional incubators, we function as a vital implementation partner ensuring compliance, delivering measurable policy outcomes, and bridging the gap between innovation and institutional deployment.
                                 </p>
+                                <div className="space-y-4 pt-4">
+                                    <h3 className="text-lg font-bold text-gray-900">Our Key Workstreams:</h3>
+                                    <ul className="grid sm:grid-cols-2 gap-3">
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
+                                            <span className="text-gray-700 font-medium">Development</span>
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
+                                            <span className="text-gray-700 font-medium">Innovation</span>
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
+                                            <span className="text-gray-700 font-medium">Creative Enterprise</span>
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
+                                            <span className="text-gray-700 font-medium">Consulting</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
 
 
@@ -236,6 +257,8 @@ const Home: React.FC = () => {
 
                         </div>
                     </div>
+
+
                 </div>
             </section>
 
@@ -484,80 +507,142 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            {/* AI Pathfinding System */}
-            <section id="ai-pathfinding" className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    {/* Header */}
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                            Personalized Learning Paths Powered by AI
-                        </h2>
-
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Think of it as a GPS for your career—our AI guides each learner on the fastest, most effective path to landing their dream tech job.
-                        </p>
-                    </div>
-
-                    {/* How It Works with Image */}
-                    <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+            {/* Venture Studio Overview & Link */}
+            <section className="min-h-screen flex items-center py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h3 className="text-3xl font-bold text-gray-900 mb-8">How It Works</h3>
+                            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                                WE DON'T JUST<br />
+                                BUILD APPS.<br />
+                                <span className="text-blue-600">WE BUILD COMPANIES.</span>
+                            </h2>
+                            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                                Beyond client services, Orivon Edge operates as a venture studio—building,
+                                launching, and scaling our own AI-driven startups that solve real-world problems
+                                for businesses and communities worldwide.
+                            </p>
 
-                            <div className="space-y-6">
-                                <div>
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Understands You</h4>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        Our AI watches how you learn, what excites you, and where you struggle. It's like having a personal tutor who knows exactly what you need.
-                                    </p>
+                            <div className="space-y-4 mb-8">
+                                <div className="flex items-start gap-3">
+                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
+                                    <div>
+                                        <h3 className="text-base font-semibold text-gray-900">Research-Backed Ventures</h3>
+                                        <p className="text-sm text-gray-600">Deep market research and validation before launch</p>
+                                    </div>
                                 </div>
-
-                                <div>
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Stays Current</h4>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        The job market changes fast. Our system automatically updates to teach only the skills companies are hiring for right now.
-                                    </p>
+                                <div className="flex items-start gap-3">
+                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
+                                    <div>
+                                        <h3 className="text-base font-semibold text-gray-900">AI-First Products</h3>
+                                        <p className="text-sm text-gray-600">Leveraging cutting-edge AI and machine learning</p>
+                                    </div>
                                 </div>
-
-                                <div>
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Quality Guaranteed</h4>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        We turn scattered online courses into a clear, step-by-step roadmap. Every lesson is tested to make sure you actually learn.
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Tracks Progress</h4>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        See your growth in real-time with clear metrics. You'll always know exactly where you are and how close you are to your goal.
-                                    </p>
+                                <div className="flex items-start gap-3">
+                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
+                                    <div>
+                                        <h3 className="text-base font-semibold text-gray-900">Global Scale, Real Impact</h3>
+                                        <p className="text-sm text-gray-600">Built for innovation, designed for the world</p>
+                                    </div>
                                 </div>
                             </div>
+
+                            <Link
+                                to="/venture-studio"
+                                className="inline-flex items-center gap-3 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                            >
+                                <span>Explore Our Venture Studio</span>
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
                         </div>
 
                         <div className="relative">
                             <img
-                                src="/ORI/2.jpg"
-                                alt="AI Learning Platform"
-                                className="rounded-2xl shadow-sm w-full h-auto object-cover"
+                                src="/ORI/3.jpg"
+                                alt="Venture Studio Innovation"
+                                className="w-full h-full max-h-[500px] object-cover rounded-2xl shadow-lg"
                             />
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    {/* Key Features */}
-                    <div className="bg-gray-50 rounded-2xl p-10 lg:p-12">
+            {/* AI Pathfinding System */}
+            <section id="ai-pathfinding" className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    {/* Header */}
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Content Side */}
+                        <div className="space-y-8">
+                            <div>
+                                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+                                    Path Finder
+                                </h2>
+                                <h3 className="text-xl font-semibold text-orivon-blue mb-4">
+                                    Personalized Learning Paths Powered by AI
+                                </h3>
+                                <p className="text-lg text-gray-600 leading-relaxed">
+                                    Think of it as a GPS for your career our Path Finder guides each learner on the fastest, most effective path to landing their dream tech job.
+                                </p>
+                            </div>
 
+                            <div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                    <span className="w-8 h-1 bg-orivon-blue rounded-full"></span>
+                                    How It Works
+                                </h3>
+                                <div className="grid sm:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <h4 className="font-bold text-gray-900 flex items-center gap-2">
+                                            <Brain className="w-5 h-5 text-orivon-blue" />
+                                            Understands You
+                                        </h4>
+                                        <p className="text-sm text-gray-600">Our AI watches how you learn, what excites you, and where you struggle.</p>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="font-bold text-gray-900 flex items-center gap-2">
+                                            <Zap className="w-5 h-5 text-orivon-blue" />
+                                            Stays Current
+                                        </h4>
+                                        <p className="text-sm text-gray-600">Updates automatically to teach only the skills companies are hiring for right now.</p>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="font-bold text-gray-900 flex items-center gap-2">
+                                            <CheckCircle className="w-5 h-5 text-orivon-blue" />
+                                            Quality Guaranteed
+                                        </h4>
+                                        <p className="text-sm text-gray-600">Every lesson is tested to make sure you actually learn.</p>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="font-bold text-gray-900 flex items-center gap-2">
+                                            <BarChart3 className="w-5 h-5 text-orivon-blue" />
+                                            Tracks Progress
+                                        </h4>
+                                        <p className="text-sm text-gray-600">See your growth in real-time with clear metrics.</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                        {/* CTA Button */}
-                        <div className="text-center">
-                            <Link
-                                to="/pathfinding/onboarding"
-                                className="inline-flex items-center gap-3 bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105"
-                            >
-                                <Brain className="w-6 h-6" />
-                                <span>Start Your AI Learning Journey</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </Link>
+                            <div className="pt-4">
+                                <Link
+                                    to="/pathfinding/onboarding"
+                                    className="inline-flex items-center gap-3 bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105"
+                                >
+                                    <Compass className="w-6 h-6" />
+                                    <span>Try Pathfinder</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </Link>
+                            </div>
+                        </div>
 
+                        {/* Image Side */}
+                        <div className="relative order-first lg:order-last">
+                            <div className="absolute inset-0 bg-orivon-blue/5 rounded-3xl transform rotate-3"></div>
+                            <img
+                                src="/ORI/2.jpg"
+                                alt="AI Learning Platform"
+                                className="relative rounded-3xl shadow-xl w-full h-auto object-cover border border-gray-100"
+                            />
                         </div>
                     </div>
                 </div>
@@ -639,65 +724,7 @@ const Home: React.FC = () => {
             </section>
 
 
-            {/* Services Grid */}
-            <section id="services" className="py-20 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                            What We Do
-                        </h2>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Four key workstreams that drive innovation and entrepreneurship across Nigeria.
-                        </p>
-                    </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                            <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-                                <Code className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Development</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                High-impact programs in youth empowerment, digital skills training,
-                                and tech entrepreneurship across Nigeria.
-                            </p>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                            <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
-                                <Rocket className="w-6 h-6 text-purple-600 group-hover:text-white transition-colors" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Innovation</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Collaborative space for startups to develop AI, web development,
-                                and digital transformation solutions.
-                            </p>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                            <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
-                                <Globe className="w-6 h-6 text-green-600 group-hover:text-white transition-colors" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Creative Enterprise</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Supporting the creative economy through digital media training
-                                and creative technology solutions.
-                            </p>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                            <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors">
-                                <BarChart3 className="w-6 h-6 text-orange-600 group-hover:text-white transition-colors" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Consulting</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Strategic advisory in digital transformation, business development,
-                                and technology strategy.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* Training Programs */}
             <section className="py-32 bg-gray-50">
@@ -753,378 +780,64 @@ const Home: React.FC = () => {
                 </div>
             </div>
 
-            {/* Venture Studio Overview & Link */}
-            <section className="min-h-screen flex items-center py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                                WE DON'T JUST<br />
-                                BUILD APPS.<br />
-                                <span className="text-blue-600">WE BUILD COMPANIES.</span>
-                            </h2>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                                Beyond client services, Orivon Edge operates as a venture studio—building,
-                                launching, and scaling our own AI-driven startups that solve real-world problems
-                                for businesses and communities worldwide.
-                            </p>
 
-                            <div className="space-y-4 mb-8">
-                                <div className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
-                                    <div>
-                                        <h3 className="text-base font-semibold text-gray-900">Research-Backed Ventures</h3>
-                                        <p className="text-sm text-gray-600">Deep market research and validation before launch</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
-                                    <div>
-                                        <h3 className="text-base font-semibold text-gray-900">AI-First Products</h3>
-                                        <p className="text-sm text-gray-600">Leveraging cutting-edge AI and machine learning</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
-                                    <div>
-                                        <h3 className="text-base font-semibold text-gray-900">Global Scale, Real Impact</h3>
-                                        <p className="text-sm text-gray-600">Built for innovation, designed for the world</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <Link
-                                to="/venture-studio"
-                                className="inline-flex items-center gap-3 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                            >
-                                <span>Explore Our Venture Studio</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </Link>
-                        </div>
 
-                        <div className="relative">
-                            <img
-                                src="/ORI/3.jpg"
-                                alt="Venture Studio Innovation"
-                                className="w-full h-full max-h-[500px] object-cover rounded-2xl shadow-lg"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Ventures Showcase */}
-            <section id="ventures" className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                            Our Ventures
-                        </h2>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Real solutions addressing critical challenges for Nigeria and beyond.
-                        </p>
-                    </div>
 
-                    <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-                        {/* Democrasee */}
-                        <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            <div className="flex items-start justify-between mb-6">
-                                <span className="px-3 py-1.5 bg-white border border-gray-200 text-gray-900 text-xs font-semibold rounded-full">
-                                    Pre-Launch
-                                </span>
-                            </div>
 
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Democrasee</h3>
-                            <p className="text-sm text-gray-600 font-medium mb-4">Civic Tech Platform</p>
 
-                            <p className="text-gray-600 mb-6 leading-relaxed">
-                                AI-powered crisis reporting platform for transparent humanitarian response.
-                                Offline-first, multi-channel (web, WhatsApp, SMS, PWA).
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-3 mb-6">
-                                <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                    <p className="text-2xl font-bold text-gray-900">85%</p>
-                                    <p className="text-xs text-gray-600">Offline Capability</p>
-                                </div>
-                                <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                    <p className="text-2xl font-bold text-gray-900">4 Ch</p>
-                                    <p className="text-xs text-gray-600">Report Channels</p>
-                                </div>
-                            </div>
-
-                            <Link
-                                to="/venture-studio#democrasee"
-                                className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
-                            >
-                                <span>View Case Study</span>
-                                <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
-
-                        {/* FarmAfricaa */}
-                        <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            <div className="flex items-start justify-between mb-6">
-                                <span className="px-3 py-1.5 bg-white border border-gray-200 text-gray-900 text-xs font-semibold rounded-full">
-                                    Pre-Launch
-                                </span>
-                            </div>
-
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">FarmAfricaa</h3>
-                            <p className="text-sm text-gray-600 font-medium mb-4">AgriTech Platform</p>
-
-                            <p className="text-gray-600 mb-6 leading-relaxed">
-                                AI disease detection for smallholder farmers. Snap a photo, get instant diagnosis
-                                and treatment advice—works offline.
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-3 mb-6">
-                                <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                    <p className="text-2xl font-bold text-gray-900">95%</p>
-                                    <p className="text-xs text-gray-600">Accuracy Rate</p>
-                                </div>
-                                <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                    <p className="text-2xl font-bold text-gray-900">20+</p>
-                                    <p className="text-xs text-gray-600">Crop Diseases</p>
-                                </div>
-                            </div>
-
-                            <Link
-                                to="/venture-studio#farmafricaa"
-                                className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
-                            >
-                                <span>View Case Study</span>
-                                <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
-
-                        {/* ARIE */}
-                        <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            <div className="flex items-start justify-between mb-6">
-                                <span className="px-3 py-1.5 bg-white border border-gray-200 text-gray-900 text-xs font-semibold rounded-full">
-                                    Pre-Launch
-                                </span>
-                            </div>
-
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">ARIE</h3>
-                            <p className="text-sm text-gray-600 font-medium mb-4">FinTech Platform</p>
-
-                            <p className="text-gray-600 mb-6 leading-relaxed">
-                                Agentic AI for instant KYC, real-time fraud detection, and fair credit scoring
-                                for the unbanked using alternative data.
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-3 mb-6">
-                                <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                    <p className="text-2xl font-bold text-gray-900">&lt;2s</p>
-                                    <p className="text-xs text-gray-600">KYC Processing</p>
-                                </div>
-                                <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                    <p className="text-2xl font-bold text-gray-900">99%</p>
-                                    <p className="text-xs text-gray-600">Fraud Detection</p>
-                                </div>
-                            </div>
-
-                            <Link
-                                to="/venture-studio#arie"
-                                className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:gap-3 transition-all"
-                            >
-                                <span>View Case Study</span>
-                                <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Testimonials */}
-            <section className="py-32 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
-                        <div>
-                            <h2 className="text-6xl font-bold text-gray-900 mb-12 leading-tight">
-                                WHAT THEY<br />
-                                SAY ABOUT US.
-                            </h2>
-
-                            <div className="space-y-12">
-                                <div>
-                                    <div className="flex text-yellow-400 mb-4">
-                                        {[...Array(5)].map((_, i) => (
-                                            <span key={i} className="text-2xl">★</span>
-                                        ))}
-                                    </div>
-                                    <blockquote className="text-2xl text-gray-900 font-light italic mb-6">
-                                        "Orivon Edge solved what other companies said was impossible. Their offline-first approach brought digital education to 10,000+ students in remote areas."
-                                    </blockquote>
-                                    <div className="flex items-center gap-4">
-                                        <img
-                                            src="/imges/10.jpg"
-                                            alt="Malam Ibrahim Abdullahi"
-                                            className="w-16 h-16 rounded-full object-cover"
-                                        />
-                                        <div>
-                                            <p className="font-bold text-gray-900 text-lg">Malam Ibrahim Abdullahi</p>
-                                            <p className="text-gray-500">Director, BICTDA</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="space-y-8">
-                            <div className="bg-white rounded-2xl p-8 shadow-sm">
-                                <div className="flex text-yellow-400 mb-4">
-                                    {[...Array(5)].map((_, i) => (
-                                        <span key={i} className="text-xl">★</span>
-                                    ))}
-                                </div>
-                                <p className="text-lg text-gray-600 italic mb-6">
-                                    "Our bookings increased by 250% in just 3 months. The mobile-responsive design means clients can book from anywhere, anytime."
-                                </p>
-                                <div className="flex items-center gap-3">
-                                    <img
-                                        src="/imges/10.jpg"
-                                        alt="Dr. Sarah Adebayo"
-                                        className="w-12 h-12 rounded-full object-cover"
-                                    />
-                                    <div>
-                                        <p className="font-semibold text-gray-900">Dr. Sarah Adebayo</p>
-                                        <p className="text-sm text-gray-500">Founder, Beeloveds House</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="bg-white rounded-2xl p-8 shadow-sm">
-                                <div className="flex text-yellow-400 mb-4">
-                                    {[...Array(5)].map((_, i) => (
-                                        <span key={i} className="text-xl">★</span>
-                                    ))}
-                                </div>
-                                <p className="text-lg text-gray-600 italic mb-6">
-                                    "Donations increased by 320%, and we grew our email list from 200 to over 5,000 supporters. Absolutely transformational for our mission."
-                                </p>
-                                <div className="flex items-center gap-3">
-                                    <img
-                                        src="/imges/11.jpg"
-                                        alt="Mrs. Amina Mohammed"
-                                        className="w-12 h-12 rounded-full object-cover"
-                                    />
-                                    <div>
-                                        <p className="font-semibold text-gray-900">Mrs. Amina Mohammed</p>
-                                        <p className="text-sm text-gray-500">Executive Director, SAV Women Foundation</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Training in Action */}
-            <section className="py-32 bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="text-center mb-20">
-                        <h2 className="text-6xl font-bold text-gray-900 mb-8">
-                            TRAINING IN ACTION.
-                        </h2>
-                    </div>
-
-                    <div className="grid lg:grid-cols-3 gap-12">
-                        <div className="group">
-                            <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
-                                <img
-                                    src="/ORI/4.jpg"
-                                    alt="Kids coding sessions"
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Kids Coding Sessions</h3>
-                            <p className="text-gray-600">
-                                Young minds building their first mobile apps through hands-on coding.
-                            </p>
-                        </div>
-
-                        <div className="group">
-                            <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
-                                <img
-                                    src="/ORI/5.jpg"
-                                    alt="Professional training"
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Professional Training</h3>
-                            <p className="text-gray-600">
-                                Professionals mastering AI and machine learning for global opportunities.
-                            </p>
-                        </div>
-
-                        <div className="group">
-                            <div className="h-80 relative overflow-hidden rounded-2xl mb-6">
-                                <img
-                                    src="/ORI/6.jpg"
-                                    alt="Startup team"
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Startup Incubation</h3>
-                            <p className="text-gray-600">
-                                Entrepreneurs developing technology solutions for local and global markets.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* Contact Section */}
-            <section id="contact" className="py-32 bg-gray-900 text-white">
+            {/* Contact Section */}
+            <section id="contact" className="py-20 bg-gray-900 text-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="text-6xl font-bold mb-8 leading-tight">
+                            <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                                 GET STARTED<br />
                                 TODAY.
                             </h2>
-                            <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+                            <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-lg">
                                 Ready to join our innovation hub? Whether you're looking for training,
                                 incubation, or partnership opportunities.
                             </p>
 
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4">
-                                    <Mail className="w-6 h-6 text-blue-400" />
-                                    <span className="text-xl">info@orivonedge.dev</span>
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <Mail className="w-5 h-5 text-blue-400" />
+                                    <span className="text-lg">info@orivonedge.dev</span>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <Phone className="w-6 h-6 text-green-400" />
-                                    <span className="text-xl">+234 8143084473</span>
+                                <div className="flex items-center gap-3">
+                                    <Phone className="w-5 h-5 text-green-400" />
+                                    <span className="text-lg">+234 8143084473</span>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <MapPin className="w-6 h-6 text-purple-400" />
-                                    <span className="text-xl">Borno State, Nigeria</span>
+                                <div className="flex items-center gap-3">
+                                    <MapPin className="w-5 h-5 text-purple-400" />
+                                    <span className="text-lg">Borno State, Nigeria</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="grid gap-8">
-                            <div className="text-center p-8 bg-white/5 rounded-2xl">
-                                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <Users className="w-10 h-10 text-gray-900" />
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors text-center group">
+                                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-colors">
+                                    <Users className="w-6 h-6 text-white" />
                                 </div>
-                                <h3 className="text-2xl font-bold mb-4">Join Training</h3>
-                                <p className="text-gray-300 mb-6">Professional development programs</p>
-                                <Link to="/core-skills-track" className="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                <h3 className="text-xl font-bold mb-2">Join Training</h3>
+                                <p className="text-sm text-gray-400 mb-4">Professional development programs</p>
+                                <Link to="/core-skills-track" className="inline-block w-full bg-white text-gray-900 px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-gray-100 transition-colors">
                                     Enroll Now
                                 </Link>
                             </div>
 
-                            <div className="text-center p-8 bg-white/5 rounded-2xl">
-                                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <Rocket className="w-10 h-10 text-gray-900" />
+                            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors text-center group">
+                                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-colors">
+                                    <Rocket className="w-6 h-6 text-white" />
                                 </div>
-                                <h3 className="text-2xl font-bold mb-4">Startup Incubation</h3>
-                                <p className="text-gray-300 mb-6">Mentorship and incubation programs</p>
-                                <Link to="/join-hub" className="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                <h3 className="text-xl font-bold mb-2">Startup Incubation</h3>
+                                <p className="text-sm text-gray-400 mb-4">Mentorship and incubation programs</p>
+                                <Link to="/join-hub" className="inline-block w-full bg-white text-gray-900 px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-gray-100 transition-colors">
                                     Apply Now
                                 </Link>
                             </div>
