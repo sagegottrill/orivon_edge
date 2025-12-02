@@ -20,6 +20,7 @@ import PathfindingOnboarding from "./pages/PathfindingOnboarding";
 import CoursesBrowser from "./pages/CoursesBrowser";
 import LearningPathView from "./pages/LearningPathView";
 import AdminDashboard from "./pages/AdminDashboard";
+import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/pathfinding/courses" element={<CoursesBrowser />} />
             <Route path="/pathfinding/path" element={<LearningPathView />} />
             <Route path="/pathfinding/admin" element={<AdminDashboard />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3 } from 'lucide-react';
+import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
@@ -24,6 +24,8 @@ const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = (
 };
 
 const Home: React.FC = () => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     useEffect(() => {
         // Hero carousel functionality
         const slides = document.querySelectorAll('.hero-slide');
@@ -94,21 +96,27 @@ const Home: React.FC = () => {
 
             {/* Navigation */}
             <nav className="bg-white shadow-sm fixed w-full top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-20">
+                        {/* Logo */}
                         <div className="flex items-center">
-                            <a href="#home" className="text-3xl font-bold text-gray-900 hover:opacity-80 transition-opacity cursor-pointer">
-                                ORIVON <span className="text-blue-600">EDGE</span>
-                            </a>
+                            <Link to="/" className="flex items-center gap-3">
+                                <img
+                                    src="/logo.png"
+                                    alt="Orivon Edge Logo"
+                                    className="h-10 w-auto"
+                                />
+                                <span className="text-base sm:text-xl md:text-2xl font-montserrat font-bold text-gray-900 tracking-tight uppercase">
+                                    ORIVON <span className="text-blue-600 font-extrabold">EDGE</span>
+                                </span>
+                            </Link>
                         </div>
-                        <div className="hidden md:flex items-center space-x-12">
-                            <Link to="/about" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">About</Link>
-                            <a href="#ai-pathfinding" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">AI Pathfinding</a>
-                            <a href="#services" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Services</a>
-                            <Link to="/venture-studio" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Venture Studio</Link>
-                            <a href="#contact" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Contact</a>
-                            <Link to="/join-hub" className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                                Join Hub
+
+                        {/* Auth Buttons */}
+                        <div className="flex items-center space-x-3 sm:space-x-4">
+                            <Link to="/auth" className="text-gray-700 hover:text-gray-900 font-medium transition-colors text-sm sm:text-base">Login</Link>
+                            <Link to="/auth?mode=signup" className="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base">
+                                Sign Up
                             </Link>
                         </div>
                     </div>
@@ -173,8 +181,6 @@ const Home: React.FC = () => {
                         <button className="carousel-dot active w-4 h-4 rounded-full bg-white/60 hover:bg-white transition-all"></button>
                         <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
                         <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
-                        <span className="text-white/40">•</span>
-                        <span>Digital Solutions</span>
                     </div>
                 </div>
             </section>
@@ -509,6 +515,82 @@ const Home: React.FC = () => {
                     </div>
                 </div>
             </section>
+
+            {/* AI Innovation Suite */}
+            <section className="py-32 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="text-center max-w-3xl mx-auto mb-20">
+                        <h2 className="text-5xl font-bold text-gray-900 mb-6">
+                            Innovation <span className="text-blue-600">Supercharged</span>
+                        </h2>
+                        <p className="text-xl text-gray-600">
+                            We're building a robust system of AI tools to accelerate your startup journey.
+                            From idea validation to investor readiness.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-12">
+                        {/* AI Problem Finder */}
+                        <div className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 group">
+                            <div className="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                                <Brain className="w-8 h-8" />
+                            </div>
+                            <h3 className="text-3xl font-bold text-gray-900 mb-4">AI Problem Finder</h3>
+                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                                Have an idea? Input it and let our AI search real-time data to validate its relevance.
+                                It checks if people are looking for your solution and even generates startup ideas based on market gaps.
+                            </p>
+                            <ul className="space-y-4 mb-8">
+                                <li className="flex items-center gap-3 text-gray-700">
+                                    <CheckCircle className="w-5 h-5 text-green-500" />
+                                    <span>Real-time market relevance search</span>
+                                </li>
+                                <li className="flex items-center gap-3 text-gray-700">
+                                    <CheckCircle className="w-5 h-5 text-green-500" />
+                                    <span>Problem-Solution fit analysis</span>
+                                </li>
+                                <li className="flex items-center gap-3 text-gray-700">
+                                    <CheckCircle className="w-5 h-5 text-green-500" />
+                                    <span>Startup idea generation</span>
+                                </li>
+                            </ul>
+                            <button className="w-full py-4 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+                                Validate Your Idea <ArrowRight className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        {/* Pitch Deck Assessor */}
+                        <div className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 group">
+                            <div className="w-16 h-16 rounded-2xl bg-purple-600 text-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                                <BarChart3 className="w-8 h-8" />
+                            </div>
+                            <h3 className="text-3xl font-bold text-gray-900 mb-4">Pitch Deck Assessor</h3>
+                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                                Upload your pitch deck and get instant feedback from our AI Investor.
+                                Powered by advanced Gemini APIs, it assesses your deck's strength, structure, and investability.
+                            </p>
+                            <ul className="space-y-4 mb-8">
+                                <li className="flex items-center gap-3 text-gray-700">
+                                    <CheckCircle className="w-5 h-5 text-green-500" />
+                                    <span>Instant deck analysis</span>
+                                </li>
+                                <li className="flex items-center gap-3 text-gray-700">
+                                    <CheckCircle className="w-5 h-5 text-green-500" />
+                                    <span>Investor perspective feedback</span>
+                                </li>
+                                <li className="flex items-center gap-3 text-gray-700">
+                                    <CheckCircle className="w-5 h-5 text-green-500" />
+                                    <span>Improvement recommendations</span>
+                                </li>
+                            </ul>
+                            <button className="w-full py-4 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+                                Analyze My Deck <ArrowRight className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
             {/* Services Grid */}
             <section id="services" className="py-20 bg-gray-50">

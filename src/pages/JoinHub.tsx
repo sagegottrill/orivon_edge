@@ -1,8 +1,47 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Users, GraduationCap, Rocket, CheckCircle, Mail, Phone, MapPin, Briefcase } from 'lucide-react';
 
 const JoinHub: React.FC = () => {
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if user is authenticated (you can replace this with your actual auth logic)
+    const checkAuth = () => {
+      // For now, check if there's a token in localStorage
+      const token = localStorage.getItem('authToken');
+
+      if (!token) {
+        // Redirect to auth page with return URL
+        navigate('/auth?redirect=/join-hub');
+      } else {
+        setIsAuthenticated(true);
+      }
+      setIsLoading(false);
+    };
+
+    checkAuth();
+  }, [navigate]);
+
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If not authenticated, don't render the page (will redirect)
+  if (!isAuthenticated) {
+    return null;
+  }
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -26,10 +65,10 @@ const JoinHub: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // TODO: Integrate with Supabase
     console.log('Application submitted:', formData);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitted(true);
@@ -63,7 +102,7 @@ const JoinHub: React.FC = () => {
               APPLICATION RECEIVED!
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Thank you for applying to join Orivon Edge Innovation Hub. We've received your application 
+              Thank you for applying to join Orivon Edge Innovation Hub. We've received your application
               and our team will review it carefully.
             </p>
             <div className="bg-blue-50 rounded-2xl p-8 mb-8 text-left">
@@ -134,7 +173,7 @@ const JoinHub: React.FC = () => {
                 THE <span className="text-blue-600">FUTURE.</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Join Africa's fastest-growing innovation hub. Access world-class training, 
+                Join Africa's fastest-growing innovation hub. Access world-class training,
                 mentorship, and opportunities to build the next generation of technology solutions.
               </p>
 
@@ -155,8 +194,8 @@ const JoinHub: React.FC = () => {
             </div>
 
             <div className="relative">
-              <img 
-                src="/imges/14.jpg" 
+              <img
+                src="/imges/14.jpg"
                 alt="Innovation hub community"
                 className="w-full h-full max-h-[500px] object-cover rounded-2xl shadow-lg"
               />
@@ -314,19 +353,19 @@ const JoinHub: React.FC = () => {
               Fill out the application below and take the first step towards your future.
             </p>
           </div>
-          
+
           <div className="bg-white rounded-2xl p-8 md:p-12 text-left">
             <h3 className="text-3xl font-bold text-gray-900 mb-8">Application Form</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Personal Information */}
               <div className="space-y-6">
                 <h4 className="text-xl font-bold text-gray-900 border-b pb-3">Personal Information</h4>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name *</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
@@ -337,8 +376,8 @@ const JoinHub: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">Email Address *</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -352,8 +391,8 @@ const JoinHub: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number *</label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
@@ -364,8 +403,8 @@ const JoinHub: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">Location *</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="location"
                       value={formData.location}
                       onChange={handleChange}
@@ -380,10 +419,10 @@ const JoinHub: React.FC = () => {
               {/* Program Interest */}
               <div className="space-y-6">
                 <h4 className="text-xl font-bold text-gray-900 border-b pb-3">Program Interest</h4>
-                
+
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">What are you interested in? *</label>
-                  <select 
+                  <select
                     name="interest"
                     value={formData.interest}
                     onChange={handleChange}
@@ -402,7 +441,7 @@ const JoinHub: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Current Experience Level *</label>
-                  <select 
+                  <select
                     name="experience"
                     value={formData.experience}
                     onChange={handleChange}
@@ -421,10 +460,10 @@ const JoinHub: React.FC = () => {
               {/* Background & Goals */}
               <div className="space-y-6">
                 <h4 className="text-xl font-bold text-gray-900 border-b pb-3">Tell Us About Yourself</h4>
-                
+
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Educational/Professional Background *</label>
-                  <textarea 
+                  <textarea
                     name="background"
                     value={formData.background}
                     onChange={handleChange}
@@ -437,7 +476,7 @@ const JoinHub: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">What are your goals? *</label>
-                  <textarea 
+                  <textarea
                     name="goals"
                     value={formData.goals}
                     onChange={handleChange}
@@ -452,11 +491,11 @@ const JoinHub: React.FC = () => {
               {/* Additional Information */}
               <div className="space-y-6">
                 <h4 className="text-xl font-bold text-gray-900 border-b pb-3">Additional Details</h4>
-                
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">Availability *</label>
-                    <select 
+                    <select
                       name="availability"
                       value={formData.availability}
                       onChange={handleChange}
@@ -472,7 +511,7 @@ const JoinHub: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-900 mb-2">How did you hear about us? *</label>
-                    <select 
+                    <select
                       name="howHeard"
                       value={formData.howHeard}
                       onChange={handleChange}
@@ -491,7 +530,7 @@ const JoinHub: React.FC = () => {
               </div>
 
               <div className="pt-6">
-                <button 
+                <button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
