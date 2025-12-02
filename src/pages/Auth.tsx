@@ -56,7 +56,7 @@ const Auth = () => {
                             className="h-10 w-auto"
                         />
                         <span className="text-xl font-montserrat font-bold text-white tracking-tight uppercase">
-                            ORIVON <span className="text-blue-500 font-extrabold">EDGE</span>
+                            ORIVON <span className="text-orivon-blue font-extrabold">EDGE</span>
                         </span>
                     </Link>
                 </div>
@@ -113,7 +113,7 @@ const Auth = () => {
                                 className="h-10 w-auto"
                             />
                             <span className="text-xl font-montserrat font-bold text-white tracking-tight uppercase">
-                                ORIVON <span className="text-blue-500 font-extrabold">EDGE</span>
+                                ORIVON <span className="text-orivon-blue font-extrabold">EDGE</span>
                             </span>
                         </Link>
                     </div>
@@ -159,14 +159,14 @@ const Auth = () => {
                                     <div className="space-y-2">
                                         <label className="text-sm font-medium text-gray-300 ml-1">Full Name</label>
                                         <div className="relative group">
-                                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-blue-500 transition-colors" />
+                                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-orivon-blue transition-colors" />
                                             <input
                                                 type="text"
                                                 name="name"
                                                 value={formData.name}
                                                 onChange={handleChange}
                                                 placeholder="John Doe"
-                                                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-orivon-blue/50 focus:ring-1 focus:ring-orivon-blue/50 transition-all"
                                             />
                                         </div>
                                     </div>
@@ -175,14 +175,14 @@ const Auth = () => {
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-300 ml-1">Email Address</label>
                                     <div className="relative group">
-                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-blue-500 transition-colors" />
+                                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-orivon-blue transition-colors" />
                                         <input
                                             type="email"
                                             name="email"
                                             value={formData.email}
                                             onChange={handleChange}
                                             placeholder="john@example.com"
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-orivon-blue/50 focus:ring-1 focus:ring-orivon-blue/50 transition-all"
                                         />
                                     </div>
                                 </div>
@@ -190,14 +190,14 @@ const Auth = () => {
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-300 ml-1">Password</label>
                                     <div className="relative group">
-                                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-blue-500 transition-colors" />
+                                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-orivon-blue transition-colors" />
                                         <input
                                             type={showPassword ? "text" : "password"}
                                             name="password"
                                             value={formData.password}
                                             onChange={handleChange}
                                             placeholder="••••••••"
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-12 text-white placeholder:text-gray-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-12 pr-12 text-white placeholder:text-gray-600 focus:outline-none focus:border-orivon-blue/50 focus:ring-1 focus:ring-orivon-blue/50 transition-all"
                                         />
                                         <button
                                             type="button"
@@ -211,13 +211,13 @@ const Auth = () => {
 
                                 {isLogin && (
                                     <div className="flex justify-end">
-                                        <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">Forgot password?</a>
+                                        <a href="#" className="text-sm text-orivon-blue hover:text-orivon-blue/80 transition-colors">Forgot password?</a>
                                     </div>
                                 )}
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 transition-all duration-200 flex items-center justify-center gap-2 group"
+                                    className="w-full bg-orivon-blue hover:bg-orivon-blue/90 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orivon-blue/20 hover:shadow-orivon-blue/40 transition-all duration-200 flex items-center justify-center gap-2 group"
                                 >
                                     <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -230,7 +230,7 @@ const Auth = () => {
                                 {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
                                 <button
                                     onClick={toggleMode}
-                                    className="text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+                                    className="text-orivon-blue hover:text-orivon-blue/80 font-semibold transition-colors"
                                 >
                                     {isLogin ? "Sign up" : "Sign in"}
                                 </button>

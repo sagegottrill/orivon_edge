@@ -25,7 +25,7 @@ const Navigation: React.FC = () => {
                 className="h-10 w-auto"
               />
               <span className="text-base sm:text-xl md:text-2xl font-montserrat font-bold text-white tracking-tight uppercase">
-                ORIVON <span className="gradient-text font-extrabold">EDGE</span>
+                ORIVON <span className="text-orivon-blue font-extrabold">EDGE</span>
               </span>
             </Link>
           </div>
@@ -39,7 +39,7 @@ const Navigation: React.FC = () => {
             </Link>
             <Link
               to="/auth?mode=signup"
-              className="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base"
+              className="bg-orivon-blue text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-orivon-blue/90 transition-colors text-sm sm:text-base"
             >
               Sign Up
             </Link>

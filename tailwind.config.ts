@@ -63,7 +63,8 @@ export default {
           'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
-        }
+        },
+        'orivon-blue': '#000f51',
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'monospace'],

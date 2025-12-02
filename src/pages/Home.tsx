@@ -107,7 +107,7 @@ const Home: React.FC = () => {
                                     className="h-10 w-auto"
                                 />
                                 <span className="text-base sm:text-xl md:text-2xl font-montserrat font-bold text-gray-900 tracking-tight uppercase">
-                                    ORIVON <span className="text-blue-600 font-extrabold">EDGE</span>
+                                    ORIVON <span className="text-orivon-blue font-extrabold">EDGE</span>
                                 </span>
                             </Link>
                         </div>
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
                         {/* Auth Buttons */}
                         <div className="flex items-center space-x-3 sm:space-x-4">
                             <Link to="/auth" className="text-gray-700 hover:text-gray-900 font-medium transition-colors text-sm sm:text-base">Login</Link>
-                            <Link to="/auth?mode=signup" className="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base">
+                            <Link to="/auth?mode=signup" className="bg-orivon-blue text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-orivon-blue/90 transition-colors text-sm sm:text-base">
                                 Sign Up
                             </Link>
                         </div>
@@ -194,13 +194,13 @@ const Home: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide uppercase">
-                                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-orivon-blue text-sm font-semibold tracking-wide uppercase">
+                                <span className="w-2 h-2 rounded-full bg-orivon-blue animate-pulse" />
                                 About Us
                             </div>
 
                             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                                We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Global Innovators</span>
+                                We Are <span className="text-orivon-blue">Global Innovators</span>
                             </h2>
 
                             <div className="space-y-6 text-lg text-gray-600">
@@ -244,31 +244,31 @@ const Home: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-12 text-center">
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">
+                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
                                 <CountUp end={150} suffix="+" />
                             </div>
                             <p className="text-gray-400">Students Trained</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-purple-400 mb-2">
+                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
                                 <CountUp end={5} suffix="+" />
                             </div>
                             <p className="text-gray-400">Startups Incubated</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-green-400 mb-2">
+                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
                                 <CountUp end={5000} suffix="+" />
                             </div>
                             <p className="text-gray-400">Youth Empowered Across Ventures</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-indigo-400 mb-2">
+                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
                                 <CountUp end={20000} suffix="+" />
                             </div>
                             <p className="text-gray-400">Users Across Platforms</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-orange-400 mb-2">
+                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
                                 <CountUp end={10} suffix="+" />
                             </div>
                             <p className="text-gray-400">Global Partners</p>
