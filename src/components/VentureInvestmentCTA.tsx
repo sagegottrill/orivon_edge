@@ -17,20 +17,20 @@ const VentureInvestmentCTA: React.FC = () => {
                 Invest in Africa's Next Tech Giants
               </h2>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed text-balance">
-                We're seeking strategic partners and investors to scale our ventures 
+                We're seeking strategic partners and investors to scale our ventures
                 and launch new solutions aligned with Nigeria's digital transformation goals.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="#contact" 
+                <a
+                  href="#contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 glow-effect"
                 >
                   <span>Request Investment Deck</span>
                   <ArrowRight className="w-5 h-5" />
                 </a>
-                <a 
-                  href="/join-hub" 
+                <a
+                  href="/join-hub"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 hover:border-white/40 transition-all duration-300"
                 >
                   <span>Partnership Opportunities</span>

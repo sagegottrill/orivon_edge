@@ -2,6 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
+const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = ({ end, duration = 2000, suffix = '' }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let startTime: number | null = null;
+        const animate = (currentTime: number) => {
+            if (!startTime) startTime = currentTime;
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            setCount(Math.floor(progress * end));
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        };
+        requestAnimationFrame(animate);
+    }, [end, duration]);
+
+    return <span>{count.toLocaleString()}{suffix}</span>;
+};
+
 const Home: React.FC = () => {
     useEffect(() => {
         // Hero carousel functionality
@@ -127,56 +148,39 @@ const Home: React.FC = () => {
                         </div>
                     </div>
 
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8 tracking-tight animate-fade-in-up">
+                                Building the Future of Technology and Innovation
+                            </h1>
+                            <p className="text-xl sm:text-2xl lg:text-3xl text-white/95 mb-16 font-light leading-relaxed max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                                A youth-led innovation hub building the future
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                                <Link to="/join-hub" className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                                    <span>Join the Hub</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </Link>
+                                <Link to="/venture-studio" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                                    <span>Explore Ventures</span>
+                                    <Rocket className="w-5 h-5" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 z-20">
                         <button className="carousel-dot active w-4 h-4 rounded-full bg-white/60 hover:bg-white transition-all"></button>
                         <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
                         <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
-                    </div>
-                </div>
-
-                <div className="relative z-10 flex flex-col justify-center min-h-screen">
-                    <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                        <div className="max-w-6xl mx-auto text-center">
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8 tracking-tight">
-                                Building the Future of Technology and Innovation
-                            </h1>
-
-                            <p className="text-xl sm:text-2xl lg:text-3xl text-white/95 mb-16 font-light leading-relaxed max-w-4xl mx-auto">
-                                A youth-led innovation hub building the future
-                            </p>
-
-                            <div className="flex justify-center flex-wrap gap-4 sm:gap-6 text-white/80 text-sm sm:text-base font-medium mb-8">
-                                <span>AI Development</span>
-                                <span className="text-white/40">•</span>
-                                <span>Startup Incubation</span>
-                                <span className="text-white/40">•</span>
-                                <span>Tech Training</span>
-                                <span className="text-white/40">•</span>
-                                <span>Digital Solutions</span>
-                            </div>
-                        </div>
+                        <span className="text-white/40">•</span>
+                        <span>Digital Solutions</span>
                     </div>
                 </div>
             </section>
 
-            {/* Trust Metrics Section */}
-            <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid md:grid-cols-2 gap-8 text-center max-w-3xl mx-auto">
-                        <div className="animate-fade-in-up">
-                            <div className="text-5xl font-bold text-gray-900 mb-2">16,000+</div>
-                            <p className="text-gray-600 font-medium">Users Across Platforms</p>
-                        </div>
-                        <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                            <div className="text-5xl font-bold text-gray-900 mb-2">10,000+</div>
-                            <p className="text-gray-600 font-medium">Students Trained</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* About Section */}
-            <section className="py-20 bg-gray-50">
+            {/* Who We Are */}
+            <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div>
@@ -199,6 +203,38 @@ const Home: React.FC = () => {
                                 alt="Strategic partnership collaboration"
                                 className="rounded-2xl shadow-2xl w-full h-auto object-cover"
                             />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Trust Metrics */}
+            <section className="py-20 bg-gray-900 text-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                        <div>
+                            <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">
+                                <CountUp end={5000} suffix="+" />
+                            </div>
+                            <p className="text-gray-400">Students Trained</p>
+                        </div>
+                        <div>
+                            <div className="text-4xl lg:text-5xl font-bold text-purple-400 mb-2">
+                                <CountUp end={50} suffix="+" />
+                            </div>
+                            <p className="text-gray-400">Startups Incubated</p>
+                        </div>
+                        <div>
+                            <div className="text-4xl lg:text-5xl font-bold text-green-400 mb-2">
+                                <CountUp end={100} suffix="%" />
+                            </div>
+                            <p className="text-gray-400">Job Placement</p>
+                        </div>
+                        <div>
+                            <div className="text-4xl lg:text-5xl font-bold text-orange-400 mb-2">
+                                <CountUp end={25} suffix="+" />
+                            </div>
+                            <p className="text-gray-400">Global Partners</p>
                         </div>
                     </div>
                 </div>
@@ -361,79 +397,6 @@ const Home: React.FC = () => {
                                     className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                                 />
                             </div>
-
-                            {/* Third set for extra smooth loop */}
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/bictda.png"
-                                    alt="BICTDA"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/logo2.png"
-                                    alt="Partner Logo"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/aaaa.png"
-                                    alt="Beeloveds House"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/SAV WOMEN.pdf.png"
-                                    alt="SAV Women Foundation"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/lvvv.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/lssogo.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/808.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/logoaq.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/bswa.png"
-                                    alt="BSWA"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -451,7 +414,7 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            {/* AI Pathfinding System - Clean Minimal Design */}
+            {/* AI Pathfinding System */}
             <section id="ai-pathfinding" className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {/* Header */}
@@ -465,7 +428,7 @@ const Home: React.FC = () => {
                         </p>
                     </div>
 
-                    {/* How It Works with Image - Clean Layout */}
+                    {/* How It Works with Image */}
                     <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
                         <div>
                             <h3 className="text-3xl font-bold text-gray-900 mb-8">How It Works</h3>
@@ -510,7 +473,7 @@ const Home: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Key Features - Clean Card */}
+                    {/* Key Features */}
                     <div className="bg-gray-50 rounded-2xl p-10 lg:p-12">
                         <h3 className="text-3xl font-bold text-gray-900 mb-4 text-center">Built for Global Learners</h3>
                         <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto text-center leading-relaxed">
@@ -560,8 +523,10 @@ const Home: React.FC = () => {
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="bg-white rounded-2xl p-8 shadow-sm">
-                            <div className="text-sm font-semibold text-gray-400 mb-3">01</div>
+                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                            <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                                <Code className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" />
+                            </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">Development</h3>
                             <p className="text-gray-600 leading-relaxed">
                                 High-impact programs in youth empowerment, digital skills training,
@@ -569,8 +534,10 @@ const Home: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="bg-white rounded-2xl p-8 shadow-sm">
-                            <div className="text-sm font-semibold text-gray-400 mb-3">02</div>
+                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                            <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
+                                <Rocket className="w-6 h-6 text-purple-600 group-hover:text-white transition-colors" />
+                            </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">Innovation</h3>
                             <p className="text-gray-600 leading-relaxed">
                                 Collaborative space for startups to develop AI, web development,
@@ -578,8 +545,10 @@ const Home: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="bg-white rounded-2xl p-8 shadow-sm">
-                            <div className="text-sm font-semibold text-gray-400 mb-3">03</div>
+                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                            <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
+                                <Globe className="w-6 h-6 text-green-600 group-hover:text-white transition-colors" />
+                            </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">Creative Enterprise</h3>
                             <p className="text-gray-600 leading-relaxed">
                                 Supporting the creative economy through digital media training
@@ -587,8 +556,10 @@ const Home: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="bg-white rounded-2xl p-8 shadow-sm">
-                            <div className="text-sm font-semibold text-gray-400 mb-3">04</div>
+                        <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                            <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors">
+                                <BarChart3 className="w-6 h-6 text-orange-600 group-hover:text-white transition-colors" />
+                            </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-3">Consulting</h3>
                             <p className="text-gray-600 leading-relaxed">
                                 Strategic advisory in digital transformation, business development,
@@ -727,7 +698,7 @@ const Home: React.FC = () => {
 
                     <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
                         {/* Democrasee */}
-                        <div className="bg-gray-50 rounded-2xl p-8">
+                        <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                             <div className="flex items-start justify-between mb-6">
                                 <span className="px-3 py-1.5 bg-white border border-gray-200 text-gray-900 text-xs font-semibold rounded-full">
                                     Pre-Launch
@@ -763,7 +734,7 @@ const Home: React.FC = () => {
                         </div>
 
                         {/* FarmAfricaa */}
-                        <div className="bg-gray-50 rounded-2xl p-8">
+                        <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                             <div className="flex items-start justify-between mb-6">
                                 <span className="px-3 py-1.5 bg-white border border-gray-200 text-gray-900 text-xs font-semibold rounded-full">
                                     Pre-Launch
@@ -799,7 +770,7 @@ const Home: React.FC = () => {
                         </div>
 
                         {/* ARIE */}
-                        <div className="bg-gray-50 rounded-2xl p-8">
+                        <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                             <div className="flex items-start justify-between mb-6">
                                 <span className="px-3 py-1.5 bg-white border border-gray-200 text-gray-900 text-xs font-semibold rounded-full">
                                     Pre-Launch
