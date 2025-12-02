@@ -1039,7 +1039,7 @@ const Home: React.FC = () => {
 
                     <div className="border-t border-gray-800 mt-16 pt-8">
                         <p className="text-gray-400 text-center">
-                            © 2025 Orivon Edge Innovation Hub. All Rights Reserved
+                            © 2025 Orivon Edge. All Rights Reserved
                         </p>
                     </div>
                 </div>
