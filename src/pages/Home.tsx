@@ -214,7 +214,7 @@ const Home: React.FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
                         <div>
                             <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">
-                                <CountUp end={5000} suffix="+" />
+                                <CountUp end={150} suffix="+" />
                             </div>
                             <p className="text-gray-400">Students Trained</p>
                         </div>
@@ -226,9 +226,9 @@ const Home: React.FC = () => {
                         </div>
                         <div>
                             <div className="text-4xl lg:text-5xl font-bold text-green-400 mb-2">
-                                <CountUp end={100} suffix="%" />
+                                <CountUp end={16000} suffix="+" />
                             </div>
-                            <p className="text-gray-400">Job Placement</p>
+                            <p className="text-gray-400">Users Across Platforms</p>
                         </div>
                         <div>
                             <div className="text-4xl lg:text-5xl font-bold text-orange-400 mb-2">
