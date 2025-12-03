@@ -567,6 +567,64 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
+            {/* Training Programs */}
+            {/* Training Programs */}
+            {/* Training Programs */}
+            {/* Training Programs */}
+            <section className="py-24 bg-[#0C0A09]">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1917] border border-[#292524] text-[#D68F55] text-sm font-semibold tracking-wide uppercase mb-6">
+                                <span className="w-2 h-2 rounded-full bg-[#D68F55] animate-pulse" />
+                                Education
+                            </div>
+                            <h2 className="text-5xl lg:text-6xl font-bold text-[#E7E5E4] mb-6 leading-tight">
+                                TRAINING<br />
+                                <span className="text-[#D68F55]">PROGRAMS.</span>
+                            </h2>
+                            <p className="text-xl text-[#A8A29E] leading-relaxed max-w-lg">
+                                Industry-standard training that gives you the exact skills companies are looking for.
+                            </p>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-6">
+                            {/* Core Skills Track */}
+                            <div className="bg-[#1C1917] rounded-2xl p-8 shadow-xl border border-[#292524] hover:border-[#D68F55]/30 transition-all group">
+                                <div className="w-14 h-14 bg-[#292524] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#D68F55] transition-colors">
+                                    <Code className="w-7 h-7 text-[#D68F55] group-hover:text-white transition-colors" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-[#E7E5E4] mb-3">Core Skills Track</h3>
+                                <p className="text-[#A8A29E] mb-8 text-sm leading-relaxed">
+                                    Hands-on training with real project experience in AI, Cloud Computing,
+                                    Data Science, and Cybersecurity.
+                                </p>
+                                <Link to="/core-skills-track" className="flex items-center justify-between w-full px-6 py-4 bg-[#292524] rounded-xl text-[#E7E5E4] font-bold hover:bg-[#D68F55] hover:text-white transition-all group-hover:shadow-md">
+                                    <span>Apply Now</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </Link>
+                            </div>
+
+                            {/* Corporate Track */}
+                            <div className="bg-[#1C1917] rounded-2xl p-8 shadow-xl border border-[#292524] hover:border-[#D68F55]/30 transition-all group">
+                                <div className="w-14 h-14 bg-[#292524] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#D68F55] transition-colors">
+                                    <Briefcase className="w-7 h-7 text-[#D68F55] group-hover:text-white transition-colors" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-[#E7E5E4] mb-3">Corporate Track</h3>
+                                <p className="text-[#A8A29E] mb-8 text-sm leading-relaxed">
+                                    Professional development for corporate roles and international
+                                    remote work opportunities.
+                                </p>
+                                <Link to="/corporate-track" className="flex items-center justify-between w-full px-6 py-4 bg-[#292524] rounded-xl text-[#E7E5E4] font-bold hover:bg-[#D68F55] hover:text-white transition-all group-hover:shadow-md">
+                                    <span>Join Track</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* AI Pathfinding System */}
             <section id="ai-pathfinding" className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -727,51 +785,7 @@ const Home: React.FC = () => {
 
 
             {/* Training Programs */}
-            <section className="py-32 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-3 gap-16">
-                        <div className="lg:col-span-1">
-                            <h2 className="text-6xl font-bold text-gray-900 mb-8 leading-tight">
-                                TRAINING<br />
-                                PROGRAMS.
-                            </h2>
-                            <p className="text-xl text-gray-600 leading-relaxed">
-                                Industry-standard training that gives you the exact skills companies are looking for.
-                            </p>
-                        </div>
 
-                        <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
-                            <div className="bg-white rounded-2xl p-8 shadow-sm">
-                                <div className="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center mb-6">
-                                    <Code className="w-8 h-8 text-white" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-4">Core Skills Track</h3>
-                                <p className="text-gray-600 mb-6">
-                                    Hands-on training with real project experience in AI, Cloud Computing,
-                                    Data Science, and Cybersecurity.
-                                </p>
-                                <Link to="/core-skills-track" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                                    Apply Now
-                                </Link>
-                            </div>
-
-                            <div className="bg-white rounded-2xl p-8 shadow-sm">
-                                <div className="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center mb-6">
-                                    <Globe className="w-8 h-8 text-white" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-4">Corporate Track</h3>
-                                <p className="text-gray-600 mb-6">
-                                    Professional development for corporate roles and international
-                                    remote work opportunities.
-                                </p>
-                                <Link to="/corporate-track" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                                    Join Track
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* Section Separator */}
             <div className="bg-white">
