@@ -680,7 +680,7 @@ const Home: React.FC = () => {
                         <div className="space-y-8">
                             <div>
                                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-                                    Path Finder
+                                    North
                                 </h2>
                                 <h3 className="text-xl font-semibold text-orivon-blue mb-4">
                                     Personalized Learning Paths Powered by AI
@@ -733,7 +733,7 @@ const Home: React.FC = () => {
                                     className="inline-flex items-center gap-3 bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105"
                                 >
                                     <Compass className="w-6 h-6" />
-                                    <span>Try Pathfinder</span>
+                                    <span>North</span>
                                     <ArrowRight className="w-5 h-5" />
                                 </Link>
                             </div>
@@ -753,18 +753,18 @@ const Home: React.FC = () => {
             </section>
 
             {/* Pitch Deck Assessor */}
-            <section className="py-20 bg-gray-50">
+            <section className="py-20 bg-[#0C0A09]">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Image Side (Left for alternation) */}
                         <div className="relative order-first">
-                            <div className="absolute inset-0 bg-purple-500/5 rounded-3xl transform -rotate-3"></div>
-                            <div className="relative bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-800 aspect-[4/3] flex items-center justify-center group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <BarChart3 className="w-24 h-24 text-purple-400 opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-[#D68F55]/5 rounded-3xl transform -rotate-3"></div>
+                            <div className="relative bg-[#1C1917] rounded-3xl shadow-xl overflow-hidden border border-[#292524] aspect-[4/3] flex items-center justify-center group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#D68F55]/20 to-[#A8A29E]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <BarChart3 className="w-24 h-24 text-[#D68F55] opacity-80 group-hover:scale-110 transition-transform duration-500" />
                                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                    <div className="flex items-center gap-2 text-white/80 text-sm font-mono">
-                                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                                    <div className="flex items-center gap-2 text-[#E7E5E4]/80 text-sm font-mono">
+                                        <div className="w-2 h-2 bg-[#D68F55] rounded-full animate-pulse"></div>
                                         Analyzing Investment Potential...
                                     </div>
                                 </div>
@@ -774,48 +774,48 @@ const Home: React.FC = () => {
                         {/* Content Side */}
                         <div className="space-y-8">
                             <div>
-                                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-                                    Pitch Deck Assessor
+                                <h2 className="text-4xl lg:text-5xl font-bold text-[#E7E5E4] mb-2">
+                                    Deckly
                                 </h2>
-                                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                                <h3 className="text-xl font-semibold text-[#D68F55] mb-4">
                                     Analyze My Deck
                                 </h3>
-                                <p className="text-lg text-gray-600 leading-relaxed">
+                                <p className="text-lg text-[#A8A29E] leading-relaxed">
                                     Upload your pitch deck and get instant feedback from our AI Investor. Powered by advanced Gemini APIs, it assesses your deck's strength, structure, and investability.
                                 </p>
                             </div>
 
                             <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                    <span className="w-8 h-1 bg-purple-600 rounded-full"></span>
+                                <h3 className="text-xl font-bold text-[#E7E5E4] mb-6 flex items-center gap-2">
+                                    <span className="w-8 h-1 bg-[#D68F55] rounded-full"></span>
                                     Key Features
                                 </h3>
                                 <ul className="space-y-4">
                                     <li className="flex items-start gap-3">
-                                        <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                        <div className="p-2 bg-[#1C1917] rounded-lg border border-[#292524] text-[#D68F55]">
                                             <Zap className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-gray-900">Instant deck analysis</h4>
-                                            <p className="text-sm text-gray-600">Comprehensive review in seconds</p>
+                                            <h4 className="font-bold text-[#E7E5E4]">Instant deck analysis</h4>
+                                            <p className="text-sm text-[#A8A29E]">Comprehensive review in seconds</p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                        <div className="p-2 bg-[#1C1917] rounded-lg border border-[#292524] text-[#D68F55]">
                                             <Users className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-gray-900">Investor perspective feedback</h4>
-                                            <p className="text-sm text-gray-600">See what VCs really think</p>
+                                            <h4 className="font-bold text-[#E7E5E4]">Investor perspective feedback</h4>
+                                            <p className="text-sm text-[#A8A29E]">See what VCs really think</p>
                                         </div>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                        <div className="p-2 bg-[#1C1917] rounded-lg border border-[#292524] text-[#D68F55]">
                                             <TrendingUp className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-gray-900">Improvement recommendations</h4>
-                                            <p className="text-sm text-gray-600">Actionable tips to raise capital</p>
+                                            <h4 className="font-bold text-[#E7E5E4]">Improvement recommendations</h4>
+                                            <p className="text-sm text-[#A8A29E]">Actionable tips to raise capital</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -824,7 +824,7 @@ const Home: React.FC = () => {
                             <div className="pt-4">
                                 <Link
                                     to="/pitch-assessor"
-                                    className="inline-flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-800 hover:shadow-lg transition-all transform hover:scale-105"
+                                    className="inline-flex items-center gap-3 bg-[#D68F55] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#D68F55]/90 hover:shadow-lg transition-all transform hover:scale-105"
                                 >
                                     <BarChart3 className="w-6 h-6" />
                                     <span>Analyze My Deck</span>
@@ -844,7 +844,7 @@ const Home: React.FC = () => {
                         <div className="space-y-8">
                             <div>
                                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-                                    AI Problem Finder
+                                    Deep Reveal
                                 </h2>
                                 <h3 className="text-xl font-semibold text-orivon-blue mb-4">
                                     Validate Your Idea
