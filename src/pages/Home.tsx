@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3, Menu, X, Compass, Palette, Briefcase } from 'lucide-react';
+import { ArrowRight, ArrowDown, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3, Menu, X, Compass, Palette, Briefcase, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
@@ -90,6 +90,15 @@ const Home: React.FC = () => {
           .carousel-dot.active {
             background-color: rgba(255, 255, 255, 0.9) !important;
             transform: scale(1.2);
+          }
+
+          @keyframes scroll-wheel {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(12px); opacity: 0; }
+          }
+          
+          .animate-scroll-wheel {
+            animation: scroll-wheel 1.5s infinite;
           }
         `
             }} />
@@ -625,6 +634,43 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
+            {/* In-House Tools Intro */}
+            <section className="py-32 bg-orivon-blue relative overflow-hidden">
+                {/* Background Decoration */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+                    <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
+                    <div className="absolute top-1/2 right-0 w-64 h-64 bg-purple-500 rounded-full blur-3xl" />
+                </div>
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div className="max-w-5xl mx-auto text-center">
+                        <div className="mb-10 flex justify-center">
+                            <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/10">
+                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <blockquote className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-12 tracking-tight">
+                            "Meet your new unfair advantage. We've built a suite of <span className="text-blue-400">intelligent engines</span> designed to power every stage of your journey—from learning the code to launching the company."
+                        </blockquote>
+                        <div className="flex items-center justify-center gap-4">
+                            <div className="h-px w-12 bg-white/30"></div>
+                            <p className="text-xl text-blue-200 font-medium tracking-wide uppercase">The Orivon Toolkit</p>
+                            <div className="h-px w-12 bg-white/30"></div>
+                        </div>
+
+                        <div className="mt-20 flex flex-col items-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+                            <div className="w-[30px] h-[50px] rounded-full border-2 border-white/20 flex justify-center p-2 relative backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                                <div className="w-1 h-2 bg-blue-400 rounded-full animate-scroll-wheel" />
+                            </div>
+                            <span className="text-blue-200/60 text-xs font-medium tracking-[0.3em] uppercase">Scroll</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* AI Problem Finder */}
             {/* AI Pathfinding System */}
             <section id="ai-pathfinding" className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -706,80 +752,175 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            {/* AI Innovation Suite */}
-            <section className="py-32 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="text-center max-w-3xl mx-auto mb-20">
-                        <h2 className="text-5xl font-bold text-gray-900 mb-6">
-                            Innovation <span className="text-orivon-blue">Supercharged</span>
-                        </h2>
-                        <p className="text-xl text-gray-600">
-                            We're building a robust system of AI tools to accelerate your startup journey.
-                            From idea validation to investor readiness.
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-12">
-                        {/* AI Problem Finder */}
-                        <div className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 group">
-                            <div className="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                                <Brain className="w-8 h-8" />
+            {/* Pitch Deck Assessor */}
+            <section className="py-20 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Image Side (Left for alternation) */}
+                        <div className="relative order-first">
+                            <div className="absolute inset-0 bg-purple-500/5 rounded-3xl transform -rotate-3"></div>
+                            <div className="relative bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-800 aspect-[4/3] flex items-center justify-center group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <BarChart3 className="w-24 h-24 text-purple-400 opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                                    <div className="flex items-center gap-2 text-white/80 text-sm font-mono">
+                                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                                        Analyzing Investment Potential...
+                                    </div>
+                                </div>
                             </div>
-                            <h3 className="text-3xl font-bold text-gray-900 mb-4">AI Problem Finder</h3>
-                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                Have an idea? Input it and let our AI search real-time data to validate its relevance.
-                                It checks if people are looking for your solution and even generates startup ideas based on market gaps.
-                            </p>
-                            <ul className="space-y-4 mb-8">
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span>Real-time market relevance search</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span>Problem-Solution fit analysis</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span>Startup idea generation</span>
-                                </li>
-                            </ul>
-                            <button className="w-full py-4 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
-                                Validate Your Idea <ArrowRight className="w-5 h-5" />
-                            </button>
                         </div>
 
-                        {/* Pitch Deck Assessor */}
-                        <div className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 group">
-                            <div className="w-16 h-16 rounded-2xl bg-purple-600 text-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                                <BarChart3 className="w-8 h-8" />
+                        {/* Content Side */}
+                        <div className="space-y-8">
+                            <div>
+                                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+                                    Pitch Deck Assessor
+                                </h2>
+                                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                                    Analyze My Deck
+                                </h3>
+                                <p className="text-lg text-gray-600 leading-relaxed">
+                                    Upload your pitch deck and get instant feedback from our AI Investor. Powered by advanced Gemini APIs, it assesses your deck's strength, structure, and investability.
+                                </p>
                             </div>
-                            <h3 className="text-3xl font-bold text-gray-900 mb-4">Pitch Deck Assessor</h3>
-                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                Upload your pitch deck and get instant feedback from our AI Investor.
-                                Powered by advanced Gemini APIs, it assesses your deck's strength, structure, and investability.
-                            </p>
-                            <ul className="space-y-4 mb-8">
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span>Instant deck analysis</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span>Investor perspective feedback</span>
-                                </li>
-                                <li className="flex items-center gap-3 text-gray-700">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span>Improvement recommendations</span>
-                                </li>
-                            </ul>
-                            <button className="w-full py-4 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
-                                Analyze My Deck <ArrowRight className="w-5 h-5" />
-                            </button>
+
+                            <div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                    <span className="w-8 h-1 bg-purple-600 rounded-full"></span>
+                                    Key Features
+                                </h3>
+                                <ul className="space-y-4">
+                                    <li className="flex items-start gap-3">
+                                        <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                            <Zap className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Instant deck analysis</h4>
+                                            <p className="text-sm text-gray-600">Comprehensive review in seconds</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                            <Users className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Investor perspective feedback</h4>
+                                            <p className="text-sm text-gray-600">See what VCs really think</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                            <TrendingUp className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Improvement recommendations</h4>
+                                            <p className="text-sm text-gray-600">Actionable tips to raise capital</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="pt-4">
+                                <Link
+                                    to="/pitch-assessor"
+                                    className="inline-flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-800 hover:shadow-lg transition-all transform hover:scale-105"
+                                >
+                                    <BarChart3 className="w-6 h-6" />
+                                    <span>Analyze My Deck</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* AI Problem Finder */}
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Content Side */}
+                        <div className="space-y-8">
+                            <div>
+                                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+                                    AI Problem Finder
+                                </h2>
+                                <h3 className="text-xl font-semibold text-orivon-blue mb-4">
+                                    Validate Your Idea
+                                </h3>
+                                <p className="text-lg text-gray-600 leading-relaxed">
+                                    Have an idea? Input it and let our AI search real-time data to validate its relevance. It checks if people are looking for your solution and even generates startup ideas based on market gaps.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                    <span className="w-8 h-1 bg-orivon-blue rounded-full"></span>
+                                    Key Features
+                                </h3>
+                                <ul className="space-y-4">
+                                    <li className="flex items-start gap-3">
+                                        <div className="p-2 bg-blue-50 rounded-lg text-orivon-blue">
+                                            <Globe className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Real-time market relevance search</h4>
+                                            <p className="text-sm text-gray-600">Validates demand against live market data</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="p-2 bg-blue-50 rounded-lg text-orivon-blue">
+                                            <Target className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Problem-Solution fit analysis</h4>
+                                            <p className="text-sm text-gray-600">Ensures your solution solves a real problem</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="p-2 bg-blue-50 rounded-lg text-orivon-blue">
+                                            <Zap className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Startup idea generation</h4>
+                                            <p className="text-sm text-gray-600">AI-powered suggestions based on gaps</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="pt-4">
+                                <Link
+                                    to="/problem-finder"
+                                    className="inline-flex items-center gap-3 bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105"
+                                >
+                                    <Target className="w-6 h-6" />
+                                    <span>Validate Your Idea</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* Image Side */}
+                        <div className="relative order-first lg:order-last">
+                            <div className="absolute inset-0 bg-orivon-blue/5 rounded-3xl transform rotate-3"></div>
+                            <div className="relative bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-800 aspect-[4/3] flex items-center justify-center group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <Globe className="w-24 h-24 text-blue-400 opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                                    <div className="flex items-center gap-2 text-white/80 text-sm font-mono">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                        Scanning Global Markets...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
 
 
 
@@ -801,58 +942,93 @@ const Home: React.FC = () => {
 
 
 
-
             {/* Contact Section */}
-            {/* Contact Section */}
-            <section id="contact" className="py-20 bg-gray-900 text-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                                GET STARTED<br />
-                                TODAY.
-                            </h2>
-                            <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-lg">
-                                Ready to join our innovation hub? Whether you're looking for training,
-                                incubation, or partnership opportunities.
-                            </p>
+            <section id="contact" className="py-20 relative overflow-hidden">
+                {/* Video Background */}
+                <div className="absolute inset-0 z-0">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                    >
+                        <source src="/rok.mp4" type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-black/80"></div>
+                </div>
 
+                <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div className="bg-black/40 rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-md">
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            {/* Left: Contact Info */}
+                            <div className="space-y-8">
+                                <div>
+                                    <h2 className="text-3xl font-bold mb-4 text-white">Get Started Today</h2>
+                                    <p className="text-gray-400 leading-relaxed">
+                                        Ready to join our innovation hub? Reach out for training, incubation, or partnerships.
+                                    </p>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors cursor-pointer group">
+                                        <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
+                                            <Mail className="w-4 h-4 text-white" />
+                                        </div>
+                                        <span className="text-sm font-medium">info@orivonedge.dev</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors cursor-pointer group">
+                                        <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
+                                            <Phone className="w-4 h-4 text-white" />
+                                        </div>
+                                        <span className="text-sm font-medium">+234 8143084473</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors cursor-pointer group">
+                                        <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
+                                            <MapPin className="w-4 h-4 text-white" />
+                                        </div>
+                                        <span className="text-sm font-medium">Borno State, Nigeria</span>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                                    <a href="#" className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group">
+                                        <Instagram className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                                    </a>
+                                    <a href="#" className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group">
+                                        <Linkedin className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Right: Action Cards (Horizontal) */}
                             <div className="space-y-4">
-                                <div className="flex items-center gap-3">
-                                    <Mail className="w-5 h-5 text-blue-400" />
-                                    <span className="text-lg">info@orivonedge.dev</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Phone className="w-5 h-5 text-green-400" />
-                                    <span className="text-lg">+234 8143084473</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <MapPin className="w-5 h-5 text-purple-400" />
-                                    <span className="text-lg">Borno State, Nigeria</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="grid sm:grid-cols-2 gap-4">
-                            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors text-center group">
-                                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-colors">
-                                    <Users className="w-6 h-6 text-white" />
-                                </div>
-                                <h3 className="text-xl font-bold mb-2">Join Training</h3>
-                                <p className="text-sm text-gray-400 mb-4">Professional development programs</p>
-                                <Link to="/core-skills-track" className="inline-block w-full bg-white text-gray-900 px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-gray-100 transition-colors">
-                                    Enroll Now
+                                {/* Training Card */}
+                                <Link to="/core-skills-track" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
+                                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white border border-white/10 group-hover:border-white/20 group-hover:scale-110 transition-transform">
+                                        <Users className="w-6 h-6" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="font-bold text-white">Join Training</h3>
+                                        <p className="text-xs text-gray-400">Professional development programs</p>
+                                    </div>
+                                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
+                                        <ArrowRight className="w-4 h-4 text-white" />
+                                    </div>
                                 </Link>
-                            </div>
 
-                            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors text-center group">
-                                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-colors">
-                                    <Rocket className="w-6 h-6 text-white" />
-                                </div>
-                                <h3 className="text-xl font-bold mb-2">Startup Incubation</h3>
-                                <p className="text-sm text-gray-400 mb-4">Mentorship and incubation programs</p>
-                                <Link to="/join-hub" className="inline-block w-full bg-white text-gray-900 px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-gray-100 transition-colors">
-                                    Apply Now
+                                {/* Incubation Card */}
+                                <Link to="/join-hub" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
+                                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white border border-white/10 group-hover:border-white/20 group-hover:scale-110 transition-transform">
+                                        <Rocket className="w-6 h-6" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="font-bold text-white">Startup Incubation</h3>
+                                        <p className="text-xs text-gray-400">Mentorship & incubation</p>
+                                    </div>
+                                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
+                                        <ArrowRight className="w-4 h-4 text-white" />
+                                    </div>
                                 </Link>
                             </div>
                         </div>
