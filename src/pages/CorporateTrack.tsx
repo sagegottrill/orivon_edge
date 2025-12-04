@@ -37,19 +37,19 @@ const CorporateTrack: React.FC = () => {
                 <span className="text-purple-600">CAREER.</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Professional development for corporate roles and international remote work opportunities. 
+                Professional development for corporate roles and international remote work opportunities.
                 Master the skills that top employers demand.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <a 
+                <a
                   href="#apply"
                   className="inline-flex items-center justify-center gap-3 bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
                 >
                   <span>Join Track</span>
                   <ArrowRight className="w-5 h-5" />
                 </a>
-                <a 
+                <a
                   href="#programs"
                   className="inline-flex items-center justify-center gap-3 border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold hover:border-purple-600 hover:text-purple-600 transition-colors"
                 >
@@ -74,8 +74,8 @@ const CorporateTrack: React.FC = () => {
             </div>
 
             <div className="relative">
-              <img 
-                src="/imges/13.jpg" 
+              <img
+                src="/imges/13.jpg"
                 alt="Professional working remotely"
                 className="w-full h-full max-h-[500px] object-cover rounded-2xl shadow-lg"
               />
@@ -266,23 +266,23 @@ const CorporateTrack: React.FC = () => {
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
             Join our next cohort and start your journey to international opportunities.
           </p>
-          
+
           <div className="bg-white rounded-2xl p-8 text-left">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Enrollment Form</h3>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Email</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="john@example.com"
                   />
@@ -292,16 +292,16 @@ const CorporateTrack: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number</label>
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="+234 800 000 0000"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Current Role</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="e.g., Software Developer"
                   />
@@ -310,14 +310,14 @@ const CorporateTrack: React.FC = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-2">What are your career goals?</label>
-                <textarea 
+                <textarea
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                   placeholder="Tell us about your professional aspirations..."
                 ></textarea>
               </div>
 
-              <button 
+              <button
                 type="submit"
                 className="w-full bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
               >
