@@ -7,7 +7,7 @@ const Auth = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const initialMode = searchParams.get('mode');
-    const redirectUrl = searchParams.get('redirect') || '/';
+    const redirectUrl = searchParams.get('redirect') || '/dashboard';
     const [isLogin, setIsLogin] = useState(initialMode !== 'signup');
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({ email: '', password: '', name: '' });

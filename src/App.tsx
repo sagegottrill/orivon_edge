@@ -20,6 +20,7 @@ import PathfindingOnboarding from "./pages/PathfindingOnboarding";
 import CoursesBrowser from "./pages/CoursesBrowser";
 import LearningPathView from "./pages/LearningPathView";
 import AdminDashboard from "./pages/AdminDashboard";
+import UserDashboard from "./pages/UserDashboard";
 import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
@@ -27,7 +28,7 @@ const queryClient = new QueryClient();
 import ScrollToTop from "@/components/ScrollToTop";
 
 const App = () => (
-  <ThemeProvider defaultTheme="dark">
+  <ThemeProvider defaultTheme="light">
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/pathfinding/courses" element={<CoursesBrowser />} />
             <Route path="/pathfinding/path" element={<LearningPathView />} />
             <Route path="/pathfinding/admin" element={<AdminDashboard />} />
+            <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

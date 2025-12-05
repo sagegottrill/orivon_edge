@@ -25,6 +25,12 @@ const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = (
 
 const Home: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        setIsLoggedIn(!!token);
+    }, []);
 
     useEffect(() => {
         // Hero carousel functionality
@@ -122,11 +128,21 @@ const Home: React.FC = () => {
                         </div>
 
                         {/* Auth Buttons */}
+                        {/* Auth Buttons */}
                         <div className="flex items-center space-x-3 sm:space-x-4">
-                            <Link to="/auth" className="text-gray-700 hover:text-gray-900 font-medium transition-colors text-sm sm:text-base">Login</Link>
-                            <Link to="/auth?mode=signup" className="bg-black text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm sm:text-base">
-                                Sign Up
-                            </Link>
+                            {isLoggedIn ? (
+                                <Link to="/dashboard" className="bg-black text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm sm:text-base flex items-center gap-2">
+                                    <Users className="w-4 h-4" />
+                                    <span>Dashboard</span>
+                                </Link>
+                            ) : (
+                                <>
+                                    <Link to="/auth" className="text-gray-700 hover:text-gray-900 font-medium transition-colors text-sm sm:text-base">Login</Link>
+                                    <Link to="/auth?mode=signup" className="bg-black text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm sm:text-base">
+                                        Sign Up
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
