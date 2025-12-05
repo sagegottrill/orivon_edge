@@ -24,6 +24,8 @@ import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
+import ScrollToTop from "@/components/ScrollToTop";
+
 const App = () => (
   <ThemeProvider defaultTheme="dark">
     <QueryClientProvider client={queryClient}>
@@ -31,6 +33,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/venture-studio" element={<Index />} />
