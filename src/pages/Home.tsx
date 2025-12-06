@@ -418,6 +418,14 @@ const Home: React.FC = () => {
                                 />
                             </div>
 
+                            <div className="flex flex-col items-center min-w-[250px]">
+                                <img
+                                    src="/ss.png"
+                                    alt="Partner"
+                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                                />
+                            </div>
+
                             {/* Duplicate set for seamless loop */}
                             <div className="flex flex-col items-center min-w-[250px]">
                                 <img
@@ -495,6 +503,14 @@ const Home: React.FC = () => {
                                 <img
                                     src="/Nash.png"
                                     alt="Nash"
+                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
+                                />
+                            </div>
+
+                            <div className="flex flex-col items-center min-w-[250px]">
+                                <img
+                                    src="/ss.png"
+                                    alt="Partner"
                                     className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
                                 />
                             </div>

@@ -50,3 +50,19 @@ export const submitCoreSkillsApplication = async (data: any) => {
 
     return { success: true };
 };
+
+export const submitCorporateApplication = async (data: any) => {
+    const { error } = await supabase
+        .from('program_applications')
+        .insert([{
+            ...data,
+            program: 'Corporate Track',
+            status: 'New'
+        }]);
+
+    if (error) {
+        throw error;
+    }
+
+    return { success: true };
+};

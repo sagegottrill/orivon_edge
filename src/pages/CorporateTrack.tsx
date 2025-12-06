@@ -1,8 +1,50 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Briefcase, Globe, TrendingUp, CheckCircle, Users, Award, Clock } from 'lucide-react';
+import { ArrowRight, Globe, CheckCircle, Loader2 } from 'lucide-react';
+import { submitCorporateApplication } from '@/lib/supabase';
+import { useToast } from "@/components/ui/use-toast";
 
 const CorporateTrack: React.FC = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    currentRole: '',
+    goals: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await submitCorporateApplication(formData);
+      toast({
+        title: "Application Submitted!",
+        description: "We'll be in touch with you shortly.",
+      });
+      setFormData({ fullName: '', email: '', phone: '', currentRole: '', goals: '' });
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: "Please try again later or contact support.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -304,13 +346,17 @@ const CorporateTrack: React.FC = () => {
 
           <div className="bg-white rounded-2xl p-8 text-left">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Enrollment Form</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
                     placeholder="John Doe"
                   />
                 </div>
@@ -318,7 +364,11 @@ const CorporateTrack: React.FC = () => {
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Email</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -329,7 +379,11 @@ const CorporateTrack: React.FC = () => {
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number</label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
                     placeholder="+234 800 000 0000"
                   />
                 </div>
@@ -337,7 +391,10 @@ const CorporateTrack: React.FC = () => {
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Current Role</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    name="currentRole"
+                    value={formData.currentRole}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
                     placeholder="e.g., Software Developer"
                   />
                 </div>
@@ -347,16 +404,25 @@ const CorporateTrack: React.FC = () => {
                 <label className="block text-sm font-semibold text-gray-900 mb-2">What are your career goals?</label>
                 <textarea
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  name="goals"
+                  value={formData.goals}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
                   placeholder="Tell us about your professional aspirations..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+                disabled={isSubmitting}
+                className="w-full bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Submit Enrollment
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Submitting...
+                  </>
+                ) : 'Submit Enrollment'}
               </button>
             </form>
           </div>
