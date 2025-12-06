@@ -18,7 +18,9 @@ import {
     Moon
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { supabase, getUserApplications } from '@/lib/supabase';
+import { getUserApplications } from '@/lib/supabase';
+import { auth } from '@/lib/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useToast } from "@/components/ui/use-toast";
 
 const UserDashboard = () => {
@@ -33,30 +35,25 @@ const UserDashboard = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
-        // Check active session
-        const checkSession = async () => {
+        const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+            if (!firebaseUser) {
+                navigate('/auth');
+                return;
+            }
+
             try {
-                const { data: { session } } = await supabase.auth.getSession();
-
-                if (!session) {
-                    navigate('/auth');
-                    return;
-                }
-
                 setUser({
-                    name: session.user.user_metadata.full_name || session.user.email?.split('@')[0] || "User",
-                    email: session.user.email,
-                    avatar: session.user.user_metadata.avatar_url || "https://github.com/shadcn.png",
-                    role: "Student", // Default role
+                    name: firebaseUser.displayName || firebaseUser.email?.split('@')[0] || "User",
+                    email: firebaseUser.email,
+                    avatar: firebaseUser.photoURL || "https://github.com/shadcn.png",
+                    role: "Student",
                     plan: "Free Tier"
                 });
 
-                // Fetch real applications
-                if (session.user.email) {
-                    const apps = await getUserApplications(session.user.email);
+                if (firebaseUser.email) {
+                    const apps = await getUserApplications(firebaseUser.email);
                     setApplications(apps || []);
                 }
-
             } catch (error) {
                 console.error("Error loading dashboard data:", error);
                 toast({
@@ -67,22 +64,13 @@ const UserDashboard = () => {
             } finally {
                 setLoading(false);
             }
-        };
-
-        checkSession();
-
-        // Listen for auth changes
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            if (!session) {
-                navigate('/auth');
-            }
         });
 
-        return () => subscription.unsubscribe();
+        return () => unsubscribe();
     }, [navigate, toast]);
 
     const handleLogout = async () => {
-        await supabase.auth.signOut();
+        await signOut(auth);
         navigate('/auth');
     };
 

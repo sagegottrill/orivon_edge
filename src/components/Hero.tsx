@@ -15,29 +15,29 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0">
         {/* background video only - decorative overlays removed per request */}
       </div>
-        {/* Professional background with hero video, particles and overlays */}
-        <div className="absolute inset-0">
-          {/* Background video from public folder */}
-          <video
-            className="absolute inset-0 w-full h-full object-cover"
-            src="/2.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            aria-hidden="true"
-          />
-          {/* Mild dim overlay for readability */}
-          <div className="absolute inset-0 bg-black/20 pointer-events-none" aria-hidden="true"></div>
-          {/* Soft vignette to slightly darken edges */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.0) 70%)'
-            }}
-            aria-hidden="true"
-          />
-        </div>
+      {/* Professional background with hero video, particles and overlays */}
+      <div className="absolute inset-0">
+        {/* Background video from public folder */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/2.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        {/* Mild dim overlay for readability */}
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" aria-hidden="true"></div>
+        {/* Soft vignette to slightly darken edges */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.0) 70%)'
+          }}
+          aria-hidden="true"
+        />
+      </div>
 
       <div className="relative z-10 text-center px-4 sm:px-8 lg:px-16 max-w-[1600px] mx-auto flex flex-col justify-center min-h-screen">
         <div className="animate-fade-in-up mt-16 sm:mt-20">
@@ -45,8 +45,8 @@ const Hero: React.FC = () => {
 
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.05] text-balance">
-              <AnimatedTextReveal 
-                text="Building Startups & Scaling Innovation with" 
+              <AnimatedTextReveal
+                text="Building Startups & Scaling Innovation with"
                 className="block mb-4"
                 delay={0.2}
               />
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
                     'Future-Proof Digital Systems',
                     'Global Ventures, Local Impact'
                   ]}
-                  className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-blue-600"
                   typeSpeed={70}
                   deleteSpeed={40}
                   delayBetweenWords={1800}
@@ -77,8 +77,8 @@ const Hero: React.FC = () => {
                 />
               </span>
             </h1>
-            
-            <AnimatedTextReveal 
+
+            <AnimatedTextReveal
               text="A global venture studio and digital agency. We build AI-driven startups and deliver powerful solutions for businesses worldwide."
               className="text-base sm:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed text-balance"
               delay={1.0}
@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
 
           {/* Enhanced CTA buttons with magnetic effect */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-16 sm:mt-20">
-            <MagneticButton 
+            <MagneticButton
               strength={0.2}
               onClick={() => {
                 const contactSection = document.getElementById('contact');
@@ -101,8 +101,8 @@ const Hero: React.FC = () => {
               <span>Start Your Project</span>
               <ArrowRight size={18} weight="bold" className="group-hover:translate-x-2 transition-transform duration-300" />
             </MagneticButton>
-            
-            <MagneticButton 
+
+            <MagneticButton
               strength={0.15}
               onClick={() => {
                 const portfolioSection = document.getElementById('portfolio');

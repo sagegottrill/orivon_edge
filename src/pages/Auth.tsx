@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Github } from 'lucide-react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { supabase } from '@/lib/supabase';
+import { auth } from '@/lib/firebase';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useToast } from "@/components/ui/use-toast";
 
 const Auth = () => {
@@ -24,42 +25,43 @@ const Auth = () => {
 
         try {
             if (isLogin) {
-                const { error } = await supabase.auth.signInWithPassword({
-                    email: formData.email,
-                    password: formData.password,
-                });
-
-                if (error) throw error;
-
+                // Firebase Login
+                await signInWithEmailAndPassword(auth, formData.email, formData.password);
                 navigate(redirectUrl);
             } else {
-                const { error } = await supabase.auth.signUp({
-                    email: formData.email,
-                    password: formData.password,
-                    options: {
-                        data: {
-                            full_name: formData.name,
-                        },
-                    },
-                });
+                // Firebase Signup
+                const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
 
-                if (error) throw error;
+                // Update profile with name
+                if (formData.name) {
+                    await updateProfile(userCredential.user, {
+                        displayName: formData.name
+                    });
+                }
 
                 toast({
                     title: "Account created!",
-                    description: "Please check your email to verify your account.",
+                    description: "Welcome to Orivon Edge.",
                 });
 
-                // Optional: Auto login or redirect to verification page?
-                // For now, if auto-signin is enabled in Supabase, they are logged in.
-                // If email confirmation is required, they won't be logged in yet.
                 navigate(redirectUrl);
             }
         } catch (error: any) {
+            let errorMessage = "An error occurred during authentication.";
+            if (error.code === 'auth/invalid-credential') {
+                errorMessage = "Invalid email or password.";
+            } else if (error.code === 'auth/email-already-in-use') {
+                errorMessage = "Email is already registered.";
+            } else if (error.code === 'auth/weak-password') {
+                errorMessage = "Password should be at least 6 characters.";
+            } else if (error.message) {
+                errorMessage = error.message;
+            }
+
             toast({
                 variant: "destructive",
                 title: "Authentication Error",
-                description: error.message || "An error occurred during authentication.",
+                description: errorMessage,
             });
         } finally {
             setLoading(false);
