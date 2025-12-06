@@ -66,3 +66,17 @@ export const submitCorporateApplication = async (data: any) => {
 
     return { success: true };
 };
+
+export const getUserApplications = async (email: string) => {
+    const { data, error } = await supabase
+        .from('program_applications')
+        .select('*')
+        .eq('email', email)
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        throw error;
+    }
+
+    return data;
+};

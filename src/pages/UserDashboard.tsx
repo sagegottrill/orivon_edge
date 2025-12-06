@@ -18,59 +18,71 @@ import {
     Moon
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-
-// Mock Data
-const MOCK_USER = {
-    name: "Sage Trill",
-    email: "sage@orivonedge.com",
-    avatar: "https://github.com/shadcn.png",
-    role: "Student",
-    plan: "Free Tier"
-};
-
-const MOCK_APPLICATIONS = [
-    {
-        id: 1,
-        program: "Core Skills Track",
-        track: "Data Science & AI",
-        status: "In Progress",
-        progress: 35,
-        date: "Dec 01, 2025"
-    },
-    {
-        id: 2,
-        program: "Corporate Track",
-        track: "Remote Work Mastery",
-        status: "Pending Review",
-        progress: 0,
-        date: "Dec 04, 2025"
-    }
-];
+import { supabase, getUserApplications } from '@/lib/supabase';
+import { useToast } from "@/components/ui/use-toast";
 
 const UserDashboard = () => {
     const navigate = useNavigate();
+    const { toast } = useToast();
     const [activeTab, setActiveTab] = useState('overview');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [user, setUser] = useState(MOCK_USER);
+    const [user, setUser] = useState<any>(null);
+    const [applications, setApplications] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
     // Default to Light Mode (false)
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    // Check auth (mock)
     useEffect(() => {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-            navigate('/auth');
-        }
-        // In a real app, fetch user data here
-        const storedEmail = localStorage.getItem('userEmail');
-        if (storedEmail) {
-            setUser(prev => ({ ...prev, email: storedEmail }));
-        }
-    }, [navigate]);
+        // Check active session
+        const checkSession = async () => {
+            try {
+                const { data: { session } } = await supabase.auth.getSession();
 
-    const handleLogout = () => {
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('userEmail');
+                if (!session) {
+                    navigate('/auth');
+                    return;
+                }
+
+                setUser({
+                    name: session.user.user_metadata.full_name || session.user.email?.split('@')[0] || "User",
+                    email: session.user.email,
+                    avatar: session.user.user_metadata.avatar_url || "https://github.com/shadcn.png",
+                    role: "Student", // Default role
+                    plan: "Free Tier"
+                });
+
+                // Fetch real applications
+                if (session.user.email) {
+                    const apps = await getUserApplications(session.user.email);
+                    setApplications(apps || []);
+                }
+
+            } catch (error) {
+                console.error("Error loading dashboard data:", error);
+                toast({
+                    variant: "destructive",
+                    title: "Error loading data",
+                    description: "Could not fetch your dashboard information."
+                });
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        checkSession();
+
+        // Listen for auth changes
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            if (!session) {
+                navigate('/auth');
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, [navigate, toast]);
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
         navigate('/auth');
     };
 
@@ -99,6 +111,14 @@ const UserDashboard = () => {
             )}
         </button>
     );
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-[#0a0a0a]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orivon-blue"></div>
+            </div>
+        );
+    }
 
     return (
         // IMPORTANT: We wrap everything in a div that conditionally applies 'dark' class
@@ -154,13 +174,15 @@ const UserDashboard = () => {
                             <span className="font-medium">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
                         </button>
 
-                        <div className="flex items-center gap-3 px-4 py-3 mb-4 bg-gray-100 dark:bg-white/5 rounded-xl transition-colors">
-                            <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10" />
-                            <div className="flex-1 min-w-0">
-                                <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{user.name}</p>
-                                <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                        {user && (
+                            <div className="flex items-center gap-3 px-4 py-3 mb-4 bg-gray-100 dark:bg-white/5 rounded-xl transition-colors">
+                                <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10" />
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{user.name}</p>
+                                    <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                                </div>
                             </div>
-                        </div>
+                        )}
                         <button
                             onClick={handleLogout}
                             className="w-full flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 hover:text-red-600 dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300 rounded-xl transition-colors"
@@ -210,7 +232,7 @@ const UserDashboard = () => {
                         <div className="max-w-6xl mx-auto">
 
                             {/* OVERVIEW TAB */}
-                            {activeTab === 'overview' && (
+                            {activeTab === 'overview' && user && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -244,7 +266,7 @@ const UserDashboard = () => {
                                                     <FileText className="w-5 h-5 text-blue-500" />
                                                 </div>
                                             </div>
-                                            <p className="text-3xl font-bold text-gray-900 dark:text-white">2</p>
+                                            <p className="text-3xl font-bold text-gray-900 dark:text-white">{applications.length}</p>
                                             <p className="text-sm text-green-500 dark:text-green-400 mt-2 flex items-center gap-1">
                                                 <span className="w-1.5 h-1.5 bg-green-500 dark:bg-green-400 rounded-full"></span>
                                                 In Progress
@@ -267,26 +289,32 @@ const UserDashboard = () => {
                                     <div>
                                         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Recent Applications</h3>
                                         <div className="bg-white border border-gray-200 shadow-sm dark:bg-[#151515] dark:border-white/5 dark:shadow-none rounded-2xl overflow-hidden transition-all">
-                                            {MOCK_APPLICATIONS.map((app, index) => (
-                                                <div key={app.id} className={`p-6 flex items-center justify-between ${index !== MOCK_APPLICATIONS.length - 1 ? 'border-b border-gray-100 dark:border-white/5' : ''}`}>
-                                                    <div className="flex items-center gap-4">
-                                                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${app.program.includes('Core') ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-500' : 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-500'}`}>
-                                                            <Briefcase className="w-6 h-6" />
-                                                        </div>
-                                                        <div>
-                                                            <h4 className="font-bold text-gray-900 dark:text-white">{app.program}</h4>
-                                                            <p className="text-sm text-gray-500 dark:text-gray-400">{app.track}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="text-right">
-                                                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-1 ${app.status === 'In Progress' ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400' : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-500/10 dark:text-yellow-400'
-                                                            }`}>
-                                                            {app.status}
-                                                        </span>
-                                                        <p className="text-xs text-gray-500">{app.date}</p>
-                                                    </div>
+                                            {applications.length === 0 ? (
+                                                <div className="p-8 text-center text-gray-500">
+                                                    No applications found. <Link to="/core-skills-track" className="text-orivon-blue hover:underline">Start a program today!</Link>
                                                 </div>
-                                            ))}
+                                            ) : (
+                                                applications.slice(0, 5).map((app, index) => (
+                                                    <div key={app.id || index} className={`p-6 flex items-center justify-between ${index !== applications.length - 1 ? 'border-b border-gray-100 dark:border-white/5' : ''}`}>
+                                                        <div className="flex items-center gap-4">
+                                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${app.program === 'Core Skills Track' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-500' : 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-500'}`}>
+                                                                <Briefcase className="w-6 h-6" />
+                                                            </div>
+                                                            <div>
+                                                                <h4 className="font-bold text-gray-900 dark:text-white">{app.program}</h4>
+                                                                <p className="text-sm text-gray-500 dark:text-gray-400">{app.track || app.status}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-right">
+                                                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-1 ${app.status === 'New' || app.status === 'In Progress' ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400' : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-500/10 dark:text-yellow-400'
+                                                                }`}>
+                                                                {app.status}
+                                                            </span>
+                                                            <p className="text-xs text-gray-500">{new Date(app.created_at).toLocaleDateString()}</p>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            )}
                                         </div>
                                     </div>
                                 </motion.div>
@@ -300,49 +328,51 @@ const UserDashboard = () => {
                                     className="space-y-6"
                                 >
                                     <div className="grid gap-6">
-                                        {MOCK_APPLICATIONS.map((app) => (
-                                            <div key={app.id} className="bg-white border border-gray-200 shadow-sm dark:bg-[#151515] dark:border-white/5 dark:shadow-none rounded-2xl p-6 hover:border-orivon-blue/30 transition-colors group">
-                                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                                                    <div className="flex items-start gap-4">
-                                                        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${app.program.includes('Core') ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-500' : 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-500'}`}>
-                                                            <Briefcase className="w-8 h-8" />
-                                                        </div>
-                                                        <div>
-                                                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-orivon-blue transition-colors">{app.program}</h3>
-                                                            <p className="text-gray-500 dark:text-gray-400 mb-3">{app.track}</p>
-                                                            <div className="flex items-center gap-2 text-sm text-gray-500">
-                                                                <FileText className="w-4 h-4" />
-                                                                <span>Applied on {app.date}</span>
+                                        {applications.length === 0 ? (
+                                            <div className="col-span-1 p-8 text-center text-gray-500 bg-white dark:bg-white/5 rounded-2xl">
+                                                No applications found. <br />
+                                                <Link to="/core-skills-track" className="inline-block mt-4 text-orivon-blue hover:underline">Browse Core Skills</Link> or{' '}
+                                                <Link to="/corporate-track" className="text-orivon-blue hover:underline">Corporate Track</Link>
+                                            </div>
+                                        ) : (
+                                            applications.map((app, index) => (
+                                                <div key={app.id || index} className="bg-white border border-gray-200 shadow-sm dark:bg-[#151515] dark:border-white/5 dark:shadow-none rounded-2xl p-6 hover:border-orivon-blue/30 transition-colors group">
+                                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                                        <div className="flex items-start gap-4">
+                                                            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${app.program === 'Core Skills Track' ? 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-500' : 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-500'}`}>
+                                                                <Briefcase className="w-8 h-8" />
+                                                            </div>
+                                                            <div>
+                                                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-orivon-blue transition-colors">{app.program}</h3>
+                                                                <p className="text-gray-500 dark:text-gray-400 mb-3">{app.track || 'General'}</p>
+                                                                <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                                    <FileText className="w-4 h-4" />
+                                                                    <span>Applied on {new Date(app.created_at).toLocaleDateString()}</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div className="flex flex-col items-end gap-4 min-w-[200px]">
-                                                        <div className="w-full">
-                                                            <div className="flex justify-between text-sm mb-2">
-                                                                <span className="text-gray-500 dark:text-gray-400">Application Progress</span>
-                                                                <span className="text-gray-900 dark:text-white font-bold">{app.progress}%</span>
+                                                        <div className="flex flex-col items-end gap-4 min-w-[200px]">
+                                                            <div className="w-full">
+                                                                <div className="flex justify-between text-sm mb-2">
+                                                                    <span className="text-gray-500 dark:text-gray-400">Status</span>
+                                                                    <span className="text-gray-900 dark:text-white font-bold">{app.status}</span>
+                                                                </div>
                                                             </div>
-                                                            <div className="h-2 bg-gray-200 dark:bg-white/5 rounded-full overflow-hidden">
-                                                                <div
-                                                                    className="h-full bg-orivon-blue rounded-full transition-all duration-500"
-                                                                    style={{ width: `${app.progress}%` }}
-                                                                ></div>
-                                                            </div>
+                                                            <button className="px-6 py-2 bg-black text-white dark:bg-white dark:text-black font-bold rounded-lg hover:opacity-80 transition-colors w-full md:w-auto">
+                                                                View Details
+                                                            </button>
                                                         </div>
-                                                        <button className="px-6 py-2 bg-black text-white dark:bg-white dark:text-black font-bold rounded-lg hover:opacity-80 transition-colors w-full md:w-auto">
-                                                            {app.progress > 0 ? 'Continue' : 'Start Application'}
-                                                        </button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))
+                                        )}
                                     </div>
                                 </motion.div>
                             )}
 
                             {/* SETTINGS TAB */}
-                            {activeTab === 'settings' && (
+                            {activeTab === 'settings' && user && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -354,41 +384,17 @@ const UserDashboard = () => {
                                             <div className="space-y-4">
                                                 <div className="flex items-center gap-6 mb-6">
                                                     <img src={user.avatar} alt="Profile" className="w-20 h-20 rounded-full border-2 border-gray-200 dark:border-white/10" />
-                                                    <button className="px-4 py-2 bg-gray-100 border border-gray-200 text-gray-700 dark:bg-white/5 dark:border-white/10 dark:text-white rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
-                                                        Change Avatar
-                                                    </button>
                                                 </div>
                                                 <div className="grid md:grid-cols-2 gap-4">
                                                     <div className="space-y-2">
                                                         <label className="text-sm text-gray-500 dark:text-gray-400">Full Name</label>
-                                                        <input type="text" defaultValue={user.name} className="w-full bg-gray-50 border border-gray-200 text-gray-900 dark:bg-black/20 dark:border-white/10 dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:border-orivon-blue/50" />
+                                                        <input type="text" defaultValue={user.name} disabled className="w-full bg-gray-50 border border-gray-200 text-gray-500 dark:bg-black/20 dark:border-white/10 dark:text-gray-500 rounded-xl px-4 py-3 cursor-not-allowed" />
                                                     </div>
                                                     <div className="space-y-2">
                                                         <label className="text-sm text-gray-500 dark:text-gray-400">Email Address</label>
-                                                        <input type="email" defaultValue={user.email} className="w-full bg-gray-50 border border-gray-200 text-gray-900 dark:bg-black/20 dark:border-white/10 dark:text-white rounded-xl px-4 py-3 focus:outline-none focus:border-orivon-blue/50" />
+                                                        <input type="email" defaultValue={user.email} disabled className="w-full bg-gray-50 border border-gray-200 text-gray-500 dark:bg-black/20 dark:border-white/10 dark:text-gray-500 rounded-xl px-4 py-3 cursor-not-allowed" />
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="pt-8 border-t border-gray-200 dark:border-white/5">
-                                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Security</h3>
-                                            <div className="space-y-4">
-                                                <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 hover:bg-gray-100 dark:bg-black/20 dark:border-white/10 dark:hover:bg-black/30 rounded-xl transition-colors group">
-                                                    <span className="text-gray-700 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-white">Change Password</span>
-                                                    <ChevronRight className="w-5 h-5 text-gray-500" />
-                                                </button>
-                                                <button className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 hover:bg-gray-100 dark:bg-black/20 dark:border-white/10 dark:hover:bg-black/30 rounded-xl transition-colors group">
-                                                    <span className="text-gray-700 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-white">Two-Factor Authentication</span>
-                                                    <ChevronRight className="w-5 h-5 text-gray-500" />
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div className="pt-8 border-t border-gray-200 dark:border-white/5">
-                                            <div className="flex justify-end gap-4">
-                                                <button className="px-6 py-3 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white font-medium transition-colors">Cancel</button>
-                                                <button className="px-6 py-3 bg-orivon-blue text-white font-bold rounded-xl hover:bg-blue-600 transition-colors">Save Changes</button>
                                             </div>
                                         </div>
                                     </div>

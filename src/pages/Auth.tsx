@@ -1,29 +1,69 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Github, Chrome } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Github } from 'lucide-react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { supabase } from '@/lib/supabase';
+import { useToast } from "@/components/ui/use-toast";
 
 const Auth = () => {
+    const { toast } = useToast();
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const initialMode = searchParams.get('mode');
     const redirectUrl = searchParams.get('redirect') || '/dashboard';
     const [isLogin, setIsLogin] = useState(initialMode !== 'signup');
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({ email: '', password: '', name: '' });
 
     const toggleMode = () => setIsLogin(!isLogin);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
 
-        // TODO: Replace with actual authentication logic
-        // For now, just set a dummy token
-        localStorage.setItem('authToken', 'dummy-token-' + Date.now());
-        localStorage.setItem('userEmail', formData.email);
+        try {
+            if (isLogin) {
+                const { error } = await supabase.auth.signInWithPassword({
+                    email: formData.email,
+                    password: formData.password,
+                });
 
-        // Redirect to the intended page or home
-        navigate(redirectUrl);
+                if (error) throw error;
+
+                navigate(redirectUrl);
+            } else {
+                const { error } = await supabase.auth.signUp({
+                    email: formData.email,
+                    password: formData.password,
+                    options: {
+                        data: {
+                            full_name: formData.name,
+                        },
+                    },
+                });
+
+                if (error) throw error;
+
+                toast({
+                    title: "Account created!",
+                    description: "Please check your email to verify your account.",
+                });
+
+                // Optional: Auto login or redirect to verification page?
+                // For now, if auto-signin is enabled in Supabase, they are logged in.
+                // If email confirmation is required, they won't be logged in yet.
+                navigate(redirectUrl);
+            }
+        } catch (error: any) {
+            toast({
+                variant: "destructive",
+                title: "Authentication Error",
+                description: error.message || "An error occurred during authentication.",
+            });
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,11 +117,7 @@ const Auth = () => {
                                 : "Start your journey with Orivon Edge today. Unlock exclusive resources, tools, and a community of innovators."}
                         </p>
                     </motion.div>
-
-
                 </div>
-
-
             </div>
 
             {/* Right Side - Form */}
@@ -199,10 +235,11 @@ const Auth = () => {
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-black hover:bg-gray-800 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-black/20 hover:shadow-black/40 transition-all duration-200 flex items-center justify-center gap-2 group"
+                                    disabled={loading}
+                                    className="w-full bg-black hover:bg-gray-800 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-black/20 hover:shadow-black/40 transition-all duration-200 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    <span>{loading ? 'Processing...' : (isLogin ? 'Sign In' : 'Create Account')}</span>
+                                    {!loading && <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
                                 </button>
                             </motion.form>
                         </AnimatePresence>
