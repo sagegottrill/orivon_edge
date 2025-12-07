@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Users, BookOpen, TrendingUp, Award, Search, Filter } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { auth } from '@/lib/firebase';
 
 interface PlatformStats {
   total_learners: number;
@@ -34,7 +35,16 @@ const AdminDashboard: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState('all');
 
   useEffect(() => {
-    loadAdminData();
+    // Check authentication
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = '/auth';
+        return;
+      }
+      loadAdminData();
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const loadAdminData = async () => {
@@ -62,15 +72,15 @@ const AdminDashboard: React.FC = () => {
       const activeLearners = profilesData?.filter(p => p.onboarding_completed).length || 0;
       const totalPaths = pathsData?.length || 0;
       const completedPaths = pathsData?.filter(p => p.status === 'completed').length || 0;
-      
-      const avgJrs = metricsData?.length 
-        ? metricsData.reduce((sum, m) => sum + m.job_readiness_score, 0) / metricsData.length 
+
+      const avgJrs = metricsData?.length
+        ? metricsData.reduce((sum, m) => sum + m.job_readiness_score, 0) / metricsData.length
         : 0;
-      const avgSav = metricsData?.length 
-        ? metricsData.reduce((sum, m) => sum + m.skill_acquisition_velocity, 0) / metricsData.length 
+      const avgSav = metricsData?.length
+        ? metricsData.reduce((sum, m) => sum + m.skill_acquisition_velocity, 0) / metricsData.length
         : 0;
-      const avgPcr = metricsData?.length 
-        ? metricsData.reduce((sum, m) => sum + m.path_completion_rate, 0) / metricsData.length 
+      const avgPcr = metricsData?.length
+        ? metricsData.reduce((sum, m) => sum + m.path_completion_rate, 0) / metricsData.length
         : 0;
 
       setStats({
@@ -129,12 +139,12 @@ const AdminDashboard: React.FC = () => {
   };
 
   const filteredLearners = learners.filter((learner) => {
-    const matchesSearch = 
+    const matchesSearch =
       learner.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       learner.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       learner.target_role.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const matchesStatus = 
+    const matchesStatus =
       statusFilter === 'all' || learner.status === statusFilter;
 
     return matchesSearch && matchesStatus;
@@ -267,7 +277,7 @@ const AdminDashboard: React.FC = () => {
         <div className="bg-white rounded-xl border border-gray-200">
           <div className="p-6 border-b border-gray-200">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Learners</h2>
-            
+
             {/* Search and Filters */}
             <div className="flex gap-4">
               <div className="flex-1 relative">
@@ -352,12 +362,11 @@ const AdminDashboard: React.FC = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                        learner.status === 'active' ? 'bg-green-100 text-green-800' :
+                      <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${learner.status === 'active' ? 'bg-green-100 text-green-800' :
                         learner.status === 'completed' ? 'bg-blue-100 text-blue-800' :
-                        learner.status === 'paused' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-gray-100 text-gray-800'
-                      }`}>
+                          learner.status === 'paused' ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-gray-100 text-gray-800'
+                        }`}>
                         {learner.status.replace('_', ' ')}
                       </span>
                     </td>

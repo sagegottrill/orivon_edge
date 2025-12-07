@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS program_applications (
   motivation TEXT,
   
   -- Corporate Track Specific
-  current_role VARCHAR(255),
+  job_role VARCHAR(255),
   goals TEXT
 );
 

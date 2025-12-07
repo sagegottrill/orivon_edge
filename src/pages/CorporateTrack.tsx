@@ -31,7 +31,7 @@ const CorporateTrack: React.FC = () => {
         full_name: formData.fullName,
         email: formData.email,
         phone: formData.phone,
-        current_role: formData.currentRole,
+        job_role: formData.currentRole,
         goals: formData.goals
       });
       toast({
