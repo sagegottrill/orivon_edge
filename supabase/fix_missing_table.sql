@@ -1,5 +1,6 @@
 -- Add this to your Supabase SQL Editor to fix the missing table error
 
+-- 1. Create table if not exists
 CREATE TABLE IF NOT EXISTS program_applications (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -16,26 +17,45 @@ CREATE TABLE IF NOT EXISTS program_applications (
   motivation TEXT,
   
   -- Corporate Track Specific
-  job_role VARCHAR(255),
+  job_role VARCHAR(255), -- Renamed from current_role to avoid keyword conflict
   goals TEXT
 );
 
--- Improve performance
+-- 2. Ensure columns exist (safeguard if table existed previously)
+DO $$
+BEGIN
+    BEGIN
+        ALTER TABLE program_applications ADD COLUMN IF NOT EXISTS job_role VARCHAR(255);
+    EXCEPTION
+        WHEN duplicate_column THEN NULL;
+    END;
+END $$;
+
+-- 3. Cleanup conflicting/reserved column if it exists
+DO $$
+BEGIN
+    BEGIN
+        ALTER TABLE program_applications DROP COLUMN IF EXISTS "current_role";
+    EXCEPTION
+        WHEN OTHERS THEN NULL;
+    END;
+END $$;
+
+-- 4. Improve performance
 CREATE INDEX IF NOT EXISTS idx_program_applications_email ON program_applications(email);
 
--- Enable RLS
+-- 5. Enable RLS
 ALTER TABLE program_applications ENABLE ROW LEVEL SECURITY;
 
--- Allow anyone to submit applications
+-- 6. Setup Policies (DROP FIRST to prevent 'already exists' error)
+DROP POLICY IF EXISTS "Anyone can submit applications" ON program_applications;
 CREATE POLICY "Anyone can submit applications"
   ON program_applications
   FOR INSERT
   TO anon
   WITH CHECK (true);
 
--- Allow reading (Used by UserDashboard)
--- Since we are using Firebase Auth, Supabase doesn't have the user session context directly.
--- We rely on the client ensuring they query only their own email.
+DROP POLICY IF EXISTS "Public read applications" ON program_applications;
 CREATE POLICY "Public read applications"
   ON program_applications
   FOR SELECT
