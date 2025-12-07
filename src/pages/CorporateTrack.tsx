@@ -27,7 +27,13 @@ const CorporateTrack: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      await submitCorporateApplication(formData);
+      await submitCorporateApplication({
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        current_role: formData.currentRole,
+        goals: formData.goals
+      });
       toast({
         title: "Application Submitted!",
         description: "We'll be in touch with you shortly.",

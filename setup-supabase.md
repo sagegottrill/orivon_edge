@@ -23,6 +23,10 @@ Your Supabase credentials are already configured! Now you just need to set up th
      - ✅ `contact_submissions`
      - ✅ `newsletter_subscriptions`
 
+5. **Fix Missing Table Error**
+   - If you see an error about `program_applications`, open and run: `supabase/fix_missing_table.sql`
+   - This creates the table needed for the Dashboard.
+
 ---
 
 ## 🎯 Step 2: Get Resend API Key (2 minutes)
