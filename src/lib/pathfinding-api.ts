@@ -133,6 +133,63 @@ export const createLearningPath = async (
   return data;
 };
 
+// NEW: REAL AI GENERATION
+export const generateLearningPathWithAI = async (
+  learnerId: string,
+  jobRole: string,
+  experienceLevel: string
+): Promise<LearningPath | null> => {
+  try {
+    // 1. Call Edge Function (Gemini)
+    const { data: aiData, error: functionError } = await supabase.functions.invoke('generate-north-path', {
+      body: { jobRole, experienceLevel }
+    });
+
+    if (functionError) throw functionError;
+    if (!aiData) throw new Error('No data returned from AI');
+
+    // 2. Create Learning Path Record
+    const pathData = {
+      learner_id: learnerId,
+      path_name: aiData.path_name,
+      description: aiData.description,
+      difficulty_level: aiData.difficulty_level,
+      status: 'active',
+      started_at: new Date().toISOString()
+    };
+
+    const { data: newPath, error: pathError } = await supabase
+      .from('learning_paths')
+      .insert([pathData])
+      .select()
+      .single();
+
+    if (pathError) throw pathError;
+
+    // 3. Create Path Steps
+    const stepsData = aiData.steps.map((step: any) => ({
+      learning_path_id: newPath.id,
+      step_number: step.step_number,
+      title: step.title,
+      description: step.description,
+      step_type: step.step_type,
+      status: 'pending'
+    }));
+
+    const { error: stepsError } = await supabase
+      .from('path_steps')
+      .insert(stepsData);
+
+    if (stepsError) throw stepsError;
+
+    return newPath;
+
+  } catch (err) {
+    console.error('AI Path Generation Failed:', err);
+    return null;
+  }
+};
+
 export const getActiveLearningPath = async (
   learnerId: string
 ): Promise<LearningPath | null> => {
@@ -376,7 +433,7 @@ export const endLearningSession = async (
   activities?: Record<string, any>
 ): Promise<LearningSession | null> => {
   const sessionEnd = new Date();
-  
+
   const { data: session } = await supabase
     .from('learning_sessions')
     .select('session_start')
@@ -647,7 +704,7 @@ export const getDashboardData = async (
     if (currentPath) {
       const allSteps = await getPathSteps(currentPath.id);
       const allProgress = await getAllStepProgress(profile.id, currentPath.id);
-      
+
       // Find next uncompleted steps
       upcomingSteps = allSteps
         .filter((step) => {
@@ -713,7 +770,7 @@ export const getPathOverview = async (
     if (path.error || !path.data) return null;
 
     // Get job role separately
-    const jobRole = path.data.job_role_id 
+    const jobRole = path.data.job_role_id
       ? await getJobRole(path.data.job_role_id)
       : null;
 

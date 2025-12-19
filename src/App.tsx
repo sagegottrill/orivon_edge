@@ -16,7 +16,7 @@ import CoreSkillsTrack from "./pages/CoreSkillsTrack";
 import CorporateTrack from "./pages/CorporateTrack";
 import JoinHub from "./pages/JoinHub";
 import PathfindingDashboard from "./pages/PathfindingDashboard";
-import PathfindingOnboarding from "./pages/PathfindingOnboarding";
+import NorthLanding from './pages/NorthLanding';
 import CoursesBrowser from "./pages/CoursesBrowser";
 import LearningPathView from "./pages/LearningPathView";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -46,7 +46,8 @@ const App = () => (
             <Route path="/corporate-track" element={<CorporateTrack />} />
             <Route path="/join-hub" element={<JoinHub />} />
             <Route path="/pathfinding/dashboard" element={<PathfindingDashboard />} />
-            <Route path="/pathfinding/onboarding" element={<PathfindingOnboarding />} />
+            <Route path="/pathfinding/onboarding" element={<NorthLanding />} />
+            <Route path="/pathfinding" element={<NorthLanding />} />
             <Route path="/pathfinding/courses" element={<CoursesBrowser />} />
             <Route path="/pathfinding/path" element={<LearningPathView />} />
             <Route path="/pathfinding/admin" element={<AdminDashboard />} />
