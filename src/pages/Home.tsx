@@ -688,7 +688,7 @@ const Home: React.FC = () => {
                             </div>
                         </div>
                         <blockquote className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-12 tracking-tight">
-                            "Meet your new unfair advantage. We've built a suite of <span className="text-blue-400">intelligent engines</span> designed to power every stage of your journey—from learning the code to launching the company."
+                            "Meet your new unfair advantage. We've built a suite of <span className="text-blue-400">intelligent engines</span> designed to power every stage of your journey—from mastering new skills to building the future."
                         </blockquote>
                         <div className="flex items-center justify-center gap-4">
                             <div className="h-px w-12 bg-white/30"></div>
