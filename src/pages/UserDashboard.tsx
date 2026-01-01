@@ -45,7 +45,7 @@ const UserDashboard = () => {
                 setUser({
                     name: firebaseUser.displayName || firebaseUser.email?.split('@')[0] || "User",
                     email: firebaseUser.email,
-                    avatar: firebaseUser.photoURL || "https://github.com/shadcn.png",
+                    avatar: firebaseUser.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(firebaseUser.displayName || firebaseUser.email || "User")}&background=random&color=fff`,
                     role: "Student",
                     plan: "Free Tier"
                 });

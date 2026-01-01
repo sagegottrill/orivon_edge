@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Github } from 'lucide-react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { auth } from '@/lib/firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useToast } from "@/components/ui/use-toast";
 
 const Auth = () => {
@@ -18,6 +18,56 @@ const Auth = () => {
     const [formData, setFormData] = useState({ email: '', password: '', name: '' });
 
     const toggleMode = () => setIsLogin(!isLogin);
+
+    // Handle Redirect Result on Mount
+    React.useEffect(() => {
+        const checkRedirect = async () => {
+            try {
+                const { getRedirectResult } = await import('firebase/auth');
+                const result = await getRedirectResult(auth);
+                if (result) {
+                    toast({
+                        title: "Welcome aboard!",
+                        description: "Successfully signed in with GitHub.",
+                    });
+                    navigate(redirectUrl);
+                }
+            } catch (error: any) {
+                console.error("Redirect Auth Error:", error);
+                if (error.code === 'auth/account-exists-with-different-credential') {
+                    toast({
+                        variant: "destructive",
+                        title: "Account Exists",
+                        description: "Please sign in with email first.",
+                    });
+                } else {
+                    toast({
+                        variant: "destructive",
+                        title: "Authentication Failed",
+                        description: error.message,
+                    });
+                }
+            }
+        };
+        checkRedirect();
+    }, [navigate, redirectUrl, toast]);
+
+    const handleGithubLogin = async () => {
+        setLoading(true);
+        try {
+            const { GithubAuthProvider, signInWithRedirect } = await import('firebase/auth');
+            const provider = new GithubAuthProvider();
+            await signInWithRedirect(auth, provider);
+        } catch (error: any) {
+            console.error("Github Login Error:", error);
+            setLoading(false);
+            toast({
+                variant: "destructive",
+                title: "Login Failed",
+                description: "Could not redirect to GitHub.",
+            });
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -150,7 +200,10 @@ const Auth = () => {
 
                         {/* Social Login */}
                         <div className="mb-8">
-                            <button className="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl py-3 transition-all duration-200 group">
+                            <button
+                                onClick={handleGithubLogin}
+                                className="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl py-3 transition-all duration-200 group"
+                            >
                                 <Github className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
                                 <span className="text-sm font-medium text-gray-300 group-hover:text-white">Continue with GitHub</span>
                             </button>

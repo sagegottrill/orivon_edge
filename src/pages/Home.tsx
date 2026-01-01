@@ -765,7 +765,7 @@ const Home: React.FC = () => {
 
                             <div className="pt-4">
                                 <Link
-                                    to="/pathfinding/onboarding"
+                                    to="/north/onboarding"
                                     className="inline-flex items-center gap-3 bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105"
                                 >
                                     <Compass className="w-6 h-6" />
@@ -859,7 +859,7 @@ const Home: React.FC = () => {
 
                             <div className="pt-4">
                                 <Link
-                                    to="/pitch-assessor"
+                                    to="/venture/deckly"
                                     className="inline-flex items-center gap-3 bg-[#D68F55] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#D68F55]/90 hover:shadow-lg transition-all transform hover:scale-105"
                                 >
                                     <BarChart3 className="w-6 h-6" />
@@ -928,7 +928,7 @@ const Home: React.FC = () => {
 
                             <div className="pt-4">
                                 <Link
-                                    to="/problem-finder"
+                                    to="/venture/deep-reveal"
                                     className="inline-flex items-center gap-3 bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105"
                                 >
                                     <Target className="w-6 h-6" />

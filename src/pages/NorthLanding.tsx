@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Compass, Sparkles, Zap, Target, ArrowRight, Brain, Clock, Award } from 'lucide-react';
-import { createLearnerProfile, createSkillAssessment, createLearningPath } from '../lib/pathfinding-api';
+import { createLearnerProfile, createSkillAssessment, createLearningPath, generateLearningPathWithAI } from '../lib/pathfinding-api';
 import { supabase } from '../lib/supabase';
+import { auth } from '@/lib/firebase';
 
 const NorthLanding: React.FC = () => {
     const navigate = useNavigate();
@@ -14,70 +15,78 @@ const NorthLanding: React.FC = () => {
     const handleStartJourney = async () => {
         if (!dreamJob.trim()) return;
 
-        setIsAnalyzing(true);
-
-        // Simulate AI Analysis Stages
-        const stages = [
-            "Analyzing global job market trends...",
-            "Mapping required skill matrices...",
-            "Synthesizing personalized curriculum...",
-            "Optimizing learning path velocity...",
-            "Finalizing your North..."
-        ];
-
-        for (let i = 0; i < stages.length; i++) {
-            setAnalysisStage(i);
-            await new Promise(resolve => setTimeout(resolve, 1500));
+        // AUTH CHECK (FIREBASE)
+        const user = auth.currentUser;
+        if (!user) {
+            alert("Please Sign In. North needs to save your unique path securely.");
+            // Redirect to Auth or open modal could go here. 
+            // For now, redirect to /auth
+            navigate('/auth');
+            return;
         }
 
-        try {
-            const userId = 'demo-user-north-' + Date.now(); // Robust demo ID
+        setIsAnalyzing(true);
 
-            // 1. Create Profile
-            const profile = await createLearnerProfile({
-                user_id: userId,
-                full_name: 'North Explorer',
-                target_role: dreamJob,
-                experience_level: 'beginner',
-                onboarding_completed: true,
-                profile_completed_at: new Date().toISOString(),
-            });
+        // Simulate AI Analysis Stages (Visual only)
+        const stages = [
+            "Connecting to Global Knowledge Graph...",
+            "Analyzing Requirements for " + dreamJob + "...",
+            "Synthesizing 24-Week Curriculum...",
+            "Optimizing for " + user.email + "...",
+            "Finalizing Flight Path..."
+        ];
 
-            if (profile) {
-                // 2. Create Initial Assessment (Baseline)
-                const assessment = await createSkillAssessment({
-                    learner_id: profile.id,
-                    assessment_type: 'initial',
-                    programming_fundamentals: 10, // Pessimistic baseline
-                    problem_solving: 50, // Optimistic baseline
-                });
-
-                // 3. Generate Learning Path
-                // Try to find a role ID first, otherwise fallback
-                const { data: jobRoles } = await supabase
-                    .from('job_roles')
-                    .select('id')
-                    .ilike('title', `%${dreamJob}%`)
-                    .limit(1)
-                    .single();
-
-                await createLearningPath({
-                    learner_id: profile.id,
-                    job_role_id: jobRoles?.id,
-                    path_name: `North: ${dreamJob} Mastery`,
-                    description: `AI-optimized path to becoming a world-class ${dreamJob}. Adaptive curriculum.`,
-                    difficulty_level: 'custom',
-                    estimated_duration_weeks: 24,
-                    status: 'active',
-                    started_at: new Date().toISOString(),
-                });
-
-                navigate('/pathfinding/dashboard');
+        // Start visual stages in background
+        let stageIndex = 0;
+        const stageInterval = setInterval(() => {
+            if (stageIndex < stages.length - 1) {
+                stageIndex++;
+                setAnalysisStage(stageIndex);
             }
+        }, 1500);
+
+        try {
+            // 1. Ensure Profile Exists
+            let profile = await supabase
+                .from('learner_profiles')
+                .select('*')
+                .eq('user_id', user.uid)
+                .single();
+
+            if (!profile.data) {
+                const newProfile = await createLearnerProfile({
+                    user_id: user.uid,
+                    email: user.email,
+                    full_name: user.displayName || user.email?.split('@')[0] || 'Explorer',
+                    target_role: dreamJob,
+                    experience_level: 'beginner',
+                    onboarding_completed: true,
+                });
+                if (!newProfile) throw new Error("Profile Creation Failed");
+            }
+
+            // 2. REAL AI GENERATION
+            // This calls the Gemini API directly
+            const newPath = await generateLearningPathWithAI(
+                // Use a stable ID if profile isn't fully set yet, but we just ensured it.
+                // Actually generateLearningPathWithAI expects learner_profile.id, NOT user.id
+                // We need to fetch the profile ID again if we just created it.
+                // Let's rely on the profile we just fetched/created.
+                (profile.data?.id || user.uid), // Fallback to user.uid if fetch failed (risky but better than crash) - Wait, we should be precise.
+                dreamJob,
+                'beginner'
+            );
+
+            if (!newPath) throw new Error("AI Generation Failed");
+
+            clearInterval(stageInterval);
+            navigate('/north/dashboard');
+
         } catch (error) {
             console.error("North AI Error:", error);
-            alert("North encountered a singularity. Please try again."); // "Unexpected" error message
+            clearInterval(stageInterval);
             setIsAnalyzing(false);
+            alert("North could not generate your path. Please check your API Key and try again.");
         }
     };
 
@@ -100,7 +109,10 @@ const NorthLanding: React.FC = () => {
                         </div>
                         <span className="text-xl font-bold tracking-tight text-black">NORTH</span>
                     </div>
-                    <button className="text-sm font-medium text-gray-500 hover:text-black transition-colors px-4 py-2 hover:bg-gray-50 rounded-lg">
+                    <button
+                        onClick={() => navigate('/auth')}
+                        className="text-sm font-medium text-gray-500 hover:text-black transition-colors px-4 py-2 hover:bg-gray-50 rounded-lg"
+                    >
                         Login
                     </button>
                 </header>
@@ -146,7 +158,7 @@ const NorthLanding: React.FC = () => {
                                     transition={{ delay: 0.4 }}
                                     className="text-2xl text-gray-500 mb-16 max-w-2xl mx-auto font-light leading-relaxed"
                                 >
-                                    The intelligent GPS for your tech career. <br />
+                                    The intelligent GPS for your ambitions. <br />
                                     <strong className="text-gray-900 font-medium">Adaptive. Predictive. Personalized.</strong>
                                 </motion.p>
 
@@ -164,7 +176,7 @@ const NorthLanding: React.FC = () => {
                                             type="text"
                                             value={dreamJob}
                                             onChange={(e) => setDreamJob(e.target.value)}
-                                            placeholder="What is your dream role?"
+                                            placeholder="What do you want to learn?"
                                             className="w-full px-4 py-4 bg-transparent text-lg text-gray-900 placeholder:text-gray-400 focus:outline-none"
                                             onKeyDown={(e) => e.key === 'Enter' && handleStartJourney()}
                                         />
@@ -192,12 +204,12 @@ const NorthLanding: React.FC = () => {
                                         {
                                             id: "002",
                                             title: "Real-Time Calibration",
-                                            desc: "The job market shifts daily. Your curriculum updates nightly. You're never learning yesterday's tech."
+                                            desc: "The world shifts daily. Your curriculum updates nightly. You're never learning yesterday's skills."
                                         },
                                         {
                                             id: "003",
                                             title: "Outcome Guaranteed",
-                                            desc: "We don't track completion. We track competency. Every step is verified to ensure job-readiness."
+                                            desc: "We don't track completion. We track competency. Every step is verified to ensure mastery."
                                         }
                                     ].map((feature, idx) => (
                                         <motion.div

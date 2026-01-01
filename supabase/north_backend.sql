@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS job_roles (
 -- 3. LEARNER PROFILES (User Data)
 CREATE TABLE IF NOT EXISTS learner_profiles (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id UUID NOT NULL, -- Links to auth.users (if using Supabase Auth)
+    user_id TEXT NOT NULL, -- Firebase UID (String)
+    email VARCHAR(255),
     full_name VARCHAR(255),
     target_role TEXT,
     experience_level VARCHAR(50), -- 'beginner', 'intermediate', 'advanced'
@@ -32,7 +33,7 @@ CREATE TABLE IF NOT EXISTS learner_profiles (
 -- 4. LEARNING PATHS (The "North" Star)
 CREATE TABLE IF NOT EXISTS learning_paths (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    learner_id UUIDREFERENCES learner_profiles(id) ON DELETE CASCADE,
+    learner_id UUID REFERENCES learner_profiles(id) ON DELETE CASCADE,
     job_role_id UUID REFERENCES job_roles(id),
     path_name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -55,6 +56,71 @@ CREATE TABLE IF NOT EXISTS path_steps (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
 );
 
+-- 6. PATH PROGRESS (Overall Path Tracking)
+CREATE TABLE IF NOT EXISTS path_progress (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    learner_id UUID REFERENCES learner_profiles(id) ON DELETE CASCADE,
+    learning_path_id UUID REFERENCES learning_paths(id) ON DELETE CASCADE,
+    steps_completed INTEGER DEFAULT 0,
+    steps_total INTEGER DEFAULT 0,
+    progress_percentage DECIMAL(5,2) DEFAULT 0.00,
+    hours_spent DECIMAL(10,2) DEFAULT 0.00,
+    last_activity_date TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    UNIQUE(learner_id, learning_path_id)
+);
+
+-- 7. STEP PROGRESS (Granular Step Tracking)
+CREATE TABLE IF NOT EXISTS step_progress (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    learner_id UUID REFERENCES learner_profiles(id) ON DELETE CASCADE,
+    path_step_id UUID REFERENCES path_steps(id) ON DELETE CASCADE,
+    status VARCHAR(50) DEFAULT 'not_started', -- 'not_started', 'in_progress', 'completed'
+    started_at TIMESTAMP WITH TIME ZONE,
+    completed_at TIMESTAMP WITH TIME ZONE,
+    progress_percentage DECIMAL(5,2) DEFAULT 0.00,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    UNIQUE(learner_id, path_step_id)
+);
+
+-- 8. LEARNER METRICS (HUD Data - JRS, SAV)
+CREATE TABLE IF NOT EXISTS learner_metrics (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    learner_id UUID REFERENCES learner_profiles(id) ON DELETE CASCADE,
+    learning_path_id UUID REFERENCES learning_paths(id) ON DELETE CASCADE,
+    job_readiness_score INTEGER DEFAULT 0,
+    skill_acquisition_velocity DECIMAL(5,2) DEFAULT 0.00,
+    path_completion_rate DECIMAL(5,2) DEFAULT 0.00,
+    calculated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
+-- 9. LEARNING SESSIONS (Time Tracking)
+CREATE TABLE IF NOT EXISTS learning_sessions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    learner_id UUID REFERENCES learner_profiles(id) ON DELETE CASCADE,
+    path_step_id UUID REFERENCES path_steps(id),
+    session_start TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
+    session_end TIMESTAMP WITH TIME ZONE,
+    duration_minutes INTEGER,
+    activities JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
+-- 10. RECOMMENDATIONS (AI Insights)
+CREATE TABLE IF NOT EXISTS path_recommendations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    learner_id UUID REFERENCES learner_profiles(id) ON DELETE CASCADE,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    priority VARCHAR(50), -- 'low', 'medium', 'high', 'critical'
+    reasoning TEXT,
+    status VARCHAR(50) DEFAULT 'pending',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
 -- ==========================================
 -- ROW LEVEL SECURITY (RLS)
 -- ==========================================
@@ -64,47 +130,56 @@ ALTER TABLE job_roles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE learner_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE learning_paths ENABLE ROW LEVEL SECURITY;
 ALTER TABLE path_steps ENABLE ROW LEVEL SECURITY;
+ALTER TABLE path_progress ENABLE ROW LEVEL SECURITY;
+ALTER TABLE step_progress ENABLE ROW LEVEL SECURITY;
+ALTER TABLE learner_metrics ENABLE ROW LEVEL SECURITY;
+ALTER TABLE learning_sessions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE path_recommendations ENABLE ROW LEVEL SECURITY;
 
--- POLICIES
--- Job Roles: Everyone can read
-CREATE POLICY "Public can read job roles" ON job_roles FOR SELECT USING (true);
+-- POLICIES (HYBRID FIREBASE MODE)
+-- Note: Since we use Firebase Auth, Supabase `auth.uid()` is null.
+-- We default to Public Access for this prototype phase. Secure via API Layer in production.
 
--- Learner Profiles: Users can only read/write their own
-CREATE POLICY "Users can read own profile" ON learner_profiles
-    FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users can update own profile" ON learner_profiles
-    FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "Users can insert own profile" ON learner_profiles
-    FOR INSERT WITH CHECK (auth.uid() = user_id);
+-- Job Roles
+CREATE POLICY "Public read job roles" ON job_roles FOR SELECT USING (true);
 
--- Learning Paths: Users can read own paths via learner_profile
-CREATE POLICY "Users can read own paths" ON learning_paths
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM learner_profiles
-            WHERE id = learning_paths.learner_id
-            AND user_id = auth.uid()
-        )
-    );
-CREATE POLICY "Users can insert own paths" ON learning_paths
-    FOR INSERT WITH CHECK (
-        EXISTS (
-            SELECT 1 FROM learner_profiles
-            WHERE id = learning_paths.learner_id
-            AND user_id = auth.uid()
-        )
-    );
+-- Learner Profiles
+CREATE POLICY "Public read profiles" ON learner_profiles FOR SELECT USING (true);
+CREATE POLICY "Public insert profiles" ON learner_profiles FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update profiles" ON learner_profiles FOR UPDATE USING (true);
 
--- Path Steps: Inherit access from Learning Path
-CREATE POLICY "Users can read own steps" ON path_steps
-    FOR SELECT USING (
-        EXISTS (
-            SELECT 1 FROM learning_paths
-            JOIN learner_profiles ON learning_paths.learner_id = learner_profiles.id
-            WHERE learning_paths.id = path_steps.learning_path_id
-            AND learner_profiles.user_id = auth.uid()
-        )
-    );
+-- Learning Paths
+CREATE POLICY "Public read paths" ON learning_paths FOR SELECT USING (true);
+CREATE POLICY "Public insert paths" ON learning_paths FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update paths" ON learning_paths FOR UPDATE USING (true);
+
+-- Path Steps
+CREATE POLICY "Public read steps" ON path_steps FOR SELECT USING (true);
+CREATE POLICY "Public insert steps" ON path_steps FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update steps" ON path_steps FOR UPDATE USING (true);
+
+-- Path Progress
+CREATE POLICY "Public read progress" ON path_progress FOR SELECT USING (true);
+CREATE POLICY "Public insert progress" ON path_progress FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update progress" ON path_progress FOR UPDATE USING (true);
+
+-- Step Progress
+CREATE POLICY "Public read step progress" ON step_progress FOR SELECT USING (true);
+CREATE POLICY "Public insert step progress" ON step_progress FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update step progress" ON step_progress FOR UPDATE USING (true);
+
+-- Learner Metrics
+CREATE POLICY "Public read metrics" ON learner_metrics FOR SELECT USING (true);
+CREATE POLICY "Public insert metrics" ON learner_metrics FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update metrics" ON learner_metrics FOR UPDATE USING (true);
+
+-- Learning Sessions
+CREATE POLICY "Public read sessions" ON learning_sessions FOR SELECT USING (true);
+CREATE POLICY "Public insert sessions" ON learning_sessions FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update sessions" ON learning_sessions FOR UPDATE USING (true);
+
+-- Recommendations
+CREATE POLICY "Public read recommendations" ON path_recommendations FOR SELECT USING (true);
 
 -- ==========================================
 -- SEED DATA (Job Roles)
@@ -114,7 +189,7 @@ INSERT INTO job_roles (title, category, description, avg_salary_min, avg_salary_
 VALUES 
 ('Frontend Developer', 'Engineering', 'Builds user interfaces using React, Vue, or Angular.', 70000, 120000),
 ('Backend Engineer', 'Engineering', 'Designs server-side logic, databases, and APIs.', 80000, 140000),
-('Full Stack Developer', 'Engineering', 'MAsters both frontend and backend technologies.', 90000, 150000),
+('Full Stack Developer', 'Engineering', 'Masters both frontend and backend technologies.', 90000, 150000),
 ('Data Scientist', 'Data', 'Analyzes complex data to help make business decisions.', 95000, 160000),
 ('Product Manager', 'Product', 'Oversees product development from conception to launch.', 85000, 150000),
 ('UI/UX Designer', 'Design', 'Designs intuitive and beautiful user experiences.', 65000, 115000)

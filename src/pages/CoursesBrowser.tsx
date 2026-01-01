@@ -84,7 +84,7 @@ const CoursesBrowser: React.FC = () => {
               </p>
             </div>
             <Link
-              to="/pathfinding/dashboard"
+              to="/north/dashboard"
               className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
             >
               Back to Dashboard
@@ -105,9 +105,8 @@ const CoursesBrowser: React.FC = () => {
             </div>
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-6 py-3 border rounded-lg transition-colors ${
-                showFilters ? 'bg-blue-50 border-blue-300 text-blue-700' : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-              }`}
+              className={`flex items-center gap-2 px-6 py-3 border rounded-lg transition-colors ${showFilters ? 'bg-blue-50 border-blue-300 text-blue-700' : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                }`}
             >
               <Filter className="w-5 h-5" />
               Filters
@@ -228,11 +227,10 @@ const CoursesBrowser: React.FC = () => {
                     <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
                       {course.platform}
                     </span>
-                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                      course.difficulty_level === 'beginner' ? 'bg-green-100 text-green-700' :
-                      course.difficulty_level === 'intermediate' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-red-100 text-red-700'
-                    }`}>
+                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${course.difficulty_level === 'beginner' ? 'bg-green-100 text-green-700' :
+                        course.difficulty_level === 'intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-red-100 text-red-700'
+                      }`}>
                       {course.difficulty_level}
                     </span>
                   </div>

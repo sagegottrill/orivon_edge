@@ -21,6 +21,8 @@ import CoursesBrowser from "./pages/CoursesBrowser";
 import LearningPathView from "./pages/LearningPathView";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserDashboard from "./pages/UserDashboard";
+import DecklyLanding from './pages/DecklyLanding';
+import DeepRevealLanding from './pages/DeepRevealLanding';
 import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
@@ -45,13 +47,17 @@ const App = () => (
             <Route path="/core-skills-track" element={<CoreSkillsTrack />} />
             <Route path="/corporate-track" element={<CorporateTrack />} />
             <Route path="/join-hub" element={<JoinHub />} />
-            <Route path="/pathfinding/dashboard" element={<PathfindingDashboard />} />
-            <Route path="/pathfinding/onboarding" element={<NorthLanding />} />
-            <Route path="/pathfinding" element={<NorthLanding />} />
-            <Route path="/pathfinding/courses" element={<CoursesBrowser />} />
-            <Route path="/pathfinding/path" element={<LearningPathView />} />
-            <Route path="/pathfinding/admin" element={<AdminDashboard />} />
+            <Route path="/north/dashboard" element={<PathfindingDashboard />} />
+            <Route path="/north/onboarding" element={<NorthLanding />} />
+            <Route path="/north" element={<NorthLanding />} />
+            <Route path="/north/courses" element={<CoursesBrowser />} />
+            <Route path="/north/path" element={<LearningPathView />} />
+            <Route path="/venture/deckly" element={<DecklyLanding />} />
+            <Route path="/pitch-assessor" element={<DecklyLanding />} />
+            <Route path="/north/admin" element={<AdminDashboard />} />
             <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/venture/deep-reveal" element={<DeepRevealLanding />} />
+            <Route path="/problem-finder" element={<DeepRevealLanding />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

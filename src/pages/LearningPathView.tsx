@@ -1,34 +1,94 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CheckCircle, Circle, Lock, Clock, BookOpen, Award, ArrowRight, Play, ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle, Circle, Lock, Clock, BookOpen, Award, ArrowRight, Play, ChevronLeft, Zap, Star } from 'lucide-react';
 import { getPathOverview, getStepProgress, getAllStepProgress, createOrUpdateStepProgress, startLearningSession } from '../lib/pathfinding-api';
 import type { PathOverview, StepProgress as StepProgressType } from '../types/pathfinding';
+
+import { auth } from '@/lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const LearningPathView: React.FC = () => {
   const navigate = useNavigate();
   const [pathData, setPathData] = useState<PathOverview | null>(null);
   const [stepProgress, setStepProgress] = useState<StepProgressType[]>([]);
   const [loading, setLoading] = useState(true);
-  const [expandedStep, setExpandedStep] = useState<string | null>(null);
+  const [activeStepId, setActiveStepId] = useState<string | null>(null);
 
   useEffect(() => {
-    loadPathData();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loadPathData(user.uid);
+      } else {
+        // Redirect or handle unauthorized
+        setLoading(false);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
-  const loadPathData = async () => {
+  const loadPathData = async (userId: string) => {
     try {
-      // TODO: Get actual user ID and path ID
-      const learnerId = 'demo-learner-id';
-      const pathId = 'demo-path-id';
+      // In a real app, you might fetch the Learner Profile first to get the ID, 
+      // but for this prototype we assume UserID = LearnerID for simplicity 
+      // OR we fetch the profile here.
+      // Let's rely on the API finding the profile by UserID if possible, 
+      // but the API expects `learnerId`. 
+      // We should really fetch the profile.
+
+      // However, for immediate fix, let's pass UserID and ensure API handles it 
+      // OR just pass UserID as LearnerID if that's how we set it up.
+      // In NorthLanding, we created a profile where user_id = user.uid.
+      // And the RLS/API likely queries based on that.
+
+      // Let's assume for this specific view we need the learner profile first
+      // But pathfinding-api doesn't export getProfileByUserId easily?
+      // Actually it does: `getLearnerProfile(userId)`
+
+      // Simplified: We will just pass userId to these functions 
+      // and assume they leverage the RLS or looking up the profile.
+      // Wait, `getPathOverview` takes (learnerId, pathId). 
+      // `learnerId` IS the UUID of the profile table. `userId` is the Firebase UID (text).
+      // They are different.
+
+      // To fix this properly without refactoring API:
+      // We fetch the profile first.
+
+      // But we can't import `supabase` here directly easily to do a raw query?
+      // No, we can.
+      const { supabase } = await import('../lib/supabase');
+      const { data: profile } = await supabase.from('learner_profiles').select('id').eq('user_id', userId).single();
+
+      if (!profile) {
+        setLoading(false);
+        return;
+      }
+
+      // We also need the Path ID. 
+      // Usually this comes from the URL param. 
+      // But currently it's hardcoded "demo-path-id". 
+      // We should fetch the "latest path" for this user.
+      const { data: latestPath } = await supabase.from('learning_paths').select('id').eq('learner_id', profile.id).order('created_at', { ascending: false }).limit(1).single();
+
+      if (!latestPath) {
+        setLoading(false);
+        return;
+      }
 
       const [overview, progressData] = await Promise.all([
-        getPathOverview(learnerId, pathId),
-        getAllStepProgress(learnerId, pathId),
+        getPathOverview(profile.id, latestPath.id),
+        getAllStepProgress(profile.id, latestPath.id),
       ]);
 
       if (overview) {
         setPathData(overview);
         setStepProgress(progressData);
+        // Default to first incomplete step
+        const firstIncomplete = overview.steps.find(s => {
+          const prog = progressData.find(p => p.path_step_id === s.id);
+          return !prog || prog.status !== 'completed';
+        });
+        if (firstIncomplete) setActiveStepId(firstIncomplete.id);
       }
     } catch (error) {
       console.error('Error loading path data:', error);
@@ -38,336 +98,215 @@ const LearningPathView: React.FC = () => {
   };
 
   const handleStartStep = async (stepId: string, courseUrl?: string) => {
-    try {
-      const learnerId = 'demo-learner-id';
-
-      // Start learning session
-      await startLearningSession(learnerId, stepId);
-
-      // Update step progress to in_progress
-      await createOrUpdateStepProgress(learnerId, stepId, {
-        status: 'in_progress',
-        started_at: new Date().toISOString(),
-      });
-
-      // Reload progress
-      await loadPathData();
-
-      // Open course if URL provided
-      if (courseUrl) {
-        window.open(courseUrl, '_blank');
-      }
-    } catch (error) {
-      console.error('Error starting step:', error);
-    }
+    const learnerId = 'demo-learner-id';
+    await startLearningSession(learnerId, stepId);
+    await createOrUpdateStepProgress(learnerId, stepId, {
+      status: 'in_progress',
+      started_at: new Date().toISOString(),
+    });
+    await loadPathData();
+    if (courseUrl) window.open(courseUrl, '_blank');
   };
 
   const handleCompleteStep = async (stepId: string) => {
-    try {
-      const learnerId = 'demo-learner-id';
-
-      await createOrUpdateStepProgress(learnerId, stepId, {
-        status: 'completed',
-        progress_percentage: 100,
-        completed_at: new Date().toISOString(),
-      });
-
-      // Reload progress
-      await loadPathData();
-    } catch (error) {
-      console.error('Error completing step:', error);
-    }
+    const learnerId = 'demo-learner-id';
+    await createOrUpdateStepProgress(learnerId, stepId, {
+      status: 'completed',
+      progress_percentage: 100,
+      completed_at: new Date().toISOString(),
+    });
+    await loadPathData();
   };
 
   const getStepStatus = (stepId: string) => {
-    const progress = stepProgress.find((p) => p.path_step_id === stepId);
-    return progress?.status || 'not_started';
-  };
-
-  const getStepProgressPercentage = (stepId: string) => {
-    const progress = stepProgress.find((p) => p.path_step_id === stepId);
-    return progress?.progress_percentage || 0;
+    return stepProgress.find((p) => p.path_step_id === stepId)?.status || 'not_started';
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading your learning path...</p>
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-2 h-2 bg-white rounded-full"
+          />
+          <span className="font-mono text-xs text-gray-500 tracking-widest uppercase">Loading Flight Plan...</span>
         </div>
       </div>
-    );
+    )
   }
 
-  if (!pathData) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">No active learning path</h2>
-          <p className="text-gray-600 mb-6">Start your journey by completing the onboarding</p>
-          <Link
-            to="/pathfinding/onboarding"
-            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Get Started <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if (!pathData) return null;
 
   const { path, steps, progress, jobRole } = pathData;
-  const completedSteps = stepProgress.filter((p) => p.status === 'completed').length;
+  const activeStep = steps.find(s => s.id === activeStepId) || steps[0];
+  const activeStatus = getStepStatus(activeStep.id);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-2">
-                <Link
-                  to="/pathfinding/dashboard"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  ← Dashboard
-                </Link>
-              </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-1">
-                {path.path_name}
-              </h1>
-              <p className="text-gray-600">
-                {jobRole.title} • {path.estimated_duration_weeks} weeks • {path.total_estimated_hours} hours
-              </p>
-            </div>
-          </div>
+    <div className="min-h-screen bg-black text-white selection:bg-blue-900 overflow-hidden font-sans">
 
-          {/* Progress Bar */}
-          <div className="mt-6">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-700">
-                {completedSteps} of {steps.length} steps completed
-              </span>
-              <span className="text-sm font-semibold text-blue-600">
-                {progress.progress_percentage.toFixed(0)}%
-              </span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
-              <div
-                className="bg-blue-600 h-3 rounded-full transition-all duration-500"
-                style={{ width: `${progress.progress_percentage}%` }}
-              />
+      {/* TOP BAR */}
+      <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 px-6 h-16 flex items-center justify-between">
+        <Link to="/north/dashboard" className="flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-white transition-colors uppercase tracking-widest">
+          <ChevronLeft className="w-4 h-4" /> Mission Control
+        </Link>
+        <div className="text-right">
+          <h1 className="text-sm font-bold tracking-tight">{path.path_name}</h1>
+          <div className="flex items-center gap-2 justify-end">
+            <span className="text-[10px] uppercase text-gray-500 font-mono">Progress</span>
+            <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
+              <div className="h-full bg-white transition-all duration-1000" style={{ width: `${progress.progress_percentage}%` }} />
             </div>
           </div>
         </div>
       </header>
 
-      {/* Path Steps */}
-      <div className="max-w-4xl mx-auto px-6 py-8">
-        <div className="space-y-4">
-          {steps.map((step, index) => {
-            const status = getStepStatus(step.id);
-            const progressPercent = getStepProgressPercentage(step.id);
-            const isExpanded = expandedStep === step.id;
-            const isLocked = !step.is_unlocked && status === 'not_started';
+      <main className="pt-16 min-h-screen grid lg:grid-cols-12">
 
-            return (
-              <div
-                key={step.id}
-                className={`bg-white rounded-xl border-2 overflow-hidden transition-all ${
-                  status === 'completed' ? 'border-green-200' :
-                  status === 'in_progress' ? 'border-blue-300' :
-                  isLocked ? 'border-gray-200 opacity-60' :
-                  'border-gray-200 hover:border-blue-200'
-                }`}
-              >
-                {/* Step Header */}
-                <div className="p-6">
-                  <div className="flex items-start gap-4">
-                    {/* Status Icon */}
-                    <div className="flex-shrink-0 mt-1">
-                      {status === 'completed' ? (
-                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-6 h-6 text-green-600" />
-                        </div>
-                      ) : status === 'in_progress' ? (
-                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                          <Play className="w-6 h-6 text-blue-600" />
-                        </div>
-                      ) : isLocked ? (
-                        <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                          <Lock className="w-6 h-6 text-gray-400" />
-                        </div>
-                      ) : (
-                        <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
-                          <Circle className="w-6 h-6 text-gray-400" />
-                        </div>
-                      )}
-                    </div>
+        {/* LEFT: FLIGHT PATH TIMELINE */}
+        <div className="lg:col-span-4 border-r border-white/10 h-[calc(100vh-4rem)] overflow-y-auto hidden lg:block scrollbar-hide">
+          <div className="p-8">
+            <h3 className="font-mono text-xs text-gray-500 tracking-widest uppercase mb-8 ml-9">Sequence</h3>
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-[11px] top-4 bottom-4 w-px bg-white/10" />
 
-                    {/* Step Content */}
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-xs font-semibold text-gray-500">
-                              STEP {step.step_number}
-                            </span>
-                            <span className={`px-2 py-0.5 text-xs font-medium rounded ${
-                              step.step_type === 'course' ? 'bg-blue-100 text-blue-700' :
-                              step.step_type === 'project' ? 'bg-purple-100 text-purple-700' :
-                              step.step_type === 'assessment' ? 'bg-orange-100 text-orange-700' :
-                              'bg-gray-100 text-gray-700'
-                            }`}>
-                              {step.step_type}
-                            </span>
-                          </div>
-                          <h3 className="text-lg font-bold text-gray-900 mb-1">
-                            {step.title}
-                          </h3>
-                          {step.description && (
-                            <p className="text-sm text-gray-600 mb-3">
-                              {step.description}
-                            </p>
-                          )}
-                          <div className="flex items-center gap-4 text-sm text-gray-500">
-                            <span className="flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
-                              {step.estimated_hours}h
-                            </span>
-                            {step.is_mandatory && (
-                              <span className="text-red-600 font-medium">Required</span>
-                            )}
-                          </div>
-                        </div>
+              <div className="space-y-8">
+                {steps.map((step, idx) => {
+                  const status = getStepStatus(step.id);
+                  const isActive = activeStepId === step.id;
+                  const isLocked = false; // Simplified logic
 
-                        <button
-                          onClick={() => setExpandedStep(isExpanded ? null : step.id)}
-                          className="text-gray-400 hover:text-gray-600"
-                        >
-                          {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-                        </button>
+                  return (
+                    <motion.div
+                      key={step.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                      className={`group relative pl-9 cursor-pointer transition-all ${isActive ? 'opacity-100' : 'opacity-40 hover:opacity-80'}`}
+                      onClick={() => setActiveStepId(step.id)}
+                    >
+                      {/* Node Dot */}
+                      <div className={`absolute left-0 top-1 w-[23px] h-[23px] rounded-full border-2 flex items-center justify-center bg-black z-10 transition-colors ${isActive ? 'border-white' :
+                        status === 'completed' ? 'border-blue-500' : 'border-gray-700'
+                        }`}>
+                        {status === 'completed' && <div className="w-2 h-2 bg-blue-500 rounded-full" />}
+                        {isActive && <div className="w-2 h-2 bg-white rounded-full animate-pulse" />}
                       </div>
 
-                      {/* Progress Bar for In Progress */}
-                      {status === 'in_progress' && progressPercent > 0 && (
-                        <div className="mt-3">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs text-gray-600">Progress</span>
-                            <span className="text-xs font-semibold text-blue-600">
-                              {progressPercent.toFixed(0)}%
-                            </span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div
-                              className="bg-blue-600 h-2 rounded-full transition-all"
-                              style={{ width: `${progressPercent}%` }}
-                            />
-                          </div>
-                        </div>
-                      )}
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-xs text-gray-500">0{step.step_number}</span>
+                        {status === 'completed' && <CheckCircle className="w-3 h-3 text-blue-500" />}
+                      </div>
+                      <h4 className={`font-bold text-lg leading-tight mb-1 ${isActive ? 'text-white' : 'text-gray-400'}`}>
+                        {step.title}
+                      </h4>
+                      <span className="text-[10px] uppercase tracking-widest font-mono text-gray-500 border border-white/10 px-2 py-0.5 rounded-full">
+                        {step.step_type}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
 
-                      {/* Action Buttons */}
-                      {!isLocked && (
-                        <div className="flex gap-3 mt-4">
-                          {status === 'not_started' && (
-                            <button
-                              onClick={() => handleStartStep(step.id, step.course_id ? '#' : undefined)}
-                              className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-                            >
-                              Start Learning
-                            </button>
-                          )}
-                          {status === 'in_progress' && (
-                            <>
-                              <button
-                                onClick={() => handleStartStep(step.id, step.course_id ? '#' : undefined)}
-                                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-                              >
-                                Continue
-                              </button>
-                              <button
-                                onClick={() => handleCompleteStep(step.id)}
-                                className="px-4 py-2 border border-green-600 text-green-600 rounded-lg text-sm font-medium hover:bg-green-50 transition-colors"
-                              >
-                                Mark Complete
-                              </button>
-                            </>
-                          )}
-                          {status === 'completed' && (
-                            <div className="flex items-center gap-2 text-green-600 text-sm font-medium">
-                              <CheckCircle className="w-4 h-4" />
-                              Completed
-                            </div>
-                          )}
-                        </div>
-                      )}
+        {/* RIGHT: MISSION DETAIL */}
+        <div className="lg:col-span-8 bg-black relative h-[calc(100vh-4rem)] overflow-y-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeStep.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              className="p-8 lg:p-24 max-w-4xl mx-auto"
+            >
+              <div className="inline-block px-4 py-1 border border-blue-500/30 bg-blue-500/10 rounded-full text-blue-400 font-mono text-xs tracking-widest mb-8">
+                MODULE 0{activeStep.step_number} // {activeStep.step_type.toUpperCase()}
+              </div>
 
-                      {isLocked && (
-                        <div className="mt-4 text-sm text-gray-500 flex items-center gap-2">
-                          <Lock className="w-4 h-4" />
-                          Complete previous steps to unlock
-                        </div>
-                      )}
+              <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 bg-gradient-to-br from-white to-gray-500 bg-clip-text text-transparent">
+                {activeStep.title}
+              </h2>
+
+              <div className="h-px w-full bg-white/10 mb-12" />
+
+              <div className="grid md:grid-cols-3 gap-12 text-lg text-gray-400 leading-relaxed mb-16">
+                <div className="md:col-span-2">
+                  <p>{activeStep.description}</p>
+                  <ul className="mt-8 space-y-4">
+                    <li className="flex items-center gap-3 text-sm font-mono text-gray-300">
+                      <div className="w-1 h-1 bg-white rounded-full" />
+                      Primary Directive: Core Competency
+                    </li>
+                    <li className="flex items-center gap-3 text-sm font-mono text-gray-300">
+                      <div className="w-1 h-1 bg-white rounded-full" />
+                      Estimated Duration: {activeStep.estimated_hours} Hours
+                    </li>
+                  </ul>
+                </div>
+                <div className="md:col-span-1 border-l border-white/10 pl-8 space-y-8">
+                  <div>
+                    <label className="block text-xs font-mono text-gray-600 uppercase mb-2">Completion Status</label>
+                    <div className={`text-2xl font-bold ${activeStatus === 'completed' ? 'text-blue-500' : 'text-white'}`}>
+                      {activeStatus === 'completed' ? '100%' : activeStatus === 'in_progress' ? 'ACTIVE' : 'READY'}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono text-gray-600 uppercase mb-2">Resources</label>
+                    <div className="flex items-center gap-2 text-white">
+                      <BookOpen className="w-5 h-5" />
+                      <span>2 Guides</span>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Expanded Details */}
-                {isExpanded && (
-                  <div className="px-6 pb-6 pt-0 border-t border-gray-100">
-                    <div className="mt-4 space-y-3">
-                      <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">What you'll learn</h4>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          <li>• Master key concepts and fundamentals</li>
-                          <li>• Build practical, real-world projects</li>
-                          <li>• Gain hands-on experience</li>
-                        </ul>
-                      </div>
-                      {step.course_id && (
-                        <div>
-                          <h4 className="text-sm font-semibold text-gray-900 mb-2">Course Details</h4>
-                          <p className="text-sm text-gray-600">
-                            Curated course from top learning platform with certificate upon completion
-                          </p>
-                        </div>
-                      )}
-                    </div>
+              {/* ACTION AREA */}
+              <div className="flex gap-4">
+                {activeStatus === 'not_started' && (
+                  <button
+                    onClick={() => handleStartStep(activeStep.id)}
+                    className="group relative px-8 py-5 bg-white text-black font-bold text-lg hover:bg-gray-200 transition-all flex items-center gap-3"
+                  >
+                    INITIATE SEQUENCE
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                )}
+
+                {activeStatus === 'in_progress' && (
+                  <div className="flex gap-4">
+                    <button
+                      className="px-8 py-5 border border-white text-white font-bold text-lg hover:bg-white/10 transition-all flex items-center gap-3"
+                    >
+                      RESUME WORK
+                      <Play className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleCompleteStep(activeStep.id)}
+                      className="px-8 py-5 bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 transition-all flex items-center gap-3"
+                    >
+                      VERIFY COMPLETION
+                      <CheckCircle className="w-5 h-5" />
+                    </button>
+                  </div>
+                )}
+
+                {activeStatus === 'completed' && (
+                  <div className="px-8 py-5 border border-green-500/30 bg-green-500/10 text-green-400 font-mono text-sm tracking-widest flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5" />
+                    MODULE VERIFIED
                   </div>
                 )}
               </div>
-            );
-          })}
+
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Completion Celebration */}
-        {completedSteps === steps.length && (
-          <div className="mt-8 bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center border-2 border-green-200">
-            <Award className="w-16 h-16 text-green-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              🎉 Congratulations!
-            </h2>
-            <p className="text-gray-600 mb-6">
-              You've completed your learning path. You're ready to start applying for {jobRole.title} positions!
-            </p>
-            <div className="flex gap-4 justify-center">
-              <button className="px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                Download Certificate
-              </button>
-              <Link
-                to="/pathfinding/dashboard"
-                className="px-6 py-3 border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
-              >
-                Back to Dashboard
-              </Link>
-            </div>
-          </div>
-        )}
-      </div>
+      </main>
     </div>
   );
 };

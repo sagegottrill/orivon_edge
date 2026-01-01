@@ -117,38 +117,56 @@ export const getLatestSkillAssessment = async (
 // LEARNING PATHS
 // ============================================
 
-export const createLearningPath = async (
-  path: Partial<LearningPath>
-): Promise<LearningPath | null> => {
-  const { data, error } = await supabase
-    .from('learning_paths')
-    .insert([path])
-    .select()
-    .single();
+// MERN BACKEND URL
+// CLIENT-SIDE GEMINI API
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-  if (error) {
-    console.error('Error creating learning path:', error);
-    return null;
-  }
-  return data;
-};
-
-// NEW: REAL AI GENERATION
 export const generateLearningPathWithAI = async (
   learnerId: string,
   jobRole: string,
   experienceLevel: string
 ): Promise<LearningPath | null> => {
   try {
-    // 1. Call Edge Function (Gemini)
-    const { data: aiData, error: functionError } = await supabase.functions.invoke('generate-north-path', {
-      body: { jobRole, experienceLevel }
-    });
+    const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!API_KEY) {
+      console.error('Missing VITE_GEMINI_API_KEY');
+      throw new Error('Please set VITE_GEMINI_API_KEY in your .env file');
+    }
 
-    if (functionError) throw functionError;
-    if (!aiData) throw new Error('No data returned from AI');
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // 2. Create Learning Path Record
+    const prompt = `
+      Act as an expert technical curriculum designer.
+      Create a comprehensive, 24-week learning path for a student wanting to become a "${jobRole}".
+      The student's current level is "${experienceLevel}".
+      
+      Return ONLY valid JSON (no markdown) with this structure:
+      {
+        "path_name": "Title of the path",
+        "description": "Short inspiring description",
+        "difficulty_level": "${experienceLevel}",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Week 1: [Topic]",
+            "description": "What they will learn...",
+            "step_type": "module"
+          }
+        ]
+      }
+    `;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let text = response.text();
+    // Cleanup markdown
+    text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+
+    const aiData = JSON.parse(text);
+
+    // Save to Supabase (Database)
+    // 1. Create Path
     const pathData = {
       learner_id: learnerId,
       path_name: aiData.path_name,
@@ -166,7 +184,7 @@ export const generateLearningPathWithAI = async (
 
     if (pathError) throw pathError;
 
-    // 3. Create Path Steps
+    // 2. Create Steps
     const stepsData = aiData.steps.map((step: any) => ({
       learning_path_id: newPath.id,
       step_number: step.step_number,
@@ -186,8 +204,24 @@ export const generateLearningPathWithAI = async (
 
   } catch (err) {
     console.error('AI Path Generation Failed:', err);
+    throw err;
+  }
+};
+
+export const createLearningPath = async (
+  path: Partial<LearningPath>
+): Promise<LearningPath | null> => {
+  const { data, error } = await supabase
+    .from('learning_paths')
+    .insert([path])
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error creating learning path:', error);
     return null;
   }
+  return data;
 };
 
 export const getActiveLearningPath = async (
