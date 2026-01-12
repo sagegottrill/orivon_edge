@@ -24,47 +24,62 @@ import UserDashboard from "./pages/UserDashboard";
 import DecklyLanding from './pages/DecklyLanding';
 import DeepRevealLanding from './pages/DeepRevealLanding';
 import Auth from "./pages/Auth";
+import VentureStudio from "./pages/VentureStudio";
 
 const queryClient = new QueryClient();
 
 import ScrollToTop from "@/components/ScrollToTop";
 
-const App = () => (
-  <ThemeProvider defaultTheme="light">
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/venture-studio" element={<Index />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/project/:slug" element={<ProjectDetail />} />
-            <Route path="/start-project" element={<StartProject />} />
-            <Route path="/book-consultation" element={<BookConsultation />} />
-            <Route path="/core-skills-track" element={<CoreSkillsTrack />} />
-            <Route path="/corporate-track" element={<CorporateTrack />} />
-            <Route path="/join-hub" element={<JoinHub />} />
-            <Route path="/north/dashboard" element={<PathfindingDashboard />} />
-            <Route path="/north/onboarding" element={<NorthLanding />} />
-            <Route path="/north" element={<NorthLanding />} />
-            <Route path="/north/courses" element={<CoursesBrowser />} />
-            <Route path="/north/path" element={<LearningPathView />} />
-            <Route path="/venture/deckly" element={<DecklyLanding />} />
-            <Route path="/pitch-assessor" element={<DecklyLanding />} />
-            <Route path="/north/admin" element={<AdminDashboard />} />
-            <Route path="/dashboard" element={<UserDashboard />} />
-            <Route path="/venture/deep-reveal" element={<DeepRevealLanding />} />
-            <Route path="/problem-finder" element={<DeepRevealLanding />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </ThemeProvider>
-);
+const App = () => {
+  // Simple check for subdomain
+  const isVentureStudio = typeof window !== 'undefined' && window.location.hostname.startsWith('venturestudio.');
+
+  return (
+    <ThemeProvider defaultTheme="light">
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              {/* Subdomain Routing */}
+              {isVentureStudio ? (
+                <>
+                  <Route path="/" element={<VentureStudio />} />
+                  {/* Allow access to other routes or override as needed */}
+                </>
+              ) : (
+                <Route path="/" element={<Home />} />
+              )}
+
+              <Route path="/venture-studio" element={<Index />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/project/:slug" element={<ProjectDetail />} />
+              <Route path="/start-project" element={<StartProject />} />
+              <Route path="/book-consultation" element={<BookConsultation />} />
+              <Route path="/core-skills-track" element={<CoreSkillsTrack />} />
+              <Route path="/corporate-track" element={<CorporateTrack />} />
+              <Route path="/join-hub" element={<JoinHub />} />
+              <Route path="/north/dashboard" element={<PathfindingDashboard />} />
+              <Route path="/north/onboarding" element={<NorthLanding />} />
+              <Route path="/north" element={<NorthLanding />} />
+              <Route path="/north/courses" element={<CoursesBrowser />} />
+              <Route path="/north/path" element={<LearningPathView />} />
+              <Route path="/venture/deckly" element={<DecklyLanding />} />
+              <Route path="/pitch-assessor" element={<DecklyLanding />} />
+              <Route path="/north/admin" element={<AdminDashboard />} />
+              <Route path="/dashboard" element={<UserDashboard />} />
+              <Route path="/venture/deep-reveal" element={<DeepRevealLanding />} />
+              <Route path="/problem-finder" element={<DeepRevealLanding />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
+  );
+};
 
 export default App;

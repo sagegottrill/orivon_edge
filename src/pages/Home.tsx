@@ -775,11 +775,10 @@ const Home: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Image Side */}
                         <div className="relative order-first lg:order-last">
                             <div className="absolute inset-0 bg-orivon-blue/5 rounded-3xl transform rotate-3"></div>
                             <img
-                                src="/ORI/2.jpg"
+                                src="/features/north-hero.png"
                                 alt="AI Learning Platform"
                                 className="relative rounded-3xl shadow-xl w-full h-auto object-cover border border-gray-100"
                             />
@@ -795,11 +794,14 @@ const Home: React.FC = () => {
                         {/* Image Side (Left for alternation) */}
                         <div className="relative order-first">
                             <div className="absolute inset-0 bg-[#D68F55]/5 rounded-3xl transform -rotate-3"></div>
-                            <div className="relative bg-[#1C1917] rounded-3xl shadow-xl overflow-hidden border border-[#292524] aspect-[4/3] flex items-center justify-center group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#D68F55]/20 to-[#A8A29E]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <BarChart3 className="w-24 h-24 text-[#D68F55] opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                            <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 aspect-[4/3] flex items-center justify-center group">
+                                <img
+                                    src="/features/deckly-hero.png"
+                                    alt="Deckly Interface"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
                                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                    <div className="flex items-center gap-2 text-[#E7E5E4]/80 text-sm font-mono">
+                                    <div className="flex items-center gap-2 text-white/90 text-sm font-mono">
                                         <div className="w-2 h-2 bg-[#D68F55] rounded-full animate-pulse"></div>
                                         Analyzing Investment Potential...
                                     </div>
@@ -941,11 +943,14 @@ const Home: React.FC = () => {
                         {/* Image Side */}
                         <div className="relative order-first lg:order-last">
                             <div className="absolute inset-0 bg-orivon-blue/5 rounded-3xl transform rotate-3"></div>
-                            <div className="relative bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-800 aspect-[4/3] flex items-center justify-center group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <Globe className="w-24 h-24 text-blue-400 opacity-80 group-hover:scale-110 transition-transform duration-500" />
+                            <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 aspect-[4/3] flex items-center justify-center group">
+                                <img
+                                    src="/features/deep-reveal-hero.png"
+                                    alt="Deep Reveal Interface"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
                                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                    <div className="flex items-center gap-2 text-white/80 text-sm font-mono">
+                                    <div className="flex items-center gap-2 text-white/90 text-sm font-mono">
                                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                                         Scanning Global Markets...
                                     </div>
