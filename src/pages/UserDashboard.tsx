@@ -232,14 +232,11 @@ const UserDashboard = () => {
                                         <div className="relative z-10">
                                             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Welcome back, {user.name.split(' ')[0]}! 👋</h2>
                                             <p className="text-blue-100 text-lg max-w-2xl">
-                                                You're making great progress. Continue your learning journey or explore new opportunities in the Venture Studio.
+                                                You're making great progress. Continue your learning journey.
                                             </p>
                                             <div className="mt-8 flex gap-4">
                                                 <Link to="/core-skills-track" className="px-6 py-3 bg-white text-orivon-blue font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg">
                                                     Browse Courses
-                                                </Link>
-                                                <Link to="/venture-studio" className="px-6 py-3 bg-black/20 text-white font-bold rounded-xl hover:bg-black/30 backdrop-blur-sm transition-colors border border-white/10">
-                                                    Venture Studio
                                                 </Link>
                                             </div>
                                         </div>

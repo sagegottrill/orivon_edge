@@ -5,7 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import Index from "./pages/Index";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import StartProject from "./pages/StartProject";
@@ -24,16 +23,12 @@ import UserDashboard from "./pages/UserDashboard";
 import DecklyLanding from './pages/DecklyLanding';
 import DeepRevealLanding from './pages/DeepRevealLanding';
 import Auth from "./pages/Auth";
-import VentureStudio from "./pages/VentureStudio";
 
 const queryClient = new QueryClient();
 
 import ScrollToTop from "@/components/ScrollToTop";
 
 const App = () => {
-  // Simple check for subdomain
-  const isVentureStudio = typeof window !== 'undefined' && window.location.hostname.startsWith('venturestudio.');
-
   return (
     <ThemeProvider defaultTheme="light">
       <QueryClientProvider client={queryClient}>
@@ -43,17 +38,7 @@ const App = () => {
           <BrowserRouter>
             <ScrollToTop />
             <Routes>
-              {/* Subdomain Routing */}
-              {isVentureStudio ? (
-                <>
-                  <Route path="/" element={<VentureStudio />} />
-                  {/* Allow access to other routes or override as needed */}
-                </>
-              ) : (
-                <Route path="/" element={<Home />} />
-              )}
-
-              <Route path="/venture-studio" element={<Index />} />
+              <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/project/:slug" element={<ProjectDetail />} />
               <Route path="/start-project" element={<StartProject />} />

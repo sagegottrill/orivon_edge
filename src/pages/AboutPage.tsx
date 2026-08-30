@@ -17,7 +17,6 @@ const AboutPage: React.FC = () => {
               <Link to="/about" className="text-gray-900 font-semibold">About</Link>
               <a href="/#ai-pathfinding" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">AI Pathfinding</a>
               <a href="/#services" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Services</a>
-              <Link to="/venture-studio" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Venture Studio</Link>
               <a href="/#contact" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">Contact</a>
             </div>
           </div>

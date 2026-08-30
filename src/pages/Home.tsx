@@ -198,10 +198,6 @@ const Home: React.FC = () => {
                                     <span>Join the Hub</span>
                                     <ArrowRight className="w-5 h-5" />
                                 </Link>
-                                <Link to="/venture-studio" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
-                                    <span>Explore Ventures</span>
-                                    <Rocket className="w-5 h-5" />
-                                </Link>
                             </div>
                         </div>
                     </div>
@@ -552,65 +548,7 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            {/* Venture Studio Overview & Link */}
-            <section className="min-h-screen flex items-center py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                                WE DON'T JUST<br />
-                                BUILD APPS.<br />
-                                <span className="text-blue-600">WE BUILD COMPANIES.</span>
-                            </h2>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                                Beyond client services, Orivon Edge operates as a venture studio—building,
-                                launching, and scaling our own AI-driven startups that solve real-world problems
-                                for businesses and communities worldwide.
-                            </p>
 
-                            <div className="space-y-4 mb-8">
-                                <div className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
-                                    <div>
-                                        <h3 className="text-base font-semibold text-gray-900">Research-Backed Ventures</h3>
-                                        <p className="text-sm text-gray-600">Deep market research and validation before launch</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
-                                    <div>
-                                        <h3 className="text-base font-semibold text-gray-900">AI-First Products</h3>
-                                        <p className="text-sm text-gray-600">Leveraging cutting-edge AI and machine learning</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" />
-                                    <div>
-                                        <h3 className="text-base font-semibold text-gray-900">Global Scale, Real Impact</h3>
-                                        <p className="text-sm text-gray-600">Built for innovation, designed for the world</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <Link
-                                to="/venture-studio"
-                                className="inline-flex items-center gap-3 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                            >
-                                <span>Explore Our Venture Studio</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </Link>
-                        </div>
-
-                        <div className="relative">
-                            <img
-                                src="/ORI/3.jpg"
-                                alt="Venture Studio Innovation"
-                                className="w-full h-full max-h-[500px] object-cover rounded-2xl shadow-lg"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* Training Programs */}
             {/* Training Programs */}
