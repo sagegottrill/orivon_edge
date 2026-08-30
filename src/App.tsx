@@ -19,10 +19,8 @@ import NorthLanding from './pages/NorthLanding';
 import CoursesBrowser from "./pages/CoursesBrowser";
 import LearningPathView from "./pages/LearningPathView";
 import AdminDashboard from "./pages/AdminDashboard";
-import UserDashboard from "./pages/UserDashboard";
 import DecklyLanding from './pages/DecklyLanding';
 import DeepRevealLanding from './pages/DeepRevealLanding';
-import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
@@ -54,10 +52,8 @@ const App = () => {
               <Route path="/venture/deckly" element={<DecklyLanding />} />
               <Route path="/pitch-assessor" element={<DecklyLanding />} />
               <Route path="/north/admin" element={<AdminDashboard />} />
-              <Route path="/dashboard" element={<UserDashboard />} />
               <Route path="/venture/deep-reveal" element={<DeepRevealLanding />} />
               <Route path="/problem-finder" element={<DeepRevealLanding />} />
-              <Route path="/auth" element={<Auth />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

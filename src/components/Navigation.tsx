@@ -41,31 +41,7 @@ const Navigation: React.FC = () => {
             </Link>
           </div>
 
-          <div className="flex items-center space-x-4">
-            {user ? (
-              <Link
-                to="/dashboard"
-                className="bg-orivon-blue text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-opacity-90 transition-colors text-sm sm:text-base flex items-center gap-2"
-              >
-                Dashboard
-              </Link>
-            ) : (
-              <>
-                <Link
-                  to="/auth"
-                  className="text-gray-300 hover:text-white px-4 py-2 text-sm sm:text-base font-medium transition-colors"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/auth?mode=signup"
-                  className="bg-black text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm sm:text-base"
-                >
-                  Sign Up
-                </Link>
-              </>
-            )}
-          </div>
+          {/* Auth Buttons Removed */}
         </div>
       </div>
     </nav>
