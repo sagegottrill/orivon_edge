@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, ArrowDown, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Clock, Award, Zap, BarChart3, Menu, X, Compass, Palette, Briefcase, Instagram, Linkedin } from 'lucide-react';
+import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Zap, BarChart3, Compass, Briefcase, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { auth } from '@/lib/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import CompanyFooter from "../components/CompanyFooter";
 
 
 const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = ({ end, duration = 2000, suffix = '' }) => {
@@ -27,14 +26,6 @@ const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = (
 
 const Home: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setIsLoggedIn(!!user);
-        });
-        return () => unsubscribe();
-    }, []);
 
     useEffect(() => {
         // Hero carousel functionality
@@ -1032,7 +1023,9 @@ const Home: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="border-t border-gray-800 mt-16 pt-8">
+                    <CompanyFooter />
+
+                    <div className="border-t border-gray-800 mt-8 pt-8">
                         <p className="text-gray-400 text-center">
                             © 2025 Orivon Edge. All Rights Reserved
                         </p>
