@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Zap, BarChart3, Compass, Briefcase, Instagram, Linkedin } from 'lucide-react';
+import { ArrowRight, Users, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Zap, BarChart3, Compass, Briefcase, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CompanyFooter from "../components/CompanyFooter";
 import SiteNav from "../components/SiteNav";
+import Hero from "../components/Hero";
 import { COMPANY } from "../lib/company";
 
 
@@ -27,255 +28,101 @@ const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = (
 };
 
 const Home: React.FC = () => {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-    useEffect(() => {
-        // Hero carousel functionality
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        let currentSlide = 0;
-
-        const showSlide = (index: number) => {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        };
-
-        const nextSlide = () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        };
-
-        const interval = setInterval(nextSlide, 5000);
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-
-        return () => {
-            clearInterval(interval);
-            dots.forEach(dot => {
-                dot.removeEventListener('click', () => { });
-            });
-        };
-    }, []);
-
     return (
         <div className="min-h-screen bg-white">
-            <style dangerouslySetInnerHTML={{
-                __html: `
-          .hero-carousel {
-            position: relative;
-            width: 100%;
-            height: 100%;
-          }
-          
-          .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-          }
-          
-          .hero-slide.active {
-            opacity: 1;
-          }
-          
-          .carousel-dot.active {
-            background-color: rgba(255, 255, 255, 0.9) !important;
-            transform: scale(1.2);
-          }
 
-          @keyframes scroll-wheel {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(12px); opacity: 0; }
-          }
-          
-          .animate-scroll-wheel {
-            animation: scroll-wheel 1.5s infinite;
-          }
-        `
-            }} />
+            <SiteNav variant="hero" />
 
-            <SiteNav />
-
-            {/* Hero Section */}
-            <section id="home" className="min-h-screen relative overflow-hidden">
-                {/* Hero Carousel */}
-                <div className="absolute inset-0">
-                    <div className="hero-carousel">
-                        <div className="hero-slide active">
-                            <img
-                                src="/imges/1.jpg"
-                                alt="Innovation and technology in action"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-black/40"></div>
-                        </div>
-
-                        <div className="hero-slide">
-                            <img
-                                src="/imges/2.jpg"
-                                alt="Team collaboration and development"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-black/40"></div>
-                        </div>
-
-                        <div className="hero-slide">
-                            <img
-                                src="/imges/3.jpg"
-                                alt="Tech innovation and progress"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-black/40"></div>
-                        </div>
-                    </div>
-
-                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8 tracking-tight animate-fade-in-up">
-                                Building the Future of Technology and Innovation
-                            </h1>
-                            <p className="text-xl sm:text-2xl lg:text-3xl text-white/95 mb-16 font-light leading-relaxed max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                                A youth-led innovation hub building the future
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up mt-12" style={{ animationDelay: '0.4s' }}>
-                                <Link to="/join-hub" className="bg-orivon-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orivon-blue/90 hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-                                    <span>Join the Hub</span>
-                                    <ArrowRight className="w-5 h-5" />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4 z-20">
-                        <button className="carousel-dot active w-4 h-4 rounded-full bg-white/60 hover:bg-white transition-all"></button>
-                        <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
-                        <button className="carousel-dot w-4 h-4 rounded-full bg-white/30 hover:bg-white/60 transition-all"></button>
-                    </div>
-                </div>
-            </section>
+            <Hero />
 
             {/* Who We Are */}
-            <section id="about" className="scroll-mt-16 py-16 bg-white relative overflow-hidden">
-                {/* Background Decoration */}
-                <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50/50 rounded-full blur-3xl pointer-events-none" />
+            <section id="about" className="scroll-mt-16 bg-white py-20 lg:py-28">
+                <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+                    <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+                        <div>
+                            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                                // About us
+                            </span>
 
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-orivon-blue text-sm font-semibold tracking-wide uppercase">
-                                <span className="w-2 h-2 rounded-full bg-orivon-blue animate-pulse" />
-                                About Us
-                            </div>
-
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                                We Are <span className="text-orivon-blue">Global Innovators</span>
+                            <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-gray-900">
+                                A venture studio
+                                <br />
+                                <span className="text-gray-400">that stays to ship.</span>
                             </h2>
 
-                            <div className="space-y-6 text-lg text-gray-600">
-                                <p className="leading-relaxed">
-                                    Orivon Edge is a global venture studio and digital agency that builds AI-driven startups and delivers powerful technology solutions for businesses worldwide.
+                            <div className="mt-7 max-w-[34rem] space-y-5 text-[16px] leading-relaxed text-gray-600">
+                                <p>
+                                    Orivon Edge builds AI-driven startups and delivers enterprise technology for
+                                    organisations worldwide.
                                 </p>
-                                <p className="leading-relaxed">
-                                    We systematically build, de-risk, and scale innovative startups while delivering high-fidelity enterprise solutions for organizations, NGOs, and businesses across all sectors.
+                                <p>
+                                    We build, de-risk and scale ventures while delivering high-fidelity systems for
+                                    businesses, NGOs and institutions across every sector.
                                 </p>
-                                <p className="leading-relaxed">
-                                    Unlike traditional incubators, we function as a vital implementation partner ensuring compliance, delivering measurable policy outcomes, and bridging the gap between innovation and institutional deployment.
+                                <p>
+                                    Unlike a traditional incubator, we stay to implement — compliance, delivery and
+                                    measurable policy outcomes, not a pitch deck.
                                 </p>
-                                <div className="space-y-4 pt-4">
-                                    <h3 className="text-lg font-bold text-gray-900">Our Key Workstreams:</h3>
-                                    <ul className="grid sm:grid-cols-2 gap-3">
-                                        <li className="flex items-center gap-2">
-                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
-                                            <span className="text-gray-700 font-medium">Development</span>
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
-                                            <span className="text-gray-700 font-medium">Innovation</span>
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
-                                            <span className="text-gray-700 font-medium">Creative Enterprise</span>
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                            <CheckCircle className="w-5 h-5 text-orivon-blue flex-shrink-0" />
-                                            <span className="text-gray-700 font-medium">Consulting</span>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
 
-
+                            <dl className="mt-9 grid max-w-[34rem] grid-cols-1 gap-x-8 gap-y-3 border-t border-gray-200 pt-6 sm:grid-cols-2">
+                                {["Development", "Innovation", "Creative Enterprise", "Consulting"].map((item) => (
+                                    <div key={item} className="flex items-baseline gap-3">
+                                        <span className="font-mono text-[10px] text-gray-300">/</span>
+                                        <dt className="text-[15px] text-gray-700">{item}</dt>
+                                    </div>
+                                ))}
+                            </dl>
                         </div>
 
-                        <div className="relative">
-                            <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] opacity-20 blur-xl animate-pulse" />
-                            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100">
-                                <img
-                                    src="/ORI/1.jpg"
-                                    alt="Strategic partnership collaboration"
-                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                <div className="absolute bottom-0 left-0 p-8 text-white">
-                                    <div className="text-3xl font-bold mb-2">Innovation First</div>
-                                    <p className="text-white/80">Building the future of technology</p>
-                                </div>
-                            </div>
-
-
-                        </div>
+                        <figure className="relative overflow-hidden rounded-[28px] bg-gray-100">
+                            <img
+                                src="/ORI/1.jpg"
+                                alt="An Orivon Edge team working together"
+                                width={1200}
+                                height={1320}
+                                loading="lazy"
+                                decoding="async"
+                                className="aspect-[4/4.4] w-full object-cover"
+                            />
+                        </figure>
                     </div>
-
-
                 </div>
             </section>
 
             {/* Trust Metrics */}
-            <section className="py-20 bg-gray-900 text-white">
+            <section className="bg-[#0a0a0a] py-16 text-white lg:py-20">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-12 text-center">
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-12 text-center md:grid-cols-5 md:gap-6">
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                            <div className="text-[clamp(2.5rem,4.6vw,3.75rem)] font-light leading-none tracking-[-0.03em] text-white tabular-nums">
                                 <CountUp end={150} suffix="+" />
                             </div>
-                            <p className="text-gray-400">Students Trained</p>
+                            <p className="mx-auto mt-3 max-w-[12rem] font-mono text-[10px] uppercase leading-[1.5] tracking-[0.2em] text-white/45">Students Trained</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                            <div className="text-[clamp(2.5rem,4.6vw,3.75rem)] font-light leading-none tracking-[-0.03em] text-white tabular-nums">
                                 <CountUp end={5} suffix="+" />
                             </div>
-                            <p className="text-gray-400">Startups Incubated</p>
+                            <p className="mx-auto mt-3 max-w-[12rem] font-mono text-[10px] uppercase leading-[1.5] tracking-[0.2em] text-white/45">Startups Incubated</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                            <div className="text-[clamp(2.5rem,4.6vw,3.75rem)] font-light leading-none tracking-[-0.03em] text-white tabular-nums">
                                 <CountUp end={5000} suffix="+" />
                             </div>
-                            <p className="text-gray-400">Youth Empowered Across Ventures</p>
+                            <p className="mx-auto mt-3 max-w-[12rem] font-mono text-[10px] uppercase leading-[1.5] tracking-[0.2em] text-white/45">Youth Empowered Across Ventures</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                            <div className="text-[clamp(2.5rem,4.6vw,3.75rem)] font-light leading-none tracking-[-0.03em] text-white tabular-nums">
                                 <CountUp end={20000} suffix="+" />
                             </div>
-                            <p className="text-gray-400">Users Across Platforms</p>
+                            <p className="mx-auto mt-3 max-w-[12rem] font-mono text-[10px] uppercase leading-[1.5] tracking-[0.2em] text-white/45">Users Across Platforms</p>
                         </div>
                         <div>
-                            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                            <div className="text-[clamp(2.5rem,4.6vw,3.75rem)] font-light leading-none tracking-[-0.03em] text-white tabular-nums">
                                 <CountUp end={10} suffix="+" />
                             </div>
-                            <p className="text-gray-400">Global Partners</p>
+                            <p className="mx-auto mt-3 max-w-[12rem] font-mono text-[10px] uppercase leading-[1.5] tracking-[0.2em] text-white/45">Global Partners</p>
                         </div>
                     </div>
                 </div>
@@ -477,11 +324,7 @@ const Home: React.FC = () => {
 
             {/* Mission Statement */}
             <section className="py-32 bg-orivon-blue relative overflow-hidden">
-                {/* Background Decoration */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-                    <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
-                    <div className="absolute top-1/2 right-0 w-64 h-64 bg-purple-500 rounded-full blur-3xl" />
-                </div>
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                     <div className="max-w-5xl mx-auto text-center">
@@ -515,7 +358,7 @@ const Home: React.FC = () => {
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1917] border border-[#292524] text-[#D68F55] text-sm font-semibold tracking-wide uppercase mb-6">
-                                <span className="w-2 h-2 rounded-full bg-[#D68F55] animate-pulse" />
+                                <span className="w-2 h-2 rounded-full bg-[#D68F55]" />
                                 Education
                             </div>
                             <h2 className="text-5xl lg:text-6xl font-bold text-[#E7E5E4] mb-6 leading-tight">

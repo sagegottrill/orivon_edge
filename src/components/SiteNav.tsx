@@ -64,8 +64,9 @@ const SectionLink = ({
   );
 };
 
-const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" }) => {
+const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" }) => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { pathname, hash, key } = useLocation();
 
   // Arriving at /#programmes from another page: the section doesn't exist until
@@ -90,17 +91,35 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" }) => {
     };
   }, [open]);
 
+  // Over the hero the bar is invisible and its text is white; once the page
+  // moves, it becomes the same frosted bar used everywhere else.
+  useEffect(() => {
+    if (variant !== "hero") return;
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [variant]);
+
   const dark = variant === "dark";
-  const bar = dark
-    ? "fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md"
-    : "fixed inset-x-0 top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-md";
-  const wordmark = dark ? "text-white" : "text-gray-900";
+  const overMedia = variant === "hero" && !scrolled;
+  const bar = overMedia
+    ? "fixed inset-x-0 top-0 z-50 border-b border-transparent bg-transparent"
+    : dark
+      ? "fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md"
+      : "fixed inset-x-0 top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-md transition-colors duration-300";
+  const wordmark = dark || overMedia ? "text-white" : "text-gray-900";
   const link = dark
     ? "text-sm font-medium text-gray-300 hover:text-white transition-colors"
-    : "text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors";
-  const burger = dark
-    ? "text-white border-white/20 hover:bg-white/10"
+    : overMedia
+      ? "text-sm font-medium text-white/75 hover:text-white transition-colors"
+      : "text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors";
+  const burger = dark || overMedia
+    ? "text-white border-white/25 hover:bg-white/10"
     : "text-gray-900 border-gray-300 hover:bg-gray-100";
+  const cta = overMedia
+    ? "bg-white text-[#0a0a0a] hover:bg-white/90"
+    : "bg-blue-600 text-white hover:bg-blue-700";
 
   return (
     <>
@@ -127,7 +146,7 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" }) => {
             ))}
             <Link
               to="/join-hub"
-              className="inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+              className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${cta}`}
             >
               Join the Hub
               <ArrowUpRight className="h-4 w-4" />
