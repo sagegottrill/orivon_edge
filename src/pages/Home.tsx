@@ -108,13 +108,15 @@ const Home: React.FC = () => {
 
                         <figure className="relative overflow-hidden rounded-[28px] bg-gray-100">
                             <img
-                                src="/ORI/1.jpg"
+                                src="/ORI/what-we-do-1200.webp"
+                                srcSet="/ORI/what-we-do-400.webp 400w, /ORI/what-we-do-600.webp 600w, /ORI/what-we-do-1200.webp 1200w"
+                                sizes="(min-width: 1024px) 45vw, 100vw"
                                 alt="An Orivon Edge team working together"
                                 width={1200}
                                 height={1320}
                                 loading="lazy"
                                 decoding="async"
-                                className="aspect-[4/4.4] w-full object-cover"
+                                className="aspect-[10/11] w-full object-cover"
                             />
                         </figure>
                     </div>

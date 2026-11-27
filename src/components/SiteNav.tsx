@@ -258,7 +258,7 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
           className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
         >
           <Link to="/" className="flex items-center gap-2.5" aria-label="Orivon Edge, home">
-            <img src="/logo.png" alt="" className="h-8 w-auto" />
+            <img src="/logo-128.webp" alt="" width={128} height={128} className="h-8 w-8 object-contain" />
             <span
               className={`text-base font-bold tracking-tight uppercase sm:text-lg ${wordmark}`}
               style={{ fontFamily: "'Montserrat', system-ui, sans-serif" }}
@@ -327,7 +327,7 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
         >
           <div className="flex h-16 items-center justify-between border-b border-gray-200 px-4">
             <span className="flex items-center gap-2.5">
-              <img src="/logo.png" alt="" className="h-8 w-auto" />
+              <img src="/logo-128.webp" alt="" width={128} height={128} className="h-8 w-8 object-contain" />
               <span
                 className="text-base font-bold uppercase tracking-tight text-gray-900"
                 style={{ fontFamily: "'Montserrat', system-ui, sans-serif" }}
