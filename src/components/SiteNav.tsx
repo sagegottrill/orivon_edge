@@ -154,15 +154,48 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
     };
   }, [pathname]);
 
-  // Escape closes it, as it does any dialog.
+  // Keyboard behaviour while the sheet is open: Escape closes it, and Tab is
+  // kept inside it. Without the trap, Tab walks off the last link and into the
+  // page behind the backdrop, which is still there and still focusable.
   useEffect(() => {
     if (!open) return;
+
+    const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.stopPropagation();
         setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const sheet = sheetRef.current;
+      if (!sheet) return;
+
+      const items = Array.from(sheet.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        (el) => el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement,
+      );
+      if (items.length === 0) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      const inside = active ? sheet.contains(active) : false;
+
+      // Forwards off the end (or in from the page behind) -> first control.
+      if (!event.shiftKey && (!inside || active === last)) {
+        event.preventDefault();
+        first.focus();
+        return;
+      }
+      // Backwards off the start -> last control.
+      if (event.shiftKey && (!inside || active === first)) {
+        event.preventDefault();
+        last.focus();
       }
     };
+
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
