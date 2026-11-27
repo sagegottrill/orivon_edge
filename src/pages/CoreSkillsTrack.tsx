@@ -75,7 +75,7 @@ const CoreSkillsTrack: React.FC = () => {
       <SiteNav />
 
       {/* Hero Section */}
-      <section className="flex items-center pb-16 pt-12 lg:pb-20 lg:pt-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden relative">
+      <section className="flex items-center pb-16 pt-12 lg:pb-20 lg:pt-16 relative overflow-hidden border-b border-gray-200 bg-white">
         {/* Subtle decorative elements keeping within color constraints */}
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
@@ -152,96 +152,86 @@ const CoreSkillsTrack: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Tracks Section */}
-      <section id="curriculum" className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium text-gray-900 mb-6">
-              CHOOSE YOUR TRACK.
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Four specialized tracks designed to give you industry-ready skills in high-demand fields.
-            </p>
-          </div>
+            {/* Tracks Section */}
+      <section id="curriculum" className="scroll-mt-16 bg-[#0a0a0a] py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-20">
+            <div className="lg:sticky lg:top-24">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                // Curriculum
+              </span>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* AI Track */}
-            <div className="bg-white border border-gray-200 rounded-3xl p-10 transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10 font-mono text-8xl font-medium text-black select-none group-hover:opacity-5 transition-opacity">
-                01
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Artificial Intelligence</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+              <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">
+                CHOOSE YOUR
+                <br />
+                <span className="text-white/45">TRACK.</span>
+              </h2>
+
+              <p className="mt-7 max-w-[26rem] text-[16px] leading-relaxed text-white/60">
+                Four specialized tracks designed to give you industry-ready skills in high-demand fields.
+              </p>
+            </div>
+
+            <div className="border-t border-white/10">
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">01</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Artificial Intelligence</h3>
+                </div>
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Build intelligent systems using machine learning, neural networks, and natural language processing.
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  {['Machine Learning Fundamentals', 'Deep Learning & Neural Networks', 'Natural Language Processing', 'Computer Vision'].map((skill) => (
-                    <span key={skill} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium border border-gray-200 group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-blue-700 transition-all">
-                      {skill}
-                    </span>
-                  ))}
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="Machine Learning Fundamentals" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Machine Learning Fundamentals</li>
+                    <li key="Deep Learning & Neural Networks" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Deep Learning & Neural Networks</li>
+                    <li key="Natural Language Processing" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Natural Language Processing</li>
+                    <li key="Computer Vision" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Computer Vision</li>
+                </ul>
+              </div>
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">02</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Cloud Computing</h3>
                 </div>
-              </div>
-            </div>
-
-            {/* Cloud Computing Track */}
-            <div className="bg-white border border-gray-200 rounded-3xl p-10 transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10 font-mono text-8xl font-medium text-black select-none group-hover:opacity-5 transition-opacity">
-                02
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-gray-400 transition-colors">Cloud Computing</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Master cloud infrastructure, DevOps practices, and scalable application deployment.
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  {['AWS, Azure & GCP Fundamentals', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Infrastructure as Code'].map((skill) => (
-                    <span key={skill} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium border border-gray-200 group-hover:border-gray-200 group-hover:bg-gray-50 group-hover:text-gray-900 transition-all">
-                      {skill}
-                    </span>
-                  ))}
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="AWS, Azure & GCP Fundamentals" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">AWS, Azure & GCP Fundamentals</li>
+                    <li key="Docker & Kubernetes" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Docker & Kubernetes</li>
+                    <li key="CI/CD Pipelines" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">CI/CD Pipelines</li>
+                    <li key="Infrastructure as Code" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Infrastructure as Code</li>
+                </ul>
+              </div>
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">03</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Data Science</h3>
                 </div>
-              </div>
-            </div>
-
-            {/* Data Science Track */}
-            <div className="bg-white border border-gray-200 rounded-3xl p-10 transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10 font-mono text-8xl font-medium text-black select-none group-hover:opacity-5 transition-opacity">
-                03
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-green-600 transition-colors">Data Science</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Turn data into insights using statistical analysis, visualization, and predictive modeling.
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  {['Python for Data Analysis', 'Statistical Analysis & Modeling', 'Data Visualization (Tableau, PowerBI)', 'Big Data Technologies'].map((skill) => (
-                    <span key={skill} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium border border-gray-200 group-hover:border-green-200 group-hover:bg-green-50 group-hover:text-green-700 transition-all">
-                      {skill}
-                    </span>
-                  ))}
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="Python for Data Analysis" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Python for Data Analysis</li>
+                    <li key="Statistical Analysis & Modeling" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Statistical Analysis & Modeling</li>
+                    <li key="Data Visualization (Tableau, PowerBI)" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Data Visualization (Tableau, PowerBI)</li>
+                    <li key="Big Data Technologies" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Big Data Technologies</li>
+                </ul>
+              </div>
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">04</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Cybersecurity</h3>
                 </div>
-              </div>
-            </div>
-
-            {/* Cybersecurity Track */}
-            <div className="bg-white border border-gray-200 rounded-3xl p-10 transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10 font-mono text-8xl font-medium text-black select-none group-hover:opacity-5 transition-opacity">
-                04
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-red-600 transition-colors">Cybersecurity</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Protect systems and data with ethical hacking, security analysis, and threat detection.
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  {['Network Security Fundamentals', 'Ethical Hacking & Penetration Testing', 'Threat Detection & Response', 'Security Compliance & Auditing'].map((skill) => (
-                    <span key={skill} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium border border-gray-200 group-hover:border-red-200 group-hover:bg-red-50 group-hover:text-red-700 transition-all">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="Network Security Fundamentals" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Network Security Fundamentals</li>
+                    <li key="Ethical Hacking & Penetration Testing" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Ethical Hacking & Penetration Testing</li>
+                    <li key="Threat Detection & Response" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Threat Detection & Response</li>
+                    <li key="Security Compliance & Auditing" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Security Compliance & Auditing</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -249,106 +239,102 @@ const CoreSkillsTrack: React.FC = () => {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-16 bg-[#0a0a0a] relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
-        </div>
+      <section id="benefits" className="scroll-mt-16 bg-white py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="max-w-2xl">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-400">
+              // Why us
+            </span>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-[clamp(1.8rem,3.6vw,2.6rem)] lg:text-[clamp(2.1rem,4.6vw,3.4rem)] font-medium text-white mb-4">
-              WHY CHOOSE US.
+            <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.2rem)] font-medium leading-[1.04] tracking-[-0.03em] text-gray-900">
+              WHY CHOOSE US<span className="text-gray-300">.</span>
             </h2>
-            <p className="text-lg text-blue-100 max-w-3xl mx-auto">
+
+            <p className="mt-7 text-[16px] leading-relaxed text-gray-500">
               More than just training—we prepare you for real-world tech careers.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
-                1
-              </div>
-              <div className="relative z-10">
-                <div className="h-1 w-10 bg-blue-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-medium text-white mb-3">Real Project Experience</h3>
-                <p className="text-blue-100/80 leading-relaxed text-base">
-                  Work on actual client projects and build a portfolio that impresses employers. Gain hands-on experience that sets you apart.
-                </p>
-              </div>
+          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="border-t border-gray-200 pt-7">
+              <span className="font-mono text-[10px] tabular-nums text-gray-400">01</span>
+              <h3 className="mt-4 text-[17px] font-medium tracking-[-0.01em] text-gray-900">Real Project Experience</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+                Work on actual client projects and build a portfolio that impresses employers. Gain hands-on experience that sets you apart.
+              </p>
             </div>
-
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
-                2
-              </div>
-              <div className="relative z-10">
-                <div className="h-1 w-10 bg-gray-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-medium text-white mb-3">Flexible Learning</h3>
-                <p className="text-blue-100/80 leading-relaxed text-base">
-                  Choose between full-time intensive or part-time weekend schedules. We adapt to your life so you can focus on learning.
-                </p>
-              </div>
+            <div className="border-t border-gray-200 pt-7">
+              <span className="font-mono text-[10px] tabular-nums text-gray-400">02</span>
+              <h3 className="mt-4 text-[17px] font-medium tracking-[-0.01em] text-gray-900">Flexible Learning</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+                Choose between full-time intensive or part-time weekend schedules. We adapt to your life so you can focus on learning.
+              </p>
             </div>
-
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-green-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
-                3
-              </div>
-              <div className="relative z-10">
-                <div className="h-1 w-10 bg-green-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-medium text-white mb-3">Industry Certification</h3>
-                <p className="text-blue-100/80 leading-relaxed text-base">
-                  Earn recognized certifications that boost your resume and career prospects. Validate your skills with industry standards.
-                </p>
-              </div>
+            <div className="border-t border-gray-200 pt-7">
+              <span className="font-mono text-[10px] tabular-nums text-gray-400">03</span>
+              <h3 className="mt-4 text-[17px] font-medium tracking-[-0.01em] text-gray-900">Industry Certification</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+                Earn recognized certifications that boost your resume and career prospects. Validate your skills with industry standards.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Apply Section */}
-      <section id="apply" className="py-32 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium mb-6 leading-tight">
-            READY TO START<br />
-            YOUR JOURNEY?
-          </h2>
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-            Applications are open for the next cohort. Limited spots available.
-          </p>
+{/* Apply Section */}
+      <section id="apply" className="scroll-mt-16 border-t border-white/10 bg-[#0a0a0a] py-20 text-white lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:gap-20">
+            <div>
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                // Apply
+              </span>
 
-          <div className="bg-white rounded-3xl p-8 text-left">
-            <h3 className="text-2xl font-medium text-gray-900 mb-6">Application Form</h3>
+              <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">
+                READY TO START
+                <br />
+                <span className="text-white/45">YOUR JOURNEY?</span>
+              </h2>
+          <p className="mt-7 max-w-[30rem] text-[16px] leading-relaxed text-white/55">
+              Applications are open for the next cohort. Limited spots available.
+            </p>
+          </div>
+
+            <div className="border-t border-white/10 pt-10 lg:border-t-0 lg:pt-0">
+
+          
+            <h3 className="mb-8 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+              Application Form
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                <div className="border border-red-500/30 bg-red-500/10 px-4 py-3 text-[13px] text-red-300">
                   {error}
                 </div>
               )}
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name *</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Full Name *</label>
                   <input
                     type="text"
                     name="full_name"
                     value={formData.full_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Email *</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Email *</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -356,25 +342,25 @@ const CoreSkillsTrack: React.FC = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number *</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Phone Number *</label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     placeholder="+234 800 000 0000"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Select Track *</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Select Track *</label>
                   <select
                     name="track"
                     value={formData.track}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900">
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900">
                     <option value="Artificial Intelligence">Artificial Intelligence</option>
                     <option value="Cloud Computing">Cloud Computing</option>
                     <option value="Data Science">Data Science</option>
@@ -384,14 +370,14 @@ const CoreSkillsTrack: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Why do you want to join this program? *</label>
+                <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Why do you want to join this program? *</label>
                 <textarea
                   name="motivation"
                   value={formData.motivation}
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                  className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                   placeholder="Tell us about your goals and motivation..."
                 ></textarea>
               </div>
@@ -399,11 +385,11 @@ const CoreSkillsTrack: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                className="mt-2 flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-[15px] font-medium text-[#0a0a0a] transition-colors hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-[#0a0a0a]/25 border-t-[#0a0a0a]"></div>
                     Submitting...
                   </>
                 ) : (
@@ -411,18 +397,17 @@ const CoreSkillsTrack: React.FC = () => {
                 )}
               </button>
             </form>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center">
-            <Link to="/" className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium">ORIVON <span className="text-blue-600">EDGE</span></Link>
-            <p className="text-gray-400 mt-4">© 2025 Orivon Edge Innovation Hub. All Rights Reserved</p>
+      <footer className="border-t border-white/10 bg-[#0a0a0a] py-14 text-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <Link to="/" className="text-[15px] font-medium tracking-[-0.01em]">ORIVON <span className="text-blue-500">EDGE</span></Link>
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">© 2025 Orivon Edge Innovation Hub. All Rights Reserved</p>
           <CompanyFooter />
-          </div>
         </div>
       </footer>
     </div>

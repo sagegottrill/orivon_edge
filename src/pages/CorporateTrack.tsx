@@ -58,7 +58,7 @@ const CorporateTrack: React.FC = () => {
       <SiteNav />
 
       {/* Hero Section */}
-      <section className="flex items-center pb-16 pt-12 lg:pb-20 lg:pt-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden relative">
+      <section className="flex items-center pb-16 pt-12 lg:pb-20 lg:pt-16 relative overflow-hidden border-b border-gray-200 bg-white">
         {/* Subtle decorative elements */}
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
@@ -134,124 +134,86 @@ const CorporateTrack: React.FC = () => {
         </div>
       </section>
 
-      {/* Programs Section */}
-      <section id="programs" className="py-32 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium text-gray-900 mb-6">
-              WHAT YOU'LL LEARN.
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive training in professional skills, remote work tools, and corporate best practices.
-            </p>
-          </div>
+            {/* Tracks Section */}
+      <section id="programs" className="scroll-mt-16 bg-[#0a0a0a] py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-20">
+            <div className="lg:sticky lg:top-24">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                // Curriculum
+              </span>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Professional Communication */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-white/50 transition-colors duration-500">
-                01
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-gray-400 transition-colors">Professional Communication</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+              <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">
+                WHAT YOU'LL
+                <br />
+                <span className="text-white/45">LEARN.</span>
+              </h2>
+
+              <p className="mt-7 max-w-[26rem] text-[16px] leading-relaxed text-white/60">
+                Comprehensive training in professional skills, remote work tools, and corporate best practices.
+              </p>
+            </div>
+
+            <div className="border-t border-white/10">
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">01</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Professional Communication</h3>
+                </div>
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Master business writing, presentations, and cross-cultural communication.
                 </p>
-                <div className="space-y-3">
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
-                    Business Email & Documentation
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
-                    Presentation Skills
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
-                    Virtual Meeting Etiquette
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
-                    Cross-Cultural Communication
-                  </div>
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="Business Email & Documentation" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Business Email & Documentation</li>
+                    <li key="Presentation Skills" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Presentation Skills</li>
+                    <li key="Virtual Meeting Etiquette" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Virtual Meeting Etiquette</li>
+                    <li key="Cross-Cultural Communication" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Cross-Cultural Communication</li>
+                </ul>
+              </div>
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">02</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Remote Work Mastery</h3>
                 </div>
-              </div>
-            </div>
-
-            {/* Remote Work Mastery */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-blue-100 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-blue-50/50 transition-colors duration-500">
-                02
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Remote Work Mastery</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Excel in distributed teams using modern collaboration tools and workflows.
                 </p>
-                <div className="space-y-3">
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-blue-100 group-hover:bg-blue-50/30 transition-colors">
-                    Collaboration Tools (Slack, Teams, Notion)
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-blue-100 group-hover:bg-blue-50/30 transition-colors">
-                    Asynchronous Communication
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-blue-100 group-hover:bg-blue-50/30 transition-colors">
-                    Time Zone Management
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-blue-100 group-hover:bg-blue-50/30 transition-colors">
-                    Productivity & Time Management
-                  </div>
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="Collaboration Tools (Slack, Teams, Notion)" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Collaboration Tools (Slack, Teams, Notion)</li>
+                    <li key="Asynchronous Communication" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Asynchronous Communication</li>
+                    <li key="Time Zone Management" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Time Zone Management</li>
+                    <li key="Productivity & Time Management" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Productivity & Time Management</li>
+                </ul>
+              </div>
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">03</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Project Management</h3>
                 </div>
-              </div>
-            </div>
-
-            {/* Project Management */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-green-100 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-green-50/50 transition-colors duration-500">
-                03
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-green-600 transition-colors">Project Management</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Lead projects effectively using agile methodologies and PM tools.
                 </p>
-                <div className="space-y-3">
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-green-100 group-hover:bg-green-50/30 transition-colors">
-                    Agile & Scrum Frameworks
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-green-100 group-hover:bg-green-50/30 transition-colors">
-                    Project Planning & Execution
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-green-100 group-hover:bg-green-50/30 transition-colors">
-                    Stakeholder Management
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-green-100 group-hover:bg-green-50/30 transition-colors">
-                    Tools: Jira, Trello, Asana
-                  </div>
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="Agile & Scrum Frameworks" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Agile & Scrum Frameworks</li>
+                    <li key="Project Planning & Execution" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Project Planning & Execution</li>
+                    <li key="Stakeholder Management" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Stakeholder Management</li>
+                    <li key="Tools: Jira, Trello, Asana" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Tools: Jira, Trello, Asana</li>
+                </ul>
+              </div>
+              <div className="border-b border-white/10 py-8 lg:py-10">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10px] tabular-nums text-white/30">04</span>
+                  <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Career Development</h3>
                 </div>
-              </div>
-            </div>
-
-            {/* Career Development */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-orange-100 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-orange-50/50 transition-colors duration-500">
-                04
-              </div>
-              <div className="relative z-10">
-                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-orange-600 transition-colors">Career Development</h3>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+                <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
                   Build your personal brand and land international remote opportunities.
                 </p>
-                <div className="space-y-3">
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-orange-100 group-hover:bg-orange-50/30 transition-colors">
-                    Resume & LinkedIn Optimization
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-orange-100 group-hover:bg-orange-50/30 transition-colors">
-                    Job Search Strategies
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-orange-100 group-hover:bg-orange-50/30 transition-colors">
-                    Interview Preparation
-                  </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-orange-100 group-hover:bg-orange-50/30 transition-colors">
-                    Salary Negotiation
-                  </div>
-                </div>
+                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                    <li key="Resume & LinkedIn Optimization" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Resume & LinkedIn Optimization</li>
+                    <li key="Job Search Strategies" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Job Search Strategies</li>
+                    <li key="Interview Preparation" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Interview Preparation</li>
+                    <li key="Salary Negotiation" className="border-l border-white/15 pl-3 font-mono text-[11px] tracking-[0.02em] text-white/45">Salary Negotiation</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -259,100 +221,96 @@ const CorporateTrack: React.FC = () => {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-16 bg-[#0a0a0a] relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
-        </div>
+      <section id="benefits" className="scroll-mt-16 bg-white py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="max-w-2xl">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-400">
+              // Why us
+            </span>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-[clamp(1.8rem,3.6vw,2.6rem)] lg:text-[clamp(2.1rem,4.6vw,3.4rem)] font-medium text-white mb-4">
-              WHY JOIN US.
+            <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.2rem)] font-medium leading-[1.04] tracking-[-0.03em] text-gray-900">
+              WHY JOIN US<span className="text-gray-300">.</span>
             </h2>
-            <p className="text-lg text-blue-100 max-w-3xl mx-auto">
+
+            <p className="mt-7 text-[16px] leading-relaxed text-gray-500">
               Get the support and resources you need to succeed in corporate and remote roles.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
-                1
-              </div>
-              <div className="relative z-10">
-                <div className="h-1 w-10 bg-gray-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-medium text-white mb-3">Global Network</h3>
-                <p className="text-blue-100/80 leading-relaxed text-base">
-                  Connect with international employers and remote work opportunities worldwide.
-                </p>
-              </div>
+          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="border-t border-gray-200 pt-7">
+              <span className="font-mono text-[10px] tabular-nums text-gray-400">01</span>
+              <h3 className="mt-4 text-[17px] font-medium tracking-[-0.01em] text-gray-900">Global Network</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+                Connect with international employers and remote work opportunities worldwide.
+              </p>
             </div>
-
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
-                2
-              </div>
-              <div className="relative z-10">
-                <div className="h-1 w-10 bg-blue-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-medium text-white mb-3">Flexible Schedule</h3>
-                <p className="text-blue-100/80 leading-relaxed text-base">
-                  Evening and weekend classes designed for working professionals.
-                </p>
-              </div>
+            <div className="border-t border-gray-200 pt-7">
+              <span className="font-mono text-[10px] tabular-nums text-gray-400">02</span>
+              <h3 className="mt-4 text-[17px] font-medium tracking-[-0.01em] text-gray-900">Flexible Schedule</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+                Evening and weekend classes designed for working professionals.
+              </p>
             </div>
-
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-green-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
-                3
-              </div>
-              <div className="relative z-10">
-                <div className="h-1 w-10 bg-green-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-medium text-white mb-3">Career Support</h3>
-                <p className="text-blue-100/80 leading-relaxed text-base">
-                  One-on-one mentorship, job placement assistance, and ongoing career guidance.
-                </p>
-              </div>
+            <div className="border-t border-gray-200 pt-7">
+              <span className="font-mono text-[10px] tabular-nums text-gray-400">03</span>
+              <h3 className="mt-4 text-[17px] font-medium tracking-[-0.01em] text-gray-900">Career Support</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-gray-500">
+                One-on-one mentorship, job placement assistance, and ongoing career guidance.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Apply Section */}
-      <section id="apply" className="py-32 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium mb-6 leading-tight">
-            READY TO GO<br />
-            GLOBAL?
-          </h2>
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-            Join our next cohort and start your journey to international opportunities.
-          </p>
+{/* Apply Section */}
+      <section id="apply" className="scroll-mt-16 border-t border-white/10 bg-[#0a0a0a] py-20 text-white lg:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:gap-20">
+            <div>
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                // Apply
+              </span>
 
-          <div className="bg-white rounded-3xl p-8 text-left">
-            <h3 className="text-2xl font-medium text-gray-900 mb-6">Enrollment Form</h3>
+              <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">
+                READY TO GO
+                <br />
+                <span className="text-white/45">GLOBAL?</span>
+              </h2>
+          <p className="mt-7 max-w-[30rem] text-[16px] leading-relaxed text-white/55">
+              Join our next cohort and start your journey to international opportunities.
+            </p>
+          </div>
+
+            <div className="border-t border-white/10 pt-10 lg:border-t-0 lg:pt-0">
+
+          
+            <h3 className="mb-8 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+              Enrollment Form
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Full Name</label>
                   <input
                     type="text"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Email</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Email</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -360,38 +318,38 @@ const CorporateTrack: React.FC = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Phone Number</label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     placeholder="+234 800 000 0000"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Current Role</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">Current Role</label>
                   <input
                     type="text"
                     name="currentRole"
                     value={formData.currentRole}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     placeholder="e.g., Software Developer"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">What are your career goals?</label>
+                <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">What are your career goals?</label>
                 <textarea
                   rows={4}
                   name="goals"
                   value={formData.goals}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
+                  className="w-full rounded-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-[15px] text-white placeholder:text-white/25 focus:border-white focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                   placeholder="Tell us about your professional aspirations..."
                 ></textarea>
               </div>
@@ -399,7 +357,7 @@ const CorporateTrack: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="mt-2 flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-[15px] font-medium text-[#0a0a0a] transition-colors hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
@@ -409,18 +367,17 @@ const CorporateTrack: React.FC = () => {
                 ) : 'Submit Enrollment'}
               </button>
             </form>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center">
-            <Link to="/" className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium">ORIVON <span className="text-blue-600">EDGE</span></Link>
-            <p className="text-gray-400 mt-4">© 2025 Orivon Edge Innovation Hub. All Rights Reserved</p>
+      <footer className="border-t border-white/10 bg-[#0a0a0a] py-14 text-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <Link to="/" className="text-[15px] font-medium tracking-[-0.01em]">ORIVON <span className="text-blue-500">EDGE</span></Link>
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">© 2025 Orivon Edge Innovation Hub. All Rights Reserved</p>
           <CompanyFooter />
-          </div>
         </div>
       </footer>
     </div>
