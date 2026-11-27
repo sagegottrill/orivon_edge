@@ -51,6 +51,26 @@
          first paint; until it arrives the system stack below renders. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- The hero photograph, preloaded with the same crops the markup asks for,
+         so the first screen paints with its image instead of after it. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/imges/hero-1-portrait.webp"
+      imagesrcset="/imges/hero-1-portrait-sm.webp 450w, /imges/hero-1-portrait.webp 900w"
+      imagesizes="100vw"
+      media="(max-width: 640px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/imges/hero-1-1920.webp"
+      imagesrcset="/imges/hero-1-960.webp 960w, /imges/hero-1-1280.webp 1280w, /imges/hero-1-1920.webp 1920w"
+      imagesizes="100vw"
+      media="(min-width: 641px)"
+      fetchpriority="high"
+    />
     <link
       rel="preload"
       as="style"
