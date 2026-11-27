@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Users, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Zap, BarChart3, Compass, Briefcase, Instagram, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CompanyFooter from "../components/CompanyFooter";
 import SiteNav from "../components/SiteNav";
@@ -26,6 +26,35 @@ const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = (
 
     return <span>{count.toLocaleString()}{suffix}</span>;
 };
+
+const PARTNERS = [
+  { src: "/partners/bictda.webp", alt: "BICTDA" },
+  { src: "/partners/logo2.webp", alt: "Partner logo" },
+  { src: "/partners/aaaa.webp", alt: "Beeloveds House" },
+  { src: "/partners/sav-women.webp", alt: "SAV Women Foundation" },
+  { src: "/partners/lvvv.webp", alt: "Partner logo" },
+  { src: "/partners/lssogo.webp", alt: "Partner logo" },
+  { src: "/partners/808.webp", alt: "Partner logo" },
+  { src: "/partners/logoaq.webp", alt: "Partner logo" },
+  { src: "/partners/bswa.webp", alt: "BSWA" },
+  { src: "/partners/nash.webp", alt: "Nash" },
+  { src: "/partners/ss.webp", alt: "Partner logo" },
+];
+
+const TRACKS = [
+  {
+    title: "Core Skills Track",
+    body: "Hands-on training with real project experience in AI, Cloud Computing, Data Science, and Cybersecurity.",
+    cta: "Apply Now",
+    to: "/core-skills-track",
+  },
+  {
+    title: "Corporate Track",
+    body: "Professional development for corporate roles and international remote work opportunities.",
+    cta: "Join Track",
+    to: "/corporate-track",
+  },
+];
 
 const Home: React.FC = () => {
     return (
@@ -131,279 +160,100 @@ const Home: React.FC = () => {
             </section>
 
             {/* Trusted By Section */}
-            <section className="py-20 bg-white border-y border-gray-200">
-                <div className="w-full">
-                    <div className="text-center mb-12">
-                        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">
-                            Trusted By Leading Organizations
-                        </p>
-                    </div>
+            <section className="border-y border-gray-200 bg-white py-16 lg:py-20">
+                <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                        // Trusted By Leading Organizations
+                    </p>
+                </div>
 
-                    {/* Partners Carousel */}
-                    <div className="relative overflow-hidden w-full [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-                        <div className="partners-carousel flex gap-12 items-center animate-scroll w-max">
-                            {/* First set of partners */}
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/bictda.png"
-                                    alt="BICTDA"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/logo2.png"
-                                    alt="Partner Logo"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/aaaa.png"
-                                    alt="Beeloveds House"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/SAV WOMEN.pdf.png"
-                                    alt="SAV Women Foundation"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/lvvv.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/lssogo.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/808.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/logoaq.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/bswa.png"
-                                    alt="BSWA"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/Nash.png"
-                                    alt="Nash"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/ss.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            {/* Duplicate set for seamless loop */}
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/bictda.png"
-                                    alt="BICTDA"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/logo2.png"
-                                    alt="Partner Logo"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/aaaa.png"
-                                    alt="Beeloveds House"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/SAV WOMEN.pdf.png"
-                                    alt="SAV Women Foundation"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/lvvv.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/lssogo.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/808.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/logoaq.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/bswa.png"
-                                    alt="BSWA"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/Nash.png"
-                                    alt="Nash"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-
-                            <div className="flex flex-col items-center min-w-[250px]">
-                                <img
-                                    src="/ss.png"
-                                    alt="Partner"
-                                    className="h-40 md:h-48 w-auto object-contain hover:scale-105 transition-transform"
-                                />
-                            </div>
-                        </div>
+                {/* One quiet row that drifts. pause-on-hover, and it stops for
+                    anyone who asked for less motion. */}
+                <div className="relative mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+                    <div className="partner-track flex w-max items-center gap-14 sm:gap-20">
+                        {[...PARTNERS, ...PARTNERS].map((partner, i) => (
+                            <img
+                                key={`${partner.src}-${i}`}
+                                src={partner.src}
+                                alt={i < PARTNERS.length ? partner.alt : ""}
+                                aria-hidden={i >= PARTNERS.length || undefined}
+                                width={120}
+                                height={120}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-10 w-auto shrink-0 object-contain opacity-55 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 sm:h-12"
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* Mission Statement */}
-            <section className="py-32 bg-orivon-blue relative overflow-hidden">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+            <section className="bg-[#0a0a0a] py-20 lg:py-28">
+                <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">
+                    <blockquote className="text-[clamp(1.6rem,3.4vw,2.75rem)] font-medium leading-[1.15] tracking-[-0.02em] text-white/90">
+                        &ldquo;Innovation drives real change when it creates{" "}
+                        <span className="text-white/45">meaningful impact</span> for communities
+                        worldwide.&rdquo;
+                    </blockquote>
 
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-                    <div className="max-w-5xl mx-auto text-center">
-                        <div className="mb-10 flex justify-center">
-                            <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/10">
-                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <blockquote className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-12 tracking-tight">
-                            "Innovation drives real change when it creates <span className="text-blue-400">meaningful impact</span> for communities worldwide."
-                        </blockquote>
-                        <div className="flex items-center justify-center gap-4">
-                            <div className="h-px w-12 bg-white/30"></div>
-                            <p className="text-xl text-blue-200 font-medium tracking-wide uppercase">Orivon Edge Team</p>
-                            <div className="h-px w-12 bg-white/30"></div>
-                        </div>
+                    <div className="mt-10 flex items-center gap-4">
+                        <span className="h-px w-10 bg-white/20" />
+                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">
+                            Orivon Edge Team
+                        </p>
                     </div>
                 </div>
             </section>
 
-
-
             {/* Training Programs */}
-            {/* Training Programs */}
-            {/* Training Programs */}
-            {/* Training Programs */}
-            <section id="programmes" className="scroll-mt-16 py-24 bg-[#0C0A09]">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <section id="programmes" className="scroll-mt-16 bg-[#0a0a0a] py-20 lg:py-28">
+                <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+                    <div className="grid gap-14 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-20">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1917] border border-[#292524] text-[#D68F55] text-sm font-semibold tracking-wide uppercase mb-6">
-                                <span className="w-2 h-2 rounded-full bg-[#D68F55]" />
-                                Education
-                            </div>
-                            <h2 className="text-5xl lg:text-6xl font-bold text-[#E7E5E4] mb-6 leading-tight">
-                                TRAINING<br />
-                                <span className="text-[#D68F55]">PROGRAMS.</span>
+                            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                                // Education
+                            </span>
+
+                            <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">
+                                TRAINING
+                                <br />
+                                <span className="text-white/45">PROGRAMS.</span>
                             </h2>
-                            <p className="text-xl text-[#A8A29E] leading-relaxed max-w-lg">
-                                Industry-standard training that gives you the exact skills companies are looking for.
+
+                            <p className="mt-7 max-w-[28rem] text-[16px] leading-relaxed text-white/60">
+                                Industry-standard training that gives you the exact skills companies are
+                                looking for.
                             </p>
                         </div>
 
-                        <div className="grid sm:grid-cols-2 gap-6">
-                            {/* Core Skills Track */}
-                            <div className="bg-[#1C1917] rounded-2xl p-8 shadow-xl border border-[#292524] hover:border-[#D68F55]/30 transition-all group">
-                                <div className="w-14 h-14 bg-[#292524] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#D68F55] transition-colors">
-                                    <Code className="w-7 h-7 text-[#D68F55] group-hover:text-white transition-colors" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-[#E7E5E4] mb-3">Core Skills Track</h3>
-                                <p className="text-[#A8A29E] mb-8 text-sm leading-relaxed">
-                                    Hands-on training with real project experience in AI, Cloud Computing,
-                                    Data Science, and Cybersecurity.
-                                </p>
-                                <Link to="/core-skills-track" className="flex items-center justify-between w-full px-6 py-4 bg-[#292524] rounded-xl text-[#E7E5E4] font-bold hover:bg-[#D68F55] hover:text-white transition-all group-hover:shadow-md">
-                                    <span>Apply Now</span>
-                                    <ArrowRight className="w-5 h-5" />
-                                </Link>
-                            </div>
+                        <div className="border-t border-white/10">
+                            {TRACKS.map((track, i) => (
+                                <div key={track.title} className="border-b border-white/10 py-8">
+                                    <div className="flex items-baseline gap-4">
+                                        <span className="font-mono text-[10px] tabular-nums text-white/30">
+                                            0{i + 1}
+                                        </span>
+                                        <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">
+                                            {track.title}
+                                        </h3>
+                                    </div>
 
-                            {/* Corporate Track */}
-                            <div className="bg-[#1C1917] rounded-2xl p-8 shadow-xl border border-[#292524] hover:border-[#D68F55]/30 transition-all group">
-                                <div className="w-14 h-14 bg-[#292524] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#D68F55] transition-colors">
-                                    <Briefcase className="w-7 h-7 text-[#D68F55] group-hover:text-white transition-colors" />
+                                    <p className="mt-3 max-w-[32rem] text-[15px] leading-relaxed text-white/55">
+                                        {track.body}
+                                    </p>
+
+                                    <Link
+                                        to={track.to}
+                                        className="group mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] py-2 pl-5 pr-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-white/10"
+                                    >
+                                        {track.cta}
+                                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#0a0a0a] transition-transform duration-200 ease-out group-hover:-rotate-45">
+                                            <ArrowUpRight className="h-3.5 w-3.5" />
+                                        </span>
+                                    </Link>
                                 </div>
-                                <h3 className="text-2xl font-bold text-[#E7E5E4] mb-3">Corporate Track</h3>
-                                <p className="text-[#A8A29E] mb-8 text-sm leading-relaxed">
-                                    Professional development for corporate roles and international
-                                    remote work opportunities.
-                                </p>
-                                <Link to="/corporate-track" className="flex items-center justify-between w-full px-6 py-4 bg-[#292524] rounded-xl text-[#E7E5E4] font-bold hover:bg-[#D68F55] hover:text-white transition-all group-hover:shadow-md">
-                                    <span>Join Track</span>
-                                    <ArrowRight className="w-5 h-5" />
-                                </Link>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -426,94 +276,124 @@ const Home: React.FC = () => {
 
 
             {/* Contact Section */}
-            <section id="contact" className="py-20 relative overflow-hidden">
-                {/* Video Background */}
-                <div className="absolute inset-0 z-0">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                    >
-                        <source src="/rok.mp4" type="video/mp4" />
-                    </video>
-                    <div className="absolute inset-0 bg-black/80"></div>
-                </div>
+            <section id="contact" className="relative overflow-hidden bg-[#0a0a0a]">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover opacity-45"
+                >
+                    <source src="/rok.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.97)_0%,rgba(10,10,10,0.9)_55%,rgba(10,10,10,0.75)_100%)]" />
 
-                <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
-                    <div className="bg-black/40 rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-md">
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
-                            {/* Left: Contact Info */}
-                            <div className="space-y-8">
-                                <div>
-                                    <h2 className="text-3xl font-bold mb-4 text-white">Get Started Today</h2>
-                                    <p className="text-gray-400 leading-relaxed">
-                                        Ready to join our innovation hub? Reach out for training, incubation, or partnerships.
-                                    </p>
-                                </div>
+                <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+                    <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+                        <div>
+                            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                                // Contact
+                            </span>
 
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors cursor-pointer group">
-                                        <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
-                                            <Mail className="w-4 h-4 text-white" />
-                                        </div>
-                                        <a href={`mailto:${COMPANY.email}`} className="text-sm font-medium hover:underline">{COMPANY.email}</a>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors cursor-pointer group">
-                                        <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
-                                            <Phone className="w-4 h-4 text-white" />
-                                        </div>
-                                        <a href={`tel:${COMPANY.phoneHref}`} className="text-sm font-medium hover:underline">{COMPANY.phone}</a>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors cursor-pointer group">
-                                        <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
-                                            <MapPin className="w-4 h-4 text-white" />
-                                        </div>
-                                        <span className="text-sm font-medium">Borno State, Nigeria</span>
-                                    </div>
-                                </div>
+                            <h2 className="mt-6 text-[clamp(2rem,4vw,3.2rem)] font-medium leading-[1.05] tracking-[-0.03em] text-white">
+                                Get Started
+                                <br />
+                                <span className="text-white/45">Today.</span>
+                            </h2>
 
-                                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                                    <a href="#" className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group">
-                                        <Instagram className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                                    </a>
-                                    <a href="#" className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group">
-                                        <Linkedin className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                                    </a>
+                            <p className="mt-6 max-w-[28rem] text-[16px] leading-relaxed text-white/60">
+                                Ready to join our innovation hub? Reach out for training, incubation, or
+                                partnerships.
+                            </p>
+
+                            <div className="mt-10 max-w-[30rem] border-t border-white/10">
+                                <a
+                                    href={`mailto:${COMPANY.email}`}
+                                    className="group flex items-center justify-between gap-4 border-b border-white/10 py-4"
+                                >
+                                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
+                                        Email
+                                    </span>
+                                    <span className="flex items-center gap-2 text-[15px] text-white/85 group-hover:text-white">
+                                        {COMPANY.email}
+                                        <ArrowUpRight className="h-4 w-4 opacity-40 transition-opacity group-hover:opacity-100" />
+                                    </span>
+                                </a>
+
+                                <a
+                                    href={`tel:${COMPANY.phoneHref}`}
+                                    className="group flex items-center justify-between gap-4 border-b border-white/10 py-4"
+                                >
+                                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
+                                        Phone
+                                    </span>
+                                    <span className="flex items-center gap-2 text-[15px] text-white/85 group-hover:text-white">
+                                        {COMPANY.phone}
+                                        <ArrowUpRight className="h-4 w-4 opacity-40 transition-opacity group-hover:opacity-100" />
+                                    </span>
+                                </a>
+
+                                <div className="flex items-center justify-between gap-4 border-b border-white/10 py-4">
+                                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
+                                        Office
+                                    </span>
+                                    <span className="text-[15px] text-white/85">Borno State, Nigeria</span>
                                 </div>
                             </div>
 
-                            {/* Right: Action Cards (Horizontal) */}
-                            <div className="space-y-4">
-                                {/* Training Card */}
-                                <Link to="/core-skills-track" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
-                                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white border border-white/10 group-hover:border-white/20 group-hover:scale-110 transition-transform">
-                                        <Users className="w-6 h-6" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="font-bold text-white">Join Training</h3>
-                                        <p className="text-xs text-gray-400">Professional development programs</p>
-                                    </div>
-                                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
-                                        <ArrowRight className="w-4 h-4 text-white" />
-                                    </div>
-                                </Link>
-
-                                {/* Incubation Card */}
-                                <Link to="/join-hub" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
-                                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-white border border-white/10 group-hover:border-white/20 group-hover:scale-110 transition-transform">
-                                        <Rocket className="w-6 h-6" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="font-bold text-white">Startup Incubation</h3>
-                                        <p className="text-xs text-gray-400">Mentorship & incubation</p>
-                                    </div>
-                                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
-                                        <ArrowRight className="w-4 h-4 text-white" />
-                                    </div>
-                                </Link>
+                            <div className="mt-8 flex items-center gap-6">
+                                <a
+                                    href="#"
+                                    aria-label="Instagram"
+                                    className="text-white/40 transition-colors hover:text-white"
+                                >
+                                    <Instagram className="h-4 w-4" />
+                                </a>
+                                <a
+                                    href="#"
+                                    aria-label="LinkedIn"
+                                    className="text-white/40 transition-colors hover:text-white"
+                                >
+                                    <Linkedin className="h-4 w-4" />
+                                </a>
                             </div>
+                        </div>
+
+                        <div className="border-t border-white/10 lg:pt-2">
+                            <Link
+                                to="/core-skills-track"
+                                className="group flex items-center justify-between gap-6 border-b border-white/10 py-6"
+                            >
+                                <span>
+                                    <span className="block text-[19px] font-medium tracking-[-0.01em] text-white">
+                                        Join Training
+                                    </span>
+                                    <span className="mt-1 block text-[14px] text-white/50">
+                                        Professional development programs
+                                    </span>
+                                </span>
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-transform duration-200 ease-out group-hover:-rotate-45">
+                                    <ArrowUpRight className="h-4 w-4" />
+                                </span>
+                            </Link>
+
+                            <Link
+                                to="/join-hub"
+                                className="group flex items-center justify-between gap-6 border-b border-white/10 py-6"
+                            >
+                                <span>
+                                    <span className="block text-[19px] font-medium tracking-[-0.01em] text-white">
+                                        Startup Incubation
+                                    </span>
+                                    <span className="mt-1 block text-[14px] text-white/50">
+                                        Mentorship &amp; incubation
+                                    </span>
+                                </span>
+                                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition-transform duration-200 ease-out group-hover:-rotate-45">
+                                    <ArrowUpRight className="h-4 w-4" />
+                                </span>
+                            </Link>
                         </div>
                     </div>
                 </div>

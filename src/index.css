@@ -250,3 +250,29 @@ html {
 .partners-carousel:hover {
   animation-play-state: paused;
 }
+/* Partner strip: one slow, seamless drift. The row is rendered twice, so -50%
+   lands exactly on the start of the second copy. It pauses on hover and holds
+   still for anyone who prefers less motion. */
+@keyframes partner-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-track {
+  animation: partner-drift 55s linear infinite;
+}
+
+.partner-track:hover,
+.partner-track:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-track {
+    animation: none;
+  }
+}
