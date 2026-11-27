@@ -16,6 +16,10 @@ const CompanyFooter = () => {
         <p>
           Registered in {COMPANY.jurisdiction} under the {COMPANY.law}
         </p>
+        <p className="flex flex-wrap gap-4 pt-2">
+          <Link to={COMPANY.privacyPage} className="underline underline-offset-4 hover:text-white transition-colors">Privacy policy</Link>
+          <Link to={COMPANY.contactPage} className="underline underline-offset-4 hover:text-white transition-colors">Contact &amp; support</Link>
+        </p>
       </div>
 
       <div className="space-y-1">

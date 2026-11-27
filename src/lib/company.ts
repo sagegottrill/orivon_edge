@@ -34,9 +34,11 @@ export const COMPANY = {
 
   address: REGISTERED_ADDRESS,
 
-  // Change this if you want a different number on the site.
-  phone: "+234 909 702 4697",
-  phoneHref: "+2349097024697",
+  // The company line, and the one on the D&B / Apple enrolment record.
+  // Changing it here changes it on every page — but the register must change
+  // with it, or verification fails.
+  phone: "+234 814 308 4473",
+  phoneHref: "+2348143084473",
 
   email: "support@orivonedge.com",
 
@@ -48,4 +50,6 @@ export const COMPANY = {
   websiteUrl: "https://www.orivonedge.com",
 
   companyPage: "/company",
+  privacyPage: "/privacy",
+  contactPage: "/contact",
 } as const;

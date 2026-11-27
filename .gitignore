@@ -31,3 +31,7 @@ dist-ssr
 
 # Vercel
 .vercel
+.env*
+
+# Vercel token (local deploy only - never commit)
+.vercel-token
