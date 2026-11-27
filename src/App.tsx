@@ -4,9 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-
-
-
 import CoreSkillsTrack from "./pages/CoreSkillsTrack";
 import CorporateTrack from "./pages/CorporateTrack";
 import JoinHub from "./pages/JoinHub";
@@ -15,6 +12,7 @@ import Privacy from "./pages/Privacy";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "@/components/ScrollToTop";
+import RouteMeta from "@/components/RouteMeta";
 
 const App = () => {
   return (
@@ -24,11 +22,9 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <RouteMeta />
           <Routes>
             <Route path="/" element={<Home />} />
-
-
-
             <Route path="/core-skills-track" element={<CoreSkillsTrack />} />
             <Route path="/corporate-track" element={<CorporateTrack />} />
             <Route path="/join-hub" element={<JoinHub />} />
