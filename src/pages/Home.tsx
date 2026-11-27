@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight, Users, CheckCircle, Rocket, Target, Globe, Code, Mail, Phone, MapPin, Brain, TrendingUp, Zap, BarChart3, Compass, Briefcase, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CompanyFooter from "../components/CompanyFooter";
+import SiteNav from "../components/SiteNav";
 import { COMPANY } from "../lib/company";
 
 
@@ -105,28 +106,7 @@ const Home: React.FC = () => {
         `
             }} />
 
-            {/* Navigation */}
-            <nav className="bg-white shadow-sm fixed w-full top-0 z-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-20">
-                        {/* Logo */}
-                        <div className="flex items-center">
-                            <Link to="/" className="flex items-center gap-3">
-                                <img
-                                    src="/logo.png"
-                                    alt="Orivon Edge Logo"
-                                    className="h-10 w-auto"
-                                />
-                                <span className="text-base sm:text-xl md:text-2xl font-montserrat font-bold text-gray-900 tracking-tight uppercase">
-                                    ORIVON <span className="text-orivon-blue font-extrabold">EDGE</span>
-                                </span>
-                            </Link>
-                        </div>
-
-                        {/* Auth Buttons Removed */}
-                    </div>
-                </div>
-            </nav>
+            <SiteNav />
 
             {/* Hero Section */}
             <section id="home" className="min-h-screen relative overflow-hidden">
@@ -187,7 +167,7 @@ const Home: React.FC = () => {
             </section>
 
             {/* Who We Are */}
-            <section className="py-16 bg-white relative overflow-hidden">
+            <section id="about" className="scroll-mt-16 py-16 bg-white relative overflow-hidden">
                 {/* Background Decoration */}
                 <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50/50 rounded-full blur-3xl pointer-events-none" />
@@ -530,7 +510,7 @@ const Home: React.FC = () => {
             {/* Training Programs */}
             {/* Training Programs */}
             {/* Training Programs */}
-            <section className="py-24 bg-[#0C0A09]">
+            <section id="programmes" className="scroll-mt-16 py-24 bg-[#0C0A09]">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>

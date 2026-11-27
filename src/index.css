@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Anchor links in the navigation land on a section, not behind the fixed bar. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @layer base {
   :root {
     --background: 210 40% 98%;

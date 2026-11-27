@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SiteNav from "../components/SiteNav";
 import { ArrowLeft } from "lucide-react";
 import { COMPANY } from "../lib/company";
 
@@ -46,21 +47,8 @@ const Privacy = () => {
   const telHref = `tel:${COMPANY.phoneHref}`;
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <header className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold">
-            ORIVON <span className="text-blue-600">EDGE</span>
-          </Link>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to site
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen bg-black pt-16 text-white">
+      <SiteNav variant="dark" />
 
       <main className="max-w-3xl mx-auto px-6 lg:px-8 py-16">
         <p className="text-sm font-semibold tracking-widest text-blue-500 uppercase mb-4">
