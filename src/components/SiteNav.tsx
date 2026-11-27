@@ -21,15 +21,20 @@ const ITEMS = [
   { label: "Contact", to: "/contact" },
 ];
 
+/** The home-page sections the bar tracks, in document order. */
+const SECTION_IDS = ["about", "programmes"];
+
 const SectionLink = ({
   to,
   onNavigate,
   className,
+  active,
   children,
 }: {
   to: string;
   onNavigate?: () => void;
   className?: string;
+  active?: boolean;
   children: React.ReactNode;
 }) => {
   const { pathname, hash } = useLocation();
@@ -50,7 +55,7 @@ const SectionLink = ({
           }
           onNavigate?.();
         }}
-        aria-current={hash === `#${anchor}` ? "true" : undefined}
+        aria-current={active ? "location" : hash === `#${anchor}` ? "true" : undefined}
       >
         {children}
       </a>
@@ -58,7 +63,12 @@ const SectionLink = ({
   }
 
   return (
-    <Link to={to} className={className} onClick={onNavigate}>
+    <Link
+      to={to}
+      className={className}
+      onClick={onNavigate}
+      aria-current={active ? "location" : undefined}
+    >
       {children}
     </Link>
   );
@@ -68,6 +78,7 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname, hash, key } = useLocation();
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const sheetRef = useRef<HTMLDivElement | null>(null);
   const wasOpen = useRef(false);
@@ -104,6 +115,44 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
     if (open) sheet.removeAttribute("inert");
     else sheet.setAttribute("inert", "");
   }, [open]);
+
+  // Which section the reader is in.
+  //
+  // Deliberately a position check on scroll rather than an IntersectionObserver:
+  // on a phone two observers can both be "intersecting" while sections slide past
+  // the bar, and the entry/exit callbacks then alternate. One measurement per
+  // animation frame, against a single line a third of the way down the viewport,
+  // can only produce one answer, and React bails out when that answer is unchanged.
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(null);
+      return;
+    }
+
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.35;
+      let current: string | null = null;
+      for (const id of SECTION_IDS) {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= line) current = id;
+      }
+      setActiveSection(current);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(measure);
+    };
+
+    measure();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [pathname]);
 
   // Escape closes it, as it does any dialog.
   useEffect(() => {
@@ -157,6 +206,17 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
     ? "bg-white text-[#0a0a0a] hover:bg-white/90"
     : "bg-blue-600 text-white hover:bg-blue-700";
 
+  // A hairline under the current section, in the bar's own text colour.
+  const activeRule = "relative after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-[1.5px] after:rounded-full after:bg-current";
+  const activeTone = dark || overMedia ? "text-white" : "text-gray-900";
+  const activeClass = `${activeRule} ${activeTone}`;
+
+  const isActive = (to: string) => {
+    const [path, anchor] = to.split("#");
+    if (anchor) return pathname === "/" && activeSection === anchor;
+    return path === pathname;
+  };
+
   return (
     <>
       <header className={bar}>
@@ -175,11 +235,19 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
-            {ITEMS.map((item) => (
-              <SectionLink key={item.to} to={item.to} className={link}>
-                {item.label}
-              </SectionLink>
-            ))}
+            {ITEMS.map((item) => {
+              const active = isActive(item.to);
+              return (
+                <SectionLink
+                  key={item.to}
+                  to={item.to}
+                  active={active}
+                  className={`${link} ${active ? activeClass : ""}`}
+                >
+                  {item.label}
+                </SectionLink>
+              );
+            })}
             <Link
               to="/join-hub"
               className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${cta}`}
@@ -245,18 +313,25 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
           </div>
 
           <ul className="px-4 py-3">
-            {ITEMS.map((item) => (
-              <li key={item.to}>
-                <SectionLink
-                  to={item.to}
-                  onNavigate={() => setOpen(false)}
-                  className="flex items-center justify-between border-b border-gray-100 py-3.5 text-lg font-medium text-gray-900"
-                >
-                  {item.label}
-                  <ArrowUpRight className="h-4 w-4 text-gray-400" />
-                </SectionLink>
-              </li>
-            ))}
+            {ITEMS.map((item) => {
+              const active = isActive(item.to);
+              return (
+                <li key={item.to}>
+                  <SectionLink
+                    to={item.to}
+                    active={active}
+                    onNavigate={() => setOpen(false)}
+                    className="flex items-center justify-between border-b border-gray-100 py-3.5 text-lg font-medium text-gray-900"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      {active && <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />}
+                      {item.label}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 text-gray-400" />
+                  </SectionLink>
+                </li>
+              );
+            })}
             <li className="pt-4">
               <Link
                 to="/join-hub"
