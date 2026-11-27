@@ -384,13 +384,13 @@ const Privacy = () => {
         </P>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-6 text-sm">
-          <Link to="/contact" className="text-blue-400 hover:text-blue-300">
+          <Link to="/contact" className="text-white/55 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white">
             Contact &amp; support
           </Link>
-          <Link to="/company" className="text-blue-400 hover:text-blue-300">
+          <Link to="/company" className="text-white/55 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white">
             Company information
           </Link>
-          <Link to="/" className="text-gray-500 hover:text-white">
+          <Link to="/" className="text-white/35 transition-colors hover:text-white">
             Back to home
           </Link>
         </div>

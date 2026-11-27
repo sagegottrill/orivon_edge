@@ -402,45 +402,63 @@ const Home: React.FC = () => {
             </section>
 
             {/* Footer */}
-            <footer className="bg-black text-white py-16">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-2">
-                            <h3 className="text-3xl font-bold mb-6">ORIVON <span className="text-blue-600">EDGE</span></h3>
-                            <p className="text-xl text-gray-400 leading-relaxed max-w-md">
+            <footer className="border-t border-white/10 bg-[#0a0a0a] py-14 text-white lg:py-16">
+                <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+                    <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-16">
+                        <div>
+                            <p className="text-[15px] font-medium tracking-[-0.01em]">
+                                ORIVON <span className="text-white/45">EDGE</span>
+                            </p>
+                            <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-white/50">
                                 A global innovation hub dedicated to nurturing creativity,
                                 technology, and entrepreneurship worldwide.
                             </p>
                         </div>
 
-                        <div>
-                            <h4 className="text-lg font-bold mb-6">Quick Links</h4>
-                            <ul className="space-y-3 text-gray-400">
-                                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-                                <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-                                <li><a href="#ventures" className="hover:text-white transition-colors">Ventures</a></li>
-                                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                        <nav aria-label="Quick links">
+                            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+                                Quick Links
+                            </p>
+                            <ul className="mt-3 border-t border-white/10">
+                                {[
+                                    ["About", "#about"],
+                                    ["Services", "#services"],
+                                    ["Ventures", "#ventures"],
+                                    ["Contact", "#contact"],
+                                ].map(([label, href]) => (
+                                    <li key={label} className="border-b border-white/10">
+                                        <a
+                                            href={href}
+                                            className="block py-2.5 text-[14px] text-white/55 transition-colors hover:text-white"
+                                        >
+                                            {label}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
-                        </div>
+                        </nav>
 
                         <div>
-                            <h4 className="text-lg font-bold mb-6">Services</h4>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>Tech Training</li>
-                                <li>Startup Incubation</li>
-                                <li>Custom Development</li>
-                                <li>Digital Consulting</li>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+                                Services
+                            </p>
+                            <ul className="mt-3 border-t border-white/10 text-[14px] text-white/55">
+                                {["Tech Training", "Startup Incubation", "Custom Development", "Digital Consulting"].map(
+                                    (item) => (
+                                        <li key={item} className="border-b border-white/10 py-2.5">
+                                            {item}
+                                        </li>
+                                    ),
+                                )}
                             </ul>
                         </div>
                     </div>
 
                     <CompanyFooter />
 
-                    <div className="border-t border-gray-800 mt-8 pt-8">
-                        <p className="text-gray-400 text-center">
-                            © 2025 Orivon Edge. All Rights Reserved
-                        </p>
-                    </div>
+                    <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
+                        © 2025 Orivon Edge. All Rights Reserved
+                    </p>
                 </div>
             </footer>
         </div>

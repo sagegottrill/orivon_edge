@@ -143,9 +143,9 @@ const Company = () => {
         </div>
       </section>
 
-      <footer className="bg-black border-t border-white/10 py-12">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-gray-400">
+      <footer className="border-t border-white/10 bg-[#0a0a0a] py-10">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
             © 2025 {COMPANY.displayName}. All Rights Reserved
           </p>
         </div>
