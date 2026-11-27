@@ -39,10 +39,10 @@ const Contact = () => {
       <SiteNav variant="dark" />
 
       <main className="max-w-4xl mx-auto px-6 lg:px-8 py-16">
-        <p className="text-sm font-semibold tracking-widest text-blue-500 uppercase mb-4">
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
           Support
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact and support</h1>
+        <h1 className="text-[clamp(1.8rem,3.6vw,2.6rem)] md:text-[clamp(2.1rem,4.6vw,3.4rem)] font-medium mb-4">Contact and support</h1>
         <p className="text-gray-400 leading-relaxed max-w-2xl mb-12">
           We answer on working days, usually within one business day. Choose the address
           that fits, so your message reaches the right person.
@@ -52,10 +52,10 @@ const Contact = () => {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col"
+              className="rounded-3xl bg-white/5 border border-white/10 p-6 flex flex-col"
             >
               <card.icon className="w-5 h-5 text-blue-500 mb-4" />
-              <h2 className="font-bold text-white mb-2">{card.title}</h2>
+              <h2 className="font-medium text-white mb-2">{card.title}</h2>
               <a
                 href={card.href}
                 className="text-sm text-blue-400 underline underline-offset-4 hover:text-blue-300 mb-3 break-all"
@@ -68,9 +68,9 @@ const Contact = () => {
         </div>
 
         <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <div className="rounded-3xl bg-white/5 border border-white/10 p-6">
             <Phone className="w-5 h-5 text-blue-500 mb-4" />
-            <h2 className="font-bold text-white mb-2">Phone</h2>
+            <h2 className="font-medium text-white mb-2">Phone</h2>
             <a
               href={telHref}
               className="text-sm text-blue-400 underline underline-offset-4 hover:text-blue-300"
@@ -83,9 +83,9 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
+          <div className="rounded-3xl bg-white/5 border border-white/10 p-6">
             <MapPin className="w-5 h-5 text-blue-500 mb-4" />
-            <h2 className="font-bold text-white mb-2">Registered office</h2>
+            <h2 className="font-medium text-white mb-2">Registered office</h2>
             <p className="text-sm text-gray-400 leading-relaxed">
               {COMPANY.legalName}
               <br />
@@ -100,7 +100,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <h2 className="mt-14 mb-3 text-2xl font-bold text-white">Before you write</h2>
+        <h2 className="mt-14 mb-3 text-2xl font-medium text-white">Before you write</h2>
         <ul className="space-y-2 text-gray-400 leading-relaxed list-disc pl-6">
           <li>
             For a file already in progress, quote the reference you were given — it lets us

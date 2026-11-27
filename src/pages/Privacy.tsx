@@ -16,7 +16,7 @@ import { COMPANY } from "../lib/company";
  */
 
 const H2 = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="mt-12 mb-3 text-2xl font-bold text-white">{children}</h2>
+  <h2 className="mt-12 mb-3 text-2xl font-medium text-white">{children}</h2>
 );
 
 const H3 = ({ children }: { children: React.ReactNode }) => (
@@ -51,10 +51,10 @@ const Privacy = () => {
       <SiteNav variant="dark" />
 
       <main className="max-w-3xl mx-auto px-6 lg:px-8 py-16">
-        <p className="text-sm font-semibold tracking-widest text-blue-500 uppercase mb-4">
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
           Legal
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy policy</h1>
+        <h1 className="text-[clamp(1.8rem,3.6vw,2.6rem)] md:text-[clamp(2.1rem,4.6vw,3.4rem)] font-medium mb-4">Privacy policy</h1>
         <p className="text-gray-500 mb-10">Last updated: 27 November 2026 · Version 1.0</p>
 
         <P>
@@ -74,7 +74,7 @@ const Privacy = () => {
           <strong className="text-white">Nigeria Data Protection Act 2023 (NDPA)</strong> and
           the guidance of the Nigeria Data Protection Commission (NDPC).
         </P>
-        <div className="my-6 rounded-2xl bg-white/5 border border-white/10 p-6 text-gray-400">
+        <div className="my-6 rounded-3xl bg-white/5 border border-white/10 p-6 text-gray-400">
           <p className="mb-2">
             <strong className="text-white">Privacy contact:</strong>{" "}
             <A href={supportHref}>{COMPANY.email}</A> ·{" "}
@@ -176,7 +176,7 @@ const Privacy = () => {
         </P>
 
         <H2>4. Why we use your data</H2>
-        <div className="mb-4 overflow-x-auto rounded-2xl border border-white/10">
+        <div className="mb-4 overflow-x-auto rounded-3xl border border-white/10">
           <table className="w-full text-left text-sm">
             <thead className="bg-white/5 text-gray-300">
               <tr>
@@ -316,7 +316,7 @@ const Privacy = () => {
           expect it. We may ask you to prove your identity first, so that we do not hand your
           data to someone else.
         </P>
-        <div className="my-6 rounded-2xl bg-white/5 border border-white/10 p-6 text-gray-400">
+        <div className="my-6 rounded-3xl bg-white/5 border border-white/10 p-6 text-gray-400">
           <p>
             <strong className="text-white">
               Deleting your VisaPaper account and data.
@@ -359,7 +359,7 @@ const Privacy = () => {
         </P>
 
         <H2>14. Contact</H2>
-        <div className="rounded-2xl bg-white/5 border border-white/10 p-6 text-gray-400">
+        <div className="rounded-3xl bg-white/5 border border-white/10 p-6 text-gray-400">
           <p className="mb-3">
             <strong className="text-white">{COMPANY.legalName}</strong>
             <br />

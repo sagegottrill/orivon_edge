@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Users, GraduationCap, Rocket, CheckCircle, Mail, Phone, MapPin, Briefcase } from 'lucide-react';
 import { submitProgramApplication } from '@/lib/appwrite';
 import CompanyFooter from "../components/CompanyFooter";
+import SiteNav from "../components/SiteNav";
 
 const JoinHub: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -56,12 +57,12 @@ const JoinHub: React.FC = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-white">
-        <nav className="bg-white shadow-sm fixed w-full top-0 z-50">
+      <div className="min-h-screen bg-white pt-16">
+        <nav className="bg-white fixed w-full top-0 z-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
               <div className="flex items-center">
-                <Link to="/" className="text-3xl font-bold text-gray-900 hover:opacity-80 transition-opacity">
+                <Link to="/" className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 hover:opacity-80 transition-opacity">
                   ORIVON <span className="text-blue-600">EDGE</span>
                 </Link>
               </div>
@@ -74,7 +75,7 @@ const JoinHub: React.FC = () => {
             <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
               <CheckCircle className="w-12 h-12 text-green-600" />
             </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-[clamp(2.1rem,4.6vw,3.4rem)] font-medium text-gray-900 mb-6">
               APPLICATION SUBMITTED!
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -92,28 +93,17 @@ const JoinHub: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm fixed w-full top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <Link to="/" className="text-3xl font-bold text-gray-900 hover:opacity-80 transition-opacity">
-                ORIVON <span className="text-blue-600">EDGE</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-white">
+      <section className="pb-20 pt-16 lg:pt-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-6">
                 <Rocket className="w-4 h-4" /> Join The Hub
               </div>
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium text-gray-900 mb-6 leading-tight">
                 Become Part of the<br />
                 <span className="text-blue-600">Orivon Edge</span> Hub
               </h1>
@@ -143,8 +133,8 @@ const JoinHub: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply to Join</h2>
+            <div className="bg-white rounded-3xl p-8 border border-gray-100">
+              <h2 className="text-2xl font-medium text-gray-900 mb-6">Apply to Join</h2>
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
                   {error}

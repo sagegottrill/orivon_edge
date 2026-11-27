@@ -4,6 +4,7 @@ import { ArrowRight, Globe, CheckCircle, Loader2 } from 'lucide-react';
 import { submitCorporateApplication } from '@/lib/appwrite';
 import { useToast } from "@/components/ui/use-toast";
 import CompanyFooter from "../components/CompanyFooter";
+import SiteNav from "../components/SiteNav";
 
 const CorporateTrack: React.FC = () => {
   const { toast } = useToast();
@@ -53,42 +54,21 @@ const CorporateTrack: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm fixed w-full top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <Link to="/" className="text-3xl font-bold text-gray-900 hover:opacity-80 transition-opacity">
-                ORIVON <span className="text-blue-600">EDGE</span>
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center space-x-12">
-              <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</Link>
-              <a href="#programs" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Programs</a>
-              <a href="#benefits" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Benefits</a>
-              <a href="#apply" className="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
-                Join Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-white pt-16">
+      <SiteNav />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center pt-16 pb-10 bg-gradient-to-br from-gray-50 to-white overflow-hidden relative">
+      <section className="flex items-center pb-16 pt-12 lg:pb-20 lg:pt-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden relative">
         {/* Subtle decorative elements */}
-        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-purple-50/50 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <div className="space-y-4 animate-fade-in">
-                <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-[0.9] tracking-tighter">
+                <h1 className="text-[clamp(2.4rem,6vw,4.4rem)] font-medium text-gray-900 leading-[0.98] tracking-[-0.03em]">
                   LEVEL UP YOUR<br />
                   CORPORATE<br />
-                  <span className="text-purple-600">
+                  <span className="text-gray-400">
                     CAREER.
                   </span>
                 </h1>
@@ -100,14 +80,14 @@ const CorporateTrack: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="#apply"
-                  className="group inline-flex items-center justify-center gap-2 bg-purple-600 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-purple-700 hover:scale-105 transition-all duration-300 shadow-xl shadow-purple-600/20"
+                  className="group inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-full font-medium text-base hover:bg-gray-900 transition-all duration-300 shadow-purple-600/20"
                 >
                   <span>Join Track</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
                   href="#programs"
-                  className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold text-base border border-gray-200 hover:border-purple-600 hover:text-purple-600 transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-medium text-base border border-gray-200 hover:border-gray-900 hover:text-gray-400 transition-all duration-300"
                 >
                   <span>View Programs</span>
                 </a>
@@ -116,37 +96,36 @@ const CorporateTrack: React.FC = () => {
               <div className="pt-6 border-t border-gray-100">
                 <div className="grid grid-cols-3 gap-8">
                   <div className="group cursor-default">
-                    <div className="text-4xl font-black text-gray-900 mb-1 tracking-tighter group-hover:scale-110 transition-transform origin-left duration-300">6-8</div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-purple-600 transition-colors">Weeks Program</p>
+                    <div className="text-[clamp(1.8rem,3.6vw,2.6rem)] font-medium text-gray-900 mb-1 tracking-[-0.03em] transition-transform duration-300">6-8</div>
+                    <p className="text-xs font-medium uppercase tracking-widest text-gray-500 group-hover:text-gray-400 transition-colors">Weeks Program</p>
                   </div>
                   <div className="group cursor-default">
-                    <div className="text-4xl font-black text-gray-900 mb-1 tracking-tighter group-hover:scale-110 transition-transform origin-left duration-300">100%</div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-purple-600 transition-colors">Remote Ready</p>
+                    <div className="text-[clamp(1.8rem,3.6vw,2.6rem)] font-medium text-gray-900 mb-1 tracking-[-0.03em] transition-transform duration-300">100%</div>
+                    <p className="text-xs font-medium uppercase tracking-widest text-gray-500 group-hover:text-gray-400 transition-colors">Remote Ready</p>
                   </div>
                   <div className="group cursor-default">
-                    <div className="text-4xl font-black text-gray-900 mb-1 tracking-tighter group-hover:scale-110 transition-transform origin-left duration-300">Global</div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-purple-600 transition-colors">Opportunities</p>
+                    <div className="text-[clamp(1.8rem,3.6vw,2.6rem)] font-medium text-gray-900 mb-1 tracking-[-0.03em] transition-transform duration-300">Global</div>
+                    <p className="text-xs font-medium uppercase tracking-widest text-gray-500 group-hover:text-gray-400 transition-colors">Opportunities</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="relative lg:h-[600px] hidden lg:block">
-              <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/10 to-transparent rounded-[2.5rem] transform -rotate-3 scale-95" />
               <img
-                src="/imges/13.jpg"
+                src="/imges/hero-1-1280.webp"
                 alt="Professional working remotely"
-                className="w-full h-full object-cover rounded-[2.5rem] shadow-2xl transform hover:scale-[1.02] transition-transform duration-700 ease-out relative z-10"
+                className="w-full h-full object-cover rounded-[28px] transform transition-transform duration-700 ease-out relative z-10"
               />
               {/* Floating Badge */}
-              <div className="absolute -bottom-8 -right-8 bg-white p-5 rounded-2xl shadow-xl z-20 animate-bounce-slow">
+              <div className="absolute bottom-5 right-5 z-20 rounded-3xl bg-white/90 p-4 backdrop-blur-sm">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
                     <Globe className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <p className="text-xs text-black font-bold uppercase tracking-wider">Work From</p>
-                    <p className="text-lg font-black text-black">Anywhere</p>
+                    <p className="text-xs text-black font-medium uppercase tracking-wider">Work From</p>
+                    <p className="text-lg font-medium text-black">Anywhere</p>
                   </div>
                 </div>
               </div>
@@ -159,7 +138,7 @@ const CorporateTrack: React.FC = () => {
       <section id="programs" className="py-32 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium text-gray-900 mb-6">
               WHAT YOU'LL LEARN.
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -169,26 +148,26 @@ const CorporateTrack: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Professional Communication */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-purple-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-black text-gray-50 select-none group-hover:text-purple-50/50 transition-colors duration-500">
+            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-white/50 transition-colors duration-500">
                 01
               </div>
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">Professional Communication</h3>
+                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-gray-400 transition-colors">Professional Communication</h3>
                 <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   Master business writing, presentations, and cross-cultural communication.
                 </p>
                 <div className="space-y-3">
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-purple-100 group-hover:bg-purple-50/30 transition-colors">
+                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
                     Business Email & Documentation
                   </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-purple-100 group-hover:bg-purple-50/30 transition-colors">
+                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
                     Presentation Skills
                   </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-purple-100 group-hover:bg-purple-50/30 transition-colors">
+                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
                     Virtual Meeting Etiquette
                   </div>
-                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-purple-100 group-hover:bg-purple-50/30 transition-colors">
+                  <div className="bg-gray-50 px-5 py-3 rounded-xl text-gray-700 font-medium border border-gray-100 group-hover:border-gray-200 group-hover:bg-gray-50/30 transition-colors">
                     Cross-Cultural Communication
                   </div>
                 </div>
@@ -196,12 +175,12 @@ const CorporateTrack: React.FC = () => {
             </div>
 
             {/* Remote Work Mastery */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-blue-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-black text-gray-50 select-none group-hover:text-blue-50/50 transition-colors duration-500">
+            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-blue-100 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-blue-50/50 transition-colors duration-500">
                 02
               </div>
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Remote Work Mastery</h3>
+                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">Remote Work Mastery</h3>
                 <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   Excel in distributed teams using modern collaboration tools and workflows.
                 </p>
@@ -223,12 +202,12 @@ const CorporateTrack: React.FC = () => {
             </div>
 
             {/* Project Management */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-green-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-black text-gray-50 select-none group-hover:text-green-50/50 transition-colors duration-500">
+            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-green-100 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-green-50/50 transition-colors duration-500">
                 03
               </div>
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors">Project Management</h3>
+                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-green-600 transition-colors">Project Management</h3>
                 <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   Lead projects effectively using agile methodologies and PM tools.
                 </p>
@@ -250,12 +229,12 @@ const CorporateTrack: React.FC = () => {
             </div>
 
             {/* Career Development */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-orange-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 text-9xl font-black text-gray-50 select-none group-hover:text-orange-50/50 transition-colors duration-500">
+            <div className="bg-white rounded-3xl p-10 border border-gray-100 hover:border-orange-100 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <div className="absolute -right-6 -top-6 text-9xl font-medium text-gray-50 select-none group-hover:text-orange-50/50 transition-colors duration-500">
                 04
               </div>
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors">Career Development</h3>
+                <h3 className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 mb-4 group-hover:text-orange-600 transition-colors">Career Development</h3>
                 <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   Build your personal brand and land international remote opportunities.
                 </p>
@@ -280,16 +259,14 @@ const CorporateTrack: React.FC = () => {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-16 bg-orivon-blue relative overflow-hidden">
+      <section id="benefits" className="py-16 bg-[#0a0a0a] relative overflow-hidden">
         {/* Decorative background elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="text-[clamp(1.8rem,3.6vw,2.6rem)] lg:text-[clamp(2.1rem,4.6vw,3.4rem)] font-medium text-white mb-4">
               WHY JOIN US.
             </h2>
             <p className="text-lg text-blue-100 max-w-3xl mx-auto">
@@ -298,39 +275,39 @@ const CorporateTrack: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-bold text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
                 1
               </div>
               <div className="relative z-10">
-                <div className="h-1 w-10 bg-purple-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-bold text-white mb-3">Global Network</h3>
+                <div className="h-1 w-10 bg-gray-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
+                <h3 className="text-xl font-medium text-white mb-3">Global Network</h3>
                 <p className="text-blue-100/80 leading-relaxed text-base">
                   Connect with international employers and remote work opportunities worldwide.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-bold text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
                 2
               </div>
               <div className="relative z-10">
                 <div className="h-1 w-10 bg-blue-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-bold text-white mb-3">Flexible Schedule</h3>
+                <h3 className="text-xl font-medium text-white mb-3">Flexible Schedule</h3>
                 <p className="text-blue-100/80 leading-relaxed text-base">
                   Evening and weekend classes designed for working professionals.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-xl hover:shadow-green-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 text-8xl font-bold text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-green-500/20 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 text-8xl font-medium text-white/5 select-none group-hover:text-white/10 transition-colors duration-500">
                 3
               </div>
               <div className="relative z-10">
                 <div className="h-1 w-10 bg-green-500 mb-6 rounded-full group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-bold text-white mb-3">Career Support</h3>
+                <h3 className="text-xl font-medium text-white mb-3">Career Support</h3>
                 <p className="text-blue-100/80 leading-relaxed text-base">
                   One-on-one mentorship, job placement assistance, and ongoing career guidance.
                 </p>
@@ -343,7 +320,7 @@ const CorporateTrack: React.FC = () => {
       {/* Apply Section */}
       <section id="apply" className="py-32 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium mb-6 leading-tight">
             READY TO GO<br />
             GLOBAL?
           </h2>
@@ -351,8 +328,8 @@ const CorporateTrack: React.FC = () => {
             Join our next cohort and start your journey to international opportunities.
           </p>
 
-          <div className="bg-white rounded-2xl p-8 text-left">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Enrollment Form</h3>
+          <div className="bg-white rounded-3xl p-8 text-left">
+            <h3 className="text-2xl font-medium text-gray-900 mb-6">Enrollment Form</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -363,7 +340,7 @@ const CorporateTrack: React.FC = () => {
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
                     placeholder="John Doe"
                   />
                 </div>
@@ -375,7 +352,7 @@ const CorporateTrack: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -390,7 +367,7 @@ const CorporateTrack: React.FC = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
                     placeholder="+234 800 000 0000"
                   />
                 </div>
@@ -401,7 +378,7 @@ const CorporateTrack: React.FC = () => {
                     name="currentRole"
                     value={formData.currentRole}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
                     placeholder="e.g., Software Developer"
                   />
                 </div>
@@ -414,7 +391,7 @@ const CorporateTrack: React.FC = () => {
                   name="goals"
                   value={formData.goals}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900"
                   placeholder="Tell us about your professional aspirations..."
                 ></textarea>
               </div>
@@ -422,7 +399,7 @@ const CorporateTrack: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>
@@ -440,7 +417,7 @@ const CorporateTrack: React.FC = () => {
       <footer className="bg-black text-white py-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center">
-            <Link to="/" className="text-3xl font-bold">ORIVON <span className="text-blue-600">EDGE</span></Link>
+            <Link to="/" className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium">ORIVON <span className="text-blue-600">EDGE</span></Link>
             <p className="text-gray-400 mt-4">© 2025 Orivon Edge Innovation Hub. All Rights Reserved</p>
           <CompanyFooter />
           </div>

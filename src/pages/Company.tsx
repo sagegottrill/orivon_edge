@@ -30,10 +30,10 @@ const Company = () => {
       <SiteNav variant="dark" />
 
       <section className="max-w-4xl mx-auto px-6 lg:px-8 py-20">
-        <p className="text-sm font-semibold tracking-widest text-blue-500 uppercase mb-4">
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
           Company information
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <h1 className="text-[clamp(1.8rem,3.6vw,2.6rem)] md:text-[clamp(2.1rem,4.6vw,3.4rem)] font-medium mb-6">
           {COMPANY.legalName}
         </h1>
         <p className="text-xl text-gray-400 leading-relaxed max-w-2xl">
@@ -48,7 +48,7 @@ const Company = () => {
           {details.map((item) => (
             <div
               key={item.label}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10"
+              className="p-6 rounded-3xl bg-white/5 border border-white/10"
             >
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
                 {item.label}
@@ -59,10 +59,10 @@ const Company = () => {
         </div>
 
         <div className="mt-6 grid gap-6">
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+          <div className="p-6 rounded-3xl bg-white/5 border border-white/10">
             <div className="flex items-center gap-3 mb-3">
               <MapPin className="w-5 h-5 text-blue-500" />
-              <h2 className="text-lg font-bold">Registered office</h2>
+              <h2 className="text-lg font-medium">Registered office</h2>
             </div>
             <p className="text-gray-300 leading-relaxed">{COMPANY.address}</p>
             <p className="text-sm text-gray-500 mt-3">
@@ -72,10 +72,10 @@ const Company = () => {
           </div>
         </div>
 
-        <div className="mt-6 p-6 rounded-2xl bg-white/5 border border-white/10">
+        <div className="mt-6 p-6 rounded-3xl bg-white/5 border border-white/10">
           <div className="flex items-center gap-3 mb-4">
             <UserRound className="w-5 h-5 text-blue-500" />
-            <h2 className="text-lg font-bold">Leadership</h2>
+            <h2 className="text-lg font-medium">Leadership</h2>
           </div>
           <p className="text-white font-medium">{COMPANY.ceoName}</p>
           <p className="text-sm text-gray-400 mb-3">{COMPANY.ceoTitle}</p>
@@ -88,10 +88,10 @@ const Company = () => {
           </a>
         </div>
 
-        <div className="mt-6 p-6 rounded-2xl bg-white/5 border border-white/10">
+        <div className="mt-6 p-6 rounded-3xl bg-white/5 border border-white/10">
           <div className="flex items-center gap-3 mb-4">
             <Building2 className="w-5 h-5 text-blue-500" />
-            <h2 className="text-lg font-bold">Contact us</h2>
+            <h2 className="text-lg font-medium">Contact us</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-4 text-gray-300">
             <a
@@ -122,7 +122,7 @@ const Company = () => {
           </p>
         </div>
 
-        <div className="mt-6 p-6 rounded-2xl border border-white/10 flex items-start gap-3">
+        <div className="mt-6 p-6 rounded-3xl border border-white/10 flex items-start gap-3">
           <ShieldCheck className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
           <p className="text-sm text-gray-400 leading-relaxed">
             {COMPANY.legalName} is registered with the {COMPANY.regulator} under
