@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
@@ -68,6 +68,9 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname, hash, key } = useLocation();
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const sheetRef = useRef<HTMLDivElement | null>(null);
+  const wasOpen = useRef(false);
 
   // Arriving at /#programmes from another page: the section doesn't exist until
   // Home has mounted, so wait a frame, then scroll.
@@ -89,6 +92,39 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  // A closed sheet is still in the DOM (it animates), so without `inert` its
+  // links stay in the tab order and a keyboard or screen reader user lands in a
+  // menu they cannot see. React 18 has no typed support for the attribute, so it
+  // is set on the element directly.
+  useEffect(() => {
+    const sheet = sheetRef.current;
+    if (!sheet) return;
+    if (open) sheet.removeAttribute("inert");
+    else sheet.setAttribute("inert", "");
+  }, [open]);
+
+  // Escape closes it, as it does any dialog.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        setOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // Closing returns focus to the control that opened it, so focus is never left
+  // inside a hidden panel.
+  useEffect(() => {
+    if (wasOpen.current && !open) {
+      menuButtonRef.current?.focus({ preventScroll: true });
+    }
+    wasOpen.current = open;
   }, [open]);
 
   // Over the hero the bar is invisible and its text is white; once the page
@@ -154,6 +190,7 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
           </div>
 
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
@@ -168,10 +205,12 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
 
       {/* Sheet */}
       <div
+        ref={sheetRef}
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
+        aria-hidden={!open}
         className={`fixed inset-0 z-[60] md:hidden ${open ? "" : "pointer-events-none"}`}
       >
         <div
@@ -181,7 +220,7 @@ const SiteNav = ({ variant = "light" }: { variant?: "light" | "dark" | "hero" })
           }`}
         />
         <div
-          className={`absolute inset-x-0 top-0 bg-white shadow-xl transition-transform duration-250 ${
+          className={`absolute inset-x-0 top-0 bg-white shadow-xl transition-transform duration-300 ${
             open ? "translate-y-0" : "-translate-y-full"
           }`}
         >
