@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, GraduationCap, Rocket, CheckCircle, Mail, Phone, MapPin, Briefcase } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { submitProgramApplication } from '@/lib/appwrite';
 import CompanyFooter from "../components/CompanyFooter";
 import SiteNav from "../components/SiteNav";
@@ -59,7 +59,7 @@ const JoinHub: React.FC = () => {
     return (
       <div className="min-h-screen bg-white pt-16">
         <nav className="bg-white fixed w-full top-0 z-50">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
             <div className="flex justify-between items-center h-20">
               <div className="flex items-center">
                 <Link to="/" className="text-[clamp(1.3rem,2.2vw,1.65rem)] font-medium text-gray-900 hover:opacity-80 transition-opacity">
@@ -96,54 +96,51 @@ const JoinHub: React.FC = () => {
       <SiteNav />
 
       {/* Hero */}
-      <section className="pb-20 pt-16 lg:pt-20">
+      <section className="border-b border-gray-200 bg-white pb-20 pt-12 lg:pb-28 lg:pt-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid gap-14 lg:grid-cols-[1fr_0.95fr] lg:items-start lg:gap-20">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-6">
-                <Rocket className="w-4 h-4" /> Join The Hub
-              </div>
-              <h1 className="text-[clamp(2.2rem,5vw,3.6rem)] font-medium text-gray-900 mb-6 leading-tight">
-                Become Part of the<br />
-                <span className="text-blue-600">Orivon Edge</span> Hub
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-400">
+                // Join the hub
+              </span>
+              <h1 className="mt-6 text-[clamp(2.2rem,5vw,3.6rem)] font-medium leading-[1.04] tracking-[-0.03em] text-gray-900">
+                Become Part of the
+                <br />
+                <span className="text-gray-400">Orivon Edge Hub</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="mt-8 max-w-[32rem] text-[16px] leading-relaxed text-gray-600">
                 Join our innovation hub for incubation, mentorship, and access to a global
                 network of founders, builders, and investors.
               </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <span className="text-gray-700 font-medium">Mentorship & incubation programs</span>
+              <dl className="mt-9 grid max-w-[32rem] grid-cols-1 gap-y-3 border-t border-gray-200 pt-6">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-[10px] text-gray-300">/</span>
+                  <dt className="text-[15px] text-gray-700">Mentorship &amp; incubation programs</dt>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
-                    <GraduationCap className="w-5 h-5" />
-                  </div>
-                  <span className="text-gray-700 font-medium">Access to training & resources</span>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-[10px] text-gray-300">/</span>
+                  <dt className="text-[15px] text-gray-700">Access to training &amp; resources</dt>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
-                    <Briefcase className="w-5 h-5" />
-                  </div>
-                  <span className="text-gray-700 font-medium">Networking with global innovators</span>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-[10px] text-gray-300">/</span>
+                  <dt className="text-[15px] text-gray-700">Networking with global innovators</dt>
                 </div>
-              </div>
+              </dl>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 border border-gray-100">
-              <h2 className="text-2xl font-medium text-gray-900 mb-6">Apply to Join</h2>
+            <div className="lg:border-l lg:border-gray-200 lg:pl-10 xl:pl-14">
+              <h2 className="border-b border-gray-200 pb-5 text-[22px] font-medium tracking-[-0.02em] text-gray-900">
+                Apply to Join
+              </h2>
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+                <div className="mb-2 border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-600">
                   {error}
                 </div>
               )}
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="mt-6 space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Full Name *</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Full Name *</label>
                     <input
                       type="text"
                       name="fullName"
@@ -151,11 +148,11 @@ const JoinHub: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="John Doe"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Email *</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Email *</label>
                     <input
                       type="email"
                       name="email"
@@ -163,14 +160,14 @@ const JoinHub: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="john@example.com"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Phone *</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Phone *</label>
                     <input
                       type="tel"
                       name="phone"
@@ -178,31 +175,31 @@ const JoinHub: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="+234 800 000 0000"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Location</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Location</label>
                     <input
                       type="text"
                       name="location"
                       value={formData.location}
                       onChange={handleChange}
                       placeholder="City, State"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Area of Interest *</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Area of Interest *</label>
                     <select
                       name="interest"
                       value={formData.interest}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     >
                       <option value="">Select an area</option>
                       <option value="Software Engineering">Software Engineering</option>
@@ -214,13 +211,13 @@ const JoinHub: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Experience Level *</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Experience Level *</label>
                     <select
                       name="experience"
                       value={formData.experience}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     >
                       <option value="">Select level</option>
                       <option value="Beginner">Beginner</option>
@@ -231,19 +228,19 @@ const JoinHub: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Background</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Background</label>
                   <textarea
                     name="background"
                     value={formData.background}
                     onChange={handleChange}
                     rows={3}
                     placeholder="Tell us about your educational background, current role, or relevant experience..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Goals *</label>
+                  <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Goals *</label>
                   <textarea
                     name="goals"
                     value={formData.goals}
@@ -251,19 +248,19 @@ const JoinHub: React.FC = () => {
                     required
                     rows={3}
                     placeholder="What do you hope to achieve by joining Orivon Edge? What are your short-term and long-term goals?"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                    className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                   />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Availability *</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">Availability *</label>
                     <select
                       name="availability"
                       value={formData.availability}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     >
                       <option value="">Select availability</option>
                       <option value="Full-time">Full-time</option>
@@ -272,12 +269,12 @@ const JoinHub: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">How did you hear about us?</label>
+                    <label className="mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-gray-400">How did you hear about us?</label>
                     <select
                       name="howHeard"
                       value={formData.howHeard}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900"
+                      className="w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-3 text-[15px] text-gray-900 placeholder:text-gray-300 focus:border-gray-900 focus:outline-none focus:ring-0 [&>option]:text-gray-900"
                     >
                       <option value="">Select source</option>
                       <option value="Social Media">Social Media</option>
@@ -292,11 +289,11 @@ const JoinHub: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                  className="mt-2 flex w-full items-center justify-center gap-3 rounded-full bg-[#0a0a0a] px-8 py-4 text-[15px] font-medium text-white transition-colors hover:bg-[#0a0a0a]/90 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"></div>
                       Submitting...
                     </>
                   ) : (
@@ -312,9 +309,9 @@ const JoinHub: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-gray-400">
+      <footer className="border-t border-white/10 bg-[#0a0a0a] py-14 text-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
             © 2025 Orivon Edge. All Rights Reserved
           </p>
           <CompanyFooter />
