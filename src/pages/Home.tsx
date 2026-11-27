@@ -183,7 +183,7 @@ const Home: React.FC = () => {
                                 height={120}
                                 loading="lazy"
                                 decoding="async"
-                                className="h-10 w-auto shrink-0 object-contain opacity-55 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 sm:h-12"
+                                className="h-10 w-auto shrink-0 object-contain opacity-90 transition duration-300 hover:opacity-100 sm:h-12"
                             />
                         ))}
                     </div>
@@ -209,48 +209,48 @@ const Home: React.FC = () => {
             </section>
 
             {/* Training Programs */}
-            <section id="programmes" className="scroll-mt-16 bg-[#0a0a0a] py-20 lg:py-28">
+            <section id="programmes" className="scroll-mt-16 bg-white py-20 lg:py-28">
                 <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
                     <div className="grid gap-14 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-20">
                         <div>
-                            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-400">
                                 // Education
                             </span>
 
-                            <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-white">
+                            <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-gray-900">
                                 TRAINING
                                 <br />
-                                <span className="text-white/45">PROGRAMS.</span>
+                                <span className="text-blue-600">PROGRAMS.</span>
                             </h2>
 
-                            <p className="mt-7 max-w-[28rem] text-[16px] leading-relaxed text-white/60">
+                            <p className="mt-7 max-w-[28rem] text-[16px] leading-relaxed text-gray-600">
                                 Industry-standard training that gives you the exact skills companies are
                                 looking for.
                             </p>
                         </div>
 
-                        <div className="border-t border-white/10">
+                        <div className="border-t border-gray-200">
                             {TRACKS.map((track, i) => (
-                                <div key={track.title} className="border-b border-white/10 py-8">
+                                <div key={track.title} className="border-b border-gray-200 py-8">
                                     <div className="flex items-baseline gap-4">
-                                        <span className="font-mono text-[10px] tabular-nums text-white/30">
+                                        <span className="font-mono text-[10px] tabular-nums text-blue-600">
                                             0{i + 1}
                                         </span>
-                                        <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">
+                                        <h3 className="text-[22px] font-medium tracking-[-0.02em] text-gray-900">
                                             {track.title}
                                         </h3>
                                     </div>
 
-                                    <p className="mt-3 max-w-[32rem] text-[15px] leading-relaxed text-white/55">
+                                    <p className="mt-3 max-w-[32rem] text-[15px] leading-relaxed text-gray-600">
                                         {track.body}
                                     </p>
 
                                     <Link
                                         to={track.to}
-                                        className="group mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] py-2 pl-5 pr-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-white/10"
+                                        className="group mt-6 inline-flex items-center gap-3 rounded-full border border-gray-300 py-2 pl-5 pr-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:border-gray-900"
                                     >
                                         {track.cta}
-                                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#0a0a0a] transition-transform duration-200 ease-out group-hover:-rotate-45">
+                                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white transition-transform duration-200 ease-out group-hover:-rotate-45">
                                             <ArrowUpRight className="h-3.5 w-3.5" />
                                         </span>
                                     </Link>

@@ -175,7 +175,7 @@ const CoreSkillsTrack: React.FC = () => {
             <div className="border-t border-white/10">
               <div className="border-b border-white/10 py-8 lg:py-10">
                 <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[10px] tabular-nums text-white/30">01</span>
+                  <span className="font-mono text-[10px] tabular-nums text-blue-400">01</span>
                   <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Artificial Intelligence</h3>
                 </div>
                 <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
@@ -190,7 +190,7 @@ const CoreSkillsTrack: React.FC = () => {
               </div>
               <div className="border-b border-white/10 py-8 lg:py-10">
                 <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[10px] tabular-nums text-white/30">02</span>
+                  <span className="font-mono text-[10px] tabular-nums text-blue-400">02</span>
                   <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Cloud Computing</h3>
                 </div>
                 <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
@@ -205,7 +205,7 @@ const CoreSkillsTrack: React.FC = () => {
               </div>
               <div className="border-b border-white/10 py-8 lg:py-10">
                 <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[10px] tabular-nums text-white/30">03</span>
+                  <span className="font-mono text-[10px] tabular-nums text-blue-400">03</span>
                   <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Data Science</h3>
                 </div>
                 <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
@@ -220,7 +220,7 @@ const CoreSkillsTrack: React.FC = () => {
               </div>
               <div className="border-b border-white/10 py-8 lg:py-10">
                 <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[10px] tabular-nums text-white/30">04</span>
+                  <span className="font-mono text-[10px] tabular-nums text-blue-400">04</span>
                   <h3 className="text-[22px] font-medium tracking-[-0.02em] text-white">Cybersecurity</h3>
                 </div>
                 <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-white/55">
