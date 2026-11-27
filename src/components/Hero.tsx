@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
@@ -19,22 +18,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
  * fully visible if JS never runs.
  */
 
-const lagosTime = () =>
-  new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Africa/Lagos",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).format(new Date());
-
 const Hero = () => {
-  const [time, setTime] = useState(lagosTime);
-
-  useEffect(() => {
-    const id = window.setInterval(() => setTime(lagosTime()), 30000);
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
     <section id="home" className="relative isolate min-h-[100svh] overflow-hidden bg-[#0a0a0a]">
       {/* Media plane */}
@@ -76,20 +60,16 @@ const Hero = () => {
         }}
       />
 
-      {/* Content */}
-      <div className="relative mx-auto flex min-h-[100svh] w-full max-w-7xl flex-col px-5 pb-8 pt-24 sm:px-8 lg:px-10 lg:pb-10">
-        <div className="hero-anim flex-1 pt-2" style={{ animationDelay: "0.12s" }}>
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-black/25 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            Applications open · Cohort 2026
-          </span>
-        </div>
+      {/* Content — the site's own words: the original headline, subline and CTA.
+          Nothing invented, and no location or date claims. */}
+      <div className="relative mx-auto flex min-h-[100svh] w-full max-w-7xl flex-col px-5 pb-10 pt-24 sm:px-8 lg:px-10 lg:pb-14">
+        <div className="flex-1" />
 
-        <div className="mt-10 max-w-5xl lg:mt-14">
+        <div className="max-w-5xl">
           <h1
             className="hero-anim text-white"
             style={{
-              animationDelay: "0.22s",
+              animationDelay: "0.14s",
               fontSize: "clamp(2.35rem, 7.2vw, 5.75rem)",
               lineHeight: 0.96,
               letterSpacing: "-0.035em",
@@ -97,22 +77,21 @@ const Hero = () => {
               textShadow: "0 16px 38px rgba(0,0,0,0.32)",
             }}
           >
-            Build the future.
+            Building the future
             <br />
-            <span className="text-white/55">Ship it from Jos.</span>
+            <span className="text-white/60">of technology and innovation</span>
           </h1>
 
           <p
-            className="hero-anim mt-7 max-w-[30rem] text-[16px] leading-relaxed text-white/70 sm:text-[17.5px]"
-            style={{ animationDelay: "0.34s", textShadow: "0 2px 18px rgba(0,0,0,0.42)" }}
+            className="hero-anim mt-7 max-w-[28rem] text-[16px] leading-relaxed text-white/75 sm:text-[17.5px]"
+            style={{ animationDelay: "0.28s", textShadow: "0 2px 18px rgba(0,0,0,0.42)" }}
           >
-            A youth-led hub training engineers, incubating products and building
-            software for organisations across Nigeria — from Plateau State to the world.
+            A youth-led innovation hub building the future.
           </p>
 
           <div
             className="hero-anim mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"
-            style={{ animationDelay: "0.46s" }}
+            style={{ animationDelay: "0.4s" }}
           >
             <Link
               to="/join-hub"
@@ -128,26 +107,10 @@ const Hero = () => {
               href="#programmes"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-6 py-3.5 text-[15px] font-medium text-white backdrop-blur-sm transition-colors duration-200 hover:bg-white/[0.12]"
             >
-              See the programmes
+              Programmes
               <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1" />
             </a>
           </div>
-        </div>
-
-        {/* Quiet strip: identity, place, live time. */}
-        <div
-          className="hero-anim mt-12 flex flex-col gap-3 border-t border-white/15 pt-5 sm:flex-row sm:items-center sm:justify-between"
-          style={{ animationDelay: "0.58s" }}
-        >
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">
-            <span>ORIVON EDGE LTD · RC 9135897</span>
-            <span className="hidden sm:inline">Jos, Plateau State</span>
-            <span className="tabular-nums">Local time {time} WAT</span>
-          </div>
-
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-white/35 sm:inline">
-            Scroll to explore
-          </span>
         </div>
       </div>
     </section>

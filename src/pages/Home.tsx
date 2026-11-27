@@ -45,23 +45,25 @@ const Home: React.FC = () => {
                             </span>
 
                             <h2 className="mt-6 text-[clamp(2rem,4.2vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.03em] text-gray-900">
-                                A venture studio
+                                We are global
                                 <br />
-                                <span className="text-gray-400">that stays to ship.</span>
+                                <span className="text-gray-400">innovators.</span>
                             </h2>
 
                             <div className="mt-7 max-w-[34rem] space-y-5 text-[16px] leading-relaxed text-gray-600">
                                 <p>
-                                    Orivon Edge builds AI-driven startups and delivers enterprise technology for
-                                    organisations worldwide.
+                                    Orivon Edge is a global venture studio and digital agency that builds AI-driven
+                                    startups and delivers powerful technology solutions for businesses worldwide.
                                 </p>
                                 <p>
-                                    We build, de-risk and scale ventures while delivering high-fidelity systems for
-                                    businesses, NGOs and institutions across every sector.
+                                    We systematically build, de-risk, and scale innovative startups while delivering
+                                    high-fidelity enterprise solutions for organizations, NGOs, and businesses across
+                                    all sectors.
                                 </p>
                                 <p>
-                                    Unlike a traditional incubator, we stay to implement — compliance, delivery and
-                                    measurable policy outcomes, not a pitch deck.
+                                    Unlike traditional incubators, we function as a vital implementation partner
+                                    ensuring compliance, delivering measurable policy outcomes, and bridging the gap
+                                    between innovation and institutional deployment.
                                 </p>
                             </div>
 
